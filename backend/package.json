@@ -1,0 +1,46 @@
+{
+  "name": "parliamentary-system",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/informatyzacja/parliamentary-system.git"
+  },
+  "author": {
+    "name": "Michał Korczak",
+    "url": "https://omikor.in"
+  },
+  "maintainers": [
+    {
+      "name": "Michał Korczak",
+      "url": "https://omikor.in"
+    }
+  ],
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/informatyzacja/parliamentary-system/issues"
+  },
+  "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "@strapi/strapi": "4.3.6",
+    "@strapi/plugin-users-permissions": "4.3.6",
+    "@strapi/plugin-i18n": "4.3.6",
+    "pg": "8.6.0"
+  },
+  "strapi": {
+    "uuid": "a4710531-0f36-48ca-a0c3-b0ef4a254ec9",
+    "telemetryDisabled": true
+  },
+  "engines": {
+    "node": ">=14.19.1 <=16.x.x",
+    "npm": ">=6.0.0"
+  }
+}
