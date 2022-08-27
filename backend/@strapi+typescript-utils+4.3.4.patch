@@ -1,0 +1,13 @@
+diff --git a/node_modules/@strapi/typescript-utils/lib/utils/get-config-path.js b/node_modules/@strapi/typescript-utils/lib/utils/get-config-path.js
+index d0d1105..e7217e2 100644
+--- a/node_modules/@strapi/typescript-utils/lib/utils/get-config-path.js
++++ b/node_modules/@strapi/typescript-utils/lib/utils/get-config-path.js
+@@ -22,6 +22,6 @@ module.exports = (dir, { filename = DEFAULT_TS_CONFIG_FILENAME, ancestorsLookup
+   if (!configFilePath || ancestorsLookup) {
+     return configFilePath;
+   }
+-
+-  return configFilePath.startsWith(dirAbsolutePath) ? configFilePath : undefined;
++  const configFileAbsolutePath = path.resolve(configFilePath);
++  return configFileAbsolutePath.startsWith(dirAbsolutePath) ? configFileAbsolutePath : undefined;
+ };
