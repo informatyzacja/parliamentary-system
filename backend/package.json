@@ -30,9 +30,10 @@
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "4.3.6",
-    "@strapi/plugin-users-permissions": "4.3.6",
     "@strapi/plugin-i18n": "4.3.6",
+    "@strapi/plugin-users-permissions": "4.3.6",
+    "@strapi/provider-email-nodemailer": "4.3.6",
+    "@strapi/strapi": "4.3.6",
     "pg": "8.6.0"
   },
   "strapi": {
