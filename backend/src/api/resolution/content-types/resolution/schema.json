@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resolutions",
+  "info": {
+    "singularName": "resolution",
+    "pluralName": "resolutions",
+    "displayName": "Resolution"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "number": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "porządkowa",
+        "normalna"
+      ],
+      "required": true,
+      "default": "porządkowa"
+    },
+    "document": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "meeting": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::meeting.meeting",
+      "inversedBy": "resolution"
+    }
+  }
+}
