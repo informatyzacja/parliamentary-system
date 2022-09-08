@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "students",
+  "info": {
+    "singularName": "student",
+    "pluralName": "students",
+    "displayName": "Student",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surname": {
+      "type": "string",
+      "required": true
+    },
+    "department": {
+      "type": "enumeration",
+      "enum": [
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W6",
+        "W7",
+        "W8",
+        "W9",
+        "W10",
+        "W11",
+        "W12",
+        "Filia w Jeleniej Górze",
+        "Filia w Wałbrzychu",
+        "Filia w Legnicy"
+      ],
+      "required": true
+    },
+    "student_number": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true
+    },
+    "functions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::function.function"
+    },
+    "telephone": {
+      "type": "biginteger",
+      "private": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "student"
+    },
+    "term_of_offices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::term-of-office.term-of-office"
+    }
+  }
+}

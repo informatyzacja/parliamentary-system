@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "term_of_offices",
+  "info": {
+    "singularName": "term-of-office",
+    "pluralName": "term-of-offices",
+    "displayName": "Term of office"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "term_of_office": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 9,
+      "minLength": 9,
+      "default": "2021/2022"
+    },
+    "meetings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::meeting.meeting",
+      "mappedBy": "term_of_office"
+    }
+  }
+}
