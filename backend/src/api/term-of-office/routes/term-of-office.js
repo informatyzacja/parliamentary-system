@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * term-of-office router
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreRouter('api::term-of-office.term-of-office');
+module.exports = createCoreRouter('api::term-of-office.term-of-office');

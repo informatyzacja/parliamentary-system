@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * function service
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreService('api::function.function');
+module.exports = createCoreService('api::function.function');

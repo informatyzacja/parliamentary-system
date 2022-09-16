@@ -1,9 +1,9 @@
+'use strict';
+
 /**
  * term-of-office controller
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreController(
-  'api::term-of-office.term-of-office'
-);
+module.exports = createCoreController('api::term-of-office.term-of-office');

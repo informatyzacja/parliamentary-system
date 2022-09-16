@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * resolution service
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreService('api::resolution.resolution');
+module.exports = createCoreService('api::resolution.resolution');

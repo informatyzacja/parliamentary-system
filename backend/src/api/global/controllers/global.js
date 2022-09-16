@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * global controller
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreController('api::global.global');
+module.exports = createCoreController('api::global.global');

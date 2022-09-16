@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * meeting service
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreService('api::meeting.meeting');
+module.exports = createCoreService('api::meeting.meeting');

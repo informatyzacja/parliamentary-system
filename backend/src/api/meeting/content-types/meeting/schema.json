@@ -50,7 +50,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::resolution.resolution",
-      "inversedBy": "meeting"
+      "mappedBy": "meeting"
     }
   }
 }

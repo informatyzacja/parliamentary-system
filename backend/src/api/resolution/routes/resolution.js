@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * resolution router
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreRouter('api::resolution.resolution');
+module.exports = createCoreRouter('api::resolution.resolution');

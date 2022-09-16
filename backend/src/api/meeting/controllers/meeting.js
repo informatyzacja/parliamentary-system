@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * meeting controller
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreController('api::meeting.meeting');
+module.exports = createCoreController('api::meeting.meeting');

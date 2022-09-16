@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * student controller
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreController('api::student.student');
+module.exports = createCoreController('api::student.student');

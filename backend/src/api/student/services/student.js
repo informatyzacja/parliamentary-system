@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * student service
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreService('api::student.student');
+module.exports = createCoreService('api::student.student');

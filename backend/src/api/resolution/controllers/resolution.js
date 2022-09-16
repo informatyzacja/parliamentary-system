@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * resolution controller
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreController('api::resolution.resolution');
+module.exports = createCoreController('api::resolution.resolution');

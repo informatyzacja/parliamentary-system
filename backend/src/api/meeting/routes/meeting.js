@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * meeting router
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreRouter('api::meeting.meeting');
+module.exports = createCoreRouter('api::meeting.meeting');

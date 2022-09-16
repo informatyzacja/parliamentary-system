@@ -4,7 +4,8 @@
   "info": {
     "singularName": "resolution",
     "pluralName": "resolutions",
-    "displayName": "Resolution"
+    "displayName": "Resolution",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,15 +27,16 @@
         "porządkowa",
         "normalna"
       ],
-      "required": true,
-      "default": "porządkowa"
+      "default": "porządkowa",
+      "required": true
     },
     "document": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "files"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "meeting": {
       "type": "relation",

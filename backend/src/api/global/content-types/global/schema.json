@@ -12,15 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "parliamentary_composition": {
+      "type": "text",
+      "required": true,
+      "default": "Parlament składa się z:"
+    },
     "current_term_of_office": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::term-of-office.term-of-office"
-    },
-    "parliamentary_composition": {
-      "type": "text",
-      "default": "Parlament składa się z:",
-      "required": true
     }
   }
 }

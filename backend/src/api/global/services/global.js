@@ -1,7 +1,9 @@
+'use strict';
+
 /**
  * global service
  */
 
-const factories = require('@strapi/strapi').factories;
+const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = factories.createCoreService('api::global.global');
+module.exports = createCoreService('api::global.global');
