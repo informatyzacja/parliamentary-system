@@ -4,8 +4,7 @@
   "info": {
     "singularName": "student",
     "pluralName": "students",
-    "displayName": "Student",
-    "description": ""
+    "displayName": "Student"
   },
   "options": {
     "draftAndPublish": false
@@ -35,6 +34,7 @@
         "W10",
         "W11",
         "W12",
+        "W13",
         "Filia w Jeleniej Górze",
         "Filia w Wałbrzychu",
         "Filia w Legnicy"
