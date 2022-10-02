@@ -1,7 +1,28 @@
 import 'tailwindcss/tailwind.css';
 import Layout from '../components/layout';
 import '../styles/globals.css';
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider, getSession } from "next-auth/react";
+import axios from 'axios';
+import urlJoin from 'url-join';
+
+axios.defaults.baseURL = urlJoin(process.env['NEXT_PUBLIC_API_URL']!, 'api');
+
+axios.interceptors.request.use(async (request) => {
+  const session: any = await getSession();
+  request.headers.common = {
+    Authorization: `Bearer ${session.jwt}`
+  };
+  return request;
+});
+
+axios.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    console.log(error);
+  }
+);
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
   return <SessionProvider session={session}>
