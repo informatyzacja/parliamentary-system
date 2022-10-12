@@ -12,10 +12,14 @@ export default function Meetings({ Component, pageProps }: any) {
   const [pageSize, setPageSize] = useState<number>(10);
   const [totalElements, setTotalElements] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   useEffect(() => {
     if (currentTerm) {
+      setIsLoading(true);
       axios.get(`meetings?filters[term_of_office][id][$eq]=${currentTerm}
         &sort[0]=date:desc&sort[1]=id:desc&pagination[start]=${(currentPage - 1) * pageSize}&pagination[limit]=${pageSize}`).then((res) => {
+        setIsLoading(false);
         setMeetings(res.data.data);
         setTotalElements(res.data.meta.pagination.total);
       });
@@ -27,7 +31,7 @@ export default function Meetings({ Component, pageProps }: any) {
   };
 
   return <>
-    {!meetings.length && <Loader />}
+    {isLoading && <Loader />}
     <div className="overflow-x-auto relative">
       <div className="flex justify-end">
         <div>

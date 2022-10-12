@@ -7,17 +7,21 @@ import Loader from "../components/loader";
 function LatestUpdates({ Component, pageProps }: any) {
   const [meetings, setMeetings] = useState<any[]>([]);
   const [resolutions, setResolutions] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsLoading(true);
     axios.get('meetings?pagination[start]=0&pagination[limit]=10&sort[0]=date:desc&sort[1]=id:desc').then((res) => {
+      setIsLoading(false);
       setMeetings(res.data.data);
     });
     axios.get('resolutions?populate[0]=document&pagination[start]=0&pagination[limit]=10&sort[0]=id:desc').then((res) => {
+      setIsLoading(false);
       setResolutions(res.data.data);
     });
   }, []);
   return <>
-    {(!meetings.length || !resolutions.length) && <Loader />}
+    {isLoading && <Loader />}
     <div className="grid md:grid-cols-2">
       <div className="px-4">
         <div>Ostatnie posiedzenia</div>
