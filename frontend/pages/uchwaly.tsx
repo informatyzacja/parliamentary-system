@@ -4,6 +4,7 @@ import axios from 'axios';
 import { format } from "date-fns";
 import Pagination from "../components/pagination";
 import Link from "next/link";
+import Loader from "../components/loader";
 
 interface ResolutionsProps {
   meetingId?: number;
@@ -30,7 +31,9 @@ const Resolutions: FC<ResolutionsProps> = (props) => {
     setCurrentTerm(termId);
   };
 
-  return <><div className="overflow-x-auto relative">
+  return <>
+  {!resolutions.length && <Loader />}
+  <div className="overflow-x-auto relative">
     {props.meetingId &&
       <h1>
         {resolutions[0]?.attributes.meeting.data.attributes.name}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import Loader from "../components/loader";
 
 function OrganisationStructure({ Component, pageProps }: any) {
   const [composition, setComposition] = useState("");
@@ -9,7 +10,7 @@ function OrganisationStructure({ Component, pageProps }: any) {
     });
   }, []);
 
-  return composition;
+  return <>{composition ? composition : <Loader />}</>;
 }
 
 export default OrganisationStructure;
