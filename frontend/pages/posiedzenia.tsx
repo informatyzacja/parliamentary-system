@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import TermOfOfficeSelector from '../components/term-of-office-selector';
 import { format } from 'date-fns';
 import Pagination from '../components/pagination';
+import Link from 'next/link';
 
 export default function Meetings({ Component, pageProps }: any) {
   const [meetings, setMeetings] = useState<any[]>([]);
@@ -45,6 +46,9 @@ export default function Meetings({ Component, pageProps }: any) {
           <th scope="col" className="py-3 px-6">
             Miejsce
           </th>
+          <th scope="col" className="py-3 px-6">
+            Uchwały
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -63,6 +67,7 @@ export default function Meetings({ Component, pageProps }: any) {
               <td className="py-4 px-6">
                 {meeting.attributes.place}
               </td>
+              <td className="py-4 px-6"><Link href={`/posiedzenie/${meeting.id}`}>Przejdź do uchwał</Link></td>
             </tr>
           ))
         }

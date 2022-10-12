@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import TermOfOfficeSelector from "../components/term-of-office-selector";
 import axios from 'axios';
 import { format } from "date-fns";
 import Pagination from "../components/pagination";
+import Link from "next/link";
 
-function Resolutions({ Component, pageProps }: any) {
+interface ResolutionsProps {
+  meetingId?: number;
+}
+
+const Resolutions: FC<ResolutionsProps> = (props) => {
   const [resolutions, setResolutions] = useState<any[]>([]);
   const [currentTerm, setCurrentTerm] = useState<number>();
   const [pageSize, setPageSize] = useState<number>(10);
@@ -13,23 +18,29 @@ function Resolutions({ Component, pageProps }: any) {
   useEffect(() => {
     if (currentTerm) {
       axios.get(`resolutions?filters[meeting][term_of_office][id][$eq]=${currentTerm}
+        &populate[0]=meeting&populate[1]=document${props.meetingId ? '&filters[meeting][id][$eq]=' + props.meetingId : ''}
         &sort[0]=id:desc&pagination[start]=${(currentPage - 1) * pageSize}&pagination[limit]=${pageSize}`).then((res: any) => {
         setResolutions(res.data.data);
         setTotalElements(res.data.meta.pagination.total);
       });
     }
-  }, [currentPage, currentTerm, pageSize]);
+  }, [currentPage, currentTerm, pageSize, props.meetingId]);
 
   const onTermChange = (termId: number) => {
     setCurrentTerm(termId);
   };
 
   return <><div className="overflow-x-auto relative">
-    <div className="flex justify-end">
-      <div>
-        <TermOfOfficeSelector onTermChange={onTermChange} />
-      </div>
-    </div>
+    {props.meetingId &&
+      <h1>
+        {resolutions[0]?.attributes.meeting.data.attributes.name}
+      </h1>}
+    {!props.meetingId &&
+      <div className="flex justify-end">
+        <div>
+          <TermOfOfficeSelector onTermChange={onTermChange} />
+        </div>
+      </div>}
     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -45,8 +56,14 @@ function Resolutions({ Component, pageProps }: any) {
           <th scope="col" className="py-3 px-6">
             Rodzaj
           </th>
+          {!props.meetingId &&
+            <th scope="col" className="py-3 px-6">
+              Nazwa posiedzenia
+            </th>}
           <th scope="col" className="py-3 px-6">
             Data dodania
+          </th>
+          <th scope="col" className="py-3 px-6">
           </th>
         </tr>
       </thead>
@@ -66,8 +83,17 @@ function Resolutions({ Component, pageProps }: any) {
               <td className="py-4 px-6">
                 {resolution.attributes.type}
               </td>
+              {!props.meetingId &&
+                <td className="py-4 px-6">
+                  {resolution.attributes.meeting.data.attributes.name}
+                </td>}
               <td className="py-4 px-6">
                 {format(new Date(resolution.attributes.createdAt), 'dd-MM-yyyy HH:mm:ss')}
+              </td>
+              <td className="py-4 px-6">
+                <Link href={process.env.NEXT_PUBLIC_API_URL + resolution.attributes.document.data.attributes.url}>
+                  Pobierz
+                </Link>
               </td>
             </tr>
           ))

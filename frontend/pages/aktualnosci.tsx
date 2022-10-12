@@ -11,7 +11,7 @@ function LatestUpdates({ Component, pageProps }: any) {
     axios.get('meetings?pagination[start]=0&pagination[limit]=10&sort[0]=date:desc&sort[1]=id:desc').then((res) => {
       setMeetings(res.data.data);
     });
-    axios.get('resolutions?pagination[start]=0&pagination[limit]=10&sort[0]=id:desc').then((res) => {
+    axios.get('resolutions?populate[0]=document&pagination[start]=0&pagination[limit]=10&sort[0]=id:desc').then((res) => {
       setResolutions(res.data.data);
     });
   }, []);
@@ -23,7 +23,7 @@ function LatestUpdates({ Component, pageProps }: any) {
           {meetings.map(meeting => (
             <li className="px-6 py-2 border-b border-gray-200 w-full rounded-t-lg flex justify-between" key={meeting.id}>
               <span>{format(new Date(meeting.attributes.date), "dd-MM-yyyy")} {meeting.attributes.name}</span>
-              <Link href={`/posiedzenia/${meeting.id}`}>więcej</Link>
+              <Link href={`/posiedzenie/${meeting.id}`}>więcej</Link>
             </li>
           ))}
         </ul>
@@ -38,7 +38,7 @@ function LatestUpdates({ Component, pageProps }: any) {
               <div>{resolution.attributes.name}
                 <div>Dodano: {format(new Date(resolution.attributes.createdAt), 'dd-MM-yyyy HH:mm:ss')}</div>
               </div>
-              <Link href={`/uchwaly/${resolution.id}`}>czytaj</Link>
+              <Link href={process.env.NEXT_PUBLIC_API_URL + resolution.attributes.document.data.attributes.url}>pobierz</Link>
             </li>
           ))}
         </ul>
