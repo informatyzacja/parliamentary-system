@@ -8,10 +8,10 @@ function LatestUpdates({ Component, pageProps }: any) {
   const [resolutions, setResolutions] = useState<any[]>([]);
 
   useEffect(() => {
-    axios.get('meetings?pagination[start]=0&pagination[limit]=10').then((res) => {
+    axios.get('meetings?pagination[start]=0&pagination[limit]=10&sort[0]=date:desc&sort[1]=id:desc').then((res) => {
       setMeetings(res.data.data);
     });
-    axios.get('resolutions?pagination[start]=0&pagination[limit]=10').then((res) => {
+    axios.get('resolutions?pagination[start]=0&pagination[limit]=10&sort[0]=id:desc').then((res) => {
       setResolutions(res.data.data);
     });
   }, []);
