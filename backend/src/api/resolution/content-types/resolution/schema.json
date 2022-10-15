@@ -40,9 +40,9 @@
     },
     "meeting": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "manyToOne",
       "target": "api::meeting.meeting",
-      "inversedBy": "resolution"
+      "inversedBy": "resolutions"
     }
   }
 }

@@ -46,11 +46,27 @@
         "files"
       ]
     },
-    "resolution": {
+    "resolutions": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::resolution.resolution",
       "mappedBy": "meeting"
+    },
+    "agenda": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "reports": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
     }
   }
 }
