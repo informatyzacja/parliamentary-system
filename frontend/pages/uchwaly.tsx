@@ -2,9 +2,9 @@ import { FC, useEffect, useState } from "react";
 import TermOfOfficeSelector from "../components/term-of-office-selector";
 import axios from 'axios';
 import { format } from "date-fns";
-import Pagination from "../components/pagination";
 import Link from "next/link";
 import Loader from "../components/loader";
+import { Pagination as FlowbitePagination } from 'flowbite-react';
 
 interface ResolutionsProps {
   meetingId?: number;
@@ -17,9 +17,11 @@ const Resolutions: FC<ResolutionsProps> = (props) => {
   const [totalElements, setTotalElements] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [header, setHeader] = useState<string>('');
   useEffect(() => {
     setIsLoading(true);
     if (currentTerm) {
+      setHeader('Uchwały parlamentu');
       axios.get(`resolutions?filters[meeting][term_of_office][id][$eq]=${currentTerm}
         &populate[0]=meeting&populate[1]=document
         &sort[0]=id:desc&pagination[start]=${(currentPage - 1) * pageSize}&pagination[limit]=${pageSize}`).then((res: any) => {
@@ -30,6 +32,7 @@ const Resolutions: FC<ResolutionsProps> = (props) => {
     } else if (props.meetingId) {
       axios.get(`resolutions?&populate[0]=meeting&populate[1]=document&filters[meeting][id][$eq]=${props.meetingId}
         &sort[0]=id:desc&pagination[start]=${(currentPage - 1) * pageSize}&pagination[limit]=${pageSize}`).then((res: any) => {
+        setHeader('Uchwały posiedzenia parlamentu');
         setResolutions(res.data.data);
         setTotalElements(res.data.meta.pagination.total);
         setIsLoading(false);
@@ -44,12 +47,11 @@ const Resolutions: FC<ResolutionsProps> = (props) => {
   return <>
     {(isLoading) && <Loader />}
     <div className="overflow-x-auto relative">
-      {props.meetingId &&
-        <h1>
-          {resolutions[0]?.attributes.meeting.data.attributes.name}
-        </h1>}
+      <h1 className="font-medium leading-tight text-3xl mt-0 mb-2 text-black-600">
+        {header}
+      </h1>
       {!props.meetingId &&
-        <div className="flex justify-end">
+        <div className="flex justify-end mb-6">
           <div>
             <TermOfOfficeSelector onTermChange={onTermChange} />
           </div>
@@ -115,7 +117,14 @@ const Resolutions: FC<ResolutionsProps> = (props) => {
       </table>
     </div>
     <div className="flex justify-end">
-      <Pagination postsPerPage={pageSize} totalPosts={totalElements} paginate={setCurrentPage} currentPage={currentPage}></Pagination>
+      {Math.ceil(totalElements / pageSize) > 1 && <FlowbitePagination
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        showIcons={true}
+        totalPages={Math.ceil(totalElements / pageSize)}
+        previousLabel=""
+        nextLabel=""
+      />}
     </div>
   </>
 }

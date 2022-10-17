@@ -6,10 +6,7 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-    return (
-      <>
-        <Navbar />
-        <div className="container px-2 sm:px-4">{children}</div>
-      </>
-    )
-  }
+  return (
+    <div className="container px-2 sm:px-4 mx-auto"><Navbar />{children}</div>
+  )
+}

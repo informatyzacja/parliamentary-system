@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import TermOfOfficeSelector from '../components/term-of-office-selector';
 import { format } from 'date-fns';
-import Pagination from '../components/pagination';
 import Link from 'next/link';
 import Loader from '../components/loader';
+import { Pagination as FlowbitePagination } from 'flowbite-react';
 
 export default function Meetings({ Component, pageProps }: any) {
   const [meetings, setMeetings] = useState<any[]>([]);
@@ -31,9 +31,12 @@ export default function Meetings({ Component, pageProps }: any) {
   };
 
   return <>
+    <h1 className="font-medium leading-tight text-3xl mt-0 mb-2 text-black-600">
+      Posiedzenia parlamentu
+    </h1>
     {isLoading && <Loader />}
     <div className="overflow-x-auto relative">
-      <div className="flex justify-end">
+      <div className="flex justify-end mb-6">
         <div>
           <TermOfOfficeSelector onTermChange={onTermChange} />
         </div>
@@ -82,7 +85,14 @@ export default function Meetings({ Component, pageProps }: any) {
       </table>
     </div>
     <div className="flex justify-end">
-      <Pagination postsPerPage={pageSize} totalPosts={totalElements} paginate={setCurrentPage} currentPage={currentPage}></Pagination>
+      {Math.ceil(totalElements / pageSize) > 1 && <FlowbitePagination
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        showIcons={true}
+        totalPages={Math.ceil(totalElements / pageSize)}
+        previousLabel=""
+        nextLabel=""
+      />}
     </div>
   </>
 }
