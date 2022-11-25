@@ -1,0 +1,55 @@
+services:
+  frontend:
+    restart: always
+    build:
+      context: ./frontend
+      args: &buildargs
+        - NODE_VERSION=16
+    volumes:
+      - ./logs/frontend:/var/log/nginx/
+    ports:
+      - 80:80
+
+  backend:
+    restart: always
+    build:
+      context: ./backend
+      args: *buildargs
+    volumes:
+      - ./logs/backend:/app/logs/
+    configs:
+      - source: postgres_connection
+        target: /app/config/database.js
+        uid: "1000"
+        gid: "1000"
+        mode: 0440
+    ports:
+      - 1337:1337
+    depends_on:
+      - postgres
+
+  postgres:
+    restart: always
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=informatyzacja
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=parliamentarystrapi
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  traefik:
+    restart: always
+    image: traefik:v2.9
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+configs:
+  postgres_connection:
+    file: .config/database.js

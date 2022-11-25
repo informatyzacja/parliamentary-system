@@ -42,3 +42,12 @@ logs
 results
 node_modules
 .node_history
+
+############################
+# DevOps
+############################
+
+*/.env
+logs/
+postgres-data/
+.config/
