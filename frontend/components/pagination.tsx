@@ -5,7 +5,7 @@ export default function Pagination({
   totalPosts,
   paginate,
   currentPage,
-}) {
+}: { postsPerPage: number, totalPosts: number, paginate: (page: number) => {}, currentPage: number }) {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {

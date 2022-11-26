@@ -5,7 +5,4 @@ COPY . /app
 WORKDIR  /app
 RUN --mount=type=cache,target=/app/.yarn yarn install
 RUN npm run build
-
-FROM nginx:alpine as Frontend
-USER www-data
-COPY --from=Build /app/dist /var/www/
+CMD ["npm", "run", "start"]
