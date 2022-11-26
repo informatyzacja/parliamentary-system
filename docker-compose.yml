@@ -1,28 +1,24 @@
 services:
   frontend:
     restart: always
+    labels:
+      logging: "promtail"
+      logging_jobname: "containerlogs"
     build:
       context: ./frontend
       args: &buildargs
         - NODE_VERSION=16
-    volumes:
-      - ./logs/frontend:/var/log/nginx/
     ports:
-      - 80:80
+      - 80:3000
 
   backend:
     restart: always
+    labels:
+      logging: "promtail"
+      logging_jobname: "containerlogs"
     build:
       context: ./backend
       args: *buildargs
-    volumes:
-      - ./logs/backend:/app/logs/
-    configs:
-      - source: postgres_connection
-        target: /app/config/database.js
-        uid: "1000"
-        gid: "1000"
-        mode: 0440
     ports:
       - 1337:1337
     depends_on:
@@ -30,6 +26,9 @@ services:
 
   postgres:
     restart: always
+    labels:
+      logging: "promtail"
+      logging_jobname: "containerlogs"
     image: postgres:15-alpine
     environment:
       - POSTGRES_USER=informatyzacja
@@ -42,14 +41,70 @@ services:
 
   traefik:
     restart: always
+    labels:
+      logging: "promtail"
+      logging_jobname: "containerlogs"
     image: traefik:v2.9
     command: --api.insecure=true --providers.docker
     ports:
-      - "90:90"
+      #  - "443:443"
+      #  - "5432:5432"
+      #  - "1337:1337"
+      #  - "3000:3000"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
-configs:
-  postgres_connection:
-    file: .config/database.js
+  loki:
+    restart: always
+    image: grafana/loki:main
+    command: "-config.file=/etc/loki/config.yaml"
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./.config/loki-config.yaml:/etc/loki/config.yaml:ro
+      - ./data/loki:/loki/rules
+
+  promtail:
+    image: grafana/promtail
+    ports:
+      - "9080:9080"
+    volumes:
+      - ./.config/promtail-config.yaml:/etc/promtail/config.yaml:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+    command: "-config.file=/etc/promtail/config.yaml"
+    depends_on:
+      - loki
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    entrypoint:
+      - sh
+      - -euc
+      - |
+        mkdir -p /etc/grafana/provisioning/datasources
+        cat <<EOF > /etc/grafana/provisioning/datasources/ds.yaml
+        apiVersion: 1
+        datasources:
+          - name: Loki
+            type: loki
+            access: proxy
+            url: http://loki:3100
+            jsonData:
+              httpHeaderName1: "X-Scope-OrgID"
+            secureJsonData:
+              httpHeaderValue1: "tenant1"
+        EOF
+        /run.sh
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5

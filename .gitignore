@@ -50,4 +50,3 @@ node_modules
 */.env
 logs/
 postgres-data/
-.config/
