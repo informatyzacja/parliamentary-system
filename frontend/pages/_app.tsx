@@ -9,7 +9,9 @@ axios.defaults.baseURL = urlJoin(process.env['NEXT_PUBLIC_API_URL']!, 'api');
 
 axios.interceptors.request.use(async (request) => {
   const session: any = await getSession();
-  request!.headers!.common?.set('Authorization', `Bearer ${session.jwt}`);
+  if (request.headers) {
+    request.headers["Authorization"] = `Bearer ${session.jwt}`;
+  }
   return request;
 });
 
