@@ -1,21 +1,25 @@
 services:
   frontend:
     restart: always
-    labels:
-      logging: "promtail"
-      logging_jobname: "containerlogs"
     build:
       context: ./frontend
       args: &buildargs
         - NODE_VERSION=16
     ports:
-      - 80:3000
+      - 3080:3000
+    networks:
+      - app
+    labels:
+      - "logging=promtail"
+      - "logging_jobname=containerlogs"
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`system.localhost`)"
+      - "traefik.http.routers.frontend.entrypoints=web-secure,web"
+      - "traefik.docker.network=app"
+
 
   backend:
     restart: always
-    labels:
-      logging: "promtail"
-      logging_jobname: "containerlogs"
     build:
       context: ./backend
       args: *buildargs
@@ -23,12 +27,17 @@ services:
       - 1337:1337
     depends_on:
       - postgres
+    networks:
+      - app
+    labels:
+      - "logging=promtail"
+      - "logging_jobname=containerlogs"
 
   postgres:
     restart: always
     labels:
-      logging: "promtail"
-      logging_jobname: "containerlogs"
+      - "logging=promtail"
+      - "logging_jobname=containerlogs"
     image: postgres:15-alpine
     environment:
       - POSTGRES_USER=informatyzacja
@@ -38,22 +47,39 @@ services:
       - "5432:5432"
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - app
 
   traefik:
     restart: always
     labels:
-      logging: "promtail"
-      logging_jobname: "containerlogs"
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`traefik.localhost`)"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.entrypoints=web-secure,web"
+      - "logging=promtail"
+      - "logging_jobname=containerlogs"
+      - "traefik.http.middlewares.auth.basicauth.users=informatyzacja:$$apr1$$1LpSB/Hk$$JMUeuDx2q7Bm8wfNzrNzK0"
+      - "traefik.http.middlewares.auth.basicauth.removeheader=true"
+      - "traefik.http.routers.api.middlewares=auth"
+
     image: traefik:v2.9
-    command: --api.insecure=true --providers.docker
+    command: 
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web-secure.address=:443"
+      - "--serverstransport.insecureskipverify=true"
     ports:
-      #  - "443:443"
-      #  - "5432:5432"
-      #  - "1337:1337"
-      #  - "3000:3000"
+      - "80:80"
+      - "443:443"
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - app
+      - monitoring
 
   loki:
     restart: always
@@ -64,6 +90,8 @@ services:
     volumes:
       - ./.config/loki-config.yaml:/etc/loki/config.yaml:ro
       - ./data/loki:/loki/rules
+    networks:
+      - monitoring
 
   promtail:
     image: grafana/promtail
@@ -76,6 +104,8 @@ services:
     command: "-config.file=/etc/promtail/config.yaml"
     depends_on:
       - loki
+    networks:
+      - monitoring
 
   grafana:
     image: grafana/grafana:latest
@@ -103,3 +133,15 @@ services:
         /run.sh
     ports:
       - "3000:3000"
+    networks:
+      - monitoring
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`logs.localhost`)"
+      - "traefik.http.routers.grafana.entrypoints=web-secure,web"
+      - "traefik.http.routers.grafana.middlewares=auth"
+      - "traefik.docker.network=monitoring"
+
+networks:
+  app:
+  monitoring:
