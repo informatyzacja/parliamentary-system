@@ -32,6 +32,13 @@ services:
     labels:
       - "logging=promtail"
       - "logging_jobname=containerlogs"
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=(Host(`parlament.samorzad.pwr.edu.pl`) && (PathPrefix(`/backend-api`) || PathPrefix(`/backend`) || PathPrefix(`/admin`) || PathPrefix(`/i18n`) || PathPrefix(`/content-manager`)))"
+      - "traefik.http.routers.backend.entrypoints=web-secure,web"
+      - "traefik.http.middlewares.backend-stripprefix.stripprefix.prefixes=/backend-api,/backend"
+      - "traefik.http.middlewares.backend-stripprefix.stripprefix.forceSlash=false"
+      - "traefik.http.routers.backend.middlewares=backend-stripprefix"
+      - "traefik.docker.network=app"
 
   postgres:
     restart: always
