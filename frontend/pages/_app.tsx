@@ -9,9 +9,9 @@ axios.defaults.baseURL = urlJoin(process.env['NEXT_PUBLIC_API_URL']!, 'api');
 
 axios.interceptors.request.use(async (request) => {
   const session: any = await getSession();
-  request.headers.common = {
-    Authorization: `Bearer ${session.jwt}`
-  };
+  if (request.headers) {
+    request.headers["Authorization"] = `Bearer ${session.jwt}`;
+  }
   return request;
 });
 
@@ -24,7 +24,7 @@ axios.interceptors.response.use(
   }
 );
 
-function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
+function MyApp({ Component, pageProps: { session, ...pageProps }, }: { Component: any, pageProps: any }) {
   return <SessionProvider session={session}>
     <Layout>
       <Component {...pageProps} />
