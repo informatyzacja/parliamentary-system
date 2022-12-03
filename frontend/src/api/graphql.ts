@@ -1435,12 +1435,17 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type LatestMeetingsAndResolutionsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LatestMeetingsAndResolutionsQuery = { __typename?: 'Query', meetings: { __typename?: 'MeetingEntityResponseCollection', data: Array<{ __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', date: any, name: string } }> }, resolutions: { __typename?: 'ResolutionEntityResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, publishedAt: any, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', url: string } } } } }> } };
+
 export type MeetingQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type MeetingQuery = { __typename?: 'Query', meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string, date: any, resolutions: { __typename?: 'ResolutionRelationResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, publishedAt: any, type: Enum_Resolution_Type, number: string, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', name: string, url: string } } } } }> }, reports: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string } }> }, agenda: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } } } } } };
+export type MeetingQuery = { __typename?: 'Query', meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string, date: any, resolutions: { __typename?: 'ResolutionRelationResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, publishedAt: any, type: Enum_Resolution_Type, number: string, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', name: string, url: string } } } } }> }, reports: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } }> }, agenda: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } } } } } };
 
 export type MeetingsQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
@@ -1464,6 +1469,62 @@ export type TermOfOfficesQueryVariables = Exact<{ [key: string]: never; }>;
 export type TermOfOfficesQuery = { __typename?: 'Query', termOfOffices: { __typename?: 'TermOfOfficeEntityResponseCollection', data: Array<{ __typename?: 'TermOfOfficeEntity', id: string, attributes: { __typename?: 'TermOfOffice', term_of_office: string } }> } };
 
 
+export const LatestMeetingsAndResolutionsDocument = gql`
+    query LatestMeetingsAndResolutions {
+  meetings(sort: ["date:desc", "id:desc"], pagination: {limit: 10}) {
+    data {
+      id
+      attributes {
+        date
+        name
+      }
+    }
+  }
+  resolutions(sort: ["id:desc", "publishedAt:desc"], pagination: {limit: 10}) {
+    data {
+      id
+      attributes {
+        name
+        publishedAt
+        document {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useLatestMeetingsAndResolutionsQuery__
+ *
+ * To run a query within a React component, call `useLatestMeetingsAndResolutionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLatestMeetingsAndResolutionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLatestMeetingsAndResolutionsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLatestMeetingsAndResolutionsQuery(baseOptions?: Apollo.QueryHookOptions<LatestMeetingsAndResolutionsQuery, LatestMeetingsAndResolutionsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LatestMeetingsAndResolutionsQuery, LatestMeetingsAndResolutionsQueryVariables>(LatestMeetingsAndResolutionsDocument, options);
+      }
+export function useLatestMeetingsAndResolutionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LatestMeetingsAndResolutionsQuery, LatestMeetingsAndResolutionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LatestMeetingsAndResolutionsQuery, LatestMeetingsAndResolutionsQueryVariables>(LatestMeetingsAndResolutionsDocument, options);
+        }
+export type LatestMeetingsAndResolutionsQueryHookResult = ReturnType<typeof useLatestMeetingsAndResolutionsQuery>;
+export type LatestMeetingsAndResolutionsLazyQueryHookResult = ReturnType<typeof useLatestMeetingsAndResolutionsLazyQuery>;
+export type LatestMeetingsAndResolutionsQueryResult = Apollo.QueryResult<LatestMeetingsAndResolutionsQuery, LatestMeetingsAndResolutionsQueryVariables>;
 export const MeetingDocument = gql`
     query Meeting($id: ID!) {
   meeting(id: $id) {
@@ -1496,6 +1557,7 @@ export const MeetingDocument = gql`
             id
             attributes {
               name
+              url
             }
           }
         }

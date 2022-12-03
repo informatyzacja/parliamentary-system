@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { useTermOfOfficesQuery } from "../api/graphql";
 import { Select } from "@chakra-ui/react";
 import { useAtom } from "jotai";

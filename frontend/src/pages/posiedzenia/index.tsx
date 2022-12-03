@@ -1,26 +1,27 @@
 import { useState } from "react";
-import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
 import { format } from "date-fns";
-import Loader from "../components/Loader";
+import React from "react";
+import { Loader } from "../../components/Loader";
 import {
   Center,
   Heading,
+  ScaleFade,
   Text,
   VStack,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { Meeting } from "../components/Meeting";
-import { useMeetingsQuery } from "../api/graphql";
-import { Pagination } from "../components/ChakraPagination";
+import { Meeting } from "../../components/Meeting";
+import { useMeetingsQuery } from "../../api/graphql";
+import { Pagination } from "../../components/Pagination";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
-import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
+import { termOfOfficeAtom } from "../../atoms/termOfOffice.atom";
 import { useAtomValue } from "jotai";
 
 export default function Meetings() {
   const currentTerm = useAtomValue(termOfOfficeAtom);
-  const [pageSize, setPageSize] = useState<number>(8);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const pageSize = 10;
   const meetingsQuery = useMeetingsQuery({
     variables: {
       termId: currentTerm?.toString() ?? "",
@@ -41,7 +42,7 @@ export default function Meetings() {
     <Center>
       <VStack>
         <Heading size="lg">Posiedzenia parlamentu</Heading>
-        {meetingsQuery.loading && <Loader />}
+        {meetingsQuery.loading ? <Loader /> : null}
         {meetings.length === 0 && !meetingsQuery.loading ? (
           <VStack>
             <InfoOutlineIcon mt={30} />
@@ -51,12 +52,14 @@ export default function Meetings() {
         <Wrap spacing={4} justify="center">
           {meetings.map((meeting) => (
             <WrapItem key={meeting.id}>
-              <Meeting
-                id={meeting.id}
-                name={meeting.attributes.name}
-                place={meeting.attributes.place.replaceAll("_", " ")}
-                date={format(new Date(meeting.attributes.date), "dd.MM.yyyy")}
-              />
+              <ScaleFade in={true}>
+                <Meeting
+                  id={meeting.id}
+                  name={meeting.attributes.name}
+                  place={meeting.attributes.place.replace(/_/, " ")}
+                  date={format(new Date(meeting.attributes.date), "dd.MM.yyyy")}
+                />
+              </ScaleFade>
             </WrapItem>
           ))}
         </Wrap>

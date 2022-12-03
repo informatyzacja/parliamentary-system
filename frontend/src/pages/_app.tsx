@@ -1,8 +1,5 @@
-// import "tailwindcss/tailwind.css";
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import { SessionProvider, getSession } from "next-auth/react";
-import axios from "axios";
-import urlJoin from "url-join";
 import {
   ApolloClient,
   InMemoryCache,
@@ -16,32 +13,11 @@ import Head from "next/head";
 import { Provider } from "jotai";
 import { theme } from "../styles/theme";
 
-axios.defaults.baseURL = urlJoin(process.env["NEXT_PUBLIC_API_URL"]!, "api");
-
-axios.interceptors.request.use(async (request) => {
-  const session: any = await getSession();
-  if (request.headers) {
-    request.headers["Authorization"] = `Bearer ${session.jwt}`;
-  }
-  return request;
-});
-
-axios.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    console.log(error);
-  }
-);
-
 const httpLink = createHttpLink({
   uri: process.env.NEXT_PUBLIC_API_URL + "/graphql",
 });
 
 const authLink = setContext(async (_, { headers }) => {
-  // get the authentication token from local storage if it exists
-
   const session = await getSession();
 
   if (session === null) {

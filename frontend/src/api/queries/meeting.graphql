@@ -29,6 +29,7 @@ query Meeting($id: ID!) {
             id
             attributes {
               name
+              url
             }
           }
         }

@@ -33,7 +33,7 @@ export const Meeting = ({
         opacity: "0.8",
       }}
       onMouseOver={() => {
-        router.prefetch(`/posiedzenie/${id}`);
+        router.prefetch(`/posiedzenia/${id}`);
         client.query({
           query: MeetingDocument,
           variables: {
@@ -42,7 +42,7 @@ export const Meeting = ({
         });
       }}
       onClick={() => {
-        router.push(`/posiedzenie/${id}`);
+        router.push(`/posiedzenia/${id}`);
       }}
       transition="all 0.2s ease-in-out"
       transform="scale(1)"

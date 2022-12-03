@@ -22,7 +22,7 @@ import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
 import { useTermOfOfficesQuery } from "../api/graphql";
 import TermOfOfficeSelector from "./TermOfOfficeSelector";
 
-export default function WithSubnavigation() {
+export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { status } = useSession();
 
@@ -67,7 +67,17 @@ export default function WithSubnavigation() {
           flex={{ base: 1 }}
           justify={{ base: "center", md: "space-between" }}
         >
-          <Image src="/logo.svg" width="200" height="50" alt="Logo samorządu" />
+          <NextLink href="/">
+            <Image
+              src="/logo.svg"
+              width="200"
+              height="50"
+              style={{
+                cursor: "pointer",
+              }}
+              alt="Logo samorządu"
+            />
+          </NextLink>
           {status === "authenticated" && (
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
               <DesktopNav />
@@ -100,7 +110,7 @@ export default function WithSubnavigation() {
       </Collapse>
     </Box>
   );
-}
+};
 
 const DesktopNav = () => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
