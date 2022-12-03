@@ -51,8 +51,8 @@ function LatestUpdates({ Component, pageProps }: any) {
   return (
     <>
       <Center>
-        <HStack>
-          <Card w="600px">
+        <HStack flexDirection={["column", "row"]}>
+          <Card w={["90vw", "600px"]}>
             <CardHeader>
               <Heading size="md">Ostatnie posiedzenia</Heading>
             </CardHeader>
@@ -81,7 +81,7 @@ function LatestUpdates({ Component, pageProps }: any) {
               </TableContainer>
             </CardBody>
           </Card>
-          <Card w="600px">
+          <Card w={["90vw", "600px"]}>
             <CardHeader>
               <Heading size="md">Ostatnie uchwały</Heading>
             </CardHeader>
