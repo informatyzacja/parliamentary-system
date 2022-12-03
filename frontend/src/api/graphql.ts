@@ -1435,10 +1435,13 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type MeetingsQueryVariables = Exact<{ [key: string]: never; }>;
+export type MeetingsQueryVariables = Exact<{
+  pagination?: InputMaybe<PaginationArg>;
+  termId: Scalars['ID'];
+}>;
 
 
-export type MeetingsQuery = { __typename?: 'Query', meetings: { __typename?: 'MeetingEntityResponseCollection', data: Array<{ __typename?: 'MeetingEntity', attributes: { __typename?: 'Meeting', name: string, date: any } }> } };
+export type MeetingsQuery = { __typename?: 'Query', meetings: { __typename?: 'MeetingEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, pageCount: number } }, data: Array<{ __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string, place: Enum_Meeting_Place, date: any, reports: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', name: string } }> } } }> } };
 
 export type TermOfOfficesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1447,12 +1450,31 @@ export type TermOfOfficesQuery = { __typename?: 'Query', termOfOffices: { __type
 
 
 export const MeetingsDocument = gql`
-    query Meetings {
-  meetings {
+    query Meetings($pagination: PaginationArg = {}, $termId: ID!) {
+  meetings(
+    pagination: $pagination
+    sort: ["date:desc", "id:desc"]
+    filters: {term_of_office: {id: {eq: $termId}}}
+  ) {
+    meta {
+      pagination {
+        total
+        pageCount
+      }
+    }
     data {
+      id
       attributes {
         name
+        place
         date
+        reports {
+          data {
+            attributes {
+              name
+            }
+          }
+        }
       }
     }
   }
@@ -1471,10 +1493,12 @@ export const MeetingsDocument = gql`
  * @example
  * const { data, loading, error } = useMeetingsQuery({
  *   variables: {
+ *      pagination: // value for 'pagination'
+ *      termId: // value for 'termId'
  *   },
  * });
  */
-export function useMeetingsQuery(baseOptions?: Apollo.QueryHookOptions<MeetingsQuery, MeetingsQueryVariables>) {
+export function useMeetingsQuery(baseOptions: Apollo.QueryHookOptions<MeetingsQuery, MeetingsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<MeetingsQuery, MeetingsQueryVariables>(MeetingsDocument, options);
       }

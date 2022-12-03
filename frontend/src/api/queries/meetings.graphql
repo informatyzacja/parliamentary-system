@@ -1,9 +1,29 @@
-query Meetings {
-  meetings {
+# Write your query or mutation here
+query Meetings($pagination: PaginationArg = {}, $termId: ID!) {
+  meetings(
+    pagination: $pagination
+    sort: ["date:desc", "id:desc"]
+    filters: { term_of_office: { id: { eq: $termId } } }
+  ) {
+    meta {
+      pagination {
+        total
+        pageCount
+      }
+    }
     data {
+      id
       attributes {
         name
+        place
         date
+        reports {
+          data {
+            attributes {
+              name
+            }
+          }
+        }
       }
     }
   }
