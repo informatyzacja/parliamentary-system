@@ -1,0 +1,10 @@
+query Meetings {
+  meetings {
+    data {
+      attributes {
+        name
+        date
+      }
+    }
+  }
+}

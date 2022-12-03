@@ -1,0 +1,10 @@
+query TermOfOffices {
+  termOfOffices {
+    data {
+      id
+      attributes {
+        term_of_office
+      }
+    }
+  }
+}

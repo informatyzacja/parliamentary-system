@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "repository": {
     "type": "git",
@@ -34,10 +35,18 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@apollo/client": "^3.7.1",
+    "@chakra-ui/icons": "^2.0.13",
+    "@chakra-ui/react": "^2.4.2",
+    "@chakra-ui/system": "^2.3.4",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "axios": "^1.2.0",
     "date-fns": "^2.29.3",
     "flowbite": "^1.5.3",
     "flowbite-react": "^0.2.0",
+    "framer-motion": "^6",
+    "graphql": "^16.6.0",
     "next": "12.3.1",
     "next-auth": "^4.10.3",
     "react": "18.2.0",
@@ -45,6 +54,12 @@
     "url-join": "^5.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@graphql-codegen/cli": "2.15.0",
+    "@graphql-codegen/client-preset": "1.2.1",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@graphql-codegen/typescript-resolvers": "^2.7.8",
+    "@types/graphql": "^14.5.0",
     "@types/node": "18.7.10",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
@@ -53,8 +68,10 @@
     "cssnano": "^5.1.13",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
+    "graphql-tag": "^2.12.6",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8",
+    "ts-node": "^10.9.1",
     "typescript": "4.7.4"
   }
 }
