@@ -14,6 +14,7 @@ import {
   Tr,
   Link as ChakraLink,
   ScaleFade,
+  Flex,
 } from "@chakra-ui/react";
 import { Link } from "../components/Link";
 import {
@@ -37,13 +38,17 @@ function LatestUpdates() {
     <>
       <Center>
         <ScaleFade in={latestUpdatesQuery.data !== undefined}>
-          <HStack flexDirection={["column", "row"]} alignItems="stretch">
+          <Flex
+            flexDirection={["column", "row"]}
+            alignItems={["center", "stretch"]}
+            gap="8"
+          >
             <Card w={["90vw", "600px"]} h="100%">
               <CardHeader>
                 <Heading size="md">Ostatnie posiedzenia</Heading>
               </CardHeader>
               <CardBody>
-                <TableContainer maxW="600px">
+                <TableContainer>
                   <Table variant="simple" size="lg">
                     <Tbody>
                       {meetings.map((meeting) => (
@@ -112,7 +117,7 @@ function LatestUpdates() {
                 </TableContainer>
               </CardBody>
             </Card>
-          </HStack>
+          </Flex>
         </ScaleFade>
       </Center>
     </>

@@ -8,7 +8,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <Container maxW="container.xl">
+    <Container maxW="container.xl" pb={16}>
       <Navbar />
       {children}
     </Container>

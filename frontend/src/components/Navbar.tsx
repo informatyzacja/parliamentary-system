@@ -15,18 +15,20 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Image from "next/image";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import NextLink from "next/link";
 import { useAtom } from "jotai";
 import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
 import { useTermOfOfficesQuery } from "../api/graphql";
 import TermOfOfficeSelector from "./TermOfOfficeSelector";
+import { useRouter } from "next/router";
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { status } = useSession();
 
   const [atom, setAtom] = useAtom(termOfOfficeAtom);
+  const router = useRouter();
 
   useTermOfOfficesQuery({
     onCompleted: (data) => {
@@ -90,17 +92,8 @@ export const Navbar = () => {
           direction={"row"}
           spacing={6}
         >
-          {status === "loading" ? <Spinner /> : null}
           {status === "unauthenticated" ? (
-            <Button
-              as={"a"}
-              fontSize={"sm"}
-              fontWeight={400}
-              variant={"link"}
-              href={"#"}
-            >
-              Zaloguj się
-            </Button>
+            <Button onClick={() => signIn()}>Zaloguj się</Button>
           ) : null}
         </Stack>
       </Flex>

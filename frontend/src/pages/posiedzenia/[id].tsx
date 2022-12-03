@@ -72,7 +72,7 @@ const Meeting = () => {
                 <Text size="md">Brak sprawozdań</Text>
               </VStack>
             ) : (
-              <TableContainer>
+              <TableContainer maxW={"90vw"}>
                 <Table size="lg" w="800px">
                   <Thead>
                     <Tr>

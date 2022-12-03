@@ -52,8 +52,8 @@ export const Resolutions = ({
 }) => {
   return (
     <ScaleFade initialScale={0.9} in={true}>
-      <TableContainer>
-        <Table size="lg" w="800px">
+      <TableContainer maxW={"90vw"}>
+        <Table size="lg">
           <Thead>
             <Tr>
               <Th>#</Th>
