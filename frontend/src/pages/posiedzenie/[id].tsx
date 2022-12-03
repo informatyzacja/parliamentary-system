@@ -7,6 +7,7 @@ import {
   Center,
   Divider,
   Heading,
+  HStack,
   Link,
   Table,
   TableContainer,
@@ -17,36 +18,30 @@ import {
   Tr,
   VStack,
 } from "@chakra-ui/react";
+import { useMeetingQuery } from "../../api/graphql";
 
-const Meeeting: FC = () => {
+const Meeting = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [meeting, setMeeting] = useState<any>({});
-  const [header, setHeader] = useState<string>("");
-  useEffect(() => {
-    if (id) {
-      axios
-        .get(
-          `meetings?filters[id][$eq]=${id}&populate[0]=agenda&populate[1]=reports`
-        )
-        .then((res) => {
-          setHeader(res.data.data[0].attributes.name);
-          setMeeting(res.data.data[0]);
-          console.log(res.data.data[0]);
-        });
-    }
-  }, [id]);
+  const meetingQuery = useMeetingQuery({
+    variables: {
+      id: (id as string) ?? "",
+    },
+    skip: !id,
+  });
+
+  const meeting = meetingQuery.data?.meeting.data;
 
   return (
     <Center>
       <VStack spacing={8}>
         <Box>
           <Heading size="lg" mb={8}>
-            {header}
+            {meeting?.attributes.name}
           </Heading>
           <Divider mb={8} />
         </Box>
-        {meeting.attributes?.agenda.data && (
+        {meeting?.attributes?.agenda.data && (
           <h1 className="font-medium leading-tight text-3xl mt-0 mb-5 mt-5 text-black-600">
             <Link
               href={
@@ -74,7 +69,7 @@ const Meeeting: FC = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {meeting.attributes?.reports.data &&
+              {meeting?.attributes?.reports.data &&
                 meeting.attributes.reports?.data.map(
                   (report: any, index: number) => (
                     <Tr
@@ -99,10 +94,11 @@ const Meeeting: FC = () => {
             </Tbody>
           </Table>
         </TableContainer>
+
         <Resolutions meetingId={parseInt(id as string)} />
       </VStack>
     </Center>
   );
 };
 
-export default Meeeting;
+export default Meeting;

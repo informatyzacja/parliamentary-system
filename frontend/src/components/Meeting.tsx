@@ -1,3 +1,4 @@
+import { useApolloClient } from "@apollo/client";
 import {
   Center,
   Heading,
@@ -8,6 +9,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { MeetingDocument } from "../api/graphql";
 
 export const Meeting = ({
   id,
@@ -21,6 +23,7 @@ export const Meeting = ({
   name: string;
 }) => {
   const router = useRouter();
+  const client = useApolloClient();
 
   return (
     <Center
@@ -29,8 +32,14 @@ export const Meeting = ({
         cursor: "pointer",
         opacity: "0.8",
       }}
-      onMouseEnter={() => {
+      onMouseOver={() => {
         router.prefetch(`/posiedzenie/${id}`);
+        client.query({
+          query: MeetingDocument,
+          variables: {
+            id,
+          },
+        });
       }}
       onClick={() => {
         router.push(`/posiedzenie/${id}`);
@@ -54,7 +63,7 @@ export const Meeting = ({
       >
         <Stack>
           <Text
-            color={"green.500"}
+            color={"blue.500"}
             textTransform={"uppercase"}
             fontWeight={800}
             fontSize={"sm"}

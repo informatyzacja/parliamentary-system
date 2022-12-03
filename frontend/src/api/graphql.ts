@@ -1435,6 +1435,13 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type MeetingQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type MeetingQuery = { __typename?: 'Query', meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string, date: any, resolutions: { __typename?: 'ResolutionRelationResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', name: string, url: string } } } } }> }, reports: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string } }> }, agenda: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } } } } } };
+
 export type MeetingsQueryVariables = Exact<{
   pagination?: InputMaybe<PaginationArg>;
   termId: Scalars['ID'];
@@ -1443,12 +1450,94 @@ export type MeetingsQueryVariables = Exact<{
 
 export type MeetingsQuery = { __typename?: 'Query', meetings: { __typename?: 'MeetingEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, pageCount: number } }, data: Array<{ __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string, place: Enum_Meeting_Place, date: any, reports: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', name: string } }> } } }> } };
 
+export type ResolutionsQueryVariables = Exact<{
+  pagination: InputMaybe<PaginationArg>;
+  termOfOffice: Scalars['ID'];
+}>;
+
+
+export type ResolutionsQuery = { __typename?: 'Query', resolutions: { __typename?: 'ResolutionEntityResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, number: string, type: Enum_Resolution_Type, publishedAt: any, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } }, meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string } } } } }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', pageCount: number } } } };
+
 export type TermOfOfficesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type TermOfOfficesQuery = { __typename?: 'Query', termOfOffices: { __typename?: 'TermOfOfficeEntityResponseCollection', data: Array<{ __typename?: 'TermOfOfficeEntity', id: string, attributes: { __typename?: 'TermOfOffice', term_of_office: string } }> } };
 
 
+export const MeetingDocument = gql`
+    query Meeting($id: ID!) {
+  meeting(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        date
+        resolutions {
+          data {
+            id
+            attributes {
+              name
+              document {
+                data {
+                  attributes {
+                    name
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        reports {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        agenda {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useMeetingQuery__
+ *
+ * To run a query within a React component, call `useMeetingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMeetingQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMeetingQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useMeetingQuery(baseOptions: Apollo.QueryHookOptions<MeetingQuery, MeetingQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MeetingQuery, MeetingQueryVariables>(MeetingDocument, options);
+      }
+export function useMeetingLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MeetingQuery, MeetingQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MeetingQuery, MeetingQueryVariables>(MeetingDocument, options);
+        }
+export type MeetingQueryHookResult = ReturnType<typeof useMeetingQuery>;
+export type MeetingLazyQueryHookResult = ReturnType<typeof useMeetingLazyQuery>;
+export type MeetingQueryResult = Apollo.QueryResult<MeetingQuery, MeetingQueryVariables>;
 export const MeetingsDocument = gql`
     query Meetings($pagination: PaginationArg = {}, $termId: ID!) {
   meetings(
@@ -1509,6 +1598,75 @@ export function useMeetingsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<M
 export type MeetingsQueryHookResult = ReturnType<typeof useMeetingsQuery>;
 export type MeetingsLazyQueryHookResult = ReturnType<typeof useMeetingsLazyQuery>;
 export type MeetingsQueryResult = Apollo.QueryResult<MeetingsQuery, MeetingsQueryVariables>;
+export const ResolutionsDocument = gql`
+    query Resolutions($pagination: PaginationArg, $termOfOffice: ID!) {
+  resolutions(
+    pagination: $pagination
+    filters: {meeting: {term_of_office: {id: {eq: $termOfOffice}}}}
+  ) {
+    data {
+      id
+      attributes {
+        name
+        number
+        type
+        document {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+        publishedAt
+        meeting {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+      }
+    }
+    meta {
+      pagination {
+        pageCount
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useResolutionsQuery__
+ *
+ * To run a query within a React component, call `useResolutionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useResolutionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useResolutionsQuery({
+ *   variables: {
+ *      pagination: // value for 'pagination'
+ *      termOfOffice: // value for 'termOfOffice'
+ *   },
+ * });
+ */
+export function useResolutionsQuery(baseOptions: Apollo.QueryHookOptions<ResolutionsQuery, ResolutionsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ResolutionsQuery, ResolutionsQueryVariables>(ResolutionsDocument, options);
+      }
+export function useResolutionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ResolutionsQuery, ResolutionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ResolutionsQuery, ResolutionsQueryVariables>(ResolutionsDocument, options);
+        }
+export type ResolutionsQueryHookResult = ReturnType<typeof useResolutionsQuery>;
+export type ResolutionsLazyQueryHookResult = ReturnType<typeof useResolutionsLazyQuery>;
+export type ResolutionsQueryResult = Apollo.QueryResult<ResolutionsQuery, ResolutionsQueryVariables>;
 export const TermOfOfficesDocument = gql`
     query TermOfOffices {
   termOfOffices {

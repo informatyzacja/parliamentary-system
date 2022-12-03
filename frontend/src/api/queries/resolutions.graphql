@@ -1,0 +1,38 @@
+query Resolutions($pagination: PaginationArg, $termOfOffice: ID!) {
+  resolutions(
+    pagination: $pagination
+    filters: { meeting: { term_of_office: { id: { eq: $termOfOffice } } } }
+  ) {
+    data {
+      id
+      attributes {
+        name
+        number
+        type
+        document {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+        publishedAt
+        meeting {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+      }
+    }
+    meta {
+      pagination {
+        pageCount
+      }
+    }
+  }
+}

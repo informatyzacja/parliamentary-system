@@ -13,6 +13,10 @@ export const Pagination: FC<PaginationProps> = ({
   pageCount,
   setCurrent,
 }) => {
+  if (pageCount <= 1) {
+    return null;
+  }
+
   const pagination = {
     prev: current > 1 && pageCount > 3,
     next: current < pageCount && pageCount > 3,

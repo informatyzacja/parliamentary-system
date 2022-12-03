@@ -1,8 +1,7 @@
-import NextLink from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { format } from "date-fns";
-import Loader from "../components/loader";
+import Loader from "../components/Loader";
 import {
   Card,
   CardBody,
@@ -16,10 +15,9 @@ import {
   Tbody,
   Td,
   Tr,
-  VStack,
 } from "@chakra-ui/react";
 
-function LatestUpdates({ Component, pageProps }: any) {
+function LatestUpdates() {
   const [meetings, setMeetings] = useState<any[]>([]);
   const [resolutions, setResolutions] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -51,8 +49,8 @@ function LatestUpdates({ Component, pageProps }: any) {
   return (
     <>
       <Center>
-        <HStack flexDirection={["column", "row"]}>
-          <Card w={["90vw", "600px"]}>
+        <HStack flexDirection={["column", "row"]} alignItems="stretch">
+          <Card w={["90vw", "600px"]} h="100%">
             <CardHeader>
               <Heading size="md">Ostatnie posiedzenia</Heading>
             </CardHeader>
@@ -81,34 +79,36 @@ function LatestUpdates({ Component, pageProps }: any) {
               </TableContainer>
             </CardBody>
           </Card>
-          <Card w={["90vw", "600px"]}>
+          <Card w={["90vw", "600px"]} minH="100%">
             <CardHeader>
               <Heading size="md">Ostatnie uchwały</Heading>
             </CardHeader>
             <CardBody>
               <TableContainer>
                 <Table variant="simple" size="lg">
-                  {resolutions.map((resolution) => (
-                    <Tr key={resolution.id}>
-                      <Td>
-                        {format(
-                          new Date(resolution.attributes.createdAt),
-                          "dd-MM-yyyy"
-                        )}
-                      </Td>
-                      <Td>{resolution.attributes.name}</Td>
-                      <Td>
-                        <Link
-                          href={
-                            process.env.NEXT_PUBLIC_API_URL +
-                            resolution.attributes.document.data.attributes.url
-                          }
-                        >
-                          pobierz
-                        </Link>
-                      </Td>
-                    </Tr>
-                  ))}
+                  <Tbody>
+                    {resolutions.map((resolution) => (
+                      <Tr key={resolution.id}>
+                        <Td>
+                          {format(
+                            new Date(resolution.attributes.createdAt),
+                            "dd-MM-yyyy"
+                          )}
+                        </Td>
+                        <Td>{resolution.attributes.name}</Td>
+                        <Td>
+                          <Link
+                            href={
+                              process.env.NEXT_PUBLIC_API_URL +
+                              resolution.attributes.document.data.attributes.url
+                            }
+                          >
+                            pobierz
+                          </Link>
+                        </Td>
+                      </Tr>
+                    ))}
+                  </Tbody>
                 </Table>
               </TableContainer>
             </CardBody>

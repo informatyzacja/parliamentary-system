@@ -1,21 +1,12 @@
-import { FC, useEffect, useState } from "react";
-import axios from "axios";
+import { FC } from "react";
 import { useTermOfOfficesQuery } from "../api/graphql";
 import { Select } from "@chakra-ui/react";
+import { useAtom } from "jotai";
+import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
 
-export interface TermOfOfficeSelectorProps {
-  onTermChange: (termId: number) => any;
-}
-
-const TermOfOfficeSelector: FC<TermOfOfficeSelectorProps> = (props) => {
-  const { data } = useTermOfOfficesQuery({
-    onCompleted: (data) => {
-      if (data.termOfOffices.data.length > 0) {
-        props.onTermChange(parseInt(data.termOfOffices.data[0].id));
-      }
-    },
-  });
-  const [selectedTerm, setSelectedTerm] = useState<any>();
+const TermOfOfficeSelector = () => {
+  const { data } = useTermOfOfficesQuery();
+  const [selectedTerm, setSelectedTerm] = useAtom(termOfOfficeAtom);
 
   const terms = data?.termOfOffices?.data;
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -25,19 +16,16 @@ const TermOfOfficeSelector: FC<TermOfOfficeSelectorProps> = (props) => {
       return;
     }
 
-    setSelectedTerm(term);
-    props.onTermChange(parseInt(term.id ?? ""));
+    setSelectedTerm(parseInt(term.id));
   };
 
   return (
     <div>
-      <label
-        htmlFor="terms"
-        className="block mb-2 text-sm font-medium text-gray-900"
+      <Select
+        onChange={handleChange}
+        value={selectedTerm?.toString()}
+        id="terms"
       >
-        Wybierz kadencję
-      </label>
-      <Select onChange={handleChange} value={selectedTerm?.id} id="terms">
         {data?.termOfOffices?.data?.map((term) => (
           <option value={term.id ?? ""} key={term.id}>
             {term.attributes?.term_of_office}

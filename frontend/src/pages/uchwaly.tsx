@@ -1,9 +1,7 @@
-import { FC, useEffect, useState } from "react";
-import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
-import axios from "axios";
+import { FC, useState } from "react";
 import { format } from "date-fns";
-import Loader from "../components/loader";
-import { Pagination as FlowbitePagination } from "flowbite-react";
+import Loader from "../components/Loader";
+import NextLink from "next/link";
 import {
   Center,
   Heading,
@@ -17,126 +15,87 @@ import {
   Tr,
   VStack,
 } from "@chakra-ui/react";
+import { useAtomValue } from "jotai";
+import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
+import { useResolutionsQuery } from "../api/graphql";
+import { Pagination } from "../components/ChakraPagination";
+import { ResolutionType } from "../components/ResolutionType";
 
 interface ResolutionsProps {
   meetingId?: number;
 }
 
 const Resolutions: FC<ResolutionsProps> = (props) => {
-  const [resolutions, seTresolutions] = useState<any[]>([]);
-  const [currentTerm, setCurrentTerm] = useState<number>();
-  const [pageSize, setPageSize] = useState<number>(10);
-  const [totalElements, setTotalElements] = useState<number>(0);
+  const currentTerm = useAtomValue(termOfOfficeAtom);
+  const pageSize = 10;
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [header, setHeader] = useState<string>("");
-  useEffect(() => {
-    setIsLoading(true);
-    if (currentTerm) {
-      setHeader("Uchwały parlamentu");
-      axios
-        .get(
-          `resolutions?filters[meeting][term_of_office][id][$eq]=${currentTerm}
-        &populate[0]=meeting&populate[1]=document
-        &sort[0]=id:desc&pagination[start]=${
-          (currentPage - 1) * pageSize
-        }&pagination[limit]=${pageSize}`
-        )
-        .then((res: any) => {
-          seTresolutions(res.data.data);
-          setTotalElements(res.data.meta.pagination.total);
-          setIsLoading(false);
-        });
-    } else if (props.meetingId) {
-      axios
-        .get(
-          `resolutions?&populate[0]=meeting&populate[1]=document&filters[meeting][id][$eq]=${
-            props.meetingId
-          }
-        &sort[0]=id:desc&pagination[start]=${
-          (currentPage - 1) * pageSize
-        }&pagination[limit]=${pageSize}`
-        )
-        .then((res: any) => {
-          setHeader("Uchwały posiedzenia parlamentu");
-          seTresolutions(res.data.data);
-          setTotalElements(res.data.meta.pagination.total);
-          setIsLoading(false);
-        });
-    }
-  }, [currentPage, currentTerm, pageSize, props.meetingId]);
-
-  const onTermChange = (termId: number) => {
-    setCurrentTerm(termId);
-  };
+  const resolutionsQuery = useResolutionsQuery({
+    variables: {
+      termOfOffice: currentTerm?.toString() ?? "",
+      // @ts-ignore
+      pagination: {
+        pageSize: pageSize,
+        page: currentPage,
+      },
+    },
+    skip: !currentTerm,
+  });
+  const pageCount =
+    resolutionsQuery.data?.resolutions.meta.pagination.pageCount ?? 1;
+  const resolutions = resolutionsQuery.data?.resolutions.data ?? [];
 
   return (
     <>
-      {isLoading && <Loader />}
+      {resolutionsQuery.loading && <Loader />}
       <Center>
         <VStack>
           <Heading size="md">{header}</Heading>
-          {!props.meetingId && (
-            <div>
-              <div>
-                <TermOfOfficeSelector onTermChange={onTermChange} />
-              </div>
-            </div>
-          )}
           <TableContainer>
             <Table size="lg" w="800px">
               <Thead>
                 <Tr>
-                  <Th scope="col" className="py-3 px-6">
-                    #
-                  </Th>
-                  <Th scope="col" className="py-3 px-6">
-                    Numer
-                  </Th>
-                  <Th scope="col" className="py-3 px-6">
-                    Nazwa
-                  </Th>
-                  <Th scope="col" className="py-3 px-6">
-                    Rodzaj
-                  </Th>
-                  {!props.meetingId && (
-                    <Th scope="col" className="py-3 px-6">
-                      Nazwa posiedzenia
-                    </Th>
-                  )}
-                  <Th scope="col" className="py-3 px-6">
-                    Data dodania
-                  </Th>
-                  <Th scope="col" className="py-3 px-6"></Th>
+                  <Th>#</Th>
+                  <Th>Numer</Th>
+                  <Th>Nazwa</Th>
+                  <Th>Rodzaj</Th>
+                  {!props.meetingId && <Th>Posiedzenie</Th>}
+                  <Th>Data dodania</Th>
+                  <Th></Th>
                 </Tr>
               </Thead>
               <Tbody>
                 {resolutions.map((resolution, index: number) => (
-                  <Tr
-                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                    key={resolution.id}
-                  >
-                    <Td className="py-4 px-6">
-                      {index + 1 + (currentPage - 1) * pageSize}
+                  <Tr key={resolution.id}>
+                    <Td>{index + 1 + (currentPage - 1) * pageSize}</Td>
+                    <Td>{resolution.attributes.number}</Td>
+                    <Td>{resolution.attributes.name}</Td>
+                    <Td>
+                      <ResolutionType
+                        resolutionType={resolution.attributes.type}
+                      />
                     </Td>
-                    <Td className="py-4 px-6">
-                      {resolution.attributes.number}
-                    </Td>
-                    <Td className="py-4 px-6">{resolution.attributes.name}</Td>
-                    <Td className="py-4 px-6">{resolution.attributes.type}</Td>
                     {!props.meetingId && (
-                      <Td className="py-4 px-6">
-                        {resolution.attributes.meeting.data.attributes.name}
+                      <Td>
+                        <NextLink
+                          href={`/posiedzenia/${resolution.attributes.meeting.data.id}`}
+                          passHref
+                        >
+                          <Link>
+                            {resolution.attributes.meeting.data.attributes.name}
+                          </Link>
+                        </NextLink>
                       </Td>
                     )}
-                    <Td className="py-4 px-6">
+                    <Td>
                       {format(
-                        new Date(resolution.attributes.createdAt),
+                        new Date(resolution.attributes.publishedAt),
                         "dd-MM-yyyy HH:mm:ss"
                       )}
                     </Td>
-                    <Td className="py-4 px-6">
+                    <Td>
                       <Link
+                        target="_blank"
                         href={
                           process.env.NEXT_PUBLIC_API_URL +
                           resolution.attributes.document.data.attributes.url
@@ -150,20 +109,13 @@ const Resolutions: FC<ResolutionsProps> = (props) => {
               </Tbody>
             </Table>
           </TableContainer>
+          <Pagination
+            current={currentPage}
+            pageCount={pageCount}
+            setCurrent={setCurrentPage}
+          />
         </VStack>
       </Center>
-      <div className="flex justify-end">
-        {Math.ceil(totalElements / pageSize) > 1 && (
-          <FlowbitePagination
-            currentPage={currentPage}
-            onPageChange={setCurrentPage}
-            showIcons={true}
-            totalPages={Math.ceil(totalElements / pageSize)}
-            previousLabel=""
-            nextLabel=""
-          />
-        )}
-      </div>
     </>
   );
 };

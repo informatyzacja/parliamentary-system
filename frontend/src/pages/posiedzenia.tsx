@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
 import { format } from "date-fns";
-import Loader from "../components/loader";
+import Loader from "../components/Loader";
 import {
   Center,
   Heading,
@@ -14,9 +14,11 @@ import { Meeting } from "../components/Meeting";
 import { useMeetingsQuery } from "../api/graphql";
 import { Pagination } from "../components/ChakraPagination";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
+import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
+import { useAtomValue } from "jotai";
 
 export default function Meetings() {
-  const [currentTerm, setCurrentTerm] = useState<number>();
+  const currentTerm = useAtomValue(termOfOfficeAtom);
   const [pageSize, setPageSize] = useState<number>(8);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const meetingsQuery = useMeetingsQuery({
@@ -35,15 +37,10 @@ export default function Meetings() {
 
   const meetings = meetingsQuery.data?.meetings.data ?? [];
 
-  const onTermChange = (termId: number) => {
-    setCurrentTerm(termId);
-  };
-
   return (
     <Center>
       <VStack>
         <Heading size="lg">Posiedzenia parlamentu</Heading>
-        <TermOfOfficeSelector onTermChange={onTermChange} />
         {meetingsQuery.loading && <Loader />}
         {meetings.length === 0 && !meetingsQuery.loading ? (
           <VStack>

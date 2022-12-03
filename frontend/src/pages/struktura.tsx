@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Loader from "../components/loader";
 import {
   Center,
   Heading,
@@ -10,14 +7,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-function OrganisationStructure({ Component, pageProps }: any) {
-  const [composition, setComposition] = useState("");
-  useEffect(() => {
-    axios.get("global").then((res) => {
-      setComposition(res.data.data.attributes.parliamentary_composition);
-    });
-  }, []);
-
+function OrganisationStructure() {
   return (
     <Center>
       <VStack>

@@ -11,14 +11,30 @@ import {
   useDisclosure,
   Center,
   Spinner,
+  Tooltip,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import NextLink from "next/link";
+import { useAtom } from "jotai";
+import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
+import { useTermOfOfficesQuery } from "../api/graphql";
+import TermOfOfficeSelector from "./TermOfOfficeSelector";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
   const { status } = useSession();
+
+  const [atom, setAtom] = useAtom(termOfOfficeAtom);
+
+  useTermOfOfficesQuery({
+    onCompleted: (data) => {
+      if (data.termOfOffices.data.length > 0 && atom === undefined) {
+        setAtom(parseInt(data.termOfOffices.data[0].id));
+      }
+    },
+  });
 
   return (
     <Box mb={16}>
@@ -51,16 +67,12 @@ export default function WithSubnavigation() {
           flex={{ base: 1 }}
           justify={{ base: "center", md: "space-between" }}
         >
-          <Image
-            src="/logo.svg"
-            className="mr-3 h-6 sm:h-9"
-            width="200"
-            height="50"
-            alt="Logo samorządu"
-          />
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
-            <DesktopNav />
-          </Flex>
+          <Image src="/logo.svg" width="200" height="50" alt="Logo samorządu" />
+          {status === "authenticated" && (
+            <Flex display={{ base: "none", md: "flex" }} ml={10}>
+              <DesktopNav />
+            </Flex>
+          )}
         </Flex>
         <Stack
           flex={{ base: 1, md: 0 }}
@@ -93,26 +105,30 @@ export default function WithSubnavigation() {
 const DesktopNav = () => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
-
   return (
     <Stack direction={"row"} spacing={6}>
       {NAV_ITEMS.map((navItem) => (
         <Center key={navItem.label}>
-          <Link
-            p={2}
-            href={navItem.href ?? "#"}
-            fontSize={"sm"}
-            fontWeight={500}
-            color={linkColor}
-            _hover={{
-              textDecoration: "none",
-              color: linkHoverColor,
-            }}
-          >
-            {navItem.label}
-          </Link>
+          <NextLink href={navItem.href ?? "#"} passHref>
+            <Link
+              p={2}
+              fontSize={"sm"}
+              fontWeight={500}
+              color={linkColor}
+              _hover={{
+                color: linkHoverColor,
+              }}
+            >
+              {navItem.label}
+            </Link>
+          </NextLink>
         </Center>
       ))}
+      <Tooltip label="Kadencja">
+        <Box mt={"1 !important"}>
+          <TermOfOfficeSelector />
+        </Box>
+      </Tooltip>
     </Stack>
   );
 };
@@ -137,20 +153,20 @@ const MobileNavItem = ({ label, href }: NavItem) => {
     <Stack spacing={4}>
       <Flex
         py={2}
-        as={Link}
-        href={href ?? "#"}
         justify={"space-between"}
         align={"center"}
         _hover={{
           textDecoration: "none",
         }}
       >
-        <Text
+        <Link
+          as={NextLink}
           fontWeight={600}
+          href={href ?? "#"}
           color={useColorModeValue("gray.600", "gray.200")}
         >
           {label}
-        </Text>
+        </Link>
       </Flex>
     </Stack>
   );
