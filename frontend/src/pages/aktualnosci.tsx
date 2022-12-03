@@ -37,8 +37,6 @@ function LatestUpdates() {
   const meetings = latestUpdatesQuery.data?.meetings.data ?? [];
   const resolutions = latestUpdatesQuery.data?.resolutions.data ?? [];
 
-  console.log(meetings, resolutions);
-
   if (latestUpdatesQuery.loading) {
     return <Loader />;
   }

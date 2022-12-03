@@ -31,7 +31,6 @@ function OrganisationStructure() {
     onError: errorHandler,
   });
 
-  console.log(studentsQuery.error?.graphQLErrors);
   const students = studentsQuery.data?.students.data ?? [];
 
   return (
