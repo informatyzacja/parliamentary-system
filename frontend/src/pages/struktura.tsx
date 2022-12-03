@@ -72,9 +72,7 @@ function OrganisationStructure() {
             </TableContainer>
           </ScaleFade>
         ) : null}
-        {students.length === 0 &&
-        !studentsQuery.loading &&
-        studentsQuery.error !== undefined ? (
+        {students.length === 0 && !studentsQuery.loading ? (
           <NoItems>Brak danych</NoItems>
         ) : null}
       </VStack>
