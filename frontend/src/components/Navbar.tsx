@@ -12,6 +12,7 @@ import {
   Center,
   Spinner,
   Tooltip,
+  useToast,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Image from "next/image";
@@ -22,20 +23,22 @@ import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
 import { useTermOfOfficesQuery } from "../api/graphql";
 import TermOfOfficeSelector from "./TermOfOfficeSelector";
 import { useRouter } from "next/router";
+import { useErrorHandler } from "../hooks/useErrorHandler";
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { status } = useSession();
 
   const [atom, setAtom] = useAtom(termOfOfficeAtom);
-  const router = useRouter();
-
-  useTermOfOfficesQuery({
+  const errorHandler = useErrorHandler();
+  const { error } = useTermOfOfficesQuery({
     onCompleted: (data) => {
       if (data.termOfOffices.data.length > 0 && atom === undefined) {
         setAtom(parseInt(data.termOfOffices.data[0].id));
       }
     },
+    onError: errorHandler,
+    skip: status === "unauthenticated" || status === "loading",
   });
 
   return (
@@ -80,7 +83,7 @@ export const Navbar = () => {
               alt="Logo samorządu"
             />
           </NextLink>
-          {status === "authenticated" && (
+          {status === "authenticated" && !error && (
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
               <DesktopNav />
             </Flex>

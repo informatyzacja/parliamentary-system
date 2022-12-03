@@ -1463,6 +1463,13 @@ export type ResolutionsQueryVariables = Exact<{
 
 export type ResolutionsQuery = { __typename?: 'Query', resolutions: { __typename?: 'ResolutionEntityResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', createdAt: any, updatedAt: any, name: string, number: string, type: Enum_Resolution_Type, publishedAt: any, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } }, meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string } } } } }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', pageCount: number } } } };
 
+export type StudentsQueryVariables = Exact<{
+  termOfOffice: Scalars['ID'];
+}>;
+
+
+export type StudentsQuery = { __typename?: 'Query', students: { __typename?: 'StudentEntityResponseCollection', data: Array<{ __typename?: 'StudentEntity', id: string, attributes: { __typename?: 'Student', name: string, surname: string, student_number: any, functions: { __typename?: 'FunctionRelationResponseCollection', data: Array<{ __typename?: 'FunctionEntity', id: string, attributes: { __typename?: 'Function', name: string } }> } } }> } };
+
 export type TermOfOfficesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1734,6 +1741,56 @@ export function useResolutionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type ResolutionsQueryHookResult = ReturnType<typeof useResolutionsQuery>;
 export type ResolutionsLazyQueryHookResult = ReturnType<typeof useResolutionsLazyQuery>;
 export type ResolutionsQueryResult = Apollo.QueryResult<ResolutionsQuery, ResolutionsQueryVariables>;
+export const StudentsDocument = gql`
+    query Students($termOfOffice: ID!) {
+  students(filters: {term_of_offices: {id: {eq: $termOfOffice}}}) {
+    data {
+      id
+      attributes {
+        name
+        surname
+        student_number
+        functions {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useStudentsQuery__
+ *
+ * To run a query within a React component, call `useStudentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useStudentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useStudentsQuery({
+ *   variables: {
+ *      termOfOffice: // value for 'termOfOffice'
+ *   },
+ * });
+ */
+export function useStudentsQuery(baseOptions: Apollo.QueryHookOptions<StudentsQuery, StudentsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<StudentsQuery, StudentsQueryVariables>(StudentsDocument, options);
+      }
+export function useStudentsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<StudentsQuery, StudentsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<StudentsQuery, StudentsQueryVariables>(StudentsDocument, options);
+        }
+export type StudentsQueryHookResult = ReturnType<typeof useStudentsQuery>;
+export type StudentsLazyQueryHookResult = ReturnType<typeof useStudentsLazyQuery>;
+export type StudentsQueryResult = Apollo.QueryResult<StudentsQuery, StudentsQueryVariables>;
 export const TermOfOfficesDocument = gql`
     query TermOfOffices {
   termOfOffices {

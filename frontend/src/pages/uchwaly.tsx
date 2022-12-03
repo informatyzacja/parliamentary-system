@@ -6,6 +6,8 @@ import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
 import { useResolutionsQuery } from "../api/graphql";
 import { Pagination } from "../components/Pagination";
 import { Resolutions } from "../components/Resolutions";
+import { NoItems } from "../components/NoItems";
+import { useErrorHandler } from "../hooks/useErrorHandler";
 
 interface ResolutionsProps {
   meetingId?: number;
@@ -15,6 +17,7 @@ const ResolutionsPage: FC<ResolutionsProps> = (props) => {
   const currentTerm = useAtomValue(termOfOfficeAtom);
   const pageSize = 10;
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const errorHandler = useErrorHandler();
   const resolutionsQuery = useResolutionsQuery({
     variables: {
       termOfOffice: currentTerm?.toString() ?? "",
@@ -24,6 +27,7 @@ const ResolutionsPage: FC<ResolutionsProps> = (props) => {
         page: currentPage,
       },
     },
+    onError: errorHandler,
     skip: !currentTerm,
   });
   const pageCount =
@@ -37,11 +41,12 @@ const ResolutionsPage: FC<ResolutionsProps> = (props) => {
           <Box mb={8}>
             <Heading size="lg">Uchwały</Heading>
           </Box>
-          {resolutionsQuery.loading && resolutionsQuery.data !== undefined ? (
-            <Loader />
-          ) : (
+          {resolutionsQuery.loading ? <Loader /> : null}
+          {resolutions.length === 0 && !resolutionsQuery.loading ? (
+            <NoItems>Brak uchwał</NoItems>
+          ) : null}
+          {resolutions.length > 0 ? (
             <>
-              {" "}
               <Resolutions
                 showMeetings={true}
                 resolutions={resolutions}
@@ -56,7 +61,7 @@ const ResolutionsPage: FC<ResolutionsProps> = (props) => {
                 setCurrent={setCurrentPage}
               />
             </>
-          )}
+          ) : null}
         </VStack>
       </Center>
     </>

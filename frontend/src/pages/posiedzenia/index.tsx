@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import React from "react";
 import { Loader } from "../../components/Loader";
 import {
+  Box,
   Center,
   Heading,
   ScaleFade,
@@ -17,11 +18,14 @@ import { Pagination } from "../../components/Pagination";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { termOfOfficeAtom } from "../../atoms/termOfOffice.atom";
 import { useAtomValue } from "jotai";
+import { NoItems } from "../../components/NoItems";
+import { useErrorHandler } from "../../hooks/useErrorHandler";
 
 export default function Meetings() {
   const currentTerm = useAtomValue(termOfOfficeAtom);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 10;
+  const errorHandler = useErrorHandler();
   const meetingsQuery = useMeetingsQuery({
     variables: {
       termId: currentTerm?.toString() ?? "",
@@ -31,6 +35,7 @@ export default function Meetings() {
         page: currentPage,
       },
     },
+    onError: errorHandler,
     skip: !currentTerm,
   });
 
@@ -41,13 +46,12 @@ export default function Meetings() {
   return (
     <Center>
       <VStack>
-        <Heading size="lg">Posiedzenia parlamentu</Heading>
+        <Box mb={8}>
+          <Heading size="lg">Posiedzenia parlamentu</Heading>
+        </Box>
         {meetingsQuery.loading ? <Loader /> : null}
         {meetings.length === 0 && !meetingsQuery.loading ? (
-          <VStack>
-            <InfoOutlineIcon mt={30} />
-            <Text size="md">Brak posiedzeń</Text>
-          </VStack>
+          <NoItems>Brak posiedzień</NoItems>
         ) : null}
         <Wrap spacing={4} justify="center">
           {meetings.map((meeting) => (

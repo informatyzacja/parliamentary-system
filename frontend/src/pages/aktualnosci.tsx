@@ -15,6 +15,8 @@ import {
   Link as ChakraLink,
   ScaleFade,
   Flex,
+  Box,
+  VStack,
 } from "@chakra-ui/react";
 import { Link } from "../components/Link";
 import {
@@ -22,16 +24,37 @@ import {
   useLatestMeetingsAndResolutionsQuery,
 } from "../api/graphql";
 import { useApolloClient } from "@apollo/client";
+import { useErrorHandler } from "../hooks/useErrorHandler";
+import { NoItems } from "../components/NoItems";
 
 function LatestUpdates() {
-  const latestUpdatesQuery = useLatestMeetingsAndResolutionsQuery();
+  const errorHandler = useErrorHandler();
+  const latestUpdatesQuery = useLatestMeetingsAndResolutionsQuery({
+    onError: errorHandler,
+  });
   const client = useApolloClient();
 
   const meetings = latestUpdatesQuery.data?.meetings.data ?? [];
   const resolutions = latestUpdatesQuery.data?.resolutions.data ?? [];
 
+  console.log(meetings, resolutions);
+
   if (latestUpdatesQuery.loading) {
     return <Loader />;
+  }
+
+  if (
+    meetings.length === 0 &&
+    resolutions.length === 0 &&
+    !latestUpdatesQuery.loading
+  ) {
+    return (
+      <VStack>
+        <ScaleFade in={true}>
+          <NoItems>Brak aktualności</NoItems>
+        </ScaleFade>
+      </VStack>
+    );
   }
 
   return (

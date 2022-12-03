@@ -1,0 +1,20 @@
+query Students($termOfOffice: ID!) {
+  students(filters: { term_of_offices: { id: { eq: $termOfOffice } } }) {
+    data {
+      id
+      attributes {
+        name
+        surname
+        student_number
+        functions {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -21,15 +21,18 @@ import { Resolutions } from "../../components/Resolutions";
 import { PreviewPDF } from "../../components/PreviewPDF";
 import { Loader } from "../../components/Loader";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
+import { useErrorHandler } from "../../hooks/useErrorHandler";
 
 const Meeting = () => {
   const router = useRouter();
   const { id } = router.query;
+  const errorHandler = useErrorHandler();
   const meetingQuery = useMeetingQuery({
     variables: {
       id: (id as string) ?? "",
     },
     skip: !id,
+    onError: errorHandler,
   });
 
   const meeting = meetingQuery.data?.meeting.data;
