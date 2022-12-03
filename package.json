@@ -5,7 +5,7 @@
   "scripts": {
     "develop:backend": "yarn --cwd backend develop",
     "develop:frontend": "wait-on http://localhost:1337/admin && yarn --cwd frontend dev",
-    "develop:database": "docker compose -f docker-compose.dev.yml up -d",
+    "develop:database": "docker compose -f docker-compose.dev.yml up",
     "develop": "cross-env FORCE_COLOR=1 npm-run-all -l -p develop:*"
   },
   "repository": {
