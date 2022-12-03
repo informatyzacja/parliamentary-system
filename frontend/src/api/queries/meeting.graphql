@@ -10,6 +10,9 @@ query Meeting($id: ID!) {
             id
             attributes {
               name
+              publishedAt
+              type
+              number
               document {
                 data {
                   attributes {

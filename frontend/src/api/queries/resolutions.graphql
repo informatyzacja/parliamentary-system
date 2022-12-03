@@ -6,6 +6,8 @@ query Resolutions($pagination: PaginationArg, $termOfOffice: ID!) {
     data {
       id
       attributes {
+        createdAt
+        updatedAt
         name
         number
         type

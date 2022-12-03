@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
-import Resolutions from "../uchwaly";
+import ResolutionsPage from "../uchwaly";
 import axios from "axios";
 import {
   Box,
@@ -19,6 +19,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useMeetingQuery } from "../../api/graphql";
+import { Resolutions } from "../../components/Resolutions";
 
 const Meeting = () => {
   const router = useRouter();
@@ -31,6 +32,7 @@ const Meeting = () => {
   });
 
   const meeting = meetingQuery.data?.meeting.data;
+  const resolutions = meeting?.attributes.resolutions.data;
 
   return (
     <Center>
@@ -95,7 +97,10 @@ const Meeting = () => {
           </Table>
         </TableContainer>
 
-        <Resolutions meetingId={parseInt(id as string)} />
+        <Resolutions showMeetings={false} resolutions={resolutions ?? []} pagination={{
+          pageSize: 1000,
+          currentPage: 1,
+        }} />
       </VStack>
     </Center>
   );
