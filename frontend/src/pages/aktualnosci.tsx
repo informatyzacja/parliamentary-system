@@ -46,13 +46,7 @@ function LatestUpdates() {
     resolutions.length === 0 &&
     !latestUpdatesQuery.loading
   ) {
-    return (
-      <VStack>
-        <ScaleFade in={true}>
-          <NoItems>Brak aktualności</NoItems>
-        </ScaleFade>
-      </VStack>
-    );
+    return <NoItems>Brak aktualności</NoItems>;
   }
 
   return (
