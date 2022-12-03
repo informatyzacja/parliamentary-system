@@ -25,7 +25,7 @@ function OrganisationStructure() {
   const errorHandler = useErrorHandler();
   const studentsQuery = useStudentsQuery({
     variables: {
-      termOfOffice: termOfOffice?.toString() ?? "",
+      termId: termOfOffice?.toString() ?? "",
     },
     skip: !termOfOffice,
     onError: errorHandler,
@@ -72,7 +72,8 @@ function OrganisationStructure() {
             </TableContainer>
           </ScaleFade>
         ) : null}
-        {students.length === 0 && !studentsQuery.loading ? (
+        {studentsQuery.data?.students.data.length === 0 &&
+        !studentsQuery.loading ? (
           <NoItems>Brak danych</NoItems>
         ) : null}
       </VStack>

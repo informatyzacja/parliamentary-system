@@ -1,7 +1,7 @@
-query Resolutions($pagination: PaginationArg, $termOfOffice: ID!) {
+query Resolutions($pagination: PaginationArg, $termId: ID!) {
   resolutions(
     pagination: $pagination
-    filters: { meeting: { term_of_office: { id: { eq: $termOfOffice } } } }
+    filters: { meeting: { term_of_office: { id: { eq: $termId } } } }
   ) {
     data {
       id

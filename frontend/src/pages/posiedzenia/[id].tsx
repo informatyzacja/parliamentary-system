@@ -49,8 +49,9 @@ const Meeting = () => {
         </Box>
         {meeting?.attributes?.agenda.data && (
           <ScaleFade in={true}>
-            <Heading size="sm">
+            <Heading color="blue.500" size="sm" mb={8}>
               <Link
+                target="_blank"
                 href={
                   process.env.NEXT_PUBLIC_API_URL +
                   meeting.attributes?.agenda?.data.attributes.url

@@ -42,8 +42,8 @@ function LatestUpdates() {
   }
 
   if (
-    meetings.length === 0 &&
-    resolutions.length === 0 &&
+    latestUpdatesQuery.data?.meetings.data.length === 0 &&
+    latestUpdatesQuery.data?.resolutions.data.length === 0 &&
     !latestUpdatesQuery.loading
   ) {
     return <NoItems>Brak aktualności</NoItems>;

@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  Text,
   IconButton,
   Button,
   Stack,
@@ -10,20 +9,25 @@ import {
   useColorModeValue,
   useDisclosure,
   Center,
-  Spinner,
   Tooltip,
-  useToast,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import { signIn, useSession } from "next-auth/react";
 import NextLink from "next/link";
-import { useAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
-import { useTermOfOfficesQuery } from "../api/graphql";
+import {
+  LatestMeetingsAndResolutionsDocument,
+  MeetingsDocument,
+  ResolutionsDocument,
+  StudentsDocument,
+  useTermOfOfficesQuery,
+} from "../api/graphql";
 import TermOfOfficeSelector from "./TermOfOfficeSelector";
-import { useRouter } from "next/router";
 import { useErrorHandler } from "../hooks/useErrorHandler";
+import { DocumentNode } from "graphql";
+import { useApolloClient } from "@apollo/client";
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -72,16 +76,18 @@ export const Navbar = () => {
           flex={{ base: 1 }}
           justify={{ base: "center", md: "space-between" }}
         >
-          <NextLink href="/">
-            <Image
-              src="/logo.svg"
-              width="200"
-              height="50"
-              style={{
-                cursor: "pointer",
-              }}
-              alt="Logo samorządu"
-            />
+          <NextLink href="/" passHref>
+            <Link>
+              <Image
+                src="/logo.svg"
+                width="200"
+                height="50"
+                style={{
+                  cursor: "pointer",
+                }}
+                alt="Logo samorządu"
+              />
+            </Link>
           </NextLink>
           {status === "authenticated" && !error && (
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -111,12 +117,29 @@ export const Navbar = () => {
 const DesktopNav = () => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
+  const termOfOffice = useAtomValue(termOfOfficeAtom);
+  const client = useApolloClient();
+
   return (
     <Stack direction={"row"} spacing={6}>
       {NAV_ITEMS.map((navItem) => (
         <Center key={navItem.label}>
           <NextLink href={navItem.href ?? "#"} passHref>
             <Link
+              onMouseOver={async () => {
+                if (navItem.prefetch && termOfOffice) {
+                  await client.query({
+                    query: navItem.prefetch,
+                    variables: {
+                      termId: termOfOffice,
+                      pagination: {
+                        page: 1,
+                        pageSize: 10,
+                      },
+                    },
+                  });
+                }
+              }}
               p={2}
               fontSize={"sm"}
               fontWeight={500}
@@ -181,6 +204,7 @@ const MobileNavItem = ({ label, href }: NavItem) => {
 interface NavItem {
   label: string;
   subLabel?: string;
+  prefetch?: DocumentNode;
   children?: Array<NavItem>;
   href?: string;
 }
@@ -189,17 +213,21 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Aktualności",
     href: "/aktualnosci",
+    prefetch: LatestMeetingsAndResolutionsDocument,
   },
   {
     label: "Posiedzenia",
     href: "/posiedzenia",
+    prefetch: MeetingsDocument,
   },
   {
     label: "Uchwały",
     href: "/uchwaly",
+    prefetch: ResolutionsDocument,
   },
   {
     label: "Struktura organizacyjna",
     href: "/struktura",
+    prefetch: StudentsDocument,
   },
 ];

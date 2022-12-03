@@ -1457,14 +1457,14 @@ export type MeetingsQuery = { __typename?: 'Query', meetings: { __typename?: 'Me
 
 export type ResolutionsQueryVariables = Exact<{
   pagination: InputMaybe<PaginationArg>;
-  termOfOffice: Scalars['ID'];
+  termId: Scalars['ID'];
 }>;
 
 
 export type ResolutionsQuery = { __typename?: 'Query', resolutions: { __typename?: 'ResolutionEntityResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', createdAt: any, updatedAt: any, name: string, number: string, type: Enum_Resolution_Type, publishedAt: any, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } }, meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string } } } } }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', pageCount: number } } } };
 
 export type StudentsQueryVariables = Exact<{
-  termOfOffice: Scalars['ID'];
+  termId: Scalars['ID'];
 }>;
 
 
@@ -1671,10 +1671,10 @@ export type MeetingsQueryHookResult = ReturnType<typeof useMeetingsQuery>;
 export type MeetingsLazyQueryHookResult = ReturnType<typeof useMeetingsLazyQuery>;
 export type MeetingsQueryResult = Apollo.QueryResult<MeetingsQuery, MeetingsQueryVariables>;
 export const ResolutionsDocument = gql`
-    query Resolutions($pagination: PaginationArg, $termOfOffice: ID!) {
+    query Resolutions($pagination: PaginationArg, $termId: ID!) {
   resolutions(
     pagination: $pagination
-    filters: {meeting: {term_of_office: {id: {eq: $termOfOffice}}}}
+    filters: {meeting: {term_of_office: {id: {eq: $termId}}}}
   ) {
     data {
       id
@@ -1726,7 +1726,7 @@ export const ResolutionsDocument = gql`
  * const { data, loading, error } = useResolutionsQuery({
  *   variables: {
  *      pagination: // value for 'pagination'
- *      termOfOffice: // value for 'termOfOffice'
+ *      termId: // value for 'termId'
  *   },
  * });
  */
@@ -1742,8 +1742,8 @@ export type ResolutionsQueryHookResult = ReturnType<typeof useResolutionsQuery>;
 export type ResolutionsLazyQueryHookResult = ReturnType<typeof useResolutionsLazyQuery>;
 export type ResolutionsQueryResult = Apollo.QueryResult<ResolutionsQuery, ResolutionsQueryVariables>;
 export const StudentsDocument = gql`
-    query Students($termOfOffice: ID!) {
-  students(filters: {term_of_offices: {id: {eq: $termOfOffice}}}) {
+    query Students($termId: ID!) {
+  students(filters: {term_of_offices: {id: {eq: $termId}}}) {
     data {
       id
       attributes {
@@ -1776,7 +1776,7 @@ export const StudentsDocument = gql`
  * @example
  * const { data, loading, error } = useStudentsQuery({
  *   variables: {
- *      termOfOffice: // value for 'termOfOffice'
+ *      termId: // value for 'termId'
  *   },
  * });
  */

@@ -1,5 +1,5 @@
-query Students($termOfOffice: ID!) {
-  students(filters: { term_of_offices: { id: { eq: $termOfOffice } } }) {
+query Students($termId: ID!) {
+  students(filters: { term_of_offices: { id: { eq: $termId } } }) {
     data {
       id
       attributes {

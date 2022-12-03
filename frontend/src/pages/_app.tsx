@@ -52,7 +52,10 @@ function MyApp({
           <ChakraProvider theme={theme}>
             <Head>
               <title>System parlamentarny</title>
-              <meta name="description" content="System parlamentarny do zarządzania posiedzeniami, uchwałami oraz strukturą organizacyjną" />
+              <meta
+                name="description"
+                content="System parlamentarny do zarządzania posiedzeniami, uchwałami oraz strukturą organizacyjną"
+              />
             </Head>
             <Layout>
               <Component {...pageProps} />

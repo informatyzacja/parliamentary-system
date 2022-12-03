@@ -20,7 +20,7 @@ const ResolutionsPage: FC<ResolutionsProps> = (props) => {
   const errorHandler = useErrorHandler();
   const resolutionsQuery = useResolutionsQuery({
     variables: {
-      termOfOffice: currentTerm?.toString() ?? "",
+      termId: currentTerm?.toString() ?? "",
       // @ts-ignore
       pagination: {
         pageSize: pageSize,
@@ -42,7 +42,7 @@ const ResolutionsPage: FC<ResolutionsProps> = (props) => {
             <Heading size="lg">Uchwały</Heading>
           </Box>
           {resolutionsQuery.loading ? <Loader /> : null}
-          {resolutions.length === 0 && !resolutionsQuery.loading ? (
+          {resolutionsQuery.data?.resolutions.data.length === 0 && !resolutionsQuery.loading ? (
             <NoItems>Brak uchwał</NoItems>
           ) : null}
           {resolutions.length > 0 ? (
