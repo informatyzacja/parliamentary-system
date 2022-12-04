@@ -1,0 +1,48 @@
+query Meeting($id: ID!) {
+  meeting(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        date
+        resolutions {
+          data {
+            id
+            attributes {
+              name
+              publishedAt
+              type
+              number
+              document {
+                data {
+                  attributes {
+                    name
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+        reports {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+        agenda {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
