@@ -9,7 +9,7 @@ query LatestMeetingsAndResolutions {
     }
   }
   resolutions(
-    sort: ["id:desc", "publishedAt:desc"]
+    sort: ["publishedAt:desc", "id:desc"]
     pagination: { limit: 10 }
   ) {
     data {

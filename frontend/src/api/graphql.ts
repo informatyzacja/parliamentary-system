@@ -1487,7 +1487,7 @@ export const LatestMeetingsAndResolutionsDocument = gql`
       }
     }
   }
-  resolutions(sort: ["id:desc", "publishedAt:desc"], pagination: {limit: 10}) {
+  resolutions(sort: ["publishedAt:desc", "id:desc"], pagination: {limit: 10}) {
     data {
       id
       attributes {
