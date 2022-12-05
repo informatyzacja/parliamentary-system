@@ -29,6 +29,7 @@ const SocialButton = ({
       cursor={"pointer"}
       as={"a"}
       href={href}
+      target="_blank"
       display={"inline-flex"}
       alignItems={"center"}
       justifyContent={"center"}
@@ -60,7 +61,7 @@ export const Footer = () => {
         align="center"
       >
         <Text textAlign="center">
-          <Link href="https://samorzad.pwr.edu.pl/">
+          <Link href="https://samorzad.pwr.edu.pl/" target="_blank">
             Samorząd Studencki PWr
           </Link>
         </Text>
