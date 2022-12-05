@@ -58,10 +58,7 @@ export const Navbar = () => {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex
-          flex={{ base: 1 }}
-          justify={{ base: "center", md: "space-between" }}
-        >
+        <Flex flex={1} justify={{ base: "center", md: "space-between" }}>
           <NextLink href="/" passHref>
             <Link>
               <Image
