@@ -10,24 +10,21 @@ import {
   Tr,
   VStack,
   Table,
-  useToast,
 } from "@chakra-ui/react";
-import { useAtomValue } from "jotai";
 import { useStudentsQuery } from "../api/graphql";
-import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
 import { Loader } from "../components/Loader";
 import { NoItems } from "../components/NoItems";
+import { useCurrentTermId } from "../hooks/useCurrentTermId";
 import { useErrorHandler } from "../hooks/useErrorHandler";
 
 function OrganisationStructure() {
-  const termOfOffice = useAtomValue(termOfOfficeAtom);
-  const toast = useToast();
+  const currentTermId = useCurrentTermId();
   const errorHandler = useErrorHandler();
   const studentsQuery = useStudentsQuery({
     variables: {
-      termId: termOfOffice?.toString() ?? "",
+      termId: currentTermId ?? "",
     },
-    skip: !termOfOffice,
+    skip: !currentTermId,
     onError: errorHandler,
   });
 

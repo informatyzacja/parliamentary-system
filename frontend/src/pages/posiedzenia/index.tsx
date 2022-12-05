@@ -7,7 +7,6 @@ import {
   Center,
   Heading,
   ScaleFade,
-  Text,
   VStack,
   Wrap,
   WrapItem,
@@ -15,20 +14,18 @@ import {
 import { Meeting } from "../../components/Meeting";
 import { useMeetingsQuery } from "../../api/graphql";
 import { Pagination } from "../../components/Pagination";
-import { InfoOutlineIcon } from "@chakra-ui/icons";
-import { termOfOfficeAtom } from "../../atoms/termOfOffice.atom";
-import { useAtomValue } from "jotai";
 import { NoItems } from "../../components/NoItems";
 import { useErrorHandler } from "../../hooks/useErrorHandler";
+import { useCurrentTermId } from "../../hooks/useCurrentTermId";
 
 export default function Meetings() {
-  const currentTerm = useAtomValue(termOfOfficeAtom);
+  const currentTermId = useCurrentTermId();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 10;
   const errorHandler = useErrorHandler();
   const meetingsQuery = useMeetingsQuery({
     variables: {
-      termId: currentTerm?.toString() ?? "",
+      termId: currentTermId ?? "",
       // @ts-ignore
       pagination: {
         pageSize: pageSize,
@@ -36,7 +33,7 @@ export default function Meetings() {
       },
     },
     onError: errorHandler,
-    skip: !currentTerm,
+    skip: !currentTermId,
   });
 
   const pageCount = meetingsQuery.data?.meetings.meta.pagination.pageCount ?? 1;

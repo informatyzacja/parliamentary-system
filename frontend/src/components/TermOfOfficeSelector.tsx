@@ -1,11 +1,11 @@
 import { useTermOfOfficesQuery } from "../api/graphql";
 import { Select } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
+import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
 
 const TermOfOfficeSelector = () => {
   const { data } = useTermOfOfficesQuery();
-  const [selectedTerm, setSelectedTerm] = useAtom(termOfOfficeAtom);
+  const [selectedTerm, setSelectedTerm] = useAtom(termOfOfficeIdAtom);
 
   const terms = data?.termOfOffices?.data;
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -15,16 +15,12 @@ const TermOfOfficeSelector = () => {
       return;
     }
 
-    setSelectedTerm(parseInt(term.id));
+    setSelectedTerm(term.id);
   };
 
   return (
     <div>
-      <Select
-        onChange={handleChange}
-        value={selectedTerm?.toString()}
-        id="terms"
-      >
+      <Select onChange={handleChange} value={selectedTerm} id="terms">
         {data?.termOfOffices?.data?.map((term) => (
           <option value={term.id ?? ""} key={term.id}>
             {term.attributes?.term_of_office}

@@ -1435,6 +1435,11 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type CurrentTermOfOfficeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CurrentTermOfOfficeQuery = { __typename?: 'Query', global: { __typename?: 'GlobalEntityResponse', data: { __typename?: 'GlobalEntity', attributes: { __typename?: 'Global', current_term_of_office: { __typename?: 'TermOfOfficeEntityResponse', data: { __typename?: 'TermOfOfficeEntity', id: string, attributes: { __typename?: 'TermOfOffice', term_of_office: string } } } } } } };
+
 export type LatestMeetingsAndResolutionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1476,6 +1481,51 @@ export type TermOfOfficesQueryVariables = Exact<{ [key: string]: never; }>;
 export type TermOfOfficesQuery = { __typename?: 'Query', termOfOffices: { __typename?: 'TermOfOfficeEntityResponseCollection', data: Array<{ __typename?: 'TermOfOfficeEntity', id: string, attributes: { __typename?: 'TermOfOffice', term_of_office: string } }> } };
 
 
+export const CurrentTermOfOfficeDocument = gql`
+    query CurrentTermOfOffice {
+  global {
+    data {
+      attributes {
+        current_term_of_office {
+          data {
+            id
+            attributes {
+              term_of_office
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useCurrentTermOfOfficeQuery__
+ *
+ * To run a query within a React component, call `useCurrentTermOfOfficeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCurrentTermOfOfficeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCurrentTermOfOfficeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCurrentTermOfOfficeQuery(baseOptions?: Apollo.QueryHookOptions<CurrentTermOfOfficeQuery, CurrentTermOfOfficeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CurrentTermOfOfficeQuery, CurrentTermOfOfficeQueryVariables>(CurrentTermOfOfficeDocument, options);
+      }
+export function useCurrentTermOfOfficeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CurrentTermOfOfficeQuery, CurrentTermOfOfficeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CurrentTermOfOfficeQuery, CurrentTermOfOfficeQueryVariables>(CurrentTermOfOfficeDocument, options);
+        }
+export type CurrentTermOfOfficeQueryHookResult = ReturnType<typeof useCurrentTermOfOfficeQuery>;
+export type CurrentTermOfOfficeLazyQueryHookResult = ReturnType<typeof useCurrentTermOfOfficeLazyQuery>;
+export type CurrentTermOfOfficeQueryResult = Apollo.QueryResult<CurrentTermOfOfficeQuery, CurrentTermOfOfficeQueryVariables>;
 export const LatestMeetingsAndResolutionsDocument = gql`
     query LatestMeetingsAndResolutions {
   meetings(sort: ["date:desc", "id:desc"], pagination: {limit: 10}) {

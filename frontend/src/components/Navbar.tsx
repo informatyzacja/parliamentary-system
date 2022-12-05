@@ -15,35 +15,21 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import { signIn, useSession } from "next-auth/react";
 import NextLink from "next/link";
-import { useAtom, useAtomValue } from "jotai";
-import { termOfOfficeAtom } from "../atoms/termOfOffice.atom";
+import { useAtomValue } from "jotai";
+import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
 import {
   LatestMeetingsAndResolutionsDocument,
   MeetingsDocument,
   ResolutionsDocument,
   StudentsDocument,
-  useTermOfOfficesQuery,
 } from "../api/graphql";
 import TermOfOfficeSelector from "./TermOfOfficeSelector";
-import { useErrorHandler } from "../hooks/useErrorHandler";
 import { DocumentNode } from "graphql";
 import { useApolloClient } from "@apollo/client";
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const { status } = useSession();
-
-  const [atom, setAtom] = useAtom(termOfOfficeAtom);
-  const errorHandler = useErrorHandler();
-  const { error } = useTermOfOfficesQuery({
-    onCompleted: (data) => {
-      if (data.termOfOffices.data.length > 0 && atom === undefined) {
-        setAtom(parseInt(data.termOfOffices.data[0].id));
-      }
-    },
-    onError: errorHandler,
-    skip: status === "unauthenticated" || status === "loading",
-  });
 
   return (
     <Box mb={16}>
@@ -89,11 +75,11 @@ export const Navbar = () => {
               />
             </Link>
           </NextLink>
-          {status === "authenticated" && !error && (
+          {status === "authenticated" ? (
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
               <DesktopNav />
             </Flex>
-          )}
+          ) : null}
         </Flex>
         <Stack
           flex={{ base: 1, md: 0 }}
@@ -117,7 +103,7 @@ export const Navbar = () => {
 const DesktopNav = () => {
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
-  const termOfOffice = useAtomValue(termOfOfficeAtom);
+  const termOfOffice = useAtomValue(termOfOfficeIdAtom);
   const client = useApolloClient();
 
   return (

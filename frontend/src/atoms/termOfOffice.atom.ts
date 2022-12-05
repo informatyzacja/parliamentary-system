@@ -1,3 +1,3 @@
 import { atom } from "jotai";
 
-export const termOfOfficeAtom = atom<undefined | number>(undefined);
+export const termOfOfficeIdAtom = atom<undefined | string>(undefined);
