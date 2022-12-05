@@ -17,6 +17,10 @@ import { NoItems } from "../components/NoItems";
 import { useCurrentTermId } from "../hooks/useCurrentTermId";
 import { useErrorHandler } from "../hooks/useErrorHandler";
 
+const getLowestId = (functions: { id: string }[]) => {
+  return functions.map(({ id }) => parseInt(id)).sort()?.[0] ?? 10000;
+};
+
 function OrganisationStructure() {
   const currentTermId = useCurrentTermId();
   const errorHandler = useErrorHandler();
@@ -29,6 +33,15 @@ function OrganisationStructure() {
   });
 
   const students = studentsQuery.data?.students.data ?? [];
+
+  const sortedStudents = [...students].sort((a, b) => {
+    const lowestIdA = getLowestId(a.attributes.functions.data);
+    const lowestIdB = getLowestId(b.attributes.functions.data);
+
+    if (lowestIdA < lowestIdB) return -1;
+    if (lowestIdA > lowestIdB) return 1;
+    return 0;
+  });
 
   return (
     <Center>
@@ -51,7 +64,7 @@ function OrganisationStructure() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {students.map((student, index) => (
+                  {sortedStudents.map((student, index) => (
                     <Tr key={student.id}>
                       <Td>{index + 1}</Td>
                       <Td>{student.attributes.name}</Td>
