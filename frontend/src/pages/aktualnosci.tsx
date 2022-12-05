@@ -6,7 +6,6 @@ import {
   CardHeader,
   Center,
   Heading,
-  HStack,
   Table,
   TableContainer,
   Tbody,
@@ -15,8 +14,6 @@ import {
   Link as ChakraLink,
   ScaleFade,
   Flex,
-  Box,
-  VStack,
 } from "@chakra-ui/react";
 import { Link } from "../components/Link";
 import {

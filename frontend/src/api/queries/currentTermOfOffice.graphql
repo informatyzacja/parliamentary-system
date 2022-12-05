@@ -1,0 +1,16 @@
+query CurrentTermOfOffice {
+  global {
+    data {
+      attributes {
+        current_term_of_office {
+          data {
+            id
+            attributes {
+              term_of_office
+            }
+          }
+        }
+      }
+    }
+  }
+}
