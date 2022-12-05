@@ -8,8 +8,6 @@ export const useCurrentTermId = () => {
   useCurrentTermOfOfficeQuery({
     onCompleted: (data) => {
       if (currentTerm === undefined) {
-        console.log(data.global.data.attributes.current_term_of_office.data.id);
-
         setCurrentTerm(
           data.global.data.attributes.current_term_of_office.data.id
         );
