@@ -1,11 +1,11 @@
 import { useTermOfOfficesQuery } from "../api/graphql";
 import { Select } from "@chakra-ui/react";
-import { useAtom } from "jotai";
-import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
+import { useCurrentTermId } from "../hooks/useCurrentTermId";
 
 const TermOfOfficeSelector = () => {
   const { data } = useTermOfOfficesQuery();
-  const [selectedTerm, setSelectedTerm] = useAtom(termOfOfficeIdAtom);
+
+  const [selectedTerm, setSelectedTerm] = useCurrentTermId();
 
   const terms = data?.termOfOffices?.data;
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

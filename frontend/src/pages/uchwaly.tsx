@@ -15,7 +15,7 @@ interface ResolutionsProps {
 }
 
 const ResolutionsPage: FC<ResolutionsProps> = (props) => {
-  const currentTermId = useCurrentTermId();
+  const [currentTermId] = useCurrentTermId();
   const pageSize = 10;
   const [currentPage, setCurrentPage] = useState<number>(1);
   const errorHandler = useErrorHandler();

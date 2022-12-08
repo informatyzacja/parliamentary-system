@@ -5,6 +5,7 @@ import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
 
 export const useCurrentTermId = () => {
   const [currentTerm, setCurrentTerm] = useAtom(termOfOfficeIdAtom);
+  
   useCurrentTermOfOfficeQuery({
     onCompleted: (data) => {
       if (currentTerm === undefined) {
@@ -16,5 +17,5 @@ export const useCurrentTermId = () => {
     skip: currentTerm !== undefined,
   });
 
-  return currentTerm;
+  return [currentTerm, setCurrentTerm] as const;
 };

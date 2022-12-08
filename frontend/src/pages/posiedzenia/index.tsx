@@ -19,7 +19,7 @@ import { useErrorHandler } from "../../hooks/useErrorHandler";
 import { useCurrentTermId } from "../../hooks/useCurrentTermId";
 
 export default function Meetings() {
-  const currentTermId = useCurrentTermId();
+  const [currentTermId] = useCurrentTermId();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 10;
   const errorHandler = useErrorHandler();
