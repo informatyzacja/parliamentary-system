@@ -22,7 +22,7 @@ const getLowestId = (functions: { id: string }[]) => {
 };
 
 function OrganisationStructure() {
-  const currentTermId = useCurrentTermId();
+  const [currentTermId] = useCurrentTermId();
   const errorHandler = useErrorHandler();
   const studentsQuery = useStudentsQuery({
     variables: {
