@@ -2,11 +2,15 @@
   "name": "parliamentary-system",
   "private": true,
   "version": "0.1.0",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "develop:backend": "yarn --cwd backend develop",
-    "develop:frontend": "wait-on http://localhost:1337/admin && yarn --cwd frontend dev",
-    "develop:database": "docker compose -f docker-compose.dev.yml up",
-    "develop": "cross-env FORCE_COLOR=1 npm-run-all -l -p develop:*"
+    "dev:backend": "wait-on tcp:5432 && yarn --cwd backend dev",
+    "dev:frontend": "wait-on http://localhost:1337/admin && yarn --cwd frontend dev",
+    "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
+    "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*"
   },
   "repository": {
     "type": "git",
@@ -31,6 +35,9 @@
     "cross-env": "7.0.3",
     "npm-run-all": "4.1.5",
     "wait-on": "5.2.1"
+  },
+  "resolutions": {
+    "graphql": "16.6.0"
   },
   "dependencies": {}
 }

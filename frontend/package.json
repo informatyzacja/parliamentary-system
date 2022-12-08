@@ -1,13 +1,15 @@
 {
-  "name": "parliamentary-system",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently -n NextJS,GraphQL \"yarn dev:next\" \"yarn codegen:watch\"",
+    "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "codegen:watch": "yarn codegen --watch"
   },
   "repository": {
     "type": "git",
@@ -64,6 +66,7 @@
     "@types/react-dom": "18.0.6",
     "@types/react-pdf": "^5.7.4",
     "babel-eslint": "^10.1.0",
+    "concurrently": "^7.6.0",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
     "graphql-tag": "^2.12.6",

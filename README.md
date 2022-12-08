@@ -8,7 +8,7 @@ Parliamentary system to keep documents for WUST Students' Union
 
    ```bash
 
-   yarn && cd frontend && yarn && cd ../backend && yarn && cd ..
+   yarn
    ```
 
 2. Setup Google OAuth
@@ -23,4 +23,4 @@ Parliamentary system to keep documents for WUST Students' Union
    GOOGLE_CLIENT_SECRET="{secret}"
    ```
 
-4. Run `yarn develop`
+4. Run `yarn dev`
