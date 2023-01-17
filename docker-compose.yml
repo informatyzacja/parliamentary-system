@@ -6,14 +6,9 @@ services:
       args: &buildargs
         - NODE_VERSION=16
     ports:
-      - 3080:3000
+      - 80:3000
     networks:
       - app
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`parlament.samorzad.pwr.edu.pl`)"
-      - "traefik.http.routers.frontend.entrypoints=web-secure,web"
-      - "traefik.docker.network=app"
 
   backend:
     restart: always
@@ -28,11 +23,6 @@ services:
       - postgres
     networks:
       - app
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`backend.parlament.samorzad.pwr.edu.pl`)"
-      - "traefik.http.routers.backend.entrypoints=web-secure,web"
-      - "traefik.docker.network=app"
 
   postgres:
     restart: always
@@ -42,40 +32,11 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=parliamentarystrapi
     ports:
-      - "5432:5432"
+      - 5432:5432
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
     networks:
       - app
-
-  traefik:
-    restart: always
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`parlament.samorzad.pwr.edu.pl`) && Path(`/traefik`)"
-      - "traefik.http.routers.api.service=api@internal"
-      - "traefik.http.routers.api.entrypoints=web-secure,web"
-      - "traefik.http.middlewares.auth.basicauth.users=informatyzacja:$$apr1$$1LpSB/Hk$$JMUeuDx2q7Bm8wfNzrNzK0"
-      - "traefik.http.middlewares.auth.basicauth.removeheader=true"
-      - "traefik.http.routers.api.middlewares=auth"
-
-    image: traefik:v2.9
-    command: 
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.web-secure.address=:443"
-      - "--serverstransport.insecureskipverify=true"
-    ports:
-      - "80:80"
-      - "443:443"
-      - "8080:8080"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - app
-
   
 networks:
   app:
