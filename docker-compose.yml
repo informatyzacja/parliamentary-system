@@ -7,6 +7,8 @@ services:
         - NODE_VERSION=16
     ports:
       - 80:3000
+    volumes:
+      - ./frontend/.env:/app/.env
     networks:
       - app
 
@@ -19,6 +21,7 @@ services:
       - 81:1337
     volumes:
       - ./backend/public/:/app/public/
+      - ./backend/.env:/app/.env
     depends_on:
       - postgres
     networks:
