@@ -9,8 +9,6 @@ services:
       - 80:3000
     volumes:
       - ./frontend/.env:/app/.env
-    networks:
-      - app
 
   backend:
     restart: always
@@ -24,8 +22,6 @@ services:
       - ./backend/.env:/app/.env
     depends_on:
       - postgres
-    networks:
-      - app
 
   postgres:
     restart: always
@@ -38,8 +34,4 @@ services:
       - 5432:5432
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
-    networks:
-      - app
-  
-networks:
-  app:
+
