@@ -26,15 +26,14 @@ function OrganisationStructure() {
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
 
   const pagination = usePagination({
-    total: totalPages,
+    pagesCount: totalPages,
     initialState: {
-      pageSize: 1,
-      isDisabled: false,
+      pageSize: 10,
       currentPage: 1,
     },
     limits: {
-      outer: 2,
       inner: 1,
+      outer: 1,
     },
   });
 

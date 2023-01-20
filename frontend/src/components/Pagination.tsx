@@ -7,7 +7,6 @@ import {
   PaginationPage,
   PaginationPageGroup,
   PaginationPrevious,
-  PaginationSeparator,
 } from "@ajna/pagination";
 
 type PaginationProps = {
@@ -33,27 +32,22 @@ export const Pagination: FC<PaginationProps> = ({
         <PaginationPrevious mr={2}>
           <ChevronLeftIcon />
         </PaginationPrevious>
-        <PaginationPageGroup
-          align="center"
-          separator={
-            <PaginationSeparator w="10" jumpSize={5} isDisabled disabled />
-          }
-        >
+        <PaginationPageGroup align="center">
           {pages.map((page: number) => (
             <PaginationPage
               w="10"
               key={`pagination_page_${page}`}
               page={page}
               _current={{
-                bg: "green.300",
+                bg: "gray.300",
                 _hover: {
-                  bg: "green.400",
+                  bg: "gray.400",
                 },
               }}
             />
           ))}
         </PaginationPageGroup>
-        <PaginationNext mr={2}>
+        <PaginationNext ml={2}>
           <ChevronRightIcon />
         </PaginationNext>
       </PaginationContainer>
