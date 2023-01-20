@@ -13,6 +13,15 @@ import Head from "next/head";
 import { Provider } from "jotai";
 import { theme } from "../styles/theme";
 
+/**
+ * JWT token is coming from api/auth/[...nextauth]
+ */
+declare module "next-auth" {
+  interface Session {
+    jwt: string;
+  }
+}
+
 const httpLink = createHttpLink({
   uri: process.env.NEXT_PUBLIC_API_URL + "/graphql",
 });
