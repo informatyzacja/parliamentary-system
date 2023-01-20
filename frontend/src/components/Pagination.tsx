@@ -22,6 +22,10 @@ export const Pagination: FC<PaginationProps> = ({
   setCurrent,
   pages,
 }) => {
+  if (pages.length <= 1) {
+    return null;
+  }
+
   return (
     <AjnaPagination
       pagesCount={pageCount}
