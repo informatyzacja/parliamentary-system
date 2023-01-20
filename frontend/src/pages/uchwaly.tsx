@@ -9,6 +9,7 @@ import { Resolutions } from "../components/Resolutions";
 import { NoItems } from "../components/NoItems";
 import { useErrorHandler } from "../hooks/useErrorHandler";
 import { useCurrentTermId } from "../hooks/useCurrentTermId";
+import { usePagination } from "@ajna/pagination";
 
 interface ResolutionsProps {
   meetingId?: number;
@@ -16,19 +17,29 @@ interface ResolutionsProps {
 
 const ResolutionsPage: FC<ResolutionsProps> = (props) => {
   const [currentTermId] = useCurrentTermId();
-  const pageSize = 10;
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
   const errorHandler = useErrorHandler();
+  const pagination = usePagination({
+    pagesCount: totalPages,
+    initialState: {
+      pageSize: 10,
+      currentPage: 1,
+    },
+    limits: {
+      inner: 1,
+      outer: 1,
+    },
+  });
   const resolutionsQuery = useResolutionsQuery({
     variables: {
       termId: currentTermId ?? "",
-      // @ts-ignore
-      pagination: {
-        pageSize: pageSize,
-        page: currentPage,
-      },
+      pageSize: pagination.pageSize,
+      page: pagination.currentPage,
     },
     onError: errorHandler,
+    onCompleted(data) {
+      setTotalPages(data.resolutions.meta.pagination.pageCount);
+    },
     skip: !currentTermId,
   });
   const pageCount =
@@ -53,14 +64,15 @@ const ResolutionsPage: FC<ResolutionsProps> = (props) => {
                 showMeetings={true}
                 resolutions={resolutions}
                 pagination={{
-                  currentPage,
-                  pageSize,
+                  currentPage: pagination.currentPage,
+                  pageSize: pagination.currentPage,
                 }}
               />
               <Pagination
-                current={currentPage}
+                pages={pagination.pages}
+                current={pagination.currentPage}
                 pageCount={pageCount}
-                setCurrent={setCurrentPage}
+                setCurrent={pagination.setCurrentPage}
               />
             </>
           ) : null}

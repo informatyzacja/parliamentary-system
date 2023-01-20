@@ -1453,7 +1453,8 @@ export type MeetingQueryVariables = Exact<{
 export type MeetingQuery = { __typename?: 'Query', meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string, date: any, resolutions: { __typename?: 'ResolutionRelationResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, publishedAt: any, type: Enum_Resolution_Type, number: string, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', name: string, url: string } } } } }> }, reports: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } }> }, agenda: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } } } } } };
 
 export type MeetingsQueryVariables = Exact<{
-  pagination?: InputMaybe<PaginationArg>;
+  page: InputMaybe<Scalars['Int']>;
+  pageSize: InputMaybe<Scalars['Int']>;
   termId: Scalars['ID'];
 }>;
 
@@ -1461,7 +1462,8 @@ export type MeetingsQueryVariables = Exact<{
 export type MeetingsQuery = { __typename?: 'Query', meetings: { __typename?: 'MeetingEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, pageCount: number } }, data: Array<{ __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string, place: Enum_Meeting_Place, date: any, reports: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', name: string } }> } } }> } };
 
 export type ResolutionsQueryVariables = Exact<{
-  pagination: InputMaybe<PaginationArg>;
+  page: InputMaybe<Scalars['Int']>;
+  pageSize: InputMaybe<Scalars['Int']>;
   termId: Scalars['ID'];
 }>;
 
@@ -1663,9 +1665,9 @@ export type MeetingQueryHookResult = ReturnType<typeof useMeetingQuery>;
 export type MeetingLazyQueryHookResult = ReturnType<typeof useMeetingLazyQuery>;
 export type MeetingQueryResult = Apollo.QueryResult<MeetingQuery, MeetingQueryVariables>;
 export const MeetingsDocument = gql`
-    query Meetings($pagination: PaginationArg = {}, $termId: ID!) {
+    query Meetings($page: Int, $pageSize: Int, $termId: ID!) {
   meetings(
-    pagination: $pagination
+    pagination: {page: $page, pageSize: $pageSize}
     sort: ["date:desc", "id:desc"]
     filters: {term_of_office: {id: {eq: $termId}}}
   ) {
@@ -1706,7 +1708,8 @@ export const MeetingsDocument = gql`
  * @example
  * const { data, loading, error } = useMeetingsQuery({
  *   variables: {
- *      pagination: // value for 'pagination'
+ *      page: // value for 'page'
+ *      pageSize: // value for 'pageSize'
  *      termId: // value for 'termId'
  *   },
  * });
@@ -1723,9 +1726,9 @@ export type MeetingsQueryHookResult = ReturnType<typeof useMeetingsQuery>;
 export type MeetingsLazyQueryHookResult = ReturnType<typeof useMeetingsLazyQuery>;
 export type MeetingsQueryResult = Apollo.QueryResult<MeetingsQuery, MeetingsQueryVariables>;
 export const ResolutionsDocument = gql`
-    query Resolutions($pagination: PaginationArg, $termId: ID!) {
+    query Resolutions($page: Int, $pageSize: Int, $termId: ID!) {
   resolutions(
-    pagination: $pagination
+    pagination: {page: $page, pageSize: $pageSize}
     filters: {meeting: {term_of_office: {id: {eq: $termId}}}}
   ) {
     data {
@@ -1777,7 +1780,8 @@ export const ResolutionsDocument = gql`
  * @example
  * const { data, loading, error } = useResolutionsQuery({
  *   variables: {
- *      pagination: // value for 'pagination'
+ *      page: // value for 'page'
+ *      pageSize: // value for 'pageSize'
  *      termId: // value for 'termId'
  *   },
  * });

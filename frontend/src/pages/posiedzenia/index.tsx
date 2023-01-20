@@ -17,22 +17,33 @@ import { Pagination } from "../../components/Pagination";
 import { NoItems } from "../../components/NoItems";
 import { useErrorHandler } from "../../hooks/useErrorHandler";
 import { useCurrentTermId } from "../../hooks/useCurrentTermId";
+import { usePagination } from "@ajna/pagination";
 
 export default function Meetings() {
   const [currentTermId] = useCurrentTermId();
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const pageSize = 10;
+  const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
+  const pagination = usePagination({
+    pagesCount: totalPages,
+    initialState: {
+      pageSize: 10,
+      currentPage: 1,
+    },
+    limits: {
+      inner: 1,
+      outer: 1,
+    },
+  });
   const errorHandler = useErrorHandler();
   const meetingsQuery = useMeetingsQuery({
     variables: {
       termId: currentTermId ?? "",
-      // @ts-ignore
-      pagination: {
-        pageSize: pageSize,
-        page: currentPage,
-      },
+      pageSize: pagination.pageSize,
+      page: pagination.currentPage,
     },
     onError: errorHandler,
+    onCompleted(data) {
+      setTotalPages(data.meetings.meta.pagination.pageCount);
+    },
     skip: !currentTermId,
   });
 
@@ -65,9 +76,10 @@ export default function Meetings() {
           ))}
         </Wrap>
         <Pagination
-          current={currentPage}
+          pages={pagination.pages}
+          current={pagination.currentPage}
           pageCount={pageCount}
-          setCurrent={setCurrentPage}
+          setCurrent={pagination.setCurrentPage}
         />
       </VStack>
     </Center>
