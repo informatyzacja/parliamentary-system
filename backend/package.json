@@ -36,6 +36,7 @@
     "@strapi/plugin-users-permissions": "^4.5.3",
     "@strapi/provider-email-nodemailer": "^4.5.3",
     "@strapi/strapi": "^4.5.3",
+    "graphql": "^16.6.0",
     "pg": "^8.8.0",
     "react-select": "^5.7.0",
     "strapi-plugin-import-export-entries": "^1.18.0"
