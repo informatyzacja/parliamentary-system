@@ -1470,10 +1470,12 @@ export type ResolutionsQuery = { __typename?: 'Query', resolutions: { __typename
 
 export type StudentsQueryVariables = Exact<{
   termId: Scalars['ID'];
+  page: InputMaybe<Scalars['Int']>;
+  pageSize: InputMaybe<Scalars['Int']>;
 }>;
 
 
-export type StudentsQuery = { __typename?: 'Query', students: { __typename?: 'StudentEntityResponseCollection', data: Array<{ __typename?: 'StudentEntity', id: string, attributes: { __typename?: 'Student', name: string, surname: string, student_number: any, functions: { __typename?: 'FunctionRelationResponseCollection', data: Array<{ __typename?: 'FunctionEntity', id: string, attributes: { __typename?: 'Function', name: string } }> } } }> } };
+export type StudentsQuery = { __typename?: 'Query', students: { __typename?: 'StudentEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', pageCount: number } }, data: Array<{ __typename?: 'StudentEntity', id: string, attributes: { __typename?: 'Student', name: string, surname: string, student_number: any, functions: { __typename?: 'FunctionRelationResponseCollection', data: Array<{ __typename?: 'FunctionEntity', id: string, attributes: { __typename?: 'Function', name: string } }> } } }> } };
 
 export type TermOfOfficesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1792,8 +1794,17 @@ export type ResolutionsQueryHookResult = ReturnType<typeof useResolutionsQuery>;
 export type ResolutionsLazyQueryHookResult = ReturnType<typeof useResolutionsLazyQuery>;
 export type ResolutionsQueryResult = Apollo.QueryResult<ResolutionsQuery, ResolutionsQueryVariables>;
 export const StudentsDocument = gql`
-    query Students($termId: ID!) {
-  students(filters: {term_of_offices: {id: {eq: $termId}}}) {
+    query Students($termId: ID!, $page: Int, $pageSize: Int) {
+  students(
+    filters: {term_of_offices: {id: {eq: $termId}}}
+    pagination: {page: $page, pageSize: $pageSize}
+    sort: ["functions.id", "surname", "name"]
+  ) {
+    meta {
+      pagination {
+        pageCount
+      }
+    }
     data {
       id
       attributes {
@@ -1827,6 +1838,8 @@ export const StudentsDocument = gql`
  * const { data, loading, error } = useStudentsQuery({
  *   variables: {
  *      termId: // value for 'termId'
+ *      page: // value for 'page'
+ *      pageSize: // value for 'pageSize'
  *   },
  * });
  */

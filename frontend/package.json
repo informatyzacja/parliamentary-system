@@ -37,6 +37,7 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@ajna/pagination": "^1.4.19",
     "@apollo/client": "^3.7.1",
     "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/react": "^2.4.2",

@@ -1,68 +1,62 @@
 import { FC } from "react";
-import { HStack, Button, Box, IconButton } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import {
+  Pagination as AjnaPagination,
+  PaginationContainer,
+  PaginationNext,
+  PaginationPage,
+  PaginationPageGroup,
+  PaginationPrevious,
+  PaginationSeparator,
+} from "@ajna/pagination";
 
 type PaginationProps = {
   current: number;
   pageCount: number;
   setCurrent: (page: number) => void;
+  pages: number[];
 };
 
 export const Pagination: FC<PaginationProps> = ({
   current,
   pageCount,
   setCurrent,
+  pages,
 }) => {
-  if (pageCount <= 1) {
-    return null;
-  }
-
-  const pagination = {
-    prev: current > 1 && pageCount > 3,
-    next: current < pageCount && pageCount > 3,
-    items: [
-      ...Array.from({ length: pageCount }, (_, i) => i + 1).slice(0, 2),
-      ...(pageCount > 3 ? ["...", pageCount] : []),
-    ],
-  };
-
   return (
-    <Box display="flex" justifyContent="flex-end">
-      <HStack my="3" spacing="1">
-        {pagination?.prev && (
-          <IconButton
-            aria-label="previous page"
-            onClick={() => setCurrent(current - 1)}
-            disabled={!pagination?.prev}
-            variant="outline"
-          >
-            <ChevronLeftIcon />
-          </IconButton>
-        )}
-
-        {pagination?.items.map((page) => {
-          if (typeof page === "string") return <span key={page}>...</span>;
-
-          return (
-            <Button
-              key={page}
-              onClick={() => setCurrent(page)}
-              variant={page === current ? "solid" : "outline"}
-            >
-              {page}
-            </Button>
-          );
-        })}
-        {pagination?.next && (
-          <IconButton
-            aria-label="next page"
-            onClick={() => setCurrent(current + 1)}
-            variant="outline"
-          >
-            <ChevronRightIcon />
-          </IconButton>
-        )}
-      </HStack>
-    </Box>
+    <AjnaPagination
+      pagesCount={pageCount}
+      currentPage={current}
+      onPageChange={setCurrent}
+    >
+      <PaginationContainer align="center" justify="center" p={4} w="full">
+        <PaginationPrevious mr={2}>
+          <ChevronLeftIcon />
+        </PaginationPrevious>
+        <PaginationPageGroup
+          align="center"
+          separator={
+            <PaginationSeparator w="10" jumpSize={5} isDisabled disabled />
+          }
+        >
+          {pages.map((page: number) => (
+            <PaginationPage
+              w="10"
+              key={`pagination_page_${page}`}
+              page={page}
+              _current={{
+                bg: "green.300",
+                _hover: {
+                  bg: "green.400",
+                },
+              }}
+            />
+          ))}
+        </PaginationPageGroup>
+        <PaginationNext mr={2}>
+          <ChevronRightIcon />
+        </PaginationNext>
+      </PaginationContainer>
+    </AjnaPagination>
   );
 };
