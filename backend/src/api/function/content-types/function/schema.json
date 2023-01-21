@@ -16,6 +16,11 @@
       "pluginOptions": {},
       "type": "string",
       "required": true
+    },
+    "position": {
+      "type": "integer",
+      "default": 100,
+      "required": true
     }
   }
 }

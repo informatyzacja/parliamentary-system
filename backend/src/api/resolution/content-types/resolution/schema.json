@@ -16,19 +16,11 @@
       "type": "string",
       "required": true
     },
-    "number": {
-      "type": "string",
-      "required": false,
-      "unique": true
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "porządkowa",
-        "normalna"
-      ],
-      "default": "porządkowa",
-      "required": true
+    "meeting": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::meeting.meeting",
+      "inversedBy": "resolutions"
     },
     "document": {
       "type": "media",
@@ -38,11 +30,13 @@
         "files"
       ]
     },
-    "meeting": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::meeting.meeting",
-      "inversedBy": "resolutions"
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
     }
   }
 }
