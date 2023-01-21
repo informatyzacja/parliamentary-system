@@ -3,8 +3,6 @@ services:
     restart: always
     build:
       context: ./frontend
-      args: &buildargs
-        - NODE_VERSION=16
     ports:
       - 80:3000
     volumes:
@@ -14,7 +12,6 @@ services:
     restart: always
     build:
       context: ./backend
-      args: *buildargs
     ports:
       - 81:1337
     volumes:
@@ -34,4 +31,3 @@ services:
       - 5432:5432
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
-
