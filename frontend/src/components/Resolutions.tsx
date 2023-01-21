@@ -12,8 +12,6 @@ import {
 import NextLink from "next/link";
 import { format } from "date-fns";
 import React from "react";
-import { Enum_Resolution_Type } from "../api/graphql";
-import { ResolutionType } from "./ResolutionType";
 
 export const Resolutions = ({
   resolutions,
@@ -23,10 +21,8 @@ export const Resolutions = ({
   resolutions: {
     id: string;
     attributes: {
-      number: string;
-      publishedAt: Date;
       name: string;
-      type: Enum_Resolution_Type;
+      publishedAt: Date;
       meeting?: {
         data: {
           id: string;
@@ -38,6 +34,14 @@ export const Resolutions = ({
       document: {
         data: {
           attributes: {
+            url: string;
+          };
+        };
+      };
+      attachments: {
+        data: {
+          attributes: {
+            name: string;
             url: string;
           };
         };
@@ -57,9 +61,7 @@ export const Resolutions = ({
           <Thead>
             <Tr>
               <Th>#</Th>
-              <Th>Numer</Th>
               <Th>Nazwa</Th>
-              <Th>Rodzaj</Th>
               {showMeetings && <Th>Posiedzenie</Th>}
               <Th>Data dodania</Th>
               <Th></Th>
@@ -73,11 +75,7 @@ export const Resolutions = ({
                     1 +
                     (pagination.currentPage - 1) * pagination.pageSize}
                 </Td>
-                <Td>{resolution.attributes.number}</Td>
                 <Td>{resolution.attributes.name}</Td>
-                <Td>
-                  <ResolutionType resolutionType={resolution.attributes.type} />
-                </Td>
                 {showMeetings && resolution.attributes.meeting && (
                   <Td>
                     <NextLink

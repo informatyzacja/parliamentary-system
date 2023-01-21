@@ -11,8 +11,6 @@ query Meeting($id: ID!) {
             attributes {
               name
               publishedAt
-              type
-              number
               document {
                 data {
                   attributes {
@@ -24,7 +22,7 @@ query Meeting($id: ID!) {
             }
           }
         }
-        reports {
+        agenda {
           data {
             id
             attributes {
@@ -33,7 +31,16 @@ query Meeting($id: ID!) {
             }
           }
         }
-        agenda {
+        protocol {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+        reports {
           data {
             id
             attributes {
