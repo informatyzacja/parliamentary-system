@@ -37,7 +37,7 @@ const authLink = setContext(async (_, { headers }) => {
     headers: {
       ...headers,
 
-      authorization: `Bearer ${session.jwt}`,
+      authorization: `Bearer ${(session as any).jwt}`,
     },
   };
 });
