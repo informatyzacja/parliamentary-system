@@ -12,7 +12,7 @@ export default function UsosProvider<P extends UsosProfile>(
 ): OAuthConfig<P> {
   return {
     id: "usos",
-    name: "Usos",
+    name: "USOS",
     type: "oauth",
     version: "1.0",
     authorization: {
@@ -34,8 +34,8 @@ export default function UsosProvider<P extends UsosProfile>(
       };
     },
     style: {
-      logo: "",
-      logoDark: "",
+      logo: "http://usos.dawidstachowiak.pl/usos_logo.png",
+      logoDark: "http://usos.dawidstachowiak.pl/usos_logo.png",
       bgDark: "#fff",
       bg: "#fff",
       text: "#000",
