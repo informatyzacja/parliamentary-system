@@ -33,6 +33,14 @@ export default function UsosProvider<P extends UsosProfile>(
         email: profile.email,
       };
     },
+    style: {
+      logo: "",
+      logoDark: "",
+      bgDark: "#fff",
+      bg: "#fff",
+      text: "#000",
+      textDark: "#000",
+    },
     options,
   };
 }
