@@ -3,7 +3,6 @@ import GoogleProvider from "next-auth/providers/google";
 import UsosProvider from "../../../providers/UsosProvider";
 
 const options = {
-    debug: true,
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
