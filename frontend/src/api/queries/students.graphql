@@ -1,8 +1,8 @@
-query Students($termId: ID!, $page: Int, $pageSize: Int) {
+query Students($termID: ID!, $page: Int, $pageSize: Int) {
   students(
-    filters: {  }
+    filters: { }
     pagination: { page: $page, pageSize: $pageSize }
-    sort: ["functions.id", "surname", "name"]
+    sort: ["surname", "name"]
   ) {
     meta {
       pagination {
@@ -15,13 +15,13 @@ query Students($termId: ID!, $page: Int, $pageSize: Int) {
         name
         surname
         student_number
-        functions {
+        functions(filters: { term_of_office: { id: { eq: $termID } } }) {
           term_of_office {
             data {
               id
             }
           }
-          functions {
+          functions(sort: ["position"]) {
             data {
               id
               attributes {

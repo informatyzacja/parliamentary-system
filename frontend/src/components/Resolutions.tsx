@@ -38,7 +38,7 @@ export const Resolutions = ({
           };
         };
       };
-      attachments: {
+      attachments?: {
         data: {
           attributes: {
             name: string;

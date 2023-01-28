@@ -1476,7 +1476,7 @@ export type ResolutionsQueryVariables = Exact<{
 export type ResolutionsQuery = { __typename?: 'Query', resolutions: { __typename?: 'ResolutionEntityResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, publishedAt: any, meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string } } }, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } }, attachments: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } }> } } }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', pageCount: number } } } };
 
 export type StudentsQueryVariables = Exact<{
-  termId: Scalars['ID'];
+  termID: Scalars['ID'];
   page: InputMaybe<Scalars['Int']>;
   pageSize: InputMaybe<Scalars['Int']>;
 }>;
@@ -1815,11 +1815,11 @@ export type ResolutionsQueryHookResult = ReturnType<typeof useResolutionsQuery>;
 export type ResolutionsLazyQueryHookResult = ReturnType<typeof useResolutionsLazyQuery>;
 export type ResolutionsQueryResult = Apollo.QueryResult<ResolutionsQuery, ResolutionsQueryVariables>;
 export const StudentsDocument = gql`
-    query Students($termId: ID!, $page: Int, $pageSize: Int) {
+    query Students($termID: ID!, $page: Int, $pageSize: Int) {
   students(
     filters: {}
     pagination: {page: $page, pageSize: $pageSize}
-    sort: ["functions.id", "surname", "name"]
+    sort: ["surname", "name"]
   ) {
     meta {
       pagination {
@@ -1832,13 +1832,13 @@ export const StudentsDocument = gql`
         name
         surname
         student_number
-        functions {
+        functions(filters: {term_of_office: {id: {eq: $termID}}}) {
           term_of_office {
             data {
               id
             }
           }
-          functions {
+          functions(sort: ["position"]) {
             data {
               id
               attributes {
@@ -1866,7 +1866,7 @@ export const StudentsDocument = gql`
  * @example
  * const { data, loading, error } = useStudentsQuery({
  *   variables: {
- *      termId: // value for 'termId'
+ *      termID: // value for 'termID'
  *      page: // value for 'page'
  *      pageSize: // value for 'pageSize'
  *   },

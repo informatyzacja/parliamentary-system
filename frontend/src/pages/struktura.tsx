@@ -88,9 +88,9 @@ function OrganisationStructure() {
                       <Td>{student.attributes.name}</Td>
                       <Td>{student.attributes.surname}</Td>
                       <Td>
-                        {student.attributes.functions.data
-                          .map(({ attributes }) => attributes.name)
-                          .join(", ")}
+                        { student.attributes.functions.functions.data
+                        .map(( { attributes }) => attributes.name)
+                        .join(", ")}
                       </Td>
                       <Td>{student.attributes.student_number}</Td>
                     </Tr>
