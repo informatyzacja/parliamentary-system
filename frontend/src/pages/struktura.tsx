@@ -60,13 +60,10 @@ function OrganisationStructure() {
         {studentsQuery.loading ? <Loader /> : null}
         {students && students.length > 0 ? (
           <ScaleFade in={true}>
-            <TableContainer px={4} maxW={["100%", null, null, "800px"]}>
+            <TableContainer px={4} maxW={["100%", null, null, "1000px"]}>
               <Table
                 variant="simple"
                 size="lg"
-                style={{
-                  tableLayout: "fixed",
-                }}
               >
                 <Thead>
                   <Tr>
@@ -88,8 +85,8 @@ function OrganisationStructure() {
                       <Td>{student.attributes.name}</Td>
                       <Td>{student.attributes.surname}</Td>
                       <Td>
-                        { student.attributes.functions.functions.data
-                        .map(( { attributes }) => attributes.name)
+                        {student.attributes.functions[0].functions.data
+                        .map(({ attributes }) => attributes.name)
                         .join(", ")}
                       </Td>
                       <Td>{student.attributes.student_number}</Td>

@@ -31,20 +31,22 @@ export const Resolutions = ({
           };
         };
       };
-      document: {
+      document?: {
         data: {
-          attributes: {
+          id?: string;
+          attributes?: {
             url: string;
           };
         };
       };
       attachments?: {
         data: {
-          attributes: {
+          id?: string;
+          attributes?: {
             name: string;
             url: string;
           };
-        };
+        }[];
       };
     };
   }[];
@@ -99,7 +101,7 @@ export const Resolutions = ({
                     target="_blank"
                     href={
                       process.env.NEXT_PUBLIC_API_URL +
-                      resolution.attributes.document.data.attributes.url
+                      (resolution.attributes.document?.data.attributes?.url ?? "/404")
                     }
                   >
                     Pobierz
