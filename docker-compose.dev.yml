@@ -5,9 +5,9 @@ services:
     restart: always
     image: postgres:15-alpine
     environment:
-      - POSTGRES_USER=informatyzacja
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=parliamentarystrapi
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
     ports:
       - "5432:5432"
     volumes:

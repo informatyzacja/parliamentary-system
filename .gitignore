@@ -47,6 +47,6 @@ node_modules
 # DevOps
 ############################
 
-*/.env
+.env
 logs/
 postgres-data/

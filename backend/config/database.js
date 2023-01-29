@@ -4,8 +4,8 @@ module.exports = ({ env }) => ({
     connection: {
       host: env('DATABASE_HOST', 'localhost'),
       port: env.int('DATABASE_PORT', 5432),
-      database: env('DATABASE_NAME', 'parliamentarystrapi'),
-      user: env('DATABASE_USERNAME', 'informatyzacja'),
+      database: env('DATABASE_NAME', 'strapi'),
+      user: env('DATABASE_USERNAME', 'username'),
       password: env('DATABASE_PASSWORD', 'password'),
       ssl: env.bool('DATABASE_SSL', false),
     },
