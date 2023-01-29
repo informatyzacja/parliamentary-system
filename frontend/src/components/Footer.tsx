@@ -9,7 +9,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import React, { ReactNode } from "react";
-import { FaFacebook, FaInstagram, FaRegEnvelope } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaRegEnvelope } from "react-icons/fa";
 
 const SocialButton = ({
   children,
@@ -73,13 +73,19 @@ export const Footer = () => {
             label={"Facebook"}
             href={"https://www.facebook.com/SamorzadPWr/"}
           >
-            <FaFacebook />
+            <FaFacebookF />
           </SocialButton>
           <SocialButton
             label={"Instagram"}
             href={"https://www.instagram.com/samorzadpwr/"}
           >
             <FaInstagram />
+          </SocialButton>
+          <SocialButton
+            label={"LinkedIn"}
+            href={"https://www.linkedin.com/company/samorzad-studencki-pwr/"}
+          >
+            <FaLinkedinIn />
           </SocialButton>
         </Stack>
       </Container>
