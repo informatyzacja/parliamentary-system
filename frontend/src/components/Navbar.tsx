@@ -9,7 +9,6 @@ import {
   useColorModeValue,
   useDisclosure,
   Center,
-  Tooltip,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Image from "next/image";
@@ -23,7 +22,6 @@ import {
   ResolutionsDocument,
   StudentsDocument,
 } from "../api/graphql";
-import TermOfOfficeSelector from "./TermOfOfficeSelector";
 import { DocumentNode } from "graphql";
 import { useApolloClient } from "@apollo/client";
 
@@ -136,11 +134,6 @@ const DesktopNav = () => {
           </NextLink>
         </Center>
       ))}
-      <Tooltip label="Kadencja">
-        <Box mt={"1 !important"}>
-          <TermOfOfficeSelector />
-        </Box>
-      </Tooltip>
     </Stack>
   );
 };

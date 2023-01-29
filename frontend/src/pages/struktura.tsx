@@ -11,12 +11,15 @@ import {
   Tr,
   VStack,
   Table,
+  Box,
+  Tooltip,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useStudentsQuery } from "../api/graphql";
 import { Loader } from "../components/Loader";
 import { NoItems } from "../components/NoItems";
 import { Pagination } from "../components/Pagination";
+import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
 import { useCurrentTermId } from "../hooks/useCurrentTermId";
 import { useErrorHandler } from "../hooks/useErrorHandler";
 
@@ -57,6 +60,11 @@ function OrganisationStructure() {
         <Heading size="lg" mb={8}>
           Struktura organizacyjna
         </Heading>
+        <Tooltip label="Kadencja">
+          <Box mt={"1 !important"} mb={"4 !important"}>
+            <TermOfOfficeSelector />
+          </Box>
+        </Tooltip>
         {studentsQuery.loading ? <Loader /> : null}
         {students && students.length > 0 ? (
           <ScaleFade in={true}>

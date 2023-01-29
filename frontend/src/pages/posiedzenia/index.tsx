@@ -7,6 +7,7 @@ import {
   Center,
   Heading,
   ScaleFade,
+  Tooltip,
   VStack,
   Wrap,
   WrapItem,
@@ -15,6 +16,7 @@ import { Meeting } from "../../components/Meeting";
 import { useMeetingsQuery } from "../../api/graphql";
 import { Pagination } from "../../components/Pagination";
 import { NoItems } from "../../components/NoItems";
+import TermOfOfficeSelector from "../../components/TermOfOfficeSelector";
 import { useErrorHandler } from "../../hooks/useErrorHandler";
 import { useCurrentTermId } from "../../hooks/useCurrentTermId";
 import { usePagination } from "@ajna/pagination";
@@ -57,6 +59,11 @@ export default function Meetings() {
         <Box mb={8}>
           <Heading size="lg">Posiedzenia parlamentu</Heading>
         </Box>
+        <Tooltip label="Kadencja">
+          <Box mt={"1 !important"} mb={"4 !important"}>
+            <TermOfOfficeSelector />
+          </Box>
+        </Tooltip>
         {meetingsQuery.loading ? <Loader /> : null}
         {meetings.length === 0 && !meetingsQuery.loading ? (
           <NoItems>Brak posiedzień</NoItems>

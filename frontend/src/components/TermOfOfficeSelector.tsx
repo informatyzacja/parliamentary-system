@@ -19,7 +19,6 @@ const TermOfOfficeSelector = () => {
   };
 
   return (
-    <div>
       <Select onChange={handleChange} value={selectedTerm} id="terms">
         {data?.termOfOffices?.data?.map((term) => (
           <option value={term.id ?? ""} key={term.id}>
@@ -27,7 +26,6 @@ const TermOfOfficeSelector = () => {
           </option>
         ))}
       </Select>
-    </div>
   );
 };
 

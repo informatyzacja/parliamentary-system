@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { Loader } from "../components/Loader";
-import { Box, Center, Heading, VStack } from "@chakra-ui/react";
+import { Box, Center, Heading, Tooltip, VStack } from "@chakra-ui/react";
 import { useAtomValue } from "jotai";
 import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
 import { useResolutionsQuery } from "../api/graphql";
@@ -10,6 +10,7 @@ import { NoItems } from "../components/NoItems";
 import { useErrorHandler } from "../hooks/useErrorHandler";
 import { useCurrentTermId } from "../hooks/useCurrentTermId";
 import { usePagination } from "@ajna/pagination";
+import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
 
 interface ResolutionsProps {
   meetingId?: number;
@@ -53,6 +54,11 @@ const ResolutionsPage: FC<ResolutionsProps> = (props) => {
           <Box mb={8}>
             <Heading size="lg">Uchwały</Heading>
           </Box>
+          <Tooltip label="Kadencja">
+            <Box mt={"1 !important"} mb={"4 !important"}>
+              <TermOfOfficeSelector />
+            </Box>
+          </Tooltip>
           {resolutionsQuery.loading ? <Loader /> : null}
           {resolutionsQuery.data?.resolutions.data.length === 0 &&
           !resolutionsQuery.loading ? (
