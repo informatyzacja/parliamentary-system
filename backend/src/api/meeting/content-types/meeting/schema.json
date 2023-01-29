@@ -20,7 +20,7 @@
     "date": {
       "type": "datetime",
       "required": true,
-      "default": "2022-10-24T17:15:00.000Z"
+      "default": "2023-03-14T18:15:00.000Z"
     },
     "place": {
       "type": "enumeration",
@@ -29,7 +29,7 @@
         "Sala Centrum Kongresowego",
         "C-16 s. 1.17"
       ],
-      "default": "C-16 s. 1.17",
+      "default": "Sala Centrum Kongresowego",
       "required": true
     },
     "term_of_office": {
@@ -38,7 +38,22 @@
       "target": "api::term-of-office.term-of-office",
       "inversedBy": "meetings"
     },
-    "documents": {
+    "agenda": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "protocol": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "reports": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -51,22 +66,6 @@
       "relation": "oneToMany",
       "target": "api::resolution.resolution",
       "mappedBy": "meeting"
-    },
-    "agenda": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "files"
-      ]
-    },
-    "reports": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "files"
-      ]
     }
   }
 }

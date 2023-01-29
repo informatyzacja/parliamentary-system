@@ -62,6 +62,21 @@ const Meeting = () => {
             </Heading>
           </ScaleFade>
         )}
+        {meeting?.attributes?.protocol.data && (
+          <ScaleFade in={true}>
+            <Heading color="blue.500" size="sm" mb={8}>
+              <Link
+                target="_blank"
+                href={
+                  process.env.NEXT_PUBLIC_API_URL +
+                  meeting.attributes?.protocol?.data.attributes.url
+                }
+              >
+                Protokół z posiedzenia
+              </Link>
+            </Heading>
+          </ScaleFade>
+        )}
         <Box mt={16}>
           <Heading size="md">Sprawozdania z posiedzenia</Heading>
         </Box>

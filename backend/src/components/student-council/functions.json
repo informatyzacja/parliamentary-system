@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_functions_functions",
+  "info": {
+    "displayName": "Functions",
+    "icon": "balance-scale",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "term_of_office": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::term-of-office.term-of-office"
+    },
+    "functions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::function.function"
+    }
+  }
+}

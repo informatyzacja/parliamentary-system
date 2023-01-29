@@ -43,6 +43,34 @@ export type BooleanFilterInput = {
   startsWith: InputMaybe<Scalars['Boolean']>;
 };
 
+export type ComponentStudentCouncilFunctions = {
+  __typename?: 'ComponentStudentCouncilFunctions';
+  functions: Maybe<FunctionRelationResponseCollection>;
+  id: Scalars['ID'];
+  term_of_office: Maybe<TermOfOfficeEntityResponse>;
+};
+
+
+export type ComponentStudentCouncilFunctionsFunctionsArgs = {
+  filters: InputMaybe<FunctionFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentStudentCouncilFunctionsFiltersInput = {
+  and: InputMaybe<Array<InputMaybe<ComponentStudentCouncilFunctionsFiltersInput>>>;
+  functions: InputMaybe<FunctionFiltersInput>;
+  not: InputMaybe<ComponentStudentCouncilFunctionsFiltersInput>;
+  or: InputMaybe<Array<InputMaybe<ComponentStudentCouncilFunctionsFiltersInput>>>;
+  term_of_office: InputMaybe<TermOfOfficeFiltersInput>;
+};
+
+export type ComponentStudentCouncilFunctionsInput = {
+  functions: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  id: InputMaybe<Scalars['ID']>;
+  term_of_office: InputMaybe<Scalars['ID']>;
+};
+
 export type DateTimeFilterInput = {
   and: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   between: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -71,11 +99,6 @@ export enum Enum_Meeting_Place {
   C_16S_1_17 = 'C_16_s_1_17',
   SalaCentrumKongresowego = 'Sala_Centrum_Kongresowego',
   Zdalnie = 'Zdalnie'
-}
-
-export enum Enum_Resolution_Type {
-  Normalna = 'normalna',
-  Porzadkowa = 'porzadkowa'
 }
 
 export enum Enum_Student_Department {
@@ -131,6 +154,7 @@ export type Function = {
   __typename?: 'Function';
   createdAt: Maybe<Scalars['DateTime']>;
   name: Scalars['String'];
+  position: Scalars['Int'];
   updatedAt: Maybe<Scalars['DateTime']>;
 };
 
@@ -158,11 +182,13 @@ export type FunctionFiltersInput = {
   name: InputMaybe<StringFilterInput>;
   not: InputMaybe<FunctionFiltersInput>;
   or: InputMaybe<Array<InputMaybe<FunctionFiltersInput>>>;
+  position: InputMaybe<IntFilterInput>;
   updatedAt: InputMaybe<DateTimeFilterInput>;
 };
 
 export type FunctionInput = {
   name: InputMaybe<Scalars['String']>;
+  position: InputMaybe<Scalars['Int']>;
 };
 
 export type FunctionRelationResponseCollection = {
@@ -170,13 +196,12 @@ export type FunctionRelationResponseCollection = {
   data: Array<FunctionEntity>;
 };
 
-export type GenericMorph = Function | Global | I18NLocale | Meeting | Resolution | Student | TermOfOffice | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentStudentCouncilFunctions | Function | Global | I18NLocale | Meeting | Resolution | Student | TermOfOffice | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type Global = {
   __typename?: 'Global';
   createdAt: Maybe<Scalars['DateTime']>;
   current_term_of_office: Maybe<TermOfOfficeEntityResponse>;
-  parliamentary_composition: Scalars['String'];
   updatedAt: Maybe<Scalars['DateTime']>;
 };
 
@@ -193,7 +218,6 @@ export type GlobalEntityResponse = {
 
 export type GlobalInput = {
   current_term_of_office: InputMaybe<Scalars['ID']>;
-  parliamentary_composition: InputMaybe<Scalars['String']>;
 };
 
 export type I18NLocale = {
@@ -333,21 +357,14 @@ export type Meeting = {
   agenda: Maybe<UploadFileEntityResponse>;
   createdAt: Maybe<Scalars['DateTime']>;
   date: Scalars['DateTime'];
-  documents: Maybe<UploadFileRelationResponseCollection>;
   name: Scalars['String'];
   place: Enum_Meeting_Place;
+  protocol: Maybe<UploadFileEntityResponse>;
   publishedAt: Maybe<Scalars['DateTime']>;
   reports: Maybe<UploadFileRelationResponseCollection>;
   resolutions: Maybe<ResolutionRelationResponseCollection>;
   term_of_office: Maybe<TermOfOfficeEntityResponse>;
   updatedAt: Maybe<Scalars['DateTime']>;
-};
-
-
-export type MeetingDocumentsArgs = {
-  filters: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -400,9 +417,9 @@ export type MeetingFiltersInput = {
 export type MeetingInput = {
   agenda: InputMaybe<Scalars['ID']>;
   date: InputMaybe<Scalars['DateTime']>;
-  documents: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   name: InputMaybe<Scalars['String']>;
   place: InputMaybe<Enum_Meeting_Place>;
+  protocol: InputMaybe<Scalars['ID']>;
   publishedAt: InputMaybe<Scalars['DateTime']>;
   reports: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   resolutions: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
@@ -849,14 +866,20 @@ export type QueryUsersPermissionsUsersArgs = {
 
 export type Resolution = {
   __typename?: 'Resolution';
+  attachments: Maybe<UploadFileRelationResponseCollection>;
   createdAt: Maybe<Scalars['DateTime']>;
   document: Maybe<UploadFileEntityResponse>;
   meeting: Maybe<MeetingEntityResponse>;
   name: Scalars['String'];
-  number: Maybe<Scalars['String']>;
   publishedAt: Maybe<Scalars['DateTime']>;
-  type: Enum_Resolution_Type;
   updatedAt: Maybe<Scalars['DateTime']>;
+};
+
+
+export type ResolutionAttachmentsArgs = {
+  filters: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type ResolutionEntity = {
@@ -883,20 +906,17 @@ export type ResolutionFiltersInput = {
   meeting: InputMaybe<MeetingFiltersInput>;
   name: InputMaybe<StringFilterInput>;
   not: InputMaybe<ResolutionFiltersInput>;
-  number: InputMaybe<StringFilterInput>;
   or: InputMaybe<Array<InputMaybe<ResolutionFiltersInput>>>;
   publishedAt: InputMaybe<DateTimeFilterInput>;
-  type: InputMaybe<StringFilterInput>;
   updatedAt: InputMaybe<DateTimeFilterInput>;
 };
 
 export type ResolutionInput = {
+  attachments: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   document: InputMaybe<Scalars['ID']>;
   meeting: InputMaybe<Scalars['ID']>;
   name: InputMaybe<Scalars['String']>;
-  number: InputMaybe<Scalars['String']>;
   publishedAt: InputMaybe<Scalars['DateTime']>;
-  type: InputMaybe<Enum_Resolution_Type>;
 };
 
 export type ResolutionRelationResponseCollection = {
@@ -937,25 +957,17 @@ export type Student = {
   __typename?: 'Student';
   createdAt: Maybe<Scalars['DateTime']>;
   department: Enum_Student_Department;
-  functions: Maybe<FunctionRelationResponseCollection>;
+  functions: Maybe<Array<Maybe<ComponentStudentCouncilFunctions>>>;
   name: Scalars['String'];
   student_number: Scalars['Long'];
   surname: Scalars['String'];
-  term_of_offices: Maybe<TermOfOfficeRelationResponseCollection>;
   updatedAt: Maybe<Scalars['DateTime']>;
   user: Maybe<UsersPermissionsUserEntityResponse>;
 };
 
 
 export type StudentFunctionsArgs = {
-  filters: InputMaybe<FunctionFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type StudentTerm_Of_OfficesArgs = {
-  filters: InputMaybe<TermOfOfficeFiltersInput>;
+  filters: InputMaybe<ComponentStudentCouncilFunctionsFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -981,7 +993,7 @@ export type StudentFiltersInput = {
   and: InputMaybe<Array<InputMaybe<StudentFiltersInput>>>;
   createdAt: InputMaybe<DateTimeFilterInput>;
   department: InputMaybe<StringFilterInput>;
-  functions: InputMaybe<FunctionFiltersInput>;
+  functions: InputMaybe<ComponentStudentCouncilFunctionsFiltersInput>;
   id: InputMaybe<IdFilterInput>;
   name: InputMaybe<StringFilterInput>;
   not: InputMaybe<StudentFiltersInput>;
@@ -989,19 +1001,17 @@ export type StudentFiltersInput = {
   student_number: InputMaybe<LongFilterInput>;
   surname: InputMaybe<StringFilterInput>;
   telephone: InputMaybe<LongFilterInput>;
-  term_of_offices: InputMaybe<TermOfOfficeFiltersInput>;
   updatedAt: InputMaybe<DateTimeFilterInput>;
   user: InputMaybe<UsersPermissionsUserFiltersInput>;
 };
 
 export type StudentInput = {
   department: InputMaybe<Enum_Student_Department>;
-  functions: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  functions: InputMaybe<Array<InputMaybe<ComponentStudentCouncilFunctionsInput>>>;
   name: InputMaybe<Scalars['String']>;
   student_number: InputMaybe<Scalars['Long']>;
   surname: InputMaybe<Scalars['String']>;
   telephone: InputMaybe<Scalars['Long']>;
-  term_of_offices: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   user: InputMaybe<Scalars['ID']>;
 };
 
@@ -1052,11 +1062,6 @@ export type TermOfOfficeFiltersInput = {
 export type TermOfOfficeInput = {
   meetings: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   term_of_office: InputMaybe<Scalars['String']>;
-};
-
-export type TermOfOfficeRelationResponseCollection = {
-  __typename?: 'TermOfOfficeRelationResponseCollection';
-  data: Array<TermOfOfficeEntity>;
 };
 
 export type UploadFile = {
@@ -1450,7 +1455,7 @@ export type MeetingQueryVariables = Exact<{
 }>;
 
 
-export type MeetingQuery = { __typename?: 'Query', meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string, date: any, resolutions: { __typename?: 'ResolutionRelationResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, publishedAt: any, type: Enum_Resolution_Type, number: string, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', name: string, url: string } } } } }> }, reports: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } }> }, agenda: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } } } } } };
+export type MeetingQuery = { __typename?: 'Query', meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string, date: any, resolutions: { __typename?: 'ResolutionRelationResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, publishedAt: any, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', attributes: { __typename?: 'UploadFile', name: string, url: string } } } } }> }, agenda: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } }, protocol: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } }, reports: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } }> } } } } };
 
 export type MeetingsQueryVariables = Exact<{
   page: InputMaybe<Scalars['Int']>;
@@ -1468,7 +1473,7 @@ export type ResolutionsQueryVariables = Exact<{
 }>;
 
 
-export type ResolutionsQuery = { __typename?: 'Query', resolutions: { __typename?: 'ResolutionEntityResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', createdAt: any, updatedAt: any, name: string, number: string, type: Enum_Resolution_Type, publishedAt: any, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } }, meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string } } } } }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', pageCount: number } } } };
+export type ResolutionsQuery = { __typename?: 'Query', resolutions: { __typename?: 'ResolutionEntityResponseCollection', data: Array<{ __typename?: 'ResolutionEntity', id: string, attributes: { __typename?: 'Resolution', name: string, publishedAt: any, meeting: { __typename?: 'MeetingEntityResponse', data: { __typename?: 'MeetingEntity', id: string, attributes: { __typename?: 'Meeting', name: string } } }, document: { __typename?: 'UploadFileEntityResponse', data: { __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } } }, attachments: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id: string, attributes: { __typename?: 'UploadFile', name: string, url: string } }> } } }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', pageCount: number } } } };
 
 export type StudentsQueryVariables = Exact<{
   termId: Scalars['ID'];
@@ -1477,7 +1482,7 @@ export type StudentsQueryVariables = Exact<{
 }>;
 
 
-export type StudentsQuery = { __typename?: 'Query', students: { __typename?: 'StudentEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', pageCount: number } }, data: Array<{ __typename?: 'StudentEntity', id: string, attributes: { __typename?: 'Student', name: string, surname: string, student_number: any, functions: { __typename?: 'FunctionRelationResponseCollection', data: Array<{ __typename?: 'FunctionEntity', id: string, attributes: { __typename?: 'Function', name: string } }> } } }> } };
+export type StudentsQuery = { __typename?: 'Query', students: { __typename?: 'StudentEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', pageCount: number } }, data: Array<{ __typename?: 'StudentEntity', id: string, attributes: { __typename?: 'Student', name: string, surname: string, student_number: any, functions: Array<{ __typename?: 'ComponentStudentCouncilFunctions', term_of_office: { __typename?: 'TermOfOfficeEntityResponse', data: { __typename?: 'TermOfOfficeEntity', id: string } }, functions: { __typename?: 'FunctionRelationResponseCollection', data: Array<{ __typename?: 'FunctionEntity', id: string, attributes: { __typename?: 'Function', name: string, position: number } }> } }> } }> } };
 
 export type TermOfOfficesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1600,8 +1605,6 @@ export const MeetingDocument = gql`
             attributes {
               name
               publishedAt
-              type
-              number
               document {
                 data {
                   attributes {
@@ -1613,7 +1616,7 @@ export const MeetingDocument = gql`
             }
           }
         }
-        reports {
+        agenda {
           data {
             id
             attributes {
@@ -1622,7 +1625,16 @@ export const MeetingDocument = gql`
             }
           }
         }
-        agenda {
+        protocol {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+        reports {
           data {
             id
             attributes {
@@ -1734,11 +1746,16 @@ export const ResolutionsDocument = gql`
     data {
       id
       attributes {
-        createdAt
-        updatedAt
         name
-        number
-        type
+        publishedAt
+        meeting {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
         document {
           data {
             id
@@ -1748,12 +1765,12 @@ export const ResolutionsDocument = gql`
             }
           }
         }
-        publishedAt
-        meeting {
+        attachments {
           data {
             id
             attributes {
               name
+              url
             }
           }
         }
@@ -1800,9 +1817,9 @@ export type ResolutionsQueryResult = Apollo.QueryResult<ResolutionsQuery, Resolu
 export const StudentsDocument = gql`
     query Students($termId: ID!, $page: Int, $pageSize: Int) {
   students(
-    filters: {term_of_offices: {id: {eq: $termId}}}
+    filters: {}
     pagination: {page: $page, pageSize: $pageSize}
-    sort: ["functions.id", "surname", "name"]
+    sort: ["surname", "name"]
   ) {
     meta {
       pagination {
@@ -1815,11 +1832,19 @@ export const StudentsDocument = gql`
         name
         surname
         student_number
-        functions {
-          data {
-            id
-            attributes {
-              name
+        functions(filters: {term_of_office: {id: {eq: $termId}}}) {
+          term_of_office {
+            data {
+              id
+            }
+          }
+          functions(sort: ["position"]) {
+            data {
+              id
+              attributes {
+                name
+                position
+              }
             }
           }
         }

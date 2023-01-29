@@ -6,11 +6,16 @@ query Resolutions($page: Int, $pageSize: Int, $termId: ID!) {
     data {
       id
       attributes {
-        createdAt
-        updatedAt
         name
-        number
-        type
+        publishedAt
+        meeting {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
         document {
           data {
             id
@@ -20,12 +25,12 @@ query Resolutions($page: Int, $pageSize: Int, $termId: ID!) {
             }
           }
         }
-        publishedAt
-        meeting {
+        attachments {
           data {
             id
             attributes {
               name
+              url
             }
           }
         }

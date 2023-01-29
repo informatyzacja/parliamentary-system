@@ -4,7 +4,8 @@
   "info": {
     "singularName": "student",
     "pluralName": "students",
-    "displayName": "Student"
+    "displayName": "Student",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -46,11 +47,6 @@
       "required": true,
       "unique": true
     },
-    "functions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::function.function"
-    },
     "telephone": {
       "type": "biginteger",
       "private": true
@@ -61,10 +57,11 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "student"
     },
-    "term_of_offices": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::term-of-office.term-of-office"
+    "functions": {
+      "displayName": "Functions",
+      "type": "component",
+      "repeatable": true,
+      "component": "student-council.functions"
     }
   }
 }
