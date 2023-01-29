@@ -34,8 +34,8 @@ export default function UsosProvider<P extends UsosProfile>(
       };
     },
     style: {
-      logo: "http://usos.dawidstachowiak.pl/usos_logo.png",
-      logoDark: "http://usos.dawidstachowiak.pl/usos_logo.png",
+      logo: "https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png",
+      logoDark: "https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png",
       bgDark: "#fff",
       bg: "#fff",
       text: "#000",
