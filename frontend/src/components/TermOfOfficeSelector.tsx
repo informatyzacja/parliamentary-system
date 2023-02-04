@@ -19,13 +19,13 @@ const TermOfOfficeSelector = () => {
   };
 
   return (
-      <Select onChange={handleChange} value={selectedTerm} id="terms">
-        {data?.termOfOffices?.data?.map((term) => (
-          <option value={term.id ?? ""} key={term.id}>
-            {term.attributes?.term_of_office}
-          </option>
-        ))}
-      </Select>
+    <Select onChange={handleChange} value={selectedTerm} id="terms">
+      {data?.termOfOffices?.data?.map((term) => (
+        <option value={term.id ?? ""} key={term.id}>
+          {term.attributes?.term_of_office}
+        </option>
+      ))}
+    </Select>
   );
 };
 

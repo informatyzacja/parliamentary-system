@@ -9,7 +9,12 @@ import {
   Link,
 } from "@chakra-ui/react";
 import React, { ReactNode } from "react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaRegEnvelope } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaRegEnvelope,
+} from "react-icons/fa";
 
 const SocialButton = ({
   children,

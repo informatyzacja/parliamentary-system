@@ -101,7 +101,8 @@ export const Resolutions = ({
                     target="_blank"
                     href={
                       process.env.NEXT_PUBLIC_API_URL +
-                      (resolution.attributes.document?.data.attributes?.url ?? "/404")
+                      (resolution.attributes.document?.data.attributes?.url ??
+                        "/404")
                     }
                   >
                     Pobierz
