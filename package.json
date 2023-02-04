@@ -10,7 +10,9 @@
     "dev:backend": "wait-on tcp:5432 && yarn --cwd backend dev",
     "dev:frontend": "wait-on http://localhost:1337/admin && yarn --cwd frontend dev",
     "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
-    "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*"
+    "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
+    "postinstall": "husky install",
+    "format:check": "prettier --ignore-unknown --check backend frontend/src"
   },
   "repository": {
     "type": "git",
@@ -33,7 +35,9 @@
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "devDependencies": {
     "cross-env": "7.0.3",
+    "husky": "^8.0.3",
     "npm-run-all": "4.1.5",
+    "prettier": "^2.8.3",
     "wait-on": "5.2.1"
   },
   "resolutions": {
@@ -41,5 +45,10 @@
   },
   "volta": {
     "node": "16.19.0"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --ignore-unknown --write"
+    ]
   }
 }

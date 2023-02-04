@@ -1,0 +1,11 @@
+
+# Strapi files
+.cache
+build
+documentation/
+schema.json
+.strapi-updater.json
+
+# Frontend files
+**/postgres-data
+dist
