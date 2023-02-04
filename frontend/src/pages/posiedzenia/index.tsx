@@ -1,7 +1,4 @@
-import { useState } from "react";
-import { format } from "date-fns";
-import React from "react";
-import { Loader } from "../../components/Loader";
+import { usePagination } from "@ajna/pagination";
 import {
   Box,
   Center,
@@ -12,14 +9,17 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { Meeting } from "../../components/Meeting";
-import { useMeetingsQuery } from "../../api/graphql";
-import { Pagination } from "../../components/Pagination";
-import { NoItems } from "../../components/NoItems";
-import TermOfOfficeSelector from "../../components/TermOfOfficeSelector";
-import { useErrorHandler } from "../../hooks/useErrorHandler";
-import { useCurrentTermId } from "../../hooks/useCurrentTermId";
-import { usePagination } from "@ajna/pagination";
+import { format } from "date-fns";
+import React, { useState } from "react";
+
+import { useMeetingsQuery } from "@/api/graphql";
+import { Loader } from "@/components/Loader";
+import { Meeting } from "@/components/Meeting";
+import { NoItems } from "@/components/NoItems";
+import { Pagination } from "@/components/Pagination";
+import TermOfOfficeSelector from "@/components/TermOfOfficeSelector";
+import { useCurrentTermId } from "@/hooks/useCurrentTermId";
+import { useErrorHandler } from "@/hooks/useErrorHandler";
 
 export default function Meetings() {
   const [currentTermId] = useCurrentTermId();
@@ -66,7 +66,7 @@ export default function Meetings() {
         </Tooltip>
         {meetingsQuery.loading ? <Loader /> : null}
         {meetings.length === 0 && !meetingsQuery.loading ? (
-          <NoItems>Brak posiedzień</NoItems>
+          <NoItems>Brak posiedzeń</NoItems>
         ) : null}
         <Wrap spacing={4} justify="center">
           {meetings.map((meeting) => (
@@ -76,7 +76,7 @@ export default function Meetings() {
                   id={meeting.id}
                   name={meeting.attributes.name}
                   place={meeting.attributes.place.replace(/_/, " ")}
-                  date={format(new Date(meeting.attributes.date), "dd.MM.yyyy")}
+                  date={format(new Date(meeting.attributes.date as string), "dd.MM.yyyy")}
                 />
               </ScaleFade>
             </WrapItem>

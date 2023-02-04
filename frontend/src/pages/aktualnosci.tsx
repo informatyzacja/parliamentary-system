@@ -1,28 +1,29 @@
-import { format } from "date-fns";
-import { Loader } from "../components/Loader";
+import { useApolloClient } from "@apollo/client";
 import {
   Card,
   CardBody,
   CardHeader,
   Center,
+  Flex,
   Heading,
+  Link as ChakraLink,
+  ScaleFade,
   Table,
   TableContainer,
   Tbody,
   Td,
   Tr,
-  Link as ChakraLink,
-  ScaleFade,
-  Flex,
 } from "@chakra-ui/react";
-import { Link } from "../components/Link";
+import { format } from "date-fns";
+
 import {
   MeetingDocument,
   useLatestMeetingsAndResolutionsQuery,
 } from "../api/graphql";
-import { useApolloClient } from "@apollo/client";
-import { useErrorHandler } from "../hooks/useErrorHandler";
+import { Link } from "../components/Link";
+import { Loader } from "../components/Loader";
 import { NoItems } from "../components/NoItems";
+import { useErrorHandler } from "../hooks/useErrorHandler";
 
 function LatestUpdates() {
   const errorHandler = useErrorHandler();
@@ -40,8 +41,7 @@ function LatestUpdates() {
 
   if (
     latestUpdatesQuery.data?.meetings.data.length === 0 &&
-    latestUpdatesQuery.data?.resolutions.data.length === 0 &&
-    !latestUpdatesQuery.loading
+    latestUpdatesQuery.data.resolutions.data.length === 0
   ) {
     return <NoItems>Brak aktualności</NoItems>;
   }
@@ -67,14 +67,14 @@ function LatestUpdates() {
                         <Tr key={meeting.id}>
                           <Td>
                             {format(
-                              new Date(meeting.attributes.date),
+                              new Date(meeting.attributes.date as string),
                               "dd-MM-yyyy"
                             )}
                           </Td>
                           <Td>{meeting.attributes.name}</Td>
                           <Td
                             onMouseOver={() => {
-                              client.query({
+                              void client.query({
                                 query: MeetingDocument,
                                 variables: {
                                   id: meeting.id,
@@ -106,7 +106,9 @@ function LatestUpdates() {
                         <Tr key={resolution.id}>
                           <Td>
                             {format(
-                              new Date(resolution.attributes.publishedAt),
+                              new Date(
+                                resolution.attributes.publishedAt as string
+                              ),
                               "dd-MM-yyyy"
                             )}
                           </Td>

@@ -1,16 +1,18 @@
-import Layout from "../components/Layout";
-import { SessionProvider, getSession } from "next-auth/react";
 import {
   ApolloClient,
-  InMemoryCache,
   ApolloProvider,
   createHttpLink,
+  InMemoryCache,
 } from "@apollo/client";
-
 import { setContext } from "@apollo/client/link/context";
 import { ChakraProvider } from "@chakra-ui/react";
-import Head from "next/head";
 import { Provider } from "jotai";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import type { Session as NextAuthSession } from "next-auth";
+import { getSession, SessionProvider } from "next-auth/react";
+
+import Layout from "../components/Layout";
 import { theme } from "../styles/theme";
 
 /**
@@ -26,21 +28,23 @@ const httpLink = createHttpLink({
   uri: process.env.NEXT_PUBLIC_API_URL + "/graphql",
 });
 
-const authLink = setContext(async (_, { headers }) => {
-  const session = await getSession();
+const authLink = setContext(
+  async (_, { headers }: { headers: { [key: string]: string } }) => {
+    const session = await getSession();
 
-  if (session === null) {
-    return headers;
+    if (session === null) {
+      return headers;
+    }
+
+    return {
+      headers: {
+        ...headers,
+
+        authorization: `Bearer ${session.jwt}`,
+      },
+    };
   }
-
-  return {
-    headers: {
-      ...headers,
-
-      authorization: `Bearer ${(session as any).jwt}`,
-    },
-  };
-});
+);
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
@@ -50,10 +54,7 @@ const client = new ApolloClient({
 function MyApp({
   Component,
   pageProps: { session, ...pageProps },
-}: {
-  Component: any;
-  pageProps: any;
-}) {
+}: AppProps<{ session: NextAuthSession }>) {
   return (
     <SessionProvider session={session}>
       <Provider>

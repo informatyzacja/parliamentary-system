@@ -1,14 +1,14 @@
 import { useApolloClient } from "@apollo/client";
 import {
   Center,
-  Heading,
-  Text,
-  Stack,
-  useColorModeValue,
   Flex,
-  Link,
+  Heading,
+  Stack,
+  Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+
 import { MeetingDocument } from "../api/graphql";
 
 export const Meeting = ({
@@ -33,8 +33,8 @@ export const Meeting = ({
         opacity: "0.8",
       }}
       onMouseOver={() => {
-        router.prefetch(`/posiedzenia/${id}`);
-        client.query({
+        void router.prefetch(`/posiedzenia/${id}`);
+        void client.query({
           query: MeetingDocument,
           variables: {
             id,
@@ -42,7 +42,7 @@ export const Meeting = ({
         });
       }}
       onClick={() => {
-        router.push(`/posiedzenia/${id}`);
+        void router.push(`/posiedzenia/${id}`);
       }}
       transition="all 0.2s ease-in-out"
       transform="scale(1)"

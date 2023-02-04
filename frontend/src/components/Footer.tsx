@@ -1,14 +1,15 @@
 import {
   Box,
-  Text,
   chakra,
   Container,
+  Link,
   Stack,
+  Text,
   useColorModeValue,
   VisuallyHidden,
-  Link,
 } from "@chakra-ui/react";
-import React, { ReactNode } from "react";
+import type { ReactNode } from "react";
+import React from "react";
 import {
   FaFacebookF,
   FaInstagram,

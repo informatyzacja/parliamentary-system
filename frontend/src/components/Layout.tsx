@@ -1,7 +1,8 @@
-import React from "react";
-import { Navbar } from "./Navbar";
-import { Box, Container, Flex, VStack, chakra } from "@chakra-ui/react";
+import { chakra, Container, VStack } from "@chakra-ui/react";
+import type React from "react";
+
 import { Footer } from "./Footer";
+import { Navbar } from "./Navbar";
 
 interface LayoutProps {
   children: React.ReactNode;
