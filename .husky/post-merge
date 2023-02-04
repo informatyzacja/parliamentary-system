@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+if [ -f .husky/_/husky.sh ]; then
+  . "$(dirname -- "$0")/_/husky.sh"
+  ./.husky/scripts/updateDependencies.sh
+fi
