@@ -1,6 +1,6 @@
 query Students($termId: ID!, $page: Int, $pageSize: Int) {
   students(
-    filters: { }
+    filters: {}
     pagination: { page: $page, pageSize: $pageSize }
     sort: ["surname", "name"]
   ) {
