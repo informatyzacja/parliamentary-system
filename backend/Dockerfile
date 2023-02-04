@@ -1,7 +1,10 @@
-#syntax=docker/dockerfile:experimental
 FROM node:16-bullseye as Backend
-COPY . /app
 WORKDIR /app
-RUN --mount=type=cache,target=/app/.yarn yarn install
+COPY package.json .
+COPY yarn.lock .
+COPY backend/package.json backend/
+RUN yarn install
+COPY . .
+WORKDIR /app/backend
 RUN yarn build
 CMD [ "yarn", "start" ]
