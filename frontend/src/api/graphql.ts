@@ -1819,7 +1819,7 @@ export const StudentsDocument = gql`
   students(
     filters: {}
     pagination: {page: $page, pageSize: $pageSize}
-    sort: ["surname", "name"]
+    sort: ["functions.functions.position", "surname", "name"]
   ) {
     meta {
       pagination {
