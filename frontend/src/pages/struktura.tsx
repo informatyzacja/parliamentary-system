@@ -22,6 +22,7 @@ import { Pagination } from "../components/Pagination";
 import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
 import { useCurrentTermId } from "../hooks/useCurrentTermId";
 import { useErrorHandler } from "../hooks/useErrorHandler";
+import uniqBy from "lodash/uniqBy";
 
 function OrganisationStructure() {
   const [currentTermId] = useCurrentTermId();
@@ -53,7 +54,7 @@ function OrganisationStructure() {
     onError: errorHandler,
   });
 
-  const students = studentsQuery.data?.students.data ?? [];
+  const students = uniqBy(studentsQuery.data?.students.data, "id")  ?? [];
   return (
     <Center>
       <VStack>
