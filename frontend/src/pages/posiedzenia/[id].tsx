@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { InfoOutlineIcon } from "@chakra-ui/icons";
 import {
   Box,
   Center,
@@ -9,19 +9,20 @@ import {
   Table,
   TableContainer,
   Tbody,
-  Text,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
   VStack,
 } from "@chakra-ui/react";
-import { useMeetingQuery } from "../../api/graphql";
-import { Resolutions } from "../../components/Resolutions";
-import { PreviewPDF } from "../../components/PreviewPDF";
-import { Loader } from "../../components/Loader";
-import { InfoOutlineIcon } from "@chakra-ui/icons";
-import { useErrorHandler } from "../../hooks/useErrorHandler";
+import { useRouter } from "next/router";
+
+import { useMeetingQuery } from "@/api/graphql";
+import { Loader } from "@/components/Loader";
+import { PreviewPDF } from "@/components/PreviewPDF";
+import { Resolutions } from "@/components/Resolutions";
+import { useErrorHandler } from "@/hooks/useErrorHandler";
 
 const Meeting = () => {
   const router = useRouter();
@@ -29,7 +30,7 @@ const Meeting = () => {
   const errorHandler = useErrorHandler();
   const meetingQuery = useMeetingQuery({
     variables: {
-      id: (id as string) ?? "",
+      id: (id as string | undefined) ?? "",
     },
     skip: !id,
     onError: errorHandler,
@@ -47,14 +48,14 @@ const Meeting = () => {
           </Heading>
           <Divider mb={8} />
         </Box>
-        {meeting?.attributes?.agenda.data && (
+        {meeting?.attributes.agenda.data && (
           <ScaleFade in={true}>
             <Heading color="blue.500" size="sm" mb={8}>
               <Link
                 target="_blank"
                 href={
                   process.env.NEXT_PUBLIC_API_URL +
-                  meeting.attributes?.agenda?.data.attributes.url
+                  meeting.attributes.agenda.data.attributes.url
                 }
               >
                 Agenda posiedzenia
@@ -62,14 +63,14 @@ const Meeting = () => {
             </Heading>
           </ScaleFade>
         )}
-        {meeting?.attributes?.protocol.data && (
+        {meeting?.attributes.protocol.data && (
           <ScaleFade in={true}>
             <Heading color="blue.500" size="sm" mb={8}>
               <Link
                 target="_blank"
                 href={
                   process.env.NEXT_PUBLIC_API_URL +
-                  meeting.attributes?.protocol?.data.attributes.url
+                  meeting.attributes.protocol.data.attributes.url
                 }
               >
                 Protokół z posiedzenia
@@ -84,8 +85,7 @@ const Meeting = () => {
           <Loader />
         ) : (
           <ScaleFade in={true}>
-            {meeting?.attributes.reports.data.length === 0 &&
-            !meetingQuery.loading ? (
+            {meeting?.attributes.reports.data.length === 0 ? (
               <VStack>
                 <InfoOutlineIcon mt={2} />
                 <Text size="md">Brak sprawozdań</Text>
@@ -102,8 +102,8 @@ const Meeting = () => {
                     </Tr>
                   </Thead>
                   <Tbody>
-                    {meeting?.attributes?.reports.data &&
-                      meeting.attributes.reports?.data.map(
+                    {meeting?.attributes.reports.data &&
+                      meeting.attributes.reports.data.map(
                         (report, index: number) => (
                           <Tr key={meeting.id}>
                             <Td>{index + 1}</Td>

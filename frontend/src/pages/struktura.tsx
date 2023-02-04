@@ -1,20 +1,22 @@
 import { usePagination } from "@ajna/pagination";
 import {
+  Box,
   Center,
   Heading,
   ScaleFade,
+  Table,
   TableContainer,
   Tbody,
   Td,
   Th,
   Thead,
+  Tooltip,
   Tr,
   VStack,
-  Table,
-  Box,
-  Tooltip,
 } from "@chakra-ui/react";
+import uniqBy from "lodash/uniqBy";
 import { useState } from "react";
+
 import { useStudentsQuery } from "../api/graphql";
 import { Loader } from "../components/Loader";
 import { NoItems } from "../components/NoItems";
@@ -22,7 +24,6 @@ import { Pagination } from "../components/Pagination";
 import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
 import { useCurrentTermId } from "../hooks/useCurrentTermId";
 import { useErrorHandler } from "../hooks/useErrorHandler";
-import uniqBy from "lodash/uniqBy";
 
 function OrganisationStructure() {
   const [currentTermId] = useCurrentTermId();
@@ -54,7 +55,7 @@ function OrganisationStructure() {
     onError: errorHandler,
   });
 
-  const students = uniqBy(studentsQuery.data?.students.data, "id") ?? [];
+  const students = uniqBy(studentsQuery.data?.students.data, "id");
   return (
     <Center>
       <VStack>
@@ -67,7 +68,7 @@ function OrganisationStructure() {
           </Box>
         </Tooltip>
         {studentsQuery.loading ? <Loader /> : null}
-        {students && students.length > 0 ? (
+        {students.length > 0 ? (
           <ScaleFade in={true}>
             <TableContainer px={4} maxW={["100%", null, null, "1000px"]}>
               <Table variant="simple" size="lg">

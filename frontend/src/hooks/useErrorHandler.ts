@@ -1,4 +1,4 @@
-import { ApolloError } from "@apollo/client";
+import type { ApolloError } from "@apollo/client";
 import { useToast } from "@chakra-ui/react";
 import { useCallback } from "react";
 
@@ -13,7 +13,7 @@ export const useErrorHandler = () => {
     (error: ApolloError) => {
       const errorMessage = error.message;
       const isForbidden = error.graphQLErrors.some(
-        (x) => x.extensions?.code === "FORBIDDEN"
+        (x) => x.extensions.code === "FORBIDDEN"
       );
 
       toast({

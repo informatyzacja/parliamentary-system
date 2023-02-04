@@ -1,5 +1,5 @@
 import { Button, Center, Text, VStack } from "@chakra-ui/react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 export default function Component() {
   const { data: session } = useSession();
@@ -9,7 +9,13 @@ export default function Component() {
         <Center>
           <VStack spacing={4}>
             <Text>Zalogowany/a jako {session.user.email}</Text>
-            <Button onClick={() => signOut()}>Wyloguj się</Button>
+            <Button
+              onClick={() => {
+                void signOut();
+              }}
+            >
+              Wyloguj się
+            </Button>
           </VStack>
         </Center>
       </>

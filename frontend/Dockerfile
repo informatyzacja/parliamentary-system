@@ -1,7 +1,10 @@
-#syntax=docker/dockerfile:experimental
-FROM node:16-bullseye as Backend
-COPY . /app
-WORKDIR  /app
-RUN --mount=type=cache,target=/app/.yarn yarn install
-RUN npm run build
-CMD ["npm", "run", "start"]
+FROM node:16-bullseye as Frontend
+WORKDIR /app
+COPY package.json .
+COPY yarn.lock .
+COPY frontend/package.json frontend/
+RUN yarn install
+COPY . .
+WORKDIR /app/frontend
+RUN yarn build
+CMD [ "yarn", "start" ]

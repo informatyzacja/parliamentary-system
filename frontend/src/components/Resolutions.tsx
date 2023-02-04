@@ -9,8 +9,8 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import NextLink from "next/link";
 import { format } from "date-fns";
+import NextLink from "next/link";
 import React from "react";
 
 export const Resolutions = ({
@@ -18,7 +18,7 @@ export const Resolutions = ({
   showMeetings = false,
   pagination,
 }: {
-  resolutions: {
+  resolutions: Array<{
     id: string;
     attributes: {
       name: string;
@@ -40,16 +40,16 @@ export const Resolutions = ({
         };
       };
       attachments?: {
-        data: {
+        data: Array<{
           id?: string;
           attributes?: {
             name: string;
             url: string;
           };
-        }[];
+        }>;
       };
     };
-  }[];
+  }>;
   showMeetings?: boolean;
   pagination: {
     currentPage: number;

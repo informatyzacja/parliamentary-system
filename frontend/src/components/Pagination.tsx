@@ -1,5 +1,3 @@
-import { FC } from "react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Pagination as AjnaPagination,
   PaginationContainer,
@@ -8,13 +6,15 @@ import {
   PaginationPageGroup,
   PaginationPrevious,
 } from "@ajna/pagination";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import type { FC } from "react";
 
-type PaginationProps = {
+interface PaginationProps {
   current: number;
   pageCount: number;
   setCurrent: (page: number) => void;
   pages: number[];
-};
+}
 
 export const Pagination: FC<PaginationProps> = ({
   current,

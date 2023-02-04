@@ -12,6 +12,8 @@
     "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
     "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
     "postinstall": "husky install",
+    "lint": "npm-run-all -l -p lint:*",
+    "lint:frontend": "yarn --cwd frontend lint",
     "format:check": "prettier --ignore-unknown --check backend frontend/src"
   },
   "repository": {
@@ -49,6 +51,9 @@
   "lint-staged": {
     "*": [
       "prettier --ignore-unknown --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
     ]
   }
 }

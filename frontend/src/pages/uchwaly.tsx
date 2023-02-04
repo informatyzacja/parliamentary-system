@@ -1,22 +1,22 @@
-import { FC, useState } from "react";
-import { Loader } from "../components/Loader";
+import { usePagination } from "@ajna/pagination";
 import { Box, Center, Heading, Tooltip, VStack } from "@chakra-ui/react";
-import { useAtomValue } from "jotai";
-import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
+import type { FC } from "react";
+import { useState } from "react";
+
 import { useResolutionsQuery } from "../api/graphql";
+import { Loader } from "../components/Loader";
+import { NoItems } from "../components/NoItems";
 import { Pagination } from "../components/Pagination";
 import { Resolutions } from "../components/Resolutions";
-import { NoItems } from "../components/NoItems";
-import { useErrorHandler } from "../hooks/useErrorHandler";
-import { useCurrentTermId } from "../hooks/useCurrentTermId";
-import { usePagination } from "@ajna/pagination";
 import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
+import { useCurrentTermId } from "../hooks/useCurrentTermId";
+import { useErrorHandler } from "../hooks/useErrorHandler";
 
 interface ResolutionsProps {
   meetingId?: number;
 }
 
-const ResolutionsPage: FC<ResolutionsProps> = (props) => {
+const ResolutionsPage: FC<ResolutionsProps> = () => {
   const [currentTermId] = useCurrentTermId();
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
   const errorHandler = useErrorHandler();

@@ -1,29 +1,30 @@
+import { useApolloClient } from "@apollo/client";
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
+  Button,
+  Center,
+  Collapse,
   Flex,
   IconButton,
-  Button,
-  Stack,
-  Collapse,
   Link,
+  Stack,
   useColorModeValue,
   useDisclosure,
-  Center,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import Image from "next/image";
-import { signIn, useSession } from "next-auth/react";
-import NextLink from "next/link";
+import type { DocumentNode } from "graphql";
 import { useAtomValue } from "jotai";
-import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
+import Image from "next/image";
+import NextLink from "next/link";
+import { signIn, useSession } from "next-auth/react";
+
 import {
   LatestMeetingsAndResolutionsDocument,
   MeetingsDocument,
   ResolutionsDocument,
   StudentsDocument,
 } from "../api/graphql";
-import { DocumentNode } from "graphql";
-import { useApolloClient } from "@apollo/client";
+import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -83,7 +84,13 @@ export const Navbar = () => {
           spacing={6}
         >
           {status === "unauthenticated" ? (
-            <Button onClick={() => signIn()}>Zaloguj się</Button>
+            <Button
+              onClick={() => {
+                void signIn();
+              }}
+            >
+              Zaloguj się
+            </Button>
           ) : null}
         </Stack>
       </Flex>
@@ -107,9 +114,9 @@ const DesktopNav = () => {
         <Center key={navItem.label}>
           <NextLink href={navItem.href ?? "#"} passHref>
             <Link
-              onMouseOver={async () => {
+              onMouseOver={() => {
                 if (navItem.prefetch && termOfOffice) {
-                  await client.query({
+                  void client.query({
                     query: navItem.prefetch,
                     variables: {
                       termId: termOfOffice,
@@ -181,11 +188,11 @@ interface NavItem {
   label: string;
   subLabel?: string;
   prefetch?: DocumentNode;
-  children?: Array<NavItem>;
+  children?: NavItem[];
   href?: string;
 }
 
-const NAV_ITEMS: Array<NavItem> = [
+const NAV_ITEMS: NavItem[] = [
   {
     label: "Aktualności",
     href: "/aktualnosci",
