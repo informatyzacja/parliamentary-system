@@ -54,7 +54,7 @@ function OrganisationStructure() {
     onError: errorHandler,
   });
 
-  const students = uniqBy(studentsQuery.data?.students.data, "id")  ?? [];
+  const students = uniqBy(studentsQuery.data?.students.data, "id") ?? [];
   return (
     <Center>
       <VStack>
