@@ -17,8 +17,10 @@ jobs:
       - uses: bahmutov/npm-install@v1
         with:
           useRollingCache: true
-      - name: Lint
+      - name: format
         run: yarn format:check
+      - name: lint
+        run: yarn lint
 
   build:
     runs-on: ubuntu-latest
