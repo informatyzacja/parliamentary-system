@@ -15,8 +15,5 @@ module.exports = ({ env }) => ({
         defaultReplyTo: env('SMTP_DEFAULT_REPLY_TO', 'hello@example.com'),
       },
     },
-  },
-  'import-export-entries': {
-    enabled: true,
-  },
+  }
 });
