@@ -4,6 +4,7 @@ module.exports = {
     "@alergeek-ventures/eslint-config/react",
     "@alergeek-ventures/eslint-config/tests",
     "@alergeek-ventures/eslint-config/cspell-eslint",
+    "plugin:@next/next/recommended",
   ],
   parser: "@typescript-eslint/parser",
   root: true,
@@ -25,12 +26,6 @@ module.exports = {
   settings: {
     react: {
       version: "detect",
-    },
-    jest: {
-      // not true, we're actually using vitest;
-      // but rules in this plugin (e.g.: no-focused-tests) work pretty well for
-      // us anyways
-      version: 27,
     },
   },
 };
