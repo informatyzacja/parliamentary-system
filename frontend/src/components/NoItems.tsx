@@ -1,5 +1,5 @@
 import { InfoOutlineIcon } from "@chakra-ui/icons";
-import { ScaleFade,Text, VStack } from "@chakra-ui/react";
+import { ScaleFade, Text, VStack } from "@chakra-ui/react";
 import type { ReactNode } from "react";
 import React from "react";
 

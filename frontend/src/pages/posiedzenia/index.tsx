@@ -76,7 +76,10 @@ export default function Meetings() {
                   id={meeting.id}
                   name={meeting.attributes.name}
                   place={meeting.attributes.place.replace(/_/, " ")}
-                  date={format(new Date(meeting.attributes.date as string), "dd.MM.yyyy")}
+                  date={format(
+                    new Date(meeting.attributes.date as string),
+                    "dd.MM.yyyy"
+                  )}
                 />
               </ScaleFade>
             </WrapItem>
