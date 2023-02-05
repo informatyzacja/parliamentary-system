@@ -8,6 +8,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Deploy to remote host
         uses: appleboy/ssh-action@v0.1.7
@@ -18,7 +19,31 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ${{ secrets.APP_DIR }}
+            touch .env
+            echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
+            echo DATABASE_USERNAME={{ secrets.DATABASE_USERNAME }} >> .env
+            echo DATABASE_PASSWORD={{ secrets.DATABASE_PASSWORD }} >> .env
+            cd frontend
+            touch .env.local
+            echo NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} >> .env.local
+            echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env.local
+            echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
+            echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
+            echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
+            echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
+            echo NODE_ENV=production >> .env.local
+            cd ..
+            cd backend
+            touch .env
+            echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
+            echo DATABASE_USERNAME={{ secrets.DATABASE_USERNAME }} >> .env
+            echo DATABASE_PASSWORD={{ secrets.DATABASE_PASSWORD }} >> .env
+            echo JWT_SECRET={{ secrets.JWT_SECRET }} >> .env
+            echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env
+            echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env
+            echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env
+            cd ..
             git pull
-            yarn install
+            yarn install --frozen-lockfile
             yarn build
             pm2 reload ecosystem.config.js
