@@ -26,5 +26,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup env
+        run: |
+          cd frontend
+          touch .env.local
+          echo NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} >> .env.local
+          echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env.local
+          echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
+          echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
+          echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
+          echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
+          echo NODE_ENV=production >> .env.local
+          cd ..
       - name: Build
         run: DOCKER_BUILDKIT=1 docker-compose build

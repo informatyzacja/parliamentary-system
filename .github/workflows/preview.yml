@@ -71,8 +71,8 @@ jobs:
           echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
           echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
           echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
+          echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
           echo NODE_ENV=production >> .env.local
-          echo ${{ secrets.NEXT_PUBLIC_API_URL }} | sed 's/./& /g' 
           cd ..
           yarn --cwd frontend build
 

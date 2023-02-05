@@ -1,4 +1,7 @@
+import { strict as assert } from "assert";
 import type { OAuthConfig, OAuthUserConfig } from "next-auth/providers";
+
+import serverConfig from "@/config.server";
 
 export interface UsosProfile extends Record<string, string> {
   first_name: string;
@@ -10,21 +13,21 @@ export interface UsosProfile extends Record<string, string> {
 export default function UsosProvider<P extends UsosProfile>(
   options: OAuthUserConfig<P>
 ): OAuthConfig<P> {
+  assert(serverConfig.USOS_BASE_URL, "USOS_BASE_URL is not defined");
+
   return {
     id: "usos",
     name: "USOS",
     type: "oauth",
     version: "1.0",
     authorization: {
-      url: "https://apps.usos.pwr.edu.pl/services/oauth/authorize",
+      url: `${serverConfig.USOS_BASE_URL}/services/oauth/authorize`,
     },
-    accessTokenUrl: "https://apps.usos.pwr.edu.pl/services/oauth/access_token",
-    requestTokenUrl:
-      "https://apps.usos.pwr.edu.pl/services/oauth/request_token?scopes=studies|email",
-    profileUrl:
-      "https://apps.usos.pwr.edu.pl/services/users/user?fields=first_name|last_name|sex|student_number|email",
+    accessTokenUrl: `${serverConfig.USOS_BASE_URL}/services/oauth/access_token`,
+    requestTokenUrl: `${serverConfig.USOS_BASE_URL}/services/oauth/request_token?scopes=studies|email`,
+    profileUrl: `${serverConfig.USOS_BASE_URL}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
     userinfo: {
-      url: "https://apps.usos.pwr.edu.pl/services/users/user?fields=first_name|last_name|sex|student_number|email",
+      url: `${serverConfig.USOS_BASE_URL}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
     },
     profile(profile) {
       return {
