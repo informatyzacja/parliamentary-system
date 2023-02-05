@@ -57,6 +57,9 @@ jobs:
           service: bore.pub
           port: 3000
 
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
       - name: Build frontend
         if: steps.check.outputs.triggered == 'true'
         env:
@@ -66,14 +69,11 @@ jobs:
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           USOS_CLIENT_ID: ${{ secrets.USOS_CLIENT_ID }}
           USOS_CLIENT_SECRET: ${{ secrets.USOS_CLIENT_SECRET }}
-        run: |
-          yarn
-          yarn --cwd frontend build
+        run: yarn --cwd frontend build
 
       - name: Starting app
         if: steps.check.outputs.triggered == 'true'
-        run: |
-          yan --cwd frontend start &
+        run: yarn --cwd frontend start &
 
       # Post a comment on the Pull Request with the URL to the tunnel.
       - name: Post preview environment as comment on PR
