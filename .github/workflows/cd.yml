@@ -19,11 +19,13 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd ${{ secrets.APP_DIR }}
+            rm .env
             touch .env
             echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
             echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
             echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
             cd frontend
+            rm .env.local
             touch .env.local
             echo NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} >> .env.local
             echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env.local
@@ -34,6 +36,7 @@ jobs:
             echo NODE_ENV=production >> .env.local
             cd ..
             cd backend
+            rm .env
             touch .env
             echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
             echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
