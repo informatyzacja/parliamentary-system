@@ -50,3 +50,15 @@ jobs:
             yarn install --frozen-lockfile
             yarn build
             pm2 reload ecosystem.config.js
+
+  page-speed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running Page Speed Insights
+        uses: jakepartusch/psi-action@v1.3
+        id: psi
+        with:
+          url: ${{ secrets.NEXTAUTH_URL } }
+          threshold: 70
+          strategy: mobile
+          key: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY }}
