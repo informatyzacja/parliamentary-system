@@ -1,6 +1,17 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import UsosProvider from "../../../providers/UsosProvider";
+import { strict as assert } from "assert";
+
+const secrets = {
+  USOS_CLIENT_ID: process.env.USOS_CLIENT_ID,
+  USOS_CLIENT_SECRET: process.env.USOS_CLIENT_SECRET,
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+};
+
+assert(secrets.USOS_CLIENT_ID, "USOS_CLIENT_ID is not defined");
+assert(secrets.USOS_CLIENT_SECRET, "USOS_CLIENT_SECRET is not defined");
+assert(secrets.NEXT_PUBLIC_API_URL, "NEXT_PUBLIC_API_URL is not defined");
 
 const options = {
   providers: [
@@ -9,8 +20,8 @@ const options = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
     UsosProvider({
-      clientId: process.env.USOS_CLIENT_ID,
-      clientSecret: process.env.USOS_CLIENT_SECRET,
+      clientId: secrets.USOS_CLIENT_ID,
+      clientSecret: secrets.USOS_CLIENT_SECRET,
     }),
   ],
   session: { strategy: "jwt" },
@@ -31,7 +42,7 @@ const options = {
           params.set("access_token", `${account?.access_token}`);
         }
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/auth/${
+          `${secrets.NEXT_PUBLIC_API_URL}/api/auth/${
             account?.provider
           }/callback?${params.toString()}`
         );
