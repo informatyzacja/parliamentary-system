@@ -2,15 +2,21 @@ module.exports = {
   apps: [
     {
       name: "backend",
-      script: "yarn",
-      args: "--cwd backend start",
-      interpreter: "bash",
+      cwd: "backend/",
+      script: "node_modules/.bin/strapi",
+      args: "start",
+      env: {
+        NODE_ENV: "production",
+      },
     },
     {
       name: "frontend",
-      script: "yarn",
-      args: "--cwd frontend start",
-      interpreter: "bash",
+      cwd: "frontend/",
+      script: "node_modules/.bin/next",
+      args: "start",
+      env: {
+        NODE_ENV: "production",
+      },
     },
   ],
 };
