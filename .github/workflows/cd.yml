@@ -21,8 +21,8 @@ jobs:
             cd ${{ secrets.APP_DIR }}
             touch .env
             echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
-            echo DATABASE_USERNAME={{ secrets.DATABASE_USERNAME }} >> .env
-            echo DATABASE_PASSWORD={{ secrets.DATABASE_PASSWORD }} >> .env
+            echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
+            echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
             cd frontend
             touch .env.local
             echo NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} >> .env.local
@@ -36,9 +36,9 @@ jobs:
             cd backend
             touch .env
             echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
-            echo DATABASE_USERNAME={{ secrets.DATABASE_USERNAME }} >> .env
-            echo DATABASE_PASSWORD={{ secrets.DATABASE_PASSWORD }} >> .env
-            echo JWT_SECRET={{ secrets.JWT_SECRET }} >> .env
+            echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
+            echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
+            echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
             echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env
             echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env
             echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env
