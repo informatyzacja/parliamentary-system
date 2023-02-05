@@ -4,10 +4,6 @@ on:
   issue_comment:
     types: [created]
 
-defaults:
-  run:
-    shell: bash # Set the default shell to bash.
-
 jobs:
   check-comment:
     runs-on: ubuntu-latest
