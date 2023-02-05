@@ -10,7 +10,12 @@ import {
 } from "@chakra-ui/react";
 import type { ReactNode } from "react";
 import React from "react";
-import { FaFacebookF, FaLinkedinIn, FaRegEnvelope } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaRegEnvelope,
+} from "react-icons/fa";
 
 const SocialButton = ({
   children,
@@ -75,6 +80,12 @@ export const Footer = () => {
             href={"https://www.facebook.com/SamorzadPWr/"}
           >
             <FaFacebookF />
+          </SocialButton>
+          <SocialButton
+            label={"Instagram"}
+            href={"https://www.instagram.com/samorzadpwr/"}
+          >
+            <FaInstagram />
           </SocialButton>
           <SocialButton
             label={"LinkedIn"}
