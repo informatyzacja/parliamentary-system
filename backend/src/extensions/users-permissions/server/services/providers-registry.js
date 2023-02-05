@@ -24,7 +24,7 @@ const getInitialProviders = ({ purest }) => ({
     const secrets = {
       CLIENT_ID: process.env['USOS_CLIENT_ID'],
       CLIENT_SECRET: process.env['USOS_CLIENT_SECRET'],
-      BASE_URL: process.env['USOS_BASE_URL'],
+      BASE_URL: process.env['USOS_BASE_URL']?.replace(/\/$/, ''),
     };
 
     assert(secrets.CLIENT_ID, 'USOS_CLIENT_ID is not defined');

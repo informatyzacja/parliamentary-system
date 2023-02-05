@@ -12,6 +12,8 @@ import Head from "next/head";
 import type { Session as NextAuthSession } from "next-auth";
 import { getSession, SessionProvider } from "next-auth/react";
 
+import config from "@/config";
+
 import Layout from "../components/Layout";
 import { theme } from "../styles/theme";
 
@@ -25,7 +27,7 @@ declare module "next-auth" {
 }
 
 const httpLink = createHttpLink({
-  uri: process.env.NEXT_PUBLIC_API_URL + "/graphql",
+  uri: config.NEXT_PUBLIC_API_URL + "/graphql",
 });
 
 const authLink = setContext(
