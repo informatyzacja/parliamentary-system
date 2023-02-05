@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "concurrently -n NextJS,GraphQL \"yarn dev:next\" \"yarn codegen:watch\"",
@@ -23,9 +23,15 @@
     {
       "name": "Michał Korczak",
       "url": "https://omikor.in"
+    },
+    {
+      "name": "Dawid Stachowiak"
+    },
+    {
+      "name": "Bartosz Gotowski"
     }
   ],
-  "license": "UNLICENSED",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/informatyzacja/parliamentary-system/issues"
   },
