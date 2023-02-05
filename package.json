@@ -1,7 +1,7 @@
 {
   "name": "parliamentary-system",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "workspaces": [
     "backend",
     "frontend"
@@ -28,9 +28,15 @@
     {
       "name": "Michał Korczak",
       "url": "https://omikor.in"
+    },
+    {
+      "name": "Dawid Stachowiak"
+    },
+    {
+      "name": "Bartosz Gotowski"
     }
   ],
-  "license": "UNLICENSED",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/informatyzacja/parliamentary-system/issues"
   },
