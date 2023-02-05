@@ -17,7 +17,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /home/dawid/parliamentary-system
+            cd ${{ secrets.APP_DIR }}
             git pull
             yarn install
             yarn build
