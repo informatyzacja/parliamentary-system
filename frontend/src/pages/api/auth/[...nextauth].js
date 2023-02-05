@@ -6,17 +6,34 @@ import { strict as assert } from "assert";
 import serverConfig from "@/config.server";
 import config from "@/config";
 
-const options = {
-  providers: [
+const providers = [];
+
+if (serverConfig.GOOGLE_CLIENT_ID && serverConfig.GOOGLE_CLIENT_SECRET) {
+  providers.push(
     GoogleProvider({
       clientId: serverConfig.GOOGLE_CLIENT_ID,
       clientSecret: serverConfig.GOOGLE_CLIENT_SECRET,
-    }),
+    })
+  );
+}
+
+if (serverConfig.USOS_CLIENT_ID && serverConfig.USOS_CLIENT_SECRET) {
+  providers.push(
     UsosProvider({
       clientId: serverConfig.USOS_CLIENT_ID,
       clientSecret: serverConfig.USOS_CLIENT_SECRET,
-    }),
-  ],
+    })
+  );
+}
+
+if (providers.length === 0) {
+  throw new Error(
+    "No authentication providers configured. Please configure at least one provider."
+  );
+}
+
+const options = {
+  providers,
   session: { strategy: "jwt" },
   callbacks: {
     async session({ session, token, user }) {

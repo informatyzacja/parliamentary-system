@@ -1,3 +1,4 @@
+import { strict as assert } from "assert";
 import type { OAuthConfig, OAuthUserConfig } from "next-auth/providers";
 
 import serverConfig from "@/config.server";
@@ -12,6 +13,8 @@ export interface UsosProfile extends Record<string, string> {
 export default function UsosProvider<P extends UsosProfile>(
   options: OAuthUserConfig<P>
 ): OAuthConfig<P> {
+  assert(serverConfig.USOS_BASE_URL, "USOS_BASE_URL is not defined");
+
   return {
     id: "usos",
     name: "USOS",
