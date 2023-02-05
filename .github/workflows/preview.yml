@@ -62,14 +62,17 @@ jobs:
 
       - name: Build frontend
         if: steps.check.outputs.triggered == 'true'
-        env:
-          NODE_ENV: production
-          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}}
-          NEXTAUTH_URL: ${{ steps.expose-tunnel.outputs.tunnel-url }}
-          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          USOS_CLIENT_ID: ${{ secrets.USOS_CLIENT_ID }}
-          USOS_CLIENT_SECRET: ${{ secrets.USOS_CLIENT_SECRET }}
-        run: yarn --cwd frontend build
+        run: |
+          cd frontend
+          touch .env.local
+          echo NEXTAUTH_URL=${{ steps.expose-tunnel.outputs.tunnel-url }} >> .env.local
+          echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}} >> .env.local
+          echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
+          echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
+          echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
+          echo NODE_ENV=production >> .env.local
+          cd ..
+          yarn --cwd frontend build
 
       - name: Starting app
         if: steps.check.outputs.triggered == 'true'
