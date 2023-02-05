@@ -58,7 +58,7 @@ jobs:
         uses: jakepartusch/psi-action@v1.3
         id: psi
         with:
-          url: ${{ secrets.NEXTAUTH_URL } }
+          url: ${{ secrets.NEXTAUTH_URL }}
           threshold: 70
           strategy: mobile
           key: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY }}
