@@ -84,3 +84,5 @@ docker compose -f docker-compose.yml up --force-recreate -V
 Zgłaszanie błędów mile widziane!
 
 Projekt jest prowadzony przez wyznaczone osoby i nie przyjmuje na ten moment PR z zewnątrz.
+
+testing preview
