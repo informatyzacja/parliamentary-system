@@ -12,6 +12,7 @@ import type { ReactNode } from "react";
 import React from "react";
 import {
   FaFacebookF,
+  FaGithub,
   FaInstagram,
   FaLinkedinIn,
   FaRegEnvelope,
@@ -92,6 +93,12 @@ export const Footer = () => {
             href={"https://www.linkedin.com/company/samorzad-studencki-pwr/"}
           >
             <FaLinkedinIn />
+          </SocialButton>
+          <SocialButton
+            label={"GitHub"}
+            href={"https://github.com/informatyzacja/parliamentary-system/"}
+          >
+            <FaGithub />
           </SocialButton>
         </Stack>
       </Container>
