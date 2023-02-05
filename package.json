@@ -49,7 +49,7 @@
     "husky": "^8.0.3",
     "npm-run-all": "4.1.5",
     "prettier": "^2.8.3",
-    "wait-on": "5.2.1"
+    "wait-on": "^7.0.1"
   },
   "resolutions": {
     "graphql": "16.6.0",
