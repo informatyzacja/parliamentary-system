@@ -11,7 +11,7 @@
     "dev:frontend": "wait-on http://localhost:1337/admin && yarn --cwd frontend dev",
     "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
     "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
-    "postinstall": "husky install",
+    "postinstall": "node_modules/.bin/husky-run install",
     "lint": "npm-run-all -l -p lint:*",
     "lint:frontend": "yarn --cwd frontend lint",
     "format:check": "prettier --ignore-unknown --check backend frontend/src"
