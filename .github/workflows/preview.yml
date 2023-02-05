@@ -1,0 +1,105 @@
+name: Preview
+
+on:
+  issue_comment:
+    types: [created]
+
+defaults:
+  run:
+    shell: bash # Set the default shell to bash.
+
+jobs:
+  check-comment:
+    runs-on: ubuntu-latest
+    steps:
+      # The first thing we do is check if the comment was indeed a trigger.
+      - name: Check if the comment was a command, and react with 👀 if it was
+        if: github.event.issue.pull_request
+        uses: famly/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: "/preview"
+          reaction: eyes
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      # When triggered by a comment, we do not have access to the usual github.sha
+      # value, so we get it manually.
+      - name: Extract current commit
+        if: steps.check.outputs.triggered == 'true'
+        id: sha
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            const { owner, repo, number: pull_number } = context.issue;
+            const pr = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number,
+            });
+            return pr.data.head.sha
+
+      # Checkout our code using the commit that we got from looking up the Pull Request the comment was from.
+      - uses: actions/checkout@v3
+        if: steps.check.outputs.triggered == 'true'
+        with:
+          ref: ${{ steps.sha.outputs.result }}
+
+      # Setup tools/dependencies and start our development environment that we want to expose to our users.
+      # NOTE: This will be the part you at least need to change.
+      - uses: actions/setup-node@v3
+        if: steps.check.outputs.triggered == 'true'
+        with:
+          node-version: 16
+
+      - name: Start frontend tunnel
+        id: expose-tunnel
+        if: steps.check.outputs.triggered == 'true'
+        uses: codetalkio/expose-tunnel@v1
+        with:
+          service: bore.pub
+          port: 3000
+
+      - name: Build frontend
+        if: steps.check.outputs.triggered == 'true'
+        env:
+          NODE_ENV: production
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}}
+          NEXTAUTH_URL: ${{ steps.expose-tunnel.outputs.tunnel-url }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          USOS_CLIENT_ID: ${{ secrets.USOS_CLIENT_ID }}
+          USOS_CLIENT_SECRET: ${{ secrets.USOS_CLIENT_SECRET }}
+        run: |
+          yarn
+          yarn --cwd frontend build
+
+      - name: Starting app
+        if: steps.check.outputs.triggered == 'true'
+        run: |
+          yan --cwd frontend start &
+
+      # Post a comment on the Pull Request with the URL to the tunnel.
+      - name: Post preview environment as comment on PR
+        uses: actions/github-script@v6
+        if: steps.expose-tunnel.outputs.tunnel-url != ''
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+                issue_number: "${{ github.event.issue.number || github.event.pull_request.number }}",
+                owner: "${{ github.repository_owner }}",
+                repo: "${{ github.event.repository.name }}",
+                body: `**🖼️ Preview Environment:** ${{ steps.expose-tunnel.outputs.tunnel-url }}
+
+              You can stop the preview by clicking "Cancel" on the [GitHub Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).`
+            })
+
+      # Keep the CI job alive for 30 minutes before we time out.
+      - name: Wait for 30 minutes before timing out (unless overwritten)
+        if: steps.expose-tunnel.outputs.tunnel-url != ''
+        run: |
+          echo "Tunnel URL is ${{ steps.expose-tunnel.outputs.tunnel-url }}"
+          timeout 30m sleep 7200
+          # Gracefully exit if the timeout hits.
+          exit 0
