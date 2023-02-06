@@ -26,6 +26,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Setup env
         run: |
           cd frontend
@@ -38,5 +41,7 @@ jobs:
           echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
           echo NODE_ENV=production >> .env.local
           cd ..
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
       - name: Build
-        run: DOCKER_BUILDKIT=1 docker-compose build
+        run: yarn build
