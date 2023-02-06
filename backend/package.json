@@ -42,7 +42,7 @@
     "@strapi/provider-email-nodemailer": "^4.6.0",
     "@strapi/strapi": "^4.6.0",
     "graphql": "^16.6.0",
-    "pg": "^8.8.0",
+    "pg": "^8.9.0",
     "react-select": "^5.7.0"
   },
   "strapi": {
