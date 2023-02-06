@@ -43,6 +43,8 @@ jobs:
           cd ..
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
+        with:
+          useRollingCache: true
       - name: Cache build
         uses: actions/cache@v3
         with:
