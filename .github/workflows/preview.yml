@@ -18,7 +18,6 @@ jobs:
           reaction: eyes
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
       # When triggered by a comment, we do not have access to the usual github.sha
       # value, so we get it manually.
       - name: Extract current commit
@@ -35,32 +34,31 @@ jobs:
               pull_number,
             });
             return pr.data.head.sha
-
-      # Checkout our code using the commit that we got from looking up the Pull Request the comment was from.
       - uses: actions/checkout@v3
         if: steps.check.outputs.triggered == 'true'
         with:
           ref: ${{ steps.sha.outputs.result }}
-
-      # Setup tools/dependencies and start our development environment that we want to expose to our users.
-      # NOTE: This will be the part you at least need to change.
       - uses: actions/setup-node@v3
         if: steps.check.outputs.triggered == 'true'
         with:
           node-version: 16
-
       - name: Start frontend tunnel
         id: expose-tunnel
         if: steps.check.outputs.triggered == 'true'
         uses: codetalkio/expose-tunnel@v1
         with:
-          service: bore.pub
+          service: localhost.run
           port: 3000
-
       - name: Install dependencies
         if: steps.check.outputs.triggered == 'true'
         uses: bahmutov/npm-install@v1
-
+      - name: Cache build
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/frontend/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - name: Build frontend
         if: steps.check.outputs.triggered == 'true'
         run: |
