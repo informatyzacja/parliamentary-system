@@ -59,17 +59,15 @@ export const Navbar = () => {
         </Flex>
         <Flex flex={1} justify={{ base: "center", md: "space-between" }}>
           <NextLink href="/" passHref>
-            <Link>
-              <Image
-                src="/logo.svg"
-                width="200"
-                height="50"
-                style={{
-                  cursor: "pointer",
-                }}
-                alt="Logo samorządu"
-              />
-            </Link>
+            <Image
+              src="/logo.svg"
+              width="200"
+              height="50"
+              style={{
+                cursor: "pointer",
+              }}
+              alt="Logo samorządu"
+            />
           </NextLink>
           {status === "authenticated" ? (
             <Flex display={{ base: "none", md: "flex" }} ml={10}>
@@ -112,33 +110,33 @@ const DesktopNav = () => {
     <Stack direction={"row"} spacing={6}>
       {NAV_ITEMS.map((navItem) => (
         <Center key={navItem.label}>
-          <NextLink href={navItem.href ?? "#"} passHref>
-            <Link
-              onMouseOver={() => {
-                if (navItem.prefetch && termOfOffice) {
-                  void client.query({
-                    query: navItem.prefetch,
-                    variables: {
-                      termId: termOfOffice,
-                      pagination: {
-                        page: 1,
-                        pageSize: 10,
-                      },
+          <Link
+            as={NextLink}
+            href={navItem.href}
+            onMouseOver={() => {
+              if (navItem.prefetch && termOfOffice) {
+                void client.query({
+                  query: navItem.prefetch,
+                  variables: {
+                    termId: termOfOffice,
+                    pagination: {
+                      page: 1,
+                      pageSize: 10,
                     },
-                  });
-                }
-              }}
-              p={2}
-              fontSize={"sm"}
-              fontWeight={500}
-              color={linkColor}
-              _hover={{
-                color: linkHoverColor,
-              }}
-            >
-              {navItem.label}
-            </Link>
-          </NextLink>
+                  },
+                });
+              }
+            }}
+            p={2}
+            fontSize={"sm"}
+            fontWeight={500}
+            color={linkColor}
+            _hover={{
+              color: linkHoverColor,
+            }}
+          >
+            {navItem.label}
+          </Link>
         </Center>
       ))}
     </Stack>
@@ -173,8 +171,8 @@ const MobileNavItem = ({ label, href }: NavItem) => {
       >
         <Link
           as={NextLink}
+          href={href}
           fontWeight={600}
-          href={href ?? "#"}
           color={useColorModeValue("gray.600", "gray.200")}
         >
           {label}
