@@ -52,7 +52,8 @@
     "wait-on": "5.2.1"
   },
   "resolutions": {
-    "graphql": "16.6.0"
+    "graphql": "16.6.0",
+    "**/graphql": "16.6.0"
   },
   "volta": {
     "node": "16.19.0"
