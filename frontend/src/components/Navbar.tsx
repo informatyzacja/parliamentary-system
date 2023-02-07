@@ -1,22 +1,32 @@
 import { useApolloClient } from "@apollo/client";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
+  Avatar,
   Box,
   Button,
   Center,
   Collapse,
+  Divider,
   Flex,
+  HStack,
   IconButton,
   Link,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
   Stack,
   useColorModeValue,
   useDisclosure,
+  VStack,
 } from "@chakra-ui/react";
 import type { DocumentNode } from "graphql";
 import { useAtomValue } from "jotai";
 import Image from "next/image";
 import NextLink from "next/link";
-import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import {
   LatestMeetingsAndResolutionsDocument,
@@ -28,13 +38,14 @@ import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
-  const { status } = useSession();
+  const { status, data } = useSession();
+  const router = useRouter();
 
   return (
     <Box mb={16}>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
-        color={useColorModeValue("gray.600", "white")}
+        bg={"white"}
+        color={"gray.600"}
         minH={"60px"}
         maxW="container.xl"
         mt={4}
@@ -43,20 +54,27 @@ export const Navbar = () => {
         px={{ base: 4 }}
         align={"center"}
       >
-        <Flex
-          flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
-        >
-          <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
-          />
-        </Flex>
+        {status === "authenticated" ? (
+          <Flex
+            flex={{ base: 1, md: "auto" }}
+            ml={{ base: -2 }}
+            display={{ base: "flex", md: "none" }}
+          >
+            <IconButton
+              onClick={onToggle}
+              icon={
+                isOpen ? (
+                  <CloseIcon w={3} h={3} />
+                ) : (
+                  <HamburgerIcon w={5} h={5} />
+                )
+              }
+              variant={"ghost"}
+              aria-label={"Toggle Navigation"}
+            />
+          </Flex>
+        ) : null}
+
         <Flex flex={1} justify={{ base: "center", md: "space-between" }}>
           <NextLink href="/" passHref>
             <Image
@@ -90,12 +108,50 @@ export const Navbar = () => {
               Zaloguj się
             </Button>
           ) : null}
+          {status === "authenticated" ? (
+            <Box ml={4} display={{ base: "none", md: "flex" }}>
+              <Menu direction="rtl" placement="bottom" autoSelect={false}>
+                <MenuButton
+                  as={Button}
+                  rounded={"full"}
+                  variant={"link"}
+                  cursor={"pointer"}
+                  minW={0}
+                  border={"2px solid transparent"}
+                  _hover={{
+                    border: "2px solid black",
+                  }}
+                >
+                  <Avatar size={"sm"} name={data.user?.name ?? ""} />
+                </MenuButton>
+                <MenuList alignItems={"center"} p={3}>
+                  <Center>
+                    <Avatar size={"2xl"} name={data.user?.name ?? ""} />
+                  </Center>
+                  <Center mt={4}>
+                    <p>{data.user?.email}</p>
+                  </Center>
+                  <MenuDivider />
+                  <MenuItem
+                    onClick={() => {
+                      void signOut().then(() => {
+                        void router.push("/");
+                      });
+                    }}
+                  >
+                    Wyloguj się
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            </Box>
+          ) : null}
         </Stack>
       </Flex>
-
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
+      {status === "authenticated" ? (
+        <Collapse in={isOpen} animateOpacity>
+          <MobileNav />
+        </Collapse>
+      ) : null}
     </Box>
   );
 };
@@ -144,6 +200,9 @@ const DesktopNav = () => {
 };
 
 const MobileNav = () => {
+  const { data } = useSession();
+  const router = useRouter();
+
   return (
     <Stack
       bg={useColorModeValue("white", "gray.800")}
@@ -154,6 +213,23 @@ const MobileNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <Divider />
+      <VStack>
+        <HStack>
+          <Avatar size="sm" name={data?.user?.name ?? ""} />
+          <p>{data?.user?.email}</p>
+        </HStack>
+        <Button
+          variant="outline"
+          onClick={() => {
+            void signOut().then(() => {
+              void router.push("/");
+            });
+          }}
+        >
+          Wyloguj się
+        </Button>
+      </VStack>
     </Stack>
   );
 };
@@ -193,7 +269,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   {
     label: "Aktualności",
-    href: "/aktualnosci",
+    href: "/",
     prefetch: LatestMeetingsAndResolutionsDocument,
   },
   {
