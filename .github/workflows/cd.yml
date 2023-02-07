@@ -12,11 +12,14 @@ jobs:
     steps:
       - name: Deploy to remote host
         uses: appleboy/ssh-action@v0.1.7
+        env:
+          CI: true
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
+          envs: CI
           script: |
             cd ${{ secrets.APP_DIR }}
             rm .env
