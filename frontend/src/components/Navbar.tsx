@@ -42,12 +42,11 @@ export const Navbar = () => {
   const router = useRouter();
 
   return (
-    <Box mb={16}>
+    <Box mb={16} w="100%" px={16}>
       <Flex
         bg={"white"}
         color={"gray.600"}
         minH={"60px"}
-        maxW="container.xl"
         mt={4}
         mx="auto"
         py={{ base: 2 }}

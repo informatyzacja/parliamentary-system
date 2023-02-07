@@ -23,8 +23,8 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <VStack minH="100vh" spacing={8} className={`${lato.variable}`}>
+      <Navbar />
       <Container maxW="container.xl" flex={1} display="flex" flexDir="column">
-        <Navbar />
         <chakra.main>
           <>
             {status === "authenticated" ? children : null}
