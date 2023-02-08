@@ -19,7 +19,6 @@ jobs:
         with:
           useRollingCache: true
       - name: Build frontend
-        if: steps.check.outputs.triggered == 'true'
         run: |
           cd frontend
           touch .env.local
