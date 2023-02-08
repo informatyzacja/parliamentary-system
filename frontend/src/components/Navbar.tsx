@@ -120,6 +120,7 @@ export const Navbar = () => {
                   _hover={{
                     border: "2px solid black",
                   }}
+                  aria-label="Menu użytkownika"
                 >
                   <Avatar size={"sm"} name={data.user?.name ?? ""} />
                 </MenuButton>
