@@ -42,7 +42,7 @@ export const Navbar = () => {
   const router = useRouter();
 
   return (
-    <Box mb={16} w="100%" px={16}>
+    <Box mb={16} w="100%" px={{ base: 0, md: 16 }}>
       <Flex
         bg={"white"}
         color={"gray.600"}

@@ -70,7 +70,7 @@ function OrganisationStructure() {
         {studentsQuery.loading ? <Loader /> : null}
         {students.length > 0 ? (
           <ScaleFade in={true}>
-            <TableContainer px={4} maxW={["100%", null, null, "1000px"]}>
+            <TableContainer px={4} maxW={["95vw", null, null, "1000px"]}>
               <Table variant="simple" size="lg">
                 <Thead>
                   <Tr>
