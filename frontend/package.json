@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.graphql,.gql .",
     "codegen": "graphql-codegen --config codegen.ts",
-    "codegen:watch": "yarn codegen --watch"
+    "codegen:watch": "yarn codegen --watch",
+    "test:e2e": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -72,11 +73,13 @@
     "@graphql-codegen/typescript-resolvers": "^3.0.0",
     "@next/eslint-plugin-next": "^13.1.6",
     "@types/node": "^18.13.0",
+    "@playwright/test": "^1.30.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.6",
     "@types/react-pdf": "^6.2.0",
     "babel-eslint": "^10.1.0",
     "concurrently": "^7.6.0",
+    "dotenv": "^16.0.3",
     "eslint": "^8.33.0",
     "graphql-tag": "^2.12.6",
     "postcss": "^8.4.16",

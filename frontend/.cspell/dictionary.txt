@@ -7,3 +7,4 @@ uchwaly
 aktualnosci
 ajna
 codegen
+Gotowski
