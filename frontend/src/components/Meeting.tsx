@@ -47,7 +47,7 @@ export const Meeting = ({
       transition="all 0.2s ease-in-out"
       transform="scale(1)"
       py={6}
-      w="400px"
+      w={{ base: "95vw", md: "400px" }}
     >
       <Flex
         maxW={"445px"}
