@@ -76,16 +76,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_AUTH_TOKEN }}
         run: yarn semantic-release
-
-  page-speed:
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - name: Running Page Speed Insights
-        uses: jakepartusch/psi-action@v1.3
-        id: psi
-        with:
-          url: ${{ vars.NEXTAUTH_URL }}
-          threshold: 70
-          strategy: mobile
-          key: ${{ secrets.PAGE_SPEED_INSIGHTS_API_KEY }}
