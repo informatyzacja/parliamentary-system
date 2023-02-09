@@ -10,10 +10,10 @@
     framer-motion "^6.3.11"
     lodash.union "^4.6.0"
 
-"@alergeek-ventures/eslint-config@^5.0.43":
-  version "5.0.43"
-  resolved "https://registry.yarnpkg.com/@alergeek-ventures/eslint-config/-/eslint-config-5.0.43.tgz#eaab145a0b451569c11bedfb74c9d8fcbb45e834"
-  integrity sha512-sgWzUe2zpjeYBwCM5zEs5bzzK+e3RTOjxKTsoBg5x4EZvsi8Na1PqYakicusf2tdbpvLiIR1+ahFaxHa86lqxw==
+"@alergeek-ventures/eslint-config@^5.0.44":
+  version "5.0.44"
+  resolved "https://registry.yarnpkg.com/@alergeek-ventures/eslint-config/-/eslint-config-5.0.44.tgz#32c14406ef723bc95d4b109786b8df33ca756367"
+  integrity sha512-6utq5eXEciL5jaReQJVGeCtnCign7NCLRRahKfcukMAoql7V40Y0EATHb1VEPkWKWHYinJR9hmXiFhtK/zt9Gw==
   dependencies:
     "@babel/core" "7.20.12"
     "@babel/eslint-parser" "7.19.1"
@@ -34,7 +34,7 @@
     eslint-plugin-react-native "4.0.0"
     eslint-plugin-react-native-a11y "3.3.0"
     eslint-plugin-simple-import-sort "10.0.0"
-    eslint-plugin-testing-library "5.10.0"
+    eslint-plugin-testing-library "5.10.1"
 
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
@@ -9044,10 +9044,10 @@ eslint-plugin-simple-import-sort@10.0.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-10.0.0.tgz#cc4ceaa81ba73252427062705b64321946f61351"
   integrity sha512-AeTvO9UCMSNzIHRkg8S6c3RPy5YEwKWSQPx3DYghLedo2ZQxowPFLGDN1AZ2evfg6r6mjBSZSLxLFsWSu3acsw==
 
-eslint-plugin-testing-library@5.10.0:
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-testing-library/-/eslint-plugin-testing-library-5.10.0.tgz#7fc5fec639ae7f84f434562560cf26cfc0ab329d"
-  integrity sha512-aTOsCAEI9trrX3TLOnsskfhe57DmsjP/yMKLPqg4ftdRvfR4qut2PGWUa8TwP7whZbwMzJjh98tgAPcE8vdHow==
+eslint-plugin-testing-library@5.10.1:
+  version "5.10.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-testing-library/-/eslint-plugin-testing-library-5.10.1.tgz#16ef8adb74d59a4dda24db1d5e750a0ee9b79471"
+  integrity sha512-GRy87AqUi2Ij69pe0YnOXm3oGBCgnFwfIv+Hu9q/kT3jL0pX1cXA7aO+oJnvdpbJy2+riOPqGsa3iAkL888NLg==
   dependencies:
     "@typescript-eslint/utils" "^5.43.0"
 
