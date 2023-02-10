@@ -2,7 +2,7 @@
 
 const jwt = require('@strapi/plugin-users-permissions/server/services/jwt');
 const providers = require('./providers');
-const providerRegistry = require('./providers-registry');
+const providersRegistry = require('./providers-registry');
 const user = require('@strapi/plugin-users-permissions/server/services/user');
 const role = require('@strapi/plugin-users-permissions/server/services/role');
 const usersPermissions = require('@strapi/plugin-users-permissions/server/services/users-permissions');
@@ -12,6 +12,6 @@ module.exports = {
   providers,
   role,
   user,
-  'providers-registry': providerRegistry,
+  'providers-registry': providersRegistry,
   'users-permissions': usersPermissions,
 };

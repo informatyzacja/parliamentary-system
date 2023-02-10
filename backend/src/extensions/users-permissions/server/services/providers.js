@@ -33,6 +33,39 @@ module.exports = ({ strapi }) => {
     });
   };
 
+  const checkStudentPermissions = async (profile) => {
+    const global = await strapi.query('api::global.global').findOne({});
+
+    if (_.isEmpty(global.private_config.allowed_student_numbers)) {
+      throw new Error('Allowed student numbers missing in config.');
+    }
+
+    const newStudentNumber = parseInt(profile.student_number);
+
+    const isStudentAllowed = global.private_config.allowed_student_numbers.find(
+      (allowedStudentNumber) => newStudentNumber === allowedStudentNumber
+    );
+
+    if (!isStudentAllowed) {
+      throw new Error('You are not allowed to create an account');
+    }
+  };
+
+  const createOrUpdateStudent = async (studentData) => {
+    const student = await strapi.query('api::student.student').findOne({
+      where: { student_number: studentData.student_number },
+    });
+
+    if (_.isEmpty(student)) {
+      strapi.query('api::student.student').create({ data: studentData });
+    } else {
+      strapi.query('api::student.student').update({
+        where: { student_number: studentData.student_number },
+        data: studentData,
+      });
+    }
+  };
+
   /**
    * Connect thanks to a third-party provider.
    *
@@ -76,7 +109,37 @@ module.exports = ({ strapi }) => {
       throw new Error('Register action is actually not available.');
     }
 
+    await checkStudentPermissions(profile);
+
+    // Student record auto creation
+    let studentData;
+
+    let newProfile = profile;
+
+    if (provider === 'usos') {
+      studentData = {
+        name: profile.first_name,
+        surname: profile.last_name,
+        student_number: profile.student_number,
+      };
+
+      newProfile = {
+        username: profile.username,
+        email: profile.email,
+      };
+    }
+
     if (!_.isEmpty(user)) {
+      // temporary relation fix until every user login for the first time
+      if (provider === 'usos') {
+        createOrUpdateStudent({
+          ...studentData,
+          user: {
+            connect: [user.id],
+          },
+        });
+      }
+
       return user;
     }
 
@@ -91,7 +154,7 @@ module.exports = ({ strapi }) => {
 
     // Create the new user.
     const newUser = {
-      ...profile,
+      ...newProfile,
       email, // overwrite with lowercased email
       provider,
       role: defaultRole.id,
@@ -101,6 +164,15 @@ module.exports = ({ strapi }) => {
     const createdUser = await strapi
       .query('plugin::users-permissions.user')
       .create({ data: newUser });
+
+    if (provider === 'usos') {
+      createOrUpdateStudent({
+        ...studentData,
+        user: {
+          connect: [createdUser.id],
+        },
+      });
+    }
 
     return createdUser;
   };
