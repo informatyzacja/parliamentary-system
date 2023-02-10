@@ -218,6 +218,7 @@ export type GlobalEntityResponse = {
 
 export type GlobalInput = {
   current_term_of_office: InputMaybe<Scalars['ID']>;
+  private_config: InputMaybe<Scalars['JSON']>;
 };
 
 export type I18NLocale = {
@@ -956,7 +957,7 @@ export type StringFilterInput = {
 export type Student = {
   __typename?: 'Student';
   createdAt: Maybe<Scalars['DateTime']>;
-  department: Enum_Student_Department;
+  department: Maybe<Enum_Student_Department>;
   functions: Maybe<Array<Maybe<ComponentStudentCouncilFunctions>>>;
   name: Scalars['String'];
   student_number: Scalars['Long'];

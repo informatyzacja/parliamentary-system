@@ -40,7 +40,7 @@
         "Filia w Wałbrzychu",
         "Filia w Legnicy"
       ],
-      "required": true
+      "required": false
     },
     "student_number": {
       "type": "biginteger",

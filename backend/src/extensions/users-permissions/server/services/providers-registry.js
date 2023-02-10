@@ -42,7 +42,7 @@ const getInitialProviders = ({ purest }) => ({
     );
     return new Promise((resolve, reject) => {
       client.getProtectedResource(
-        `${secrets.BASE_URL}/services/users/user?fields=student_number|email`,
+        `${secrets.BASE_URL}/services/users/user?fields=first_name|last_name|student_number|email`,
         'GET',
         query.oauth_token,
         query.oauth_token_secret,
@@ -54,6 +54,9 @@ const getInitialProviders = ({ purest }) => ({
             resolve({
               username: data.student_number,
               email: data.email,
+              first_name: data.first_name,
+              last_name: data.last_name,
+              student_number: data.student_number,
             });
           }
         }

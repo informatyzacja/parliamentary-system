@@ -16,6 +16,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::term-of-office.term-of-office"
+    },
+    "private_config": {
+      "type": "json",
+      "private": true
     }
   }
 }
