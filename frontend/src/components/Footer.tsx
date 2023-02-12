@@ -13,6 +13,7 @@ import React from "react";
 import {
   FaFacebookF,
   FaGithub,
+  FaGlobe,
   FaInstagram,
   FaLinkedinIn,
   FaRegEnvelope,
@@ -68,11 +69,12 @@ export const Footer = () => {
         align="center"
       >
         <Text textAlign="center">
-          <Link href="https://samorzad.pwr.edu.pl/" target="_blank">
-            Samorząd Studencki PWr
-          </Link>
+          Made with ❤️ by Komisja ds. Informatyzacji
         </Text>
         <Stack direction={"row"} spacing={6}>
+          <SocialButton label={"WWW"} href={"https://samorzad.pwr.edu.pl/"}>
+            <FaGlobe />
+          </SocialButton>
           <SocialButton label={"Email"} href={"mailto:samorzad@pwr.edu.pl"}>
             <FaRegEnvelope />
           </SocialButton>
