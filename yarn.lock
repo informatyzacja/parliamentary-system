@@ -10,18 +10,18 @@
     framer-motion "^6.3.11"
     lodash.union "^4.6.0"
 
-"@alergeek-ventures/eslint-config@^5.0.47":
-  version "5.0.47"
-  resolved "https://registry.yarnpkg.com/@alergeek-ventures/eslint-config/-/eslint-config-5.0.47.tgz#fdf52317bb6e3694a74a21f6379b8361f50adcbb"
-  integrity sha512-VO8cysWiTQq47N+dgEtaJ2COnw2EYXv86sBecO9n76DOqhy9+eZqDMiJ3q0TfpzmAtvcDI1FQUOfpbvqLx66tA==
+"@alergeek-ventures/eslint-config@^5.0.49":
+  version "5.0.49"
+  resolved "https://registry.yarnpkg.com/@alergeek-ventures/eslint-config/-/eslint-config-5.0.49.tgz#6ee28d3ac2aba40f05f5e41c52132c2d45075ace"
+  integrity sha512-hY7gftwKgyulXaihqy4hHcX8N0AMrDYwlvl8AZxJRkLcUTydv+yFXfw6H/ZjKtve0Zmm5zA26OSJ6eUjBfMCPw==
   dependencies:
     "@babel/core" "7.20.12"
     "@babel/eslint-parser" "7.19.1"
     "@cspell/dict-pl_pl" "2.0.1"
-    "@cspell/eslint-plugin" "6.23.1"
+    "@cspell/eslint-plugin" "6.24.0"
     "@rushstack/eslint-patch" "1.2.0"
-    "@typescript-eslint/eslint-plugin" "5.51.0"
-    "@typescript-eslint/parser" "5.51.0"
+    "@typescript-eslint/eslint-plugin" "5.52.0"
+    "@typescript-eslint/parser" "5.52.0"
     eslint "8.34.0"
     eslint-import-resolver-typescript "3.5.3"
     eslint-plugin-cypress "2.12.1"
@@ -2112,10 +2112,10 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@cspell/cspell-bundled-dicts@6.23.1":
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/@cspell/cspell-bundled-dicts/-/cspell-bundled-dicts-6.23.1.tgz#d1b8f466e4a2c9a87840078028e2c0f6a2757418"
-  integrity sha512-yOJ256MsPjzsnO5PBA+0aHpJmMs11aZLpnD29BdhC86kErBuTkPXnYOU4zZtya6g190Uft9i7UejjyzmPH8O8w==
+"@cspell/cspell-bundled-dicts@6.24.0":
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/@cspell/cspell-bundled-dicts/-/cspell-bundled-dicts-6.24.0.tgz#b7722c4333db84413b947ea2385aaa798660a1e5"
+  integrity sha512-IH7bOxSCN9VdtuOXuvwL+iORj6OCxi8bV/dpPrhwZ5Amg4f8jUxgVcImsUqvZnPjXjG5ng8Qw8FsjjDyOTaLdw==
   dependencies:
     "@cspell/dict-ada" "^4.0.1"
     "@cspell/dict-aws" "^3.0.0"
@@ -2163,20 +2163,20 @@
     "@cspell/dict-typescript" "^3.1.0"
     "@cspell/dict-vue" "^3.0.0"
 
-"@cspell/cspell-pipe@6.23.1":
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/@cspell/cspell-pipe/-/cspell-pipe-6.23.1.tgz#691c7fe2d969b5215e9d5c07982b6bcd4a9a0baf"
-  integrity sha512-ulQpa45m3UWAnlzCQbxcxl71RKQcooo51BbdzKZJI/QeHuNu8VAdRiWs5A3ZytITWASXSQBJci5XMOPvvZvofg==
+"@cspell/cspell-pipe@6.24.0":
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/@cspell/cspell-pipe/-/cspell-pipe-6.24.0.tgz#e006918fa0b27c02d080141e1deb953cce3b8dbf"
+  integrity sha512-vAzCo5WVp0oUWN5tcV3oFBBDfHSORENNnDzaW2G6DTllpjYHK71OuV5Zzz7jQhxVEWJrGbWg52gjGzWXLE+JJg==
 
-"@cspell/cspell-service-bus@6.23.1":
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/@cspell/cspell-service-bus/-/cspell-service-bus-6.23.1.tgz#75bdeabdbc8327cd705e9f80eb74f6e5216c02ba"
-  integrity sha512-zATbR0Szec6L3x8385cJVfjLrJJs/hALp9B3XN5tOyzL/mnYG9yA+mylrYfRRWXgvrzloo3VVlbzQypIj7E9Nw==
+"@cspell/cspell-service-bus@6.24.0":
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/@cspell/cspell-service-bus/-/cspell-service-bus-6.24.0.tgz#61b7da5a2d42fa3d5640469af50a7f04bd159915"
+  integrity sha512-haZ03tCtGYtl3TYVx35RtT1kgou0sUfHLzwgLqMjWV3pG5kPslAHinL7P1sy3wJkl5r/SK5nSMlVv9yOS3zshA==
 
-"@cspell/cspell-types@6.23.1":
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/@cspell/cspell-types/-/cspell-types-6.23.1.tgz#2293553a7fcc11244402a04dd7559c3a34eec176"
-  integrity sha512-qxdhTbruR8uCgJCZwCLcJjP/ZntIAqZ/tbZ0qbimqx4DeqapdSu28Xg971vFkhj2PNmqF8u5QgwpTefXEEkutw==
+"@cspell/cspell-types@6.24.0":
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/@cspell/cspell-types/-/cspell-types-6.24.0.tgz#c752f2274359c58b67b19591665f61724eaf363e"
+  integrity sha512-HeY+Z2fGxT4ZY271BmADWDI4diC5P2GugDlb3bePiAlj+wqvsXeTad59uDGIL0F2J0krJNhz++CXqlOFDAzHXQ==
 
 "@cspell/dict-ada@^4.0.1":
   version "4.0.1"
@@ -2408,19 +2408,19 @@
   resolved "https://registry.yarnpkg.com/@cspell/dict-vue/-/dict-vue-3.0.0.tgz#68ccb432ad93fcb0fd665352d075ae9a64ea9250"
   integrity sha512-niiEMPWPV9IeRBRzZ0TBZmNnkK3olkOPYxC1Ny2AX4TGlYRajcW0WUtoSHmvvjZNfWLSg2L6ruiBeuPSbjnG6A==
 
-"@cspell/eslint-plugin@6.23.1":
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/@cspell/eslint-plugin/-/eslint-plugin-6.23.1.tgz#4a8b02716e6afe22e43981a96a9646285de654a6"
-  integrity sha512-qNFu32IRkYOCijQs/T3PQ+30SDbFY3Gzz06Qez+mfX5BUUbVK8QOzyIOE6aqqbIL/zSzJyrENVX7dpPxPBZD6w==
+"@cspell/eslint-plugin@6.24.0":
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/@cspell/eslint-plugin/-/eslint-plugin-6.24.0.tgz#7c22474c1f31fc482a1bbb582fc87e3c44a20f21"
+  integrity sha512-ZRM2ILw7ThJswz71a1D/rRg2AZiDFfHWgEskGOO8WkH+DPwwMeyfEedzKRUy1Al7YU3qH3+0K/QhCelhI/vOOA==
   dependencies:
-    cspell-lib "6.23.1"
+    cspell-lib "6.24.0"
     estree-walker "^3.0.3"
     synckit "^0.8.5"
 
-"@cspell/strong-weak-map@6.23.1":
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/@cspell/strong-weak-map/-/strong-weak-map-6.23.1.tgz#2cd16cad6192434a0901b920a33780f143e7ddf1"
-  integrity sha512-MDUzl4SvdxJIpNHEEPoKYGsck+yptkp8z+oVoqj24aFaOrk77vnMcCiF28l5kcFqjfNtFdvDLiev3suqdPiuLw==
+"@cspell/strong-weak-map@6.24.0":
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/@cspell/strong-weak-map/-/strong-weak-map-6.24.0.tgz#4046f1dccf74d6809efb3c685fe932e7dc0ed6d6"
+  integrity sha512-R0F/nd5scB17A8T7ScBjhBZZ0F0xRFnP6i122dQxeTVOkJM/UAsHjTWT6Wb8M1ZLO6gRESfxx0vyL8+5RGzFCg==
 
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
@@ -5364,14 +5364,14 @@
   dependencies:
     "@types/node" "*"
 
-"@typescript-eslint/eslint-plugin@5.51.0":
-  version "5.51.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.51.0.tgz#da3f2819633061ced84bb82c53bba45a6fe9963a"
-  integrity sha512-wcAwhEWm1RgNd7dxD/o+nnLW8oH+6RK1OGnmbmkj/GGoDPV1WWMVP0FXYQBivKHdwM1pwii3bt//RC62EriIUQ==
+"@typescript-eslint/eslint-plugin@5.52.0":
+  version "5.52.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.52.0.tgz#5fb0d43574c2411f16ea80f5fc335b8eaa7b28a8"
+  integrity sha512-lHazYdvYVsBokwCdKOppvYJKaJ4S41CgKBcPvyd0xjZNbvQdhn/pnJlGtQksQ/NhInzdaeaSarlBjDXHuclEbg==
   dependencies:
-    "@typescript-eslint/scope-manager" "5.51.0"
-    "@typescript-eslint/type-utils" "5.51.0"
-    "@typescript-eslint/utils" "5.51.0"
+    "@typescript-eslint/scope-manager" "5.52.0"
+    "@typescript-eslint/type-utils" "5.52.0"
+    "@typescript-eslint/utils" "5.52.0"
     debug "^4.3.4"
     grapheme-splitter "^1.0.4"
     ignore "^5.2.0"
@@ -5380,14 +5380,14 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/parser@5.51.0":
-  version "5.51.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.51.0.tgz#2d74626652096d966ef107f44b9479f02f51f271"
-  integrity sha512-fEV0R9gGmfpDeRzJXn+fGQKcl0inIeYobmmUWijZh9zA7bxJ8clPhV9up2ZQzATxAiFAECqPQyMDB4o4B81AaA==
+"@typescript-eslint/parser@5.52.0":
+  version "5.52.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.52.0.tgz#73c136df6c0133f1d7870de7131ccf356f5be5a4"
+  integrity sha512-e2KiLQOZRo4Y0D/b+3y08i3jsekoSkOYStROYmPUnGMEoA0h+k2qOH5H6tcjIc68WDvGwH+PaOrP1XRzLJ6QlA==
   dependencies:
-    "@typescript-eslint/scope-manager" "5.51.0"
-    "@typescript-eslint/types" "5.51.0"
-    "@typescript-eslint/typescript-estree" "5.51.0"
+    "@typescript-eslint/scope-manager" "5.52.0"
+    "@typescript-eslint/types" "5.52.0"
+    "@typescript-eslint/typescript-estree" "5.52.0"
     debug "^4.3.4"
 
 "@typescript-eslint/scope-manager@5.50.0":
@@ -5398,21 +5398,21 @@
     "@typescript-eslint/types" "5.50.0"
     "@typescript-eslint/visitor-keys" "5.50.0"
 
-"@typescript-eslint/scope-manager@5.51.0":
-  version "5.51.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-5.51.0.tgz#ad3e3c2ecf762d9a4196c0fbfe19b142ac498990"
-  integrity sha512-gNpxRdlx5qw3yaHA0SFuTjW4rxeYhpHxt491PEcKF8Z6zpq0kMhe0Tolxt0qjlojS+/wArSDlj/LtE69xUJphQ==
+"@typescript-eslint/scope-manager@5.52.0":
+  version "5.52.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-5.52.0.tgz#a993d89a0556ea16811db48eabd7c5b72dcb83d1"
+  integrity sha512-AR7sxxfBKiNV0FWBSARxM8DmNxrwgnYMPwmpkC1Pl1n+eT8/I2NAUPuwDy/FmDcC6F8pBfmOcaxcxRHspgOBMw==
   dependencies:
-    "@typescript-eslint/types" "5.51.0"
-    "@typescript-eslint/visitor-keys" "5.51.0"
+    "@typescript-eslint/types" "5.52.0"
+    "@typescript-eslint/visitor-keys" "5.52.0"
 
-"@typescript-eslint/type-utils@5.51.0":
-  version "5.51.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/type-utils/-/type-utils-5.51.0.tgz#7af48005531700b62a20963501d47dfb27095988"
-  integrity sha512-QHC5KKyfV8sNSyHqfNa0UbTbJ6caB8uhcx2hYcWVvJAZYJRBo5HyyZfzMdRx8nvS+GyMg56fugMzzWnojREuQQ==
+"@typescript-eslint/type-utils@5.52.0":
+  version "5.52.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/type-utils/-/type-utils-5.52.0.tgz#9fd28cd02e6f21f5109e35496df41893f33167aa"
+  integrity sha512-tEKuUHfDOv852QGlpPtB3lHOoig5pyFQN/cUiZtpw99D93nEBjexRLre5sQZlkMoHry/lZr8qDAt2oAHLKA6Jw==
   dependencies:
-    "@typescript-eslint/typescript-estree" "5.51.0"
-    "@typescript-eslint/utils" "5.51.0"
+    "@typescript-eslint/typescript-estree" "5.52.0"
+    "@typescript-eslint/utils" "5.52.0"
     debug "^4.3.4"
     tsutils "^3.21.0"
 
@@ -5421,10 +5421,10 @@
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.50.0.tgz#c461d3671a6bec6c2f41f38ed60bd87aa8a30093"
   integrity sha512-atruOuJpir4OtyNdKahiHZobPKFvZnBnfDiyEaBf6d9vy9visE7gDjlmhl+y29uxZ2ZDgvXijcungGFjGGex7w==
 
-"@typescript-eslint/types@5.51.0":
-  version "5.51.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.51.0.tgz#e7c1622f46c7eea7e12bbf1edfb496d4dec37c90"
-  integrity sha512-SqOn0ANn/v6hFn0kjvLwiDi4AzR++CBZz0NV5AnusT2/3y32jdc0G4woXPWHCumWtUXZKPAS27/9vziSsC9jnw==
+"@typescript-eslint/types@5.52.0":
+  version "5.52.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-5.52.0.tgz#19e9abc6afb5bd37a1a9bea877a1a836c0b3241b"
+  integrity sha512-oV7XU4CHYfBhk78fS7tkum+/Dpgsfi91IIDy7fjCyq2k6KB63M6gMC0YIvy+iABzmXThCRI6xpCEyVObBdWSDQ==
 
 "@typescript-eslint/typescript-estree@5.50.0":
   version "5.50.0"
@@ -5439,29 +5439,29 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/typescript-estree@5.51.0":
-  version "5.51.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-5.51.0.tgz#0ec8170d7247a892c2b21845b06c11eb0718f8de"
-  integrity sha512-TSkNupHvNRkoH9FMA3w7TazVFcBPveAAmb7Sz+kArY6sLT86PA5Vx80cKlYmd8m3Ha2SwofM1KwraF24lM9FvA==
+"@typescript-eslint/typescript-estree@5.52.0":
+  version "5.52.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-5.52.0.tgz#6408cb3c2ccc01c03c278cb201cf07e73347dfca"
+  integrity sha512-WeWnjanyEwt6+fVrSR0MYgEpUAuROxuAH516WPjUblIrClzYJj0kBbjdnbQXLpgAN8qbEuGywiQsXUVDiAoEuQ==
   dependencies:
-    "@typescript-eslint/types" "5.51.0"
-    "@typescript-eslint/visitor-keys" "5.51.0"
+    "@typescript-eslint/types" "5.52.0"
+    "@typescript-eslint/visitor-keys" "5.52.0"
     debug "^4.3.4"
     globby "^11.1.0"
     is-glob "^4.0.3"
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/utils@5.51.0":
-  version "5.51.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-5.51.0.tgz#074f4fabd5b12afe9c8aa6fdee881c050f8b4d47"
-  integrity sha512-76qs+5KWcaatmwtwsDJvBk4H76RJQBFe+Gext0EfJdC3Vd2kpY2Pf//OHHzHp84Ciw0/rYoGTDnIAr3uWhhJYw==
+"@typescript-eslint/utils@5.52.0":
+  version "5.52.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-5.52.0.tgz#b260bb5a8f6b00a0ed51db66bdba4ed5e4845a72"
+  integrity sha512-As3lChhrbwWQLNk2HC8Ree96hldKIqk98EYvypd3It8Q1f8d5zWyIoaZEp2va5667M4ZyE7X8UUR+azXrFl+NA==
   dependencies:
     "@types/json-schema" "^7.0.9"
     "@types/semver" "^7.3.12"
-    "@typescript-eslint/scope-manager" "5.51.0"
-    "@typescript-eslint/types" "5.51.0"
-    "@typescript-eslint/typescript-estree" "5.51.0"
+    "@typescript-eslint/scope-manager" "5.52.0"
+    "@typescript-eslint/types" "5.52.0"
+    "@typescript-eslint/typescript-estree" "5.52.0"
     eslint-scope "^5.1.1"
     eslint-utils "^3.0.0"
     semver "^7.3.7"
@@ -5488,12 +5488,12 @@
     "@typescript-eslint/types" "5.50.0"
     eslint-visitor-keys "^3.3.0"
 
-"@typescript-eslint/visitor-keys@5.51.0":
-  version "5.51.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-5.51.0.tgz#c0147dd9a36c0de758aaebd5b48cae1ec59eba87"
-  integrity sha512-Oh2+eTdjHjOFjKA27sxESlA87YPSOJafGCR0md5oeMdh1ZcCfAGCIOL216uTBAkAIptvLIfKQhl7lHxMJet4GQ==
+"@typescript-eslint/visitor-keys@5.52.0":
+  version "5.52.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-5.52.0.tgz#e38c971259f44f80cfe49d97dbffa38e3e75030f"
+  integrity sha512-qMwpw6SU5VHCPr99y274xhbm+PRViK/NATY6qzt+Et7+mThGuFSl/ompj2/hrBlRP/kq+BFdgagnOSgw9TB0eA==
   dependencies:
-    "@typescript-eslint/types" "5.51.0"
+    "@typescript-eslint/types" "5.52.0"
     eslint-visitor-keys "^3.3.0"
 
 "@ucast/core@^1.0.0", "@ucast/core@^1.4.1", "@ucast/core@^1.6.1":
@@ -7912,58 +7912,58 @@ crypto-random-string@^2.0.0:
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
   integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
 
-cspell-dictionary@6.23.1:
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/cspell-dictionary/-/cspell-dictionary-6.23.1.tgz#d7f9eeaf03e6f48d4db3b31080a97880549ae94b"
-  integrity sha512-NFtrXnCxV4A2j36bklkkmgDBZCNwHUsMWM+OaWxTKhOyDo4tqkr/g28gQ/H6OkDkhR02ECtlEHpAlDd6Wu8TGg==
+cspell-dictionary@6.24.0:
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/cspell-dictionary/-/cspell-dictionary-6.24.0.tgz#80c97de86518ec1d47eb394458fc47a2def890d1"
+  integrity sha512-bBuTlFxn9GpxRevGlaJMollxvabcTIpxAS5PdELs7kXYJEQt1zDqZuIPT+Xrn0mCGWkcJyEk48n50gwthRXtuA==
   dependencies:
-    "@cspell/cspell-pipe" "6.23.1"
-    "@cspell/cspell-types" "6.23.1"
-    cspell-trie-lib "6.23.1"
+    "@cspell/cspell-pipe" "6.24.0"
+    "@cspell/cspell-types" "6.24.0"
+    cspell-trie-lib "6.24.0"
     fast-equals "^4.0.3"
     gensequence "^4.0.3"
 
-cspell-glob@6.23.1:
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/cspell-glob/-/cspell-glob-6.23.1.tgz#d296176a8a50a0c4299cd1f3855e248f83e5f076"
-  integrity sha512-ciVvcQd2/p7gjLi/0yV0yORq5gsscH/UmnRJfMUgr8wmLFrWvT3MqjCy8DuebuAV85m44FKh2IdbU25b3uD4Bg==
+cspell-glob@6.24.0:
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/cspell-glob/-/cspell-glob-6.24.0.tgz#25d00abb4770b206f04c295e0c431e5d4ec9b88c"
+  integrity sha512-iiUcKBiDanh4T9BMk6oNTiu1DWa/rc/+EXYj9txP31vEEoyz8PjQidueYc/A8ZvqXC8FUlu6WL76O8yY5ou1cQ==
   dependencies:
     micromatch "^4.0.5"
 
-cspell-grammar@6.23.1:
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/cspell-grammar/-/cspell-grammar-6.23.1.tgz#1c6d2e84df89c546255f76b0692d05df5b168955"
-  integrity sha512-I60E9EgMIajmG+gNlRCFmYJGYSyhcNdC5i+tZ7eL/ZUAxefTPODTYNIJ8G/MUnFeN0QAQXKhIybRTlZf8atHog==
+cspell-grammar@6.24.0:
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/cspell-grammar/-/cspell-grammar-6.24.0.tgz#1ba88ef8c4d8ec79874a38ad732a95ece9104256"
+  integrity sha512-/gTzgrjF848u0D6zZAzlK37ZreiIjtevt2VqhF5XkmxmWhpYC38MqohmUmMp3Z0BClYSX7N3XViron3lfY1ihg==
   dependencies:
-    "@cspell/cspell-pipe" "6.23.1"
-    "@cspell/cspell-types" "6.23.1"
+    "@cspell/cspell-pipe" "6.24.0"
+    "@cspell/cspell-types" "6.24.0"
 
-cspell-io@6.23.1:
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/cspell-io/-/cspell-io-6.23.1.tgz#bbf1f5b68a2de05576c0d803e4ec81e9874a8a2e"
-  integrity sha512-S7QlIGjGh+neLmaSiSHVrWliIGwovxMMGolG/RZhLO9kHDOdKtYMQxU1TA4pzzvh8YOd9+Gm5STbowld7GQifg==
+cspell-io@6.24.0:
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/cspell-io/-/cspell-io-6.24.0.tgz#7bb33c679364a37c8b87449cbf71901429a04a12"
+  integrity sha512-QBxdY9RBEb50dvaqVuNKZ1FdcrbephNH0VgnfeFNiGd75SuNS7PMTizdiizmAgYqbwTQrzrNURTalHi86gzJNQ==
   dependencies:
-    "@cspell/cspell-service-bus" "6.23.1"
+    "@cspell/cspell-service-bus" "6.24.0"
     node-fetch "^2.6.9"
 
-cspell-lib@6.23.1:
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/cspell-lib/-/cspell-lib-6.23.1.tgz#3c30840d582a726dc73e6e527c3cd1bf2f215828"
-  integrity sha512-exmBr4xe+IlwD+5VB+iHOWo93yt9Q7hbefYSor+xKlzw2aV25LvTx5ONWSeDWZKfjJsaLI1TToaIqIgSe81qxA==
+cspell-lib@6.24.0:
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/cspell-lib/-/cspell-lib-6.24.0.tgz#7e4fccd2a80a85baedf93664976f4a120b258ca9"
+  integrity sha512-kw6wsTDgqtRziB0rfUwDCBY0w1P0Aj7kNDydx2x2IKORVIEYRluVB8uR7o0kuIZpckqNzQn44mEGTXLk6j8XiQ==
   dependencies:
-    "@cspell/cspell-bundled-dicts" "6.23.1"
-    "@cspell/cspell-pipe" "6.23.1"
-    "@cspell/cspell-types" "6.23.1"
-    "@cspell/strong-weak-map" "6.23.1"
+    "@cspell/cspell-bundled-dicts" "6.24.0"
+    "@cspell/cspell-pipe" "6.24.0"
+    "@cspell/cspell-types" "6.24.0"
+    "@cspell/strong-weak-map" "6.24.0"
     clear-module "^4.1.2"
     comment-json "^4.2.3"
     configstore "^5.0.1"
     cosmiconfig "^8.0.0"
-    cspell-dictionary "6.23.1"
-    cspell-glob "6.23.1"
-    cspell-grammar "6.23.1"
-    cspell-io "6.23.1"
-    cspell-trie-lib "6.23.1"
+    cspell-dictionary "6.24.0"
+    cspell-glob "6.24.0"
+    cspell-grammar "6.24.0"
+    cspell-io "6.24.0"
+    cspell-trie-lib "6.24.0"
     fast-equals "^4.0.3"
     find-up "^5.0.0"
     gensequence "^4.0.3"
@@ -7973,13 +7973,13 @@ cspell-lib@6.23.1:
     vscode-languageserver-textdocument "^1.0.8"
     vscode-uri "^3.0.7"
 
-cspell-trie-lib@6.23.1:
-  version "6.23.1"
-  resolved "https://registry.yarnpkg.com/cspell-trie-lib/-/cspell-trie-lib-6.23.1.tgz#478afdb6f341f313165f496242917859afe35b0e"
-  integrity sha512-PHDoUdyRAjLJAiDg/YMBPJ5gStiInaJu4N3kNsQpQWy2086n70ddh/GYjtFF58ewqjym3e/YCObV/PVfstwlFw==
+cspell-trie-lib@6.24.0:
+  version "6.24.0"
+  resolved "https://registry.yarnpkg.com/cspell-trie-lib/-/cspell-trie-lib-6.24.0.tgz#844bc1749fab11fd06f35b5ed67a4ef8438ec000"
+  integrity sha512-2sTItuVv2ByQ/xY3Hqv+oPUpZPeKRev/MJncpxSheHP0oTzmQ3PM010CweULZFptBZPcD4X3rP75k2grB1KGbw==
   dependencies:
-    "@cspell/cspell-pipe" "6.23.1"
-    "@cspell/cspell-types" "6.23.1"
+    "@cspell/cspell-pipe" "6.24.0"
+    "@cspell/cspell-types" "6.24.0"
     gensequence "^4.0.3"
 
 css-box-model@1.2.1:
