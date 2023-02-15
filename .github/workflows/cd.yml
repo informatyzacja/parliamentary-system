@@ -72,7 +72,13 @@ jobs:
       - uses: bahmutov/npm-install@v1
         with:
           useRollingCache: true
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1.5.1
+        with:
+          app_id: ${{ secrets.BOT_APP_ID }}
+          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: yarn semantic-release

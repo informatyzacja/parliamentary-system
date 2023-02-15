@@ -8,6 +8,12 @@ jobs:
   check-comment:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1.5.1
+        with:
+          app_id: ${{ secrets.BOT_APP_ID }}
+          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
       # The first thing we do is check if the comment was indeed a trigger.
       - name: Check if the comment was a command, and react with 👀 if it was
         if: github.event.issue.pull_request
@@ -17,7 +23,7 @@ jobs:
           trigger: "/preview"
           reaction: eyes
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ steps.generate_token.outputs.token }}"
       # When triggered by a comment, we do not have access to the usual github.sha
       # value, so we get it manually.
       - name: Extract current commit
@@ -83,7 +89,7 @@ jobs:
         uses: actions/github-script@v6
         if: steps.expose-tunnel.outputs.tunnel-url != ''
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ steps.generate_token.outputs.token }}
           script: |
             github.rest.issues.createComment({
                 issue_number: "${{ github.event.issue.number || github.event.pull_request.number }}",
