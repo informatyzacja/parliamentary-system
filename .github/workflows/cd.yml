@@ -66,12 +66,6 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Generate token
-        id: generate_token
-        uses: tibdex/github-app-token@v1
-        with:
-          app_id: ${{ secrets.BOT_APP_ID }}
-          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
       - uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -80,5 +74,5 @@ jobs:
           useRollingCache: true
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
         run: yarn semantic-release
