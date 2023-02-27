@@ -3306,7 +3306,7 @@
     tslib "^2.4.0"
     value-or-promise "1.0.11"
 
-"@graphql-tools/schema@9.0.15", "@graphql-tools/schema@^9.0.0":
+"@graphql-tools/schema@9.0.15":
   version "9.0.15"
   resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-9.0.15.tgz#6632765e0281a6c890c7ea6865f13c10bc98fc1b"
   integrity sha512-p2DbpkOBcsi+yCEjwoS+r4pJ5z+3JjlJdhbPkCwC4q8lGf5r93dVYrExOrqGKTU5kxLXI/mxabSxcunjNIsDIg==
@@ -3316,7 +3316,7 @@
     tslib "^2.4.0"
     value-or-promise "1.0.12"
 
-"@graphql-tools/schema@9.0.16":
+"@graphql-tools/schema@9.0.16", "@graphql-tools/schema@^9.0.0":
   version "9.0.16"
   resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-9.0.16.tgz#7d340d69e6094dc01a2b9e625c7bb4fff89ea521"
   integrity sha512-kF+tbYPPf/6K2aHG3e1SWIbapDLQaqnIHVRG6ow3onkFoowwtKszvUyOASL6Krcv2x9bIMvd1UkvRf9OaoROQQ==
@@ -4690,14 +4690,14 @@
     "@strapi/utils" "4.6.1"
     lodash "4.17.21"
 
-"@strapi/plugin-graphql@^4.6.1":
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/@strapi/plugin-graphql/-/plugin-graphql-4.6.1.tgz#1d7d00096c258b5abcba6e1e2c457d22e420982a"
-  integrity sha512-f70pW2hLtcKtkMxAEUO9ieyq8LOvkCcF1scWOt2j4E7r/Rl0zyo3kNb0C3ZgZXO0Kxe8cT+PBFv/ndkdxeWurg==
+"@strapi/plugin-graphql@^4.6.2":
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/@strapi/plugin-graphql/-/plugin-graphql-4.6.2.tgz#c467cccaab5566c2218747a63d331c409e34ca17"
+  integrity sha512-B0RDDiTG6d1rmIuCNkgf+w2XZWuu1neKxaCh3UROYvEFBENrrXsAw2NN1Wepid4/j2syo1NpdXUqJejLcpWoaA==
   dependencies:
     "@graphql-tools/schema" "8.5.1"
     "@graphql-tools/utils" "^8.12.0"
-    "@strapi/utils" "4.6.1"
+    "@strapi/utils" "4.6.2"
     apollo-server-core "3.11.1"
     apollo-server-koa "3.10.0"
     glob "^7.1.7"
