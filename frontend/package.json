@@ -53,7 +53,7 @@
     "@emotion/styled": "^11",
     "@next/font": "^13.2.1",
     "date-fns": "^2.29.3",
-    "framer-motion": "^9",
+    "framer-motion": "^10",
     "graphql": "^16.6.0",
     "jotai": "^2.0.2",
     "lodash": "^4.17.21",
