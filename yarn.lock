@@ -4712,12 +4712,12 @@
     pluralize "^8.0.0"
     subscriptions-transport-ws "0.9.19"
 
-"@strapi/plugin-i18n@^4.6.1":
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/@strapi/plugin-i18n/-/plugin-i18n-4.6.1.tgz#d63d8e39decc977eb9fe63ab5b6bf82f444a9e40"
-  integrity sha512-vcWSak1npi4SK65U5w5YJltWEnfvcNdv71Lukbwhuavl+NZVl+RYXTW6tfbzoOP00qYjs4UtGD+IwU8Dz1po/g==
+"@strapi/plugin-i18n@^4.6.2":
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/@strapi/plugin-i18n/-/plugin-i18n-4.6.2.tgz#603dd820ba58478bea56265802600b7fa156babf"
+  integrity sha512-xicYlOVSLBn/TtFSAQ41LZJG8JXTGu+LAXzeZ0KZPmKmoopQWpmsaOo7gfnW1lFs4nsB7m++J9LQ4gZBM7++Fw==
   dependencies:
-    "@strapi/utils" "4.6.1"
+    "@strapi/utils" "4.6.2"
     lodash "4.17.21"
 
 "@strapi/plugin-upload@4.6.1":
