@@ -4769,13 +4769,13 @@
   resolved "https://registry.yarnpkg.com/@strapi/provider-audit-logs-local/-/provider-audit-logs-local-4.6.1.tgz#62f3634a85d20f972502ead2be83ceb182f02a5c"
   integrity sha512-BkjxW+Nt1zBTUZ6XSI/2R3+hf73g0OATU8klk8CZOM4zQcWm9vc+1vti3yvGYYEWzv3T2iJzhIJAIV5CP0BnsA==
 
-"@strapi/provider-email-nodemailer@^4.6.1":
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/@strapi/provider-email-nodemailer/-/provider-email-nodemailer-4.6.1.tgz#b33bd656a9b2ec931357adf3d1b9031e9d478017"
-  integrity sha512-f3+DT098MqMwtNeJ0e1FJ0ssdUXap/U73CUNUt1DiQnk6hWMyBP0K5i7TqWzv1zyRcIzUtKFc/TpJN4sP8pbIg==
+"@strapi/provider-email-nodemailer@^4.6.2":
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/@strapi/provider-email-nodemailer/-/provider-email-nodemailer-4.6.2.tgz#a445758fc402b41417cbacee7df344d62c057916"
+  integrity sha512-rkJvnrkJztepU+QANWRCT75cixj4VK9AWoiGCSGWUMTS1zQu56MzXpov+rURnoLCoPxKShflZkxSvGq5uZfh6A==
   dependencies:
     lodash "4.17.21"
-    nodemailer "6.8.0"
+    nodemailer "6.9.1"
 
 "@strapi/provider-email-sendmail@4.6.1":
   version "4.6.1"
@@ -13164,10 +13164,10 @@ nodemailer-shared@1.1.0:
   dependencies:
     nodemailer-fetch "1.6.0"
 
-nodemailer@6.8.0:
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.8.0.tgz#804bcc5256ee5523bc914506ee59f8de8f0b1cd5"
-  integrity sha512-EjYvSmHzekz6VNkNd12aUqAco+bOkRe3Of5jVhltqKhEsjw/y0PYPJfp83+s9Wzh1dspYAkUW/YNQ350NATbSQ==
+nodemailer@6.9.1:
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.9.1.tgz#8249d928a43ed85fec17b13d2870c8f758a126ed"
+  integrity sha512-qHw7dOiU5UKNnQpXktdgQ1d3OFgRAekuvbJLcdG5dnEo/GtcTHRYM7+UfJARdOFU9WUQO8OiIamgWPmiSFHYAA==
 
 nopt@^6.0.0:
   version "6.0.0"
