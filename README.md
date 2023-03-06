@@ -5,8 +5,11 @@
     <img src="https://img.shields.io/github/actions/workflow/status/informatyzacja/parliamentary-system/ci.yml" alt="GitHub Workflow Status" />
   </a>
   <img src="https://img.shields.io/github/package-json/v/informatyzacja/parliamentary-system?filename=package.json" alt="GitHub package.json version" />
-  <a href="https://stats.uptimerobot.com/Xl9wKI4A0V">
-    <img src="https://img.shields.io/uptimerobot/ratio/m793645724-b3c6d0cfbc4914577276fe8f" alt="Uptime Robot ratio (30 days)" />
+  <a href="https://status.samorzad.pwr.edu.pl/history/system-parlamentarny">
+    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/informatyzacja/uptime/master/api/system-parlamentarny/uptime.json" alt="Uptime ratio" />
+  </a>
+  <a href="https://status.samorzad.pwr.edu.pl/history/system-parlamentarny">
+    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/informatyzacja/uptime/master/api/system-parlamentarny/uptime.json&label=api uptime" alt="API uptime ratio" />
   </a>
   <img src="https://img.shields.io/github/license/informatyzacja/parliamentary-system" alt="License" />
 </p>
