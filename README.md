@@ -8,8 +8,8 @@
   <a href="https://status.samorzad.pwr.edu.pl/history/system-parlamentarny">
     <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/informatyzacja/uptime/master/api/system-parlamentarny/uptime.json" alt="Uptime ratio" />
   </a>
-  <a href="https://status.samorzad.pwr.edu.pl/history/system-parlamentarny">
-    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/informatyzacja/uptime/master/api/system-parlamentarny/uptime.json&label=api uptime" alt="API uptime ratio" />
+  <a href="https://status.samorzad.pwr.edu.pl/history/system-parlamentarny-api">
+    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/informatyzacja/uptime/master/api/system-parlamentarny-api/uptime.json&label=api uptime" alt="API uptime ratio" />
   </a>
   <img src="https://img.shields.io/github/license/informatyzacja/parliamentary-system" alt="License" />
 </p>
