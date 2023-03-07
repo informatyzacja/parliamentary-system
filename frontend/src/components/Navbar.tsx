@@ -78,6 +78,7 @@ export const Navbar = () => {
           <NextLink href="/" passHref>
             <Image
               src="/logo.svg"
+              loading="eager"
               width="200"
               height="50"
               style={{
