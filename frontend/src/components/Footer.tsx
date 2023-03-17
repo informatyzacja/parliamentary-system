@@ -2,6 +2,7 @@ import {
   Box,
   chakra,
   Container,
+  Link,
   Stack,
   Text,
   useColorModeValue,
@@ -52,6 +53,9 @@ const SocialButton = ({
 };
 
 export const Footer = () => {
+  const linkColor = useColorModeValue("gray.600", "gray.200");
+  const linkHoverColor = useColorModeValue("gray.800", "white");
+
   return (
     <Box
       bg={useColorModeValue("gray.50", "gray.900")}
@@ -70,6 +74,18 @@ export const Footer = () => {
         <Text textAlign="center">
           Made with ❤️ by Komisja ds. Informatyzacji
         </Text>
+        <Link
+          href={"https://status.samorzad.pwr.edu.pl/"}
+          p={2}
+          fontSize={"sm"}
+          fontWeight={500}
+          color={linkColor}
+          _hover={{
+            color: linkHoverColor,
+          }}
+        >
+          {"Status systemów"}
+        </Link>
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"WWW"} href={"https://samorzad.pwr.edu.pl/"}>
             <FaGlobe />
