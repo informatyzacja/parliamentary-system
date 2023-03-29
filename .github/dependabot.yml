@@ -9,7 +9,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    # Disable version updates for npm dependencies
-    open-pull-requests-limit: 0
+    open-pull-requests-limit: 15
     ignore:
       - dependency-name: "@strapi/*"
