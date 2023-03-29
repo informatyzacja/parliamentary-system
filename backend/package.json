@@ -34,7 +34,6 @@
     "url": "https://github.com/informatyzacja/parliamentary-system/issues"
   },
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
-  "devDependencies": {},
   "dependencies": {
     "@strapi/plugin-graphql": "^4.8.2",
     "@strapi/plugin-i18n": "^4.8.2",
@@ -52,9 +51,5 @@
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
-  },
-  "volta": {
-    "node": "16.19.0",
-    "yarn": "1.22.19"
   }
 }
