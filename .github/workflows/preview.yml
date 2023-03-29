@@ -47,7 +47,7 @@ jobs:
       - uses: actions/setup-node@v3
         if: steps.check.outputs.triggered == 'true'
         with:
-          node-version: 16
+          node-version: 18
       - name: Start frontend tunnel
         id: expose-tunnel
         if: steps.check.outputs.triggered == 'true'
