@@ -10,10 +10,10 @@
     framer-motion "^6.3.11"
     lodash.union "^4.6.0"
 
-"@alergeek-ventures/eslint-config@^5.0.92":
-  version "5.0.92"
-  resolved "https://registry.yarnpkg.com/@alergeek-ventures/eslint-config/-/eslint-config-5.0.92.tgz#ef07821b0fea552b656a21f109289d6bb97d87d9"
-  integrity sha512-t6PLf9AisSR3/X23qTHMdB97p0bbBPafoha5sGOO7834Nv4O2iVyD7A2ojugT6e7Rq3fc4mKC/MxgfgXrvI0aA==
+"@alergeek-ventures/eslint-config@^5.0.94":
+  version "5.0.94"
+  resolved "https://registry.yarnpkg.com/@alergeek-ventures/eslint-config/-/eslint-config-5.0.94.tgz#0c9bd443695ff3970309ccbc807d543c89f5c122"
+  integrity sha512-qCxpaRxpuGzrUOj8J8+H4Ne/BXqBMPNGdF5CedPunxoPwf2IGb05hWnz7W8RStRLHuXdpQ/2unph3GzuxNM03Q==
   dependencies:
     "@babel/core" "7.21.3"
     "@babel/eslint-parser" "7.21.3"
@@ -23,8 +23,8 @@
     "@typescript-eslint/eslint-plugin" "5.57.0"
     "@typescript-eslint/parser" "5.57.0"
     eslint "8.37.0"
-    eslint-import-resolver-typescript "3.5.3"
-    eslint-plugin-cypress "2.13.1"
+    eslint-import-resolver-typescript "3.5.4"
+    eslint-plugin-cypress "2.13.2"
     eslint-plugin-import "2.27.5"
     eslint-plugin-jest "27.2.1"
     eslint-plugin-jest-dom "4.0.3"
@@ -8397,7 +8397,7 @@ end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
-enhanced-resolve@^5.10.0:
+enhanced-resolve@^5.10.0, enhanced-resolve@^5.12.0:
   version "5.12.0"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.12.0.tgz#300e1c90228f5b570c4d35babf263f6da7155634"
   integrity sha512-QHTXI/sZQmko1cbDoNAa3mJ5qhWUUNAq3vR0/YiD379fWQrcfuoX1+HW2S0MTt7XmoPLapdaDKUtelUSPic7hQ==
@@ -8620,18 +8620,18 @@ eslint-import-resolver-node@^0.3.7:
     is-core-module "^2.11.0"
     resolve "^1.22.1"
 
-eslint-import-resolver-typescript@3.5.3:
-  version "3.5.3"
-  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-3.5.3.tgz#db5ed9e906651b7a59dd84870aaef0e78c663a05"
-  integrity sha512-njRcKYBc3isE42LaTcJNVANR3R99H9bAxBDMNDr2W7yq5gYPxbU3MkdhsQukxZ/Xg9C2vcyLlDsbKfRDg0QvCQ==
+eslint-import-resolver-typescript@3.5.4:
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-3.5.4.tgz#7370c326c3c08f0c1839c592d79d20b704de15d4"
+  integrity sha512-9xUpnedEmSfG57sN1UvWPiEhfJ8bPt0Wg2XysA7Mlc79iFGhmJtRUg9LxtkK81FhMUui0YuR2E8iUsVhePkh4A==
   dependencies:
     debug "^4.3.4"
-    enhanced-resolve "^5.10.0"
-    get-tsconfig "^4.2.0"
-    globby "^13.1.2"
-    is-core-module "^2.10.0"
+    enhanced-resolve "^5.12.0"
+    get-tsconfig "^4.5.0"
+    globby "^13.1.3"
+    is-core-module "^2.11.0"
     is-glob "^4.0.3"
-    synckit "^0.8.4"
+    synckit "^0.8.5"
 
 eslint-module-utils@^2.7.4:
   version "2.7.4"
@@ -8640,10 +8640,10 @@ eslint-module-utils@^2.7.4:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-cypress@2.13.1:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-cypress/-/eslint-plugin-cypress-2.13.1.tgz#4127bb1aa558a9ca7e3d19b5ed997ccef52c95fb"
-  integrity sha512-THjc7IT3S9H4KwmRhzAhMGQaEqy78/7W75He/gBhJEH0vIuAY16vOI4YSliDo/ZY+Wm6DtvMHR+8uVvICcI3Lw==
+eslint-plugin-cypress@2.13.2:
+  version "2.13.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-cypress/-/eslint-plugin-cypress-2.13.2.tgz#b42b763f449ff713cecf6bdf1903e7cee6e48bfc"
+  integrity sha512-LlwjnBTzuKuC0A4H0RxVjs0YeAWK+CD1iM9Dp8un3lzT713ePQxfpPstCD+9HSAss8emuE3b2hCNUST+NrUwKw==
   dependencies:
     globals "^11.12.0"
 
@@ -9700,10 +9700,10 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-get-tsconfig@^4.2.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.3.0.tgz#4c26fae115d1050e836aea65d6fe56b507ee249b"
-  integrity sha512-YCcF28IqSay3fqpIu5y3Krg/utCBHBeoflkZyHj/QcqI2nrLPC3ZegS9CmIo+hJb8K7aiGsuUl7PwWVjNG2HQQ==
+get-tsconfig@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/get-tsconfig/-/get-tsconfig-4.5.0.tgz#6d52d1c7b299bd3ee9cd7638561653399ac77b0f"
+  integrity sha512-MjhiaIWCJ1sAU4pIQ5i5OfOuHHxVo1oYeNsWTON7jxYkod8pHocXeh+SSbmu5OZZZK73B6cbJ2XADzXehLyovQ==
 
 get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
@@ -9885,7 +9885,7 @@ globby@^11.0.0, globby@^11.0.3, globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-globby@^13.1.2:
+globby@^13.1.3:
   version "13.1.3"
   resolved "https://registry.yarnpkg.com/globby/-/globby-13.1.3.tgz#f62baf5720bcb2c1330c8d4ef222ee12318563ff"
   integrity sha512-8krCNHXvlCgHDpegPzleMq07yMYTO2sXKASmZmquEYWEmCx6J5UTRbp5RwMJkTJGtcQ44YpiUYUiN0b9mzy8Bw==
@@ -10809,7 +10809,7 @@ is-class-hotfix@~0.0.6:
   resolved "https://registry.yarnpkg.com/is-class-hotfix/-/is-class-hotfix-0.0.6.tgz#a527d31fb23279281dde5f385c77b5de70a72435"
   integrity sha512-0n+pzCC6ICtVr/WXnN2f03TK/3BfXY7me4cjCAqT8TYXEl0+JBRoqBo94JJHXcyDSLUeWbNX8Fvy5g5RJdAstQ==
 
-is-core-module@^2.10.0, is-core-module@^2.11.0, is-core-module@^2.2.0, is-core-module@^2.5.0, is-core-module@^2.8.1, is-core-module@^2.9.0:
+is-core-module@^2.11.0, is-core-module@^2.2.0, is-core-module@^2.5.0, is-core-module@^2.8.1, is-core-module@^2.9.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.11.0.tgz#ad4cb3e3863e814523c96f3f58d26cc570ff0144"
   integrity sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==
@@ -16273,7 +16273,7 @@ symbol-observable@^4.0.0:
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-4.0.0.tgz#5b425f192279e87f2f9b937ac8540d1984b39205"
   integrity sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ==
 
-synckit@^0.8.4, synckit@^0.8.5:
+synckit@^0.8.5:
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/synckit/-/synckit-0.8.5.tgz#b7f4358f9bb559437f9f167eb6bc46b3c9818fa3"
   integrity sha512-L1dapNV6vu2s/4Sputv8xGsCdAVlb5nRDMFU/E27D44l5U6cw1g0dGd45uLc+OXjNMmF4ntiMdCimzcjFKQI8Q==
