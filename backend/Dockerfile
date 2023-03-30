@@ -1,4 +1,4 @@
-FROM node:16-bullseye as Backend
+FROM node:18-bullseye as Backend
 WORKDIR /app
 COPY package.json .
 COPY yarn.lock .
