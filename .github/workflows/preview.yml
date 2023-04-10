@@ -51,10 +51,16 @@ jobs:
       - name: Start frontend tunnel
         id: expose-tunnel
         if: steps.check.outputs.triggered == 'true'
-        uses: codetalkio/expose-tunnel@v1
+        uses: codetalkio/expose-tunnel@v1.5.0
         with:
           service: localhost.run
           port: 3000
+      - name: Fix tunnel url
+        id: tunnel-url
+        run: |
+          url=${{ steps.expose-tunnel.outputs.tunnel-url }}
+          fixedUrl=${url::-6}
+          echo "tunnel-url=${fixedUrl}" >> $GITHUB_OUTPUT
       - name: Install dependencies
         if: steps.check.outputs.triggered == 'true'
         uses: bahmutov/npm-install@v1
@@ -70,7 +76,7 @@ jobs:
         run: |
           cd frontend
           touch .env.local
-          echo NEXTAUTH_URL=${{ steps.expose-tunnel.outputs.tunnel-url }} >> .env.local
+          echo NEXTAUTH_URL=${{ steps.tunnel-url.outputs.tunnel-url }} >> .env.local
           echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env.local
           echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
           echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
@@ -87,7 +93,7 @@ jobs:
       # Post a comment on the Pull Request with the URL to the tunnel.
       - name: Post preview environment as comment on PR
         uses: actions/github-script@v6
-        if: steps.expose-tunnel.outputs.tunnel-url != ''
+        if: steps.tunnel-url.outputs.tunnel-url != ''
         with:
           github-token: ${{ steps.generate_token.outputs.token }}
           script: |
@@ -95,16 +101,16 @@ jobs:
                 issue_number: "${{ github.event.issue.number || github.event.pull_request.number }}",
                 owner: "${{ github.repository_owner }}",
                 repo: "${{ github.event.repository.name }}",
-                body: `**🖼️ Preview Environment:** ${{ steps.expose-tunnel.outputs.tunnel-url }}
+                body: `**🖼️ Preview Environment:** ${{ steps.tunnel-url.outputs.tunnel-url }}
 
               You can stop the preview by clicking "Cancel" on the [GitHub Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).`
             })
 
       # Keep the CI job alive for 30 minutes before we time out.
       - name: Wait for 30 minutes before timing out (unless overwritten)
-        if: steps.expose-tunnel.outputs.tunnel-url != ''
+        if: steps.tunnel-url.outputs.tunnel-url != ''
         run: |
-          echo "Tunnel URL is ${{ steps.expose-tunnel.outputs.tunnel-url }}"
+          echo "Tunnel URL is ${{ steps.tunnel-url.outputs.tunnel-url }}"
           timeout 30m sleep 7200
           # Gracefully exit if the timeout hits.
           exit 0
