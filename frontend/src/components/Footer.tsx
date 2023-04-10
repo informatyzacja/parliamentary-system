@@ -82,7 +82,9 @@ export const Footer = () => {
           color={linkColor}
           _hover={{
             color: linkHoverColor,
+            textDecoration: "underline",
           }}
+          target="_blank"
         >
           {"Status systemów"}
         </Link>
