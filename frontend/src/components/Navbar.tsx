@@ -127,7 +127,7 @@ export const Navbar = () => {
                 </MenuButton>
                 <MenuList alignItems={"center"} p={3}>
                   <Center>{data.user?.name ?? ""}</Center>
-                  <Center>{data.user?.email}</Center>
+                  <Center>{data.user?.email?.split("@")[0]}</Center>
                   <MenuDivider />
                   <MenuItem
                     onClick={() => {
