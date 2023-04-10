@@ -80,7 +80,7 @@
     "babel-eslint": "^10.1.0",
     "concurrently": "^8.0.1",
     "dotenv": "^16.0.3",
-    "eslint": "^8.36.0",
+    "eslint": "^8.38.0",
     "graphql-tag": "^2.12.6",
     "postcss": "^8.4.16",
     "ts-node": "^10.9.1",
