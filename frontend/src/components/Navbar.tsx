@@ -126,12 +126,8 @@ export const Navbar = () => {
                   <Avatar size={"sm"} />
                 </MenuButton>
                 <MenuList alignItems={"center"} p={3}>
-                  <Center>
-                    <p>{data.user?.name ?? ""}</p>
-                  </Center>
-                  <Center>
-                    <p>{data.user?.email}</p>
-                  </Center>
+                  <Center>{data.user?.name ?? ""}</Center>
+                  <Center>{data.user?.email}</Center>
                   <MenuDivider />
                   <MenuItem
                     onClick={() => {
