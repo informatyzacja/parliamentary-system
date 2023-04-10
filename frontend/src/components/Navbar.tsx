@@ -123,13 +123,13 @@ export const Navbar = () => {
                   }}
                   aria-label="Menu użytkownika"
                 >
-                  <Avatar size={"sm"} name={data.user?.name ?? ""} />
+                  <Avatar size={"sm"} />
                 </MenuButton>
                 <MenuList alignItems={"center"} p={3}>
                   <Center>
-                    <Avatar size={"2xl"} name={data.user?.name ?? ""} />
+                    <p>{data.user?.name ?? ""}</p>
                   </Center>
-                  <Center mt={4}>
+                  <Center>
                     <p>{data.user?.email}</p>
                   </Center>
                   <MenuDivider />
