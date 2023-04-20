@@ -10,10 +10,10 @@
     framer-motion "^6.3.11"
     lodash.union "^4.6.0"
 
-"@alergeek-ventures/eslint-config@^5.0.105":
-  version "5.0.105"
-  resolved "https://registry.yarnpkg.com/@alergeek-ventures/eslint-config/-/eslint-config-5.0.105.tgz#2f6badf3c8b73e37ca83ba81d95db4bd57373549"
-  integrity sha512-nUORtrc3BOwOwX0Tguo8K5/UK9M7Zmt/9OkIAcYHANtE7KIvlXOxo+DvWB8vYxBq2bQr6Y8GmD6eVyKcNkzRgQ==
+"@alergeek-ventures/eslint-config@^5.0.106":
+  version "5.0.106"
+  resolved "https://registry.yarnpkg.com/@alergeek-ventures/eslint-config/-/eslint-config-5.0.106.tgz#0df2f8c9b8a31ced2bcd8ab12f3c7583df9c0882"
+  integrity sha512-UM97FXJ2vkE9sBivuHx8agluzhcWIrl1tigAWWQZRz56Dp9GwUY+qBW4/lMf5CuQiiKvDomVHHxIaSZMUME82Q==
   dependencies:
     "@babel/core" "7.21.4"
     "@babel/eslint-parser" "7.21.3"
