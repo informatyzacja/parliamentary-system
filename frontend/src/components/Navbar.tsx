@@ -146,7 +146,7 @@ export const Navbar = () => {
       </Flex>
       {status === "authenticated" ? (
         <Collapse in={isOpen} animateOpacity>
-          <MobileNav />
+          <MobileNav onToggle={onToggle} />
         </Collapse>
       ) : null}
     </Box>
@@ -196,7 +196,7 @@ const DesktopNav = () => {
   );
 };
 
-const MobileNav = () => {
+const MobileNav = (mobileProps: MobileProps) => {
   const { data } = useSession();
   const router = useRouter();
 
@@ -208,7 +208,7 @@ const MobileNav = () => {
       display={{ md: "none" }}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem key={navItem.label} {...navItem} {...mobileProps} />
       ))}
       <Divider />
       <VStack>
@@ -231,7 +231,10 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, href }: NavItem) => {
+const MobileNavItem = (mobileNavProps: MobileProps & NavItem) => {
+  const { label, href } = mobileNavProps;
+  const { onToggle } = mobileNavProps;
+
   return (
     <Stack spacing={4}>
       <Flex
@@ -247,6 +250,7 @@ const MobileNavItem = ({ label, href }: NavItem) => {
           href={href}
           fontWeight={600}
           color={useColorModeValue("gray.600", "gray.200")}
+          onClick={onToggle}
         >
           {label}
         </Link>
@@ -254,6 +258,10 @@ const MobileNavItem = ({ label, href }: NavItem) => {
     </Stack>
   );
 };
+
+interface MobileProps {
+  onToggle: () => void;
+}
 
 interface NavItem {
   label: string;
