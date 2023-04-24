@@ -68,7 +68,7 @@ export default function Meetings() {
         {meetings.length === 0 && !meetingsQuery.loading ? (
           <NoItems>Brak posiedzeń</NoItems>
         ) : null}
-        <Wrap spacing={4} justify="center" pl={3} pr={3}>
+        <Wrap spacing={4} justify="center" pl={5} pr={5}>
           {meetings.map((meeting) => (
             <WrapItem key={meeting.id}>
               <ScaleFade in={true}>
