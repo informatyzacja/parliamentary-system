@@ -1,7 +1,7 @@
 {
   "name": "parliamentary-system",
   "private": true,
-  "version": "1.4.35",
+  "version": "1.4.36",
   "workspaces": [
     "backend",
     "frontend"
