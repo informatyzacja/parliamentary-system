@@ -71,7 +71,7 @@
     "@graphql-codegen/client-preset": "^3.0.0",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@graphql-codegen/typescript-resolvers": "^3.2.0",
-    "@next/eslint-plugin-next": "^13.3.0",
+    "@next/eslint-plugin-next": "^13.3.1",
     "@playwright/test": "^1.31.2",
     "@types/node": "^18.15.13",
     "@types/react": "^18.0.38",
