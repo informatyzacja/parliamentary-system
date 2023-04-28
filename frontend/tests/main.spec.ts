@@ -3,6 +3,7 @@ import { test } from "@playwright/test";
 import config from "./test.config";
 
 test("Test page overall", async ({ page }) => {
+  test.slow();
   await page.goto("http://localhost:3000/");
   await page.getByRole("button", { name: "Zaloguj się" }).click();
   await page.getByRole("button", { name: "Sign in with USOS" }).click();
