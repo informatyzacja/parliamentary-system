@@ -18,6 +18,7 @@ test("Test page overall", async ({ page }) => {
   await page
     .locator("div")
     .filter({ hasText: "Sala Centrum_Kongresowego" })
+    .getByRole("paragraph")
     .first()
     .click();
   await page
