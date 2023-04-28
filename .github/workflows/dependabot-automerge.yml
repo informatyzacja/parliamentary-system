@@ -19,7 +19,7 @@ jobs:
 
       - name: Dependabot metadata
         id: dependabot_metadata
-        uses: dependabot/fetch-metadata@v1.2.1
+        uses: dependabot/fetch-metadata@v1
         with:
           github-token: ${{ steps.generate_token.outputs.token }}
 
@@ -29,9 +29,9 @@ jobs:
       - name: Approve a PR
         run: gh pr review --approve "$PR_URL"
         env:
-          PR_URL: ${{github.event.pull_request.html_url}}
+          PR_URL: ${{ github.event.pull_request.html_url }}
 
       - name: Enable auto-merge for Dependabot PRs
         run: gh pr merge --auto --merge "$PR_URL"
         env:
-          PR_URL: ${{github.event.pull_request.html_url}}
+          PR_URL: ${{ github.event.pull_request.html_url }}
