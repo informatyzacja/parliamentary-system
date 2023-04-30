@@ -24,8 +24,10 @@ import { Pagination } from "../components/Pagination";
 import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
 import { useCurrentTermId } from "../hooks/useCurrentTermId";
 import { useErrorHandler } from "../hooks/useErrorHandler";
+import { useTranslation } from "next-i18next";
 
 function OrganisationStructure() {
+  const { t } = useTranslation("common");
   const [currentTermId] = useCurrentTermId();
   const errorHandler = useErrorHandler();
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
@@ -75,7 +77,7 @@ function OrganisationStructure() {
                 <Thead>
                   <Tr>
                     <Th>#</Th>
-                    <Th>Imię</Th>
+                    <Th>{t("firstName")}</Th>
                     <Th>Nazwisko</Th>
                     <Th>Funkcje</Th>
                     <Th>Numer indeksu</Th>

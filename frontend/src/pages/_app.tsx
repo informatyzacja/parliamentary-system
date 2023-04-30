@@ -16,6 +16,7 @@ import config from "@/config";
 
 import Layout from "../components/Layout";
 import { theme } from "../styles/theme";
+import { appWithTranslation } from "next-i18next";
 
 /**
  * JWT token is coming from api/auth/[...nextauth]
@@ -79,4 +80,4 @@ function MyApp({
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);
