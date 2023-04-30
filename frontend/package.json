@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n NextJS,GraphQL \"yarn dev:next\" \"yarn codegen:watch\"",
+    "dev": "concurrently -n NextJS,GraphQL \"pnpm dev:next\" \"pnpm codegen:watch\"",
     "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.graphql,.gql .",
     "codegen": "graphql-codegen --config codegen.ts",
-    "codegen:watch": "yarn codegen --watch",
+    "codegen:watch": "pnpm codegen --watch",
     "test:e2e": "playwright test"
   },
+  "packageManager": "pnpm@8.3.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/informatyzacja/parliamentary-system.git"
@@ -80,13 +81,20 @@
     "@types/react": "^18.2.5",
     "@types/react-dom": "^18.2.3",
     "@types/react-pdf": "^6.2.0",
+    "@types/lodash": "^4.14.194",
     "babel-eslint": "^10.1.0",
     "concurrently": "^8.0.1",
     "dotenv": "^16.0.3",
-    "eslint": "^8.36.0",
+    "eslint": "^8.39.0",
     "graphql-tag": "^2.12.6",
     "postcss": "^8.4.23",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": "18.16.0"
+  },
+  "volta": {
+    "node": "18.16.0"
   }
 }

@@ -19,6 +19,8 @@ module.exports = {
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
     'no-magic-numbers': 'off',
     'no-unused-vars': 'off',
     'no-shadow': 'off',
