@@ -1,3 +1,38 @@
 {
-  "firstName": "Imię"
+  "addition-date": "Data dodania",
+  "aria": {
+    "students-union-logo": "Logo samorządu",
+    "toggle-navigation": "Toggle navigation",
+    "user-menu": "Menu użytkownika"
+  },
+  "download": "pobierz",
+  "Download": "Pobierz",
+  "first-name": "Imię",
+  "functions": "Funkcje",
+  "last-meetings": "Ostatnie posiedzenia",
+  "last-name": "Nazwisko",
+  "last-resolutions": "Ostatnie uchwały",
+  "login": "Zaloguj się",
+  "logout": "Wyloguj się",
+  "meeting": {
+    "agenda": "Agenda posiedzenia",
+    "no-reports": "Brak sprawozdań",
+    "protocol": "Protokół z posiedzenia",
+    "reports": "Sprawozdania z posiedzenia",
+    "title": "Posiedzenie"
+  },
+  "more": "więcej",
+  "name": "Nazwa",
+  "no-data": "Brak danych",
+  "no-meetings": "Brak posiedzeń",
+  "no-news": "Brak aktualności",
+  "no-resolutions": "Brak uchwał",
+  "organisation-structure": "Struktura organizacyjna",
+  "parliament-meetings": "Posiedzenia parlamentu",
+  "preview": "Podgląd",
+  "resolutions": "Uchwały",
+  "student-number": "Numer indeksu",
+  "system-status": "Status systemów",
+  "term-of-office": "term-of-office",
+  "to-use-you-must-login": "Aby korzystać z aplikacji musisz się zalogować"
 }

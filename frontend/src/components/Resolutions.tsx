@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { format } from "date-fns";
 import NextLink from "next/link";
+import { useTranslation } from "next-i18next";
 import React from "react";
 
 export const Resolutions = ({
@@ -56,6 +57,8 @@ export const Resolutions = ({
     pageSize: number;
   };
 }) => {
+  const { t } = useTranslation("common");
+
   return (
     <ScaleFade initialScale={0.9} in={true}>
       <TableContainer maxW={"90vw"}>
@@ -63,9 +66,9 @@ export const Resolutions = ({
           <Thead>
             <Tr>
               <Th>#</Th>
-              <Th>Nazwa</Th>
-              {showMeetings && <Th>Posiedzenie</Th>}
-              <Th>Data dodania</Th>
+              <Th>{t("name")}</Th>
+              {showMeetings && <Th>{t("meeting.title")}</Th>}
+              <Th>{t("addition-date")}</Th>
               <Th></Th>
             </Tr>
           </Thead>
@@ -105,7 +108,7 @@ export const Resolutions = ({
                         "/404")
                     }
                   >
-                    Pobierz
+                    {t("Download")}
                   </Link>
                 </Td>
               </Tr>

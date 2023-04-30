@@ -17,6 +17,8 @@ module.exports = {
     "@typescript-eslint/restrict-plus-operands": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/no-magic-numbers": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
     "no-magic-numbers": "off",
     "no-unused-vars": "off",
     "no-shadow": "off",

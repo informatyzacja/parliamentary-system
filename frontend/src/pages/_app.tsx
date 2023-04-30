@@ -11,12 +11,12 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import type { Session as NextAuthSession } from "next-auth";
 import { getSession, SessionProvider } from "next-auth/react";
+import { appWithTranslation } from "next-i18next";
 
 import config from "@/config";
 
 import Layout from "../components/Layout";
 import { theme } from "../styles/theme";
-import { appWithTranslation } from "next-i18next";
 
 /**
  * JWT token is coming from api/auth/[...nextauth]

@@ -12,6 +12,7 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 
@@ -24,6 +25,7 @@ export const PreviewPDF = ({
   url: string;
   filename: string;
 }) => {
+  const { t } = useTranslation("common");
   const modal = useDisclosure();
   const [numberOfPages, setNumberOfPages] = useState<number>(0);
 
@@ -33,7 +35,7 @@ export const PreviewPDF = ({
 
   return (
     <>
-      <Button onClick={modal.onOpen}>Podgląd</Button>
+      <Button onClick={modal.onOpen}>{t("preview")}</Button>
       <Modal size="2xl" isOpen={modal.isOpen} onClose={modal.onClose}>
         <ModalOverlay />
         <ModalContent>

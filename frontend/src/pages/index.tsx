@@ -15,6 +15,9 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { format } from "date-fns";
+import type { GetStaticProps } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import {
   MeetingDocument,
@@ -25,7 +28,11 @@ import { Loader } from "../components/Loader";
 import { NoItems } from "../components/NoItems";
 import { useErrorHandler } from "../hooks/useErrorHandler";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Props {}
+
 function LatestUpdates() {
+  const { t } = useTranslation("common");
   const errorHandler = useErrorHandler();
   const latestUpdatesQuery = useLatestMeetingsAndResolutionsQuery({
     onError: errorHandler,
@@ -43,7 +50,7 @@ function LatestUpdates() {
     latestUpdatesQuery.data?.meetings.data.length === 0 &&
     latestUpdatesQuery.data.resolutions.data.length === 0
   ) {
-    return <NoItems>Brak aktualności</NoItems>;
+    return <NoItems>{t("no-news")}</NoItems>;
   }
 
   return (
@@ -57,7 +64,7 @@ function LatestUpdates() {
           >
             <Card w={["90vw", "600px"]} h="100%">
               <CardHeader>
-                <Heading size="md">Ostatnie posiedzenia</Heading>
+                <Heading size="md">{t("last-meetings")}</Heading>
               </CardHeader>
               <CardBody>
                 <TableContainer>
@@ -83,7 +90,7 @@ function LatestUpdates() {
                             }}
                           >
                             <Link href={`/posiedzenia/${meeting.id}`}>
-                              więcej
+                              {t("more")}
                             </Link>
                           </Td>
                         </Tr>
@@ -96,7 +103,7 @@ function LatestUpdates() {
 
             <Card w={["90vw", "600px"]} minH="100%">
               <CardHeader>
-                <Heading size="md">Ostatnie uchwały</Heading>
+                <Heading size="md">{t("last-resolutions")}</Heading>
               </CardHeader>
               <CardBody>
                 <TableContainer>
@@ -121,7 +128,7 @@ function LatestUpdates() {
                                   .url
                               }
                             >
-                              pobierz
+                              {t("download")}
                             </ChakraLink>
                           </Td>
                         </Tr>
@@ -137,5 +144,11 @@ function LatestUpdates() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? "pl", ["common"])),
+  },
+});
 
 export default LatestUpdates;
