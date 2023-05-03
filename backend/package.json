@@ -42,7 +42,7 @@
     "@strapi/strapi": "^4.10.1",
     "graphql": "^16.6.0",
     "pg": "^8.10.0",
-    "react-select": "^5.7.2"
+    "react-select": "^5.7.3"
   },
   "strapi": {
     "uuid": "a4710531-0f36-48ca-a0c3-b0ef4a254ec9",
