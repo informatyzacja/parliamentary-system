@@ -52,7 +52,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@next/font": "^13.3.4",
-    "date-fns": "^2.29.3",
+    "date-fns": "^2.30.0",
     "framer-motion": "^10",
     "graphql": "^16.6.0",
     "jotai": "^2.0.4",
