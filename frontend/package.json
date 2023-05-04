@@ -45,7 +45,7 @@
   ],
   "dependencies": {
     "@ajna/pagination": "^1.4.19",
-    "@apollo/client": "^3.7.13",
+    "@apollo/client": "^3.7.14",
     "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.6.1",
     "@chakra-ui/system": "^2.5.6",
