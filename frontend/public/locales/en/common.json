@@ -1,0 +1,38 @@
+{
+  "addition-date": "Date of addition",
+  "aria": {
+    "students-union-logo": "Student Union logo",
+    "toggle-navigation": "Toggle navigation",
+    "user-menu": "User menu"
+  },
+  "download": "download",
+  "Download": "Download",
+  "first-name": "First name",
+  "functions": "Functions",
+  "last-meetings": "Last meetings",
+  "last-name": "Last name",
+  "last-resolutions": "Last resolutions",
+  "login": "Log in",
+  "logout": "Log out",
+  "meeting": {
+    "agenda": "Meeting agenda",
+    "no-reports": "No reports",
+    "protocol": "Meeting protocol",
+    "reports": "Meeting reports",
+    "title": "Meeting"
+  },
+  "more": "More",
+  "name": "Name",
+  "no-data": "No data",
+  "no-meetings": "No meetings",
+  "no-news": "No news",
+  "no-resolutions": "No resolutions",
+  "organisation-structure": "Organizational structure",
+  "parliament-meetings": "Parliament meetings",
+  "preview": "Preview",
+  "resolutions": "Resolutions",
+  "student-number": "Student number",
+  "system-status": "System status",
+  "term-of-office": "Term of office",
+  "to-use-you-must-login": "To use the application, you must log in"
+}

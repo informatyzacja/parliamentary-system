@@ -1,6 +1,7 @@
 import { Center, chakra, Container, Text, VStack } from "@chakra-ui/react";
 import { Lato } from "@next/font/google";
 import { useSession } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 import type React from "react";
 
 import { Footer } from "./Footer";
@@ -19,6 +20,7 @@ const lato = Lato({
 });
 
 export default function Layout({ children }: LayoutProps) {
+  const { t } = useTranslation("common");
   const { status } = useSession();
 
   return (
@@ -31,7 +33,7 @@ export default function Layout({ children }: LayoutProps) {
             {status === "loading" ? <Loader /> : null}
             {status === "unauthenticated" ? (
               <Center>
-                <Text>Aby korzystać z aplikacji musisz się zalogować</Text>
+                <Text>{t("to-use-you-must-login")}</Text>
               </Center>
             ) : null}
           </>

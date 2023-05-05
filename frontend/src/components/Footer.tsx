@@ -8,6 +8,7 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from "@chakra-ui/react";
+import { useTranslation } from "next-i18next";
 import type { ReactNode } from "react";
 import React from "react";
 import {
@@ -53,6 +54,7 @@ const SocialButton = ({
 };
 
 export const Footer = () => {
+  const { t } = useTranslation("common");
   const linkColor = useColorModeValue("gray.600", "gray.200");
   const linkHoverColor = useColorModeValue("gray.800", "white");
 
@@ -86,7 +88,7 @@ export const Footer = () => {
           }}
           target="_blank"
         >
-          {"Status systemów"}
+          {t("system-status")}
         </Link>
         <Stack direction={"row"} spacing={6}>
           <SocialButton label={"WWW"} href={"https://samorzad.pwr.edu.pl/"}>

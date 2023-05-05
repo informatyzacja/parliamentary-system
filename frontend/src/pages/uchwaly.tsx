@@ -1,5 +1,8 @@
 import { usePagination } from "@ajna/pagination";
 import { Box, Center, Heading, Tooltip, VStack } from "@chakra-ui/react";
+import type { GetStaticProps } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import type { FC } from "react";
 import { useState } from "react";
 
@@ -12,11 +15,15 @@ import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
 import { useCurrentTermId } from "../hooks/useCurrentTermId";
 import { useErrorHandler } from "../hooks/useErrorHandler";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Props {}
+
 interface ResolutionsProps {
   meetingId?: number;
 }
 
 const ResolutionsPage: FC<ResolutionsProps> = () => {
+  const { t } = useTranslation("common");
   const [currentTermId] = useCurrentTermId();
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
   const errorHandler = useErrorHandler();
@@ -52,9 +59,9 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
       <Center>
         <VStack>
           <Box mb={8}>
-            <Heading size="lg">Uchwały</Heading>
+            <Heading size="lg">{t("resolutions")}</Heading>
           </Box>
-          <Tooltip label="Kadencja">
+          <Tooltip label="term-of-office">
             <Box mt={"1 !important"} mb={"4 !important"}>
               <TermOfOfficeSelector />
             </Box>
@@ -62,7 +69,7 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
           {resolutionsQuery.loading ? <Loader /> : null}
           {resolutionsQuery.data?.resolutions.data.length === 0 &&
           !resolutionsQuery.loading ? (
-            <NoItems>Brak uchwał</NoItems>
+            <NoItems>{t("no-resolutions")}</NoItems>
           ) : null}
           {resolutions.length > 0 ? (
             <>
@@ -87,5 +94,11 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
     </>
   );
 };
+
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? "pl", ["common"])),
+  },
+});
 
 export default ResolutionsPage;

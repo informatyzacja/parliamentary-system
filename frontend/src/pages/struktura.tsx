@@ -15,6 +15,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import uniqBy from "lodash/uniqBy";
+import type { GetStaticProps } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState } from "react";
 
 import { useStudentsQuery } from "../api/graphql";
@@ -25,7 +28,11 @@ import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
 import { useCurrentTermId } from "../hooks/useCurrentTermId";
 import { useErrorHandler } from "../hooks/useErrorHandler";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Props {}
+
 function OrganisationStructure() {
+  const { t } = useTranslation("common");
   const [currentTermId] = useCurrentTermId();
   const errorHandler = useErrorHandler();
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
@@ -60,9 +67,9 @@ function OrganisationStructure() {
     <Center>
       <VStack>
         <Heading size="lg" mb={8}>
-          Struktura organizacyjna
+          {t("organisation-structure")}
         </Heading>
-        <Tooltip label="Kadencja">
+        <Tooltip label={t("term-of-office")}>
           <Box mt={"1 !important"} mb={"4 !important"}>
             <TermOfOfficeSelector />
           </Box>
@@ -75,10 +82,10 @@ function OrganisationStructure() {
                 <Thead>
                   <Tr>
                     <Th>#</Th>
-                    <Th>Imię</Th>
-                    <Th>Nazwisko</Th>
-                    <Th>Funkcje</Th>
-                    <Th>Numer indeksu</Th>
+                    <Th>{t("first-name")}</Th>
+                    <Th>{t("last-name")}</Th>
+                    <Th>{t("functions")}</Th>
+                    <Th>{t("student-number")}</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -117,11 +124,17 @@ function OrganisationStructure() {
         ) : null}
         {studentsQuery.data?.students.data.length === 0 &&
         !studentsQuery.loading ? (
-          <NoItems>Brak danych</NoItems>
+          <NoItems>{t("no-data")}</NoItems>
         ) : null}
       </VStack>
     </Center>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? "pl", ["common"])),
+  },
+});
 
 export default OrganisationStructure;
