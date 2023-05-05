@@ -10,6 +10,9 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { format } from "date-fns";
+import type { GetStaticProps } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React, { useState } from "react";
 
 import { useMeetingsQuery } from "@/api/graphql";
@@ -21,7 +24,11 @@ import TermOfOfficeSelector from "@/components/TermOfOfficeSelector";
 import { useCurrentTermId } from "@/hooks/useCurrentTermId";
 import { useErrorHandler } from "@/hooks/useErrorHandler";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Props {}
+
 export default function Meetings() {
+  const { t } = useTranslation("common");
   const [currentTermId] = useCurrentTermId();
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
   const pagination = usePagination({
@@ -57,16 +64,16 @@ export default function Meetings() {
     <Center>
       <VStack>
         <Box mb={8}>
-          <Heading size="lg">Posiedzenia parlamentu</Heading>
+          <Heading size="lg">{t("parliament-meetings")}</Heading>
         </Box>
-        <Tooltip label="Kadencja">
+        <Tooltip label={t("term-of-office")}>
           <Box mt={"1 !important"} mb={"4 !important"}>
             <TermOfOfficeSelector />
           </Box>
         </Tooltip>
         {meetingsQuery.loading ? <Loader /> : null}
         {meetings.length === 0 && !meetingsQuery.loading ? (
-          <NoItems>Brak posiedzeń</NoItems>
+          <NoItems>{t("no-meetings")}</NoItems>
         ) : null}
         <Wrap spacing={4} justify="center" pl={5} pr={5}>
           {meetings.map((meeting) => (
@@ -95,3 +102,9 @@ export default function Meetings() {
     </Center>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? "pl", ["common"])),
+  },
+});

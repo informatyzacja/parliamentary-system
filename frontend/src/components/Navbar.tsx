@@ -27,6 +27,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useTranslation } from "next-i18next";
 
 import {
   LatestMeetingsAndResolutionsDocument,
@@ -37,6 +38,7 @@ import {
 import { termOfOfficeIdAtom } from "../atoms/termOfOffice.atom";
 
 export const Navbar = () => {
+  const { t } = useTranslation("common");
   const { isOpen, onToggle } = useDisclosure();
   const { status, data } = useSession();
   const router = useRouter();
@@ -69,7 +71,7 @@ export const Navbar = () => {
                 )
               }
               variant={"ghost"}
-              aria-label={"Toggle Navigation"}
+              aria-label={t("aria.toggle-navigation")}
             />
           </Flex>
         ) : null}
@@ -84,7 +86,7 @@ export const Navbar = () => {
               style={{
                 cursor: "pointer",
               }}
-              alt="Logo samorządu"
+              alt={t("aria.students-union-logo")}
             />
           </NextLink>
           {status === "authenticated" ? (
@@ -105,7 +107,7 @@ export const Navbar = () => {
                 void signIn();
               }}
             >
-              Zaloguj się
+              {t("login")}
             </Button>
           ) : null}
           {status === "authenticated" ? (
@@ -121,7 +123,7 @@ export const Navbar = () => {
                   _hover={{
                     border: "2px solid black",
                   }}
-                  aria-label="Menu użytkownika"
+                  aria-label={t("aria.user-menu") as string | undefined}
                 >
                   <Avatar size={"sm"} />
                 </MenuButton>
@@ -136,7 +138,7 @@ export const Navbar = () => {
                       });
                     }}
                   >
-                    Wyloguj się
+                    {t("logout")}
                   </MenuItem>
                 </MenuList>
               </Menu>
@@ -197,6 +199,7 @@ const DesktopNav = () => {
 };
 
 const MobileNav = (mobileProps: MobileProps) => {
+  const { t } = useTranslation("common");
   const { data } = useSession();
   const router = useRouter();
 
@@ -224,7 +227,7 @@ const MobileNav = (mobileProps: MobileProps) => {
             });
           }}
         >
-          Wyloguj się
+          {t("logout")}
         </Button>
       </VStack>
     </Stack>
