@@ -13,7 +13,7 @@ jobs:
       url: https://parlament.samorzad.pwr.edu.pl
     steps:
       - name: Deploy to remote host
-        uses: appleboy/ssh-action@v0.1.7
+        uses: appleboy/ssh-action@v0.1.10
         env:
           CI: true
         with:
@@ -21,6 +21,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
+          proxy_host: ${{ secrets.PROXY_HOST }}
+          proxy_username: ${{ secrets.PROXY_USERNAME }}
           envs: CI
           script: |
             cd ${{ secrets.APP_DIR }}
