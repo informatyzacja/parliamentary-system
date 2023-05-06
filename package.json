@@ -66,6 +66,7 @@
   "lint-staged": {
     "*": [
       "prettier --ignore-unknown --write"
-    ]
+    ],
+    "*.{js,jsx,ts,tsx,graphql,gql}": "eslint --ext .js,.jsx,.ts,.tsx,.graphql,.gql "
   }
 }
