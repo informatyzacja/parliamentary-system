@@ -23,6 +23,7 @@ jobs:
           port: ${{ secrets.PORT }}
           proxy_host: ${{ secrets.PROXY_HOST }}
           proxy_username: ${{ secrets.PROXY_USERNAME }}
+          proxy_key: ${{ secrets.KEY }}
           envs: CI
           script: |
             cd ${{ secrets.APP_DIR }}
