@@ -1,19 +1,19 @@
-import { usePagination } from "@ajna/pagination";
-import { Box, Center, Heading, Tooltip, VStack } from "@chakra-ui/react";
-import type { GetStaticProps } from "next";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import type { FC } from "react";
-import { useState } from "react";
+import { usePagination } from '@ajna/pagination';
+import { Box, Center, Heading, Tooltip, VStack } from '@chakra-ui/react';
+import type { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import type { FC } from 'react';
+import { useState } from 'react';
 
-import { useResolutionsQuery } from "../api/graphql";
-import { Loader } from "../components/Loader";
-import { NoItems } from "../components/NoItems";
-import { Pagination } from "../components/Pagination";
-import { Resolutions } from "../components/Resolutions";
-import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
-import { useCurrentTermId } from "../hooks/useCurrentTermId";
-import { useErrorHandler } from "../hooks/useErrorHandler";
+import { useResolutionsQuery } from '../api/graphql';
+import { Loader } from '../components/Loader';
+import { NoItems } from '../components/NoItems';
+import { Pagination } from '../components/Pagination';
+import { Resolutions } from '../components/Resolutions';
+import TermOfOfficeSelector from '../components/TermOfOfficeSelector';
+import { useCurrentTermId } from '../hooks/useCurrentTermId';
+import { useErrorHandler } from '../hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -23,7 +23,7 @@ interface ResolutionsProps {
 }
 
 const ResolutionsPage: FC<ResolutionsProps> = () => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
   const [currentTermId] = useCurrentTermId();
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
   const errorHandler = useErrorHandler();
@@ -40,7 +40,7 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
   });
   const resolutionsQuery = useResolutionsQuery({
     variables: {
-      termId: currentTermId ?? "",
+      termId: currentTermId ?? '',
       pageSize: pagination.pageSize,
       page: pagination.currentPage,
     },
@@ -59,17 +59,17 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
       <Center>
         <VStack>
           <Box mb={8}>
-            <Heading size="lg">{t("resolutions")}</Heading>
+            <Heading size="lg">{t('resolutions')}</Heading>
           </Box>
           <Tooltip label="term-of-office">
-            <Box mt={"1 !important"} mb={"4 !important"}>
+            <Box mt={'1 !important'} mb={'4 !important'}>
               <TermOfOfficeSelector />
             </Box>
           </Tooltip>
           {resolutionsQuery.loading ? <Loader /> : null}
           {resolutionsQuery.data?.resolutions.data.length === 0 &&
           !resolutionsQuery.loading ? (
-            <NoItems>{t("no-resolutions")}</NoItems>
+            <NoItems>{t('no-resolutions')}</NoItems>
           ) : null}
           {resolutions.length > 0 ? (
             <>
@@ -97,7 +97,7 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "pl", ["common"])),
+    ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },
 });
 

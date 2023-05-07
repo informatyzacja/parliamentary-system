@@ -8,11 +8,11 @@ import {
   Th,
   Thead,
   Tr,
-} from "@chakra-ui/react";
-import { format } from "date-fns";
-import NextLink from "next/link";
-import { useTranslation } from "next-i18next";
-import React from "react";
+} from '@chakra-ui/react';
+import { format } from 'date-fns';
+import NextLink from 'next/link';
+import { useTranslation } from 'next-i18next';
+import React from 'react';
 
 export const Resolutions = ({
   resolutions,
@@ -57,18 +57,18 @@ export const Resolutions = ({
     pageSize: number;
   };
 }) => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
 
   return (
     <ScaleFade initialScale={0.9} in={true}>
-      <TableContainer maxW={"90vw"}>
+      <TableContainer maxW={'90vw'}>
         <Table size="lg">
           <Thead>
             <Tr>
               <Th>#</Th>
-              <Th>{t("name")}</Th>
-              {showMeetings && <Th>{t("meeting.title")}</Th>}
-              <Th>{t("addition-date")}</Th>
+              <Th>{t('name')}</Th>
+              {showMeetings && <Th>{t('meeting.title')}</Th>}
+              <Th>{t('addition-date')}</Th>
               <Th></Th>
             </Tr>
           </Thead>
@@ -96,7 +96,7 @@ export const Resolutions = ({
                 <Td>
                   {format(
                     new Date(resolution.attributes.publishedAt),
-                    "dd-MM-yyyy HH:mm:ss"
+                    'dd-MM-yyyy HH:mm:ss',
                   )}
                 </Td>
                 <Td>
@@ -105,10 +105,10 @@ export const Resolutions = ({
                     href={
                       process.env.NEXT_PUBLIC_API_URL +
                       (resolution.attributes.document?.data.attributes?.url ??
-                        "/404")
+                        '/404')
                     }
                   >
-                    {t("Download")}
+                    {t('Download')}
                   </Link>
                 </Td>
               </Tr>

@@ -1,7 +1,7 @@
-import { strict as assert } from "assert";
+import { strict as assert } from 'assert';
 
 const requiredConfig = {
-  NEXTAUTH_URL: process.env.NEXTAUTH_URL?.replace(/\/$/, ""),
+  NEXTAUTH_URL: process.env.NEXTAUTH_URL?.replace(/\/$/, ''),
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
 };
 
@@ -17,7 +17,7 @@ const googleConfig = {
 const usosConfig = {
   USOS_CLIENT_ID: process.env.USOS_CLIENT_ID,
   USOS_CLIENT_SECRET: process.env.USOS_CLIENT_SECRET,
-  USOS_BASE_URL: process.env.USOS_BASE_URL?.replace(/\/$/, ""),
+  USOS_BASE_URL: process.env.USOS_BASE_URL?.replace(/\/$/, ''),
 };
 
 type RequiredProperty<T> = { [P in keyof T]: Required<NonNullable<T[P]>> };

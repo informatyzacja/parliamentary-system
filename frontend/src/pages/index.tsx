@@ -1,4 +1,4 @@
-import { useApolloClient } from "@apollo/client";
+import { useApolloClient } from '@apollo/client';
 import {
   Card,
   CardBody,
@@ -13,26 +13,26 @@ import {
   Tbody,
   Td,
   Tr,
-} from "@chakra-ui/react";
-import { format } from "date-fns";
-import type { GetStaticProps } from "next";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+} from '@chakra-ui/react';
+import { format } from 'date-fns';
+import type { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import {
   MeetingDocument,
   useLatestMeetingsAndResolutionsQuery,
-} from "../api/graphql";
-import { Link } from "../components/Link";
-import { Loader } from "../components/Loader";
-import { NoItems } from "../components/NoItems";
-import { useErrorHandler } from "../hooks/useErrorHandler";
+} from '../api/graphql';
+import { Link } from '../components/Link';
+import { Loader } from '../components/Loader';
+import { NoItems } from '../components/NoItems';
+import { useErrorHandler } from '../hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
 
 function LatestUpdates() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
   const errorHandler = useErrorHandler();
   const latestUpdatesQuery = useLatestMeetingsAndResolutionsQuery({
     onError: errorHandler,
@@ -50,7 +50,7 @@ function LatestUpdates() {
     latestUpdatesQuery.data?.meetings.data.length === 0 &&
     latestUpdatesQuery.data.resolutions.data.length === 0
   ) {
-    return <NoItems>{t("no-news")}</NoItems>;
+    return <NoItems>{t('no-news')}</NoItems>;
   }
 
   return (
@@ -58,13 +58,13 @@ function LatestUpdates() {
       <Center>
         <ScaleFade in={latestUpdatesQuery.data !== undefined}>
           <Flex
-            flexDirection={["column", "row"]}
-            alignItems={["center", "stretch"]}
+            flexDirection={['column', 'row']}
+            alignItems={['center', 'stretch']}
             gap="8"
           >
-            <Card w={["90vw", "600px"]} h="100%">
+            <Card w={['90vw', '600px']} h="100%">
               <CardHeader>
-                <Heading size="md">{t("last-meetings")}</Heading>
+                <Heading size="md">{t('last-meetings')}</Heading>
               </CardHeader>
               <CardBody>
                 <TableContainer>
@@ -75,7 +75,7 @@ function LatestUpdates() {
                           <Td>
                             {format(
                               new Date(meeting.attributes.date as string),
-                              "dd-MM-yyyy"
+                              'dd-MM-yyyy',
                             )}
                           </Td>
                           <Td>{meeting.attributes.name}</Td>
@@ -90,7 +90,7 @@ function LatestUpdates() {
                             }}
                           >
                             <Link href={`/posiedzenia/${meeting.id}`}>
-                              {t("more")}
+                              {t('more')}
                             </Link>
                           </Td>
                         </Tr>
@@ -101,9 +101,9 @@ function LatestUpdates() {
               </CardBody>
             </Card>
 
-            <Card w={["90vw", "600px"]} minH="100%">
+            <Card w={['90vw', '600px']} minH="100%">
               <CardHeader>
-                <Heading size="md">{t("last-resolutions")}</Heading>
+                <Heading size="md">{t('last-resolutions')}</Heading>
               </CardHeader>
               <CardBody>
                 <TableContainer>
@@ -114,9 +114,9 @@ function LatestUpdates() {
                           <Td>
                             {format(
                               new Date(
-                                resolution.attributes.publishedAt as string
+                                resolution.attributes.publishedAt as string,
                               ),
-                              "dd-MM-yyyy"
+                              'dd-MM-yyyy',
                             )}
                           </Td>
                           <Td>{resolution.attributes.name}</Td>
@@ -128,7 +128,7 @@ function LatestUpdates() {
                                   .url
                               }
                             >
-                              {t("download")}
+                              {t('download')}
                             </ChakraLink>
                           </Td>
                         </Tr>
@@ -147,7 +147,7 @@ function LatestUpdates() {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "pl", ["common"])),
+    ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },
 });
 

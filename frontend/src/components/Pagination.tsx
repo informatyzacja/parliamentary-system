@@ -5,9 +5,9 @@ import {
   PaginationPage,
   PaginationPageGroup,
   PaginationPrevious,
-} from "@ajna/pagination";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import type { FC } from "react";
+} from '@ajna/pagination';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import type { FC } from 'react';
 
 interface PaginationProps {
   current: number;
@@ -43,9 +43,9 @@ export const Pagination: FC<PaginationProps> = ({
               key={`pagination_page_${page}`}
               page={page}
               _current={{
-                bg: "gray.300",
+                bg: 'gray.300',
                 _hover: {
-                  bg: "gray.400",
+                  bg: 'gray.400',
                 },
               }}
             />

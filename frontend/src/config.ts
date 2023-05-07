@@ -1,7 +1,7 @@
-import { strict as assert } from "assert";
+import { strict as assert } from 'assert';
 
 const config = {
-  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, ""),
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, ''),
 };
 
 Object.entries(config).forEach(([key, value]) => {

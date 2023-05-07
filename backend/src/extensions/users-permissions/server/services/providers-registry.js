@@ -38,7 +38,7 @@ const getInitialProviders = ({ purest }) => ({
       secrets.CLIENT_SECRET,
       '1.0',
       null,
-      'HMAC-SHA1'
+      'HMAC-SHA1',
     );
     return new Promise((resolve, reject) => {
       client.getProtectedResource(
@@ -59,7 +59,7 @@ const getInitialProviders = ({ purest }) => ({
               student_number: data.student_number,
             });
           }
-        }
+        },
       );
     });
   },
@@ -74,11 +74,11 @@ module.exports = () => {
     register(providerName, provider) {
       assert(
         typeof providerName === 'string',
-        'Provider name must be a string'
+        'Provider name must be a string',
       );
       assert(
         typeof provider === 'function',
-        'Provider callback must be a function'
+        'Provider callback must be a function',
       );
 
       providersCallbacks[providerName] = provider({ purest });

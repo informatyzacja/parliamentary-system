@@ -1,4 +1,4 @@
-import { usePagination } from "@ajna/pagination";
+import { usePagination } from '@ajna/pagination';
 import {
   Box,
   Center,
@@ -8,27 +8,27 @@ import {
   VStack,
   Wrap,
   WrapItem,
-} from "@chakra-ui/react";
-import { format } from "date-fns";
-import type { GetStaticProps } from "next";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React, { useState } from "react";
+} from '@chakra-ui/react';
+import { format } from 'date-fns';
+import type { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import React, { useState } from 'react';
 
-import { useMeetingsQuery } from "@/api/graphql";
-import { Loader } from "@/components/Loader";
-import { Meeting } from "@/components/Meeting";
-import { NoItems } from "@/components/NoItems";
-import { Pagination } from "@/components/Pagination";
-import TermOfOfficeSelector from "@/components/TermOfOfficeSelector";
-import { useCurrentTermId } from "@/hooks/useCurrentTermId";
-import { useErrorHandler } from "@/hooks/useErrorHandler";
+import { useMeetingsQuery } from '@/api/graphql';
+import { Loader } from '@/components/Loader';
+import { Meeting } from '@/components/Meeting';
+import { NoItems } from '@/components/NoItems';
+import { Pagination } from '@/components/Pagination';
+import TermOfOfficeSelector from '@/components/TermOfOfficeSelector';
+import { useCurrentTermId } from '@/hooks/useCurrentTermId';
+import { useErrorHandler } from '@/hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
 
 export default function Meetings() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
   const [currentTermId] = useCurrentTermId();
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
   const pagination = usePagination({
@@ -45,7 +45,7 @@ export default function Meetings() {
   const errorHandler = useErrorHandler();
   const meetingsQuery = useMeetingsQuery({
     variables: {
-      termId: currentTermId ?? "",
+      termId: currentTermId ?? '',
       pageSize: pagination.pageSize,
       page: pagination.currentPage,
     },
@@ -64,16 +64,16 @@ export default function Meetings() {
     <Center>
       <VStack>
         <Box mb={8}>
-          <Heading size="lg">{t("parliament-meetings")}</Heading>
+          <Heading size="lg">{t('parliament-meetings')}</Heading>
         </Box>
-        <Tooltip label={t("term-of-office")}>
-          <Box mt={"1 !important"} mb={"4 !important"}>
+        <Tooltip label={t('term-of-office')}>
+          <Box mt={'1 !important'} mb={'4 !important'}>
             <TermOfOfficeSelector />
           </Box>
         </Tooltip>
         {meetingsQuery.loading ? <Loader /> : null}
         {meetings.length === 0 && !meetingsQuery.loading ? (
-          <NoItems>{t("no-meetings")}</NoItems>
+          <NoItems>{t('no-meetings')}</NoItems>
         ) : null}
         <Wrap spacing={4} justify="center" pl={5} pr={5}>
           {meetings.map((meeting) => (
@@ -82,10 +82,10 @@ export default function Meetings() {
                 <Meeting
                   id={meeting.id}
                   name={meeting.attributes.name}
-                  place={meeting.attributes.place.replace(/_/, " ")}
+                  place={meeting.attributes.place.replace(/_/, ' ')}
                   date={format(
                     new Date(meeting.attributes.date as string),
-                    "dd.MM.yyyy"
+                    'dd.MM.yyyy',
                   )}
                 />
               </ScaleFade>
@@ -105,6 +105,6 @@ export default function Meetings() {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "pl", ["common"])),
+    ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },
 });

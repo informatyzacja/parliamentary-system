@@ -1,7 +1,7 @@
-import { strict as assert } from "assert";
-import type { OAuthConfig, OAuthUserConfig } from "next-auth/providers";
+import { strict as assert } from 'assert';
+import type { OAuthConfig, OAuthUserConfig } from 'next-auth/providers';
 
-import serverConfig from "@/config.server";
+import serverConfig from '@/config.server';
 
 export interface UsosProfile extends Record<string, string> {
   first_name: string;
@@ -11,15 +11,15 @@ export interface UsosProfile extends Record<string, string> {
 }
 
 export default function UsosProvider<P extends UsosProfile>(
-  options: OAuthUserConfig<P>
+  options: OAuthUserConfig<P>,
 ): OAuthConfig<P> {
-  assert(serverConfig.USOS_BASE_URL, "USOS_BASE_URL is not defined");
+  assert(serverConfig.USOS_BASE_URL, 'USOS_BASE_URL is not defined');
 
   return {
-    id: "usos",
-    name: "USOS",
-    type: "oauth",
-    version: "1.0",
+    id: 'usos',
+    name: 'USOS',
+    type: 'oauth',
+    version: '1.0',
     authorization: {
       url: `${serverConfig.USOS_BASE_URL}/services/oauth/authorize`,
     },
@@ -32,17 +32,17 @@ export default function UsosProvider<P extends UsosProfile>(
     profile(profile) {
       return {
         id: profile.student_number,
-        name: profile.first_name + " " + profile.last_name,
+        name: profile.first_name + ' ' + profile.last_name,
         email: profile.email,
       };
     },
     style: {
-      logo: "https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png",
-      logoDark: "https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png",
-      bgDark: "#fff",
-      bg: "#fff",
-      text: "#000",
-      textDark: "#000",
+      logo: 'https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png',
+      logoDark: 'https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png',
+      bgDark: '#fff',
+      bg: '#fff',
+      text: '#000',
+      textDark: '#000',
     },
     options,
   };

@@ -3,32 +3,32 @@ import {
   ApolloProvider,
   createHttpLink,
   InMemoryCache,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
-import { ChakraProvider } from "@chakra-ui/react";
-import { Provider } from "jotai";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import type { Session as NextAuthSession } from "next-auth";
-import { getSession, SessionProvider } from "next-auth/react";
-import { appWithTranslation } from "next-i18next";
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { ChakraProvider } from '@chakra-ui/react';
+import { Provider } from 'jotai';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import type { Session as NextAuthSession } from 'next-auth';
+import { getSession, SessionProvider } from 'next-auth/react';
+import { appWithTranslation } from 'next-i18next';
 
-import config from "@/config";
+import config from '@/config';
 
-import Layout from "../components/Layout";
-import { theme } from "../styles/theme";
+import Layout from '../components/Layout';
+import { theme } from '../styles/theme';
 
 /**
  * JWT token is coming from api/auth/[...nextauth]
  */
-declare module "next-auth" {
+declare module 'next-auth' {
   interface Session {
     jwt: string;
   }
 }
 
 const httpLink = createHttpLink({
-  uri: config.NEXT_PUBLIC_API_URL + "/graphql",
+  uri: config.NEXT_PUBLIC_API_URL + '/graphql',
 });
 
 const authLink = setContext(
@@ -46,7 +46,7 @@ const authLink = setContext(
         authorization: `Bearer ${session.jwt}`,
       },
     };
-  }
+  },
 );
 
 const client = new ApolloClient({

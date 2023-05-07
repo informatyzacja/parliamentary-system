@@ -1,4 +1,4 @@
-import { InfoOutlineIcon } from "@chakra-ui/icons";
+import { InfoOutlineIcon } from '@chakra-ui/icons';
 import {
   Box,
   Center,
@@ -15,29 +15,29 @@ import {
   Thead,
   Tr,
   VStack,
-} from "@chakra-ui/react";
-import type { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+} from '@chakra-ui/react';
+import type { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { useMeetingQuery } from "@/api/graphql";
-import { Loader } from "@/components/Loader";
-import { PreviewPDF } from "@/components/PreviewPDF";
-import { Resolutions } from "@/components/Resolutions";
-import { useErrorHandler } from "@/hooks/useErrorHandler";
+import { useMeetingQuery } from '@/api/graphql';
+import { Loader } from '@/components/Loader';
+import { PreviewPDF } from '@/components/PreviewPDF';
+import { Resolutions } from '@/components/Resolutions';
+import { useErrorHandler } from '@/hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
 
 const Meeting = () => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
   const router = useRouter();
   const { id } = router.query;
   const errorHandler = useErrorHandler();
   const meetingQuery = useMeetingQuery({
     variables: {
-      id: (id as string | undefined) ?? "",
+      id: (id as string | undefined) ?? '',
     },
     skip: !id,
     onError: errorHandler,
@@ -65,7 +65,7 @@ const Meeting = () => {
                   meeting.attributes.agenda.data.attributes.url
                 }
               >
-                {t("meeting.agenda")}
+                {t('meeting.agenda')}
               </Link>
             </Heading>
           </ScaleFade>
@@ -80,13 +80,13 @@ const Meeting = () => {
                   meeting.attributes.protocol.data.attributes.url
                 }
               >
-                {t("meeting.protocol")}
+                {t('meeting.protocol')}
               </Link>
             </Heading>
           </ScaleFade>
         )}
         <Box mt={16}>
-          <Heading size="md">{t("meeting.reports")}</Heading>
+          <Heading size="md">{t('meeting.reports')}</Heading>
         </Box>
         {meetingQuery.loading ? (
           <Loader />
@@ -95,15 +95,15 @@ const Meeting = () => {
             {meeting?.attributes.reports.data.length === 0 ? (
               <VStack>
                 <InfoOutlineIcon mt={2} />
-                <Text size="md">{t("meeting.no-reports")}</Text>
+                <Text size="md">{t('meeting.no-reports')}</Text>
               </VStack>
             ) : (
-              <TableContainer maxW={"90vw"}>
+              <TableContainer maxW={'90vw'}>
                 <Table size="lg" w="800px">
                   <Thead>
                     <Tr>
                       <Th>#</Th>
-                      <Th>{t("name")}</Th>
+                      <Th>{t('name')}</Th>
                       <Th></Th>
                       <Th></Th>
                     </Tr>
@@ -116,7 +116,7 @@ const Meeting = () => {
                             <Td>{index + 1}</Td>
                             <Td>
                               <Link
-                                target={"_blank"}
+                                target={'_blank'}
                                 href={
                                   process.env.NEXT_PUBLIC_API_URL +
                                   report.attributes.url
@@ -141,11 +141,11 @@ const Meeting = () => {
                                   report.attributes.url
                                 }
                               >
-                                {t("Download")}
+                                {t('Download')}
                               </Link>
                             </Td>
                           </Tr>
-                        )
+                        ),
                       )}
                   </Tbody>
                 </Table>
@@ -154,13 +154,13 @@ const Meeting = () => {
           </ScaleFade>
         )}
         <Box mt={16}>
-          <Heading size="md">{t("resolutions")}</Heading>
+          <Heading size="md">{t('resolutions')}</Heading>
         </Box>
         {meetingQuery.data?.meeting.data.attributes.resolutions.data.length ===
         0 ? (
           <VStack>
             <InfoOutlineIcon mt={2} />
-            <Text size="md">{t("no-resolutions")}</Text>
+            <Text size="md">{t('no-resolutions')}</Text>
           </VStack>
         ) : (
           <Resolutions
@@ -181,7 +181,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   locale,
 }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "pl", ["common"])),
+    ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },
 });
 
