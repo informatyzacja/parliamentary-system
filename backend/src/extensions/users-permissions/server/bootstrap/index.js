@@ -125,7 +125,7 @@ module.exports = async ({ strapi }) => {
   await initAdvancedOptions(pluginStore);
 
   await strapi.admin.services.permission.actionProvider.registerMany(
-    usersPermissionsActions.actions
+    usersPermissionsActions.actions,
   );
 
   await getService('users-permissions').initialize();
@@ -134,7 +134,7 @@ module.exports = async ({ strapi }) => {
     if (process.env.NODE_ENV !== 'development') {
       throw new Error(
         `Missing jwtSecret. Please, set configuration variable "jwtSecret" for the users-permissions plugin in config/plugins.js (ex: you can generate one using Node with \`crypto.randomBytes(16).toString('base64')\`).
-For security reasons, prefer storing the secret in an environment variable and read it in config/plugins.js. See https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`
+For security reasons, prefer storing the secret in an environment variable and read it in config/plugins.js. See https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/configurations/optional/environment.html#configuration-using-environment-variables.`,
       );
     }
 
@@ -146,7 +146,7 @@ For security reasons, prefer storing the secret in an environment variable and r
       const envPath = process.env.ENV_PATH || '.env';
       strapi.fs.appendFile(envPath, `JWT_SECRET=${jwtSecret}\n`);
       strapi.log.info(
-        `The Users & Permissions plugin automatically generated a jwt secret and stored it in ${envPath} under the name JWT_SECRET.`
+        `The Users & Permissions plugin automatically generated a jwt secret and stored it in ${envPath} under the name JWT_SECRET.`,
       );
     }
   }

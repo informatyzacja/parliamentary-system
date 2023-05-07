@@ -1,7 +1,7 @@
-import { InfoOutlineIcon } from "@chakra-ui/icons";
-import { ScaleFade, Text, VStack } from "@chakra-ui/react";
-import type { ReactNode } from "react";
-import React from "react";
+import { InfoOutlineIcon } from '@chakra-ui/icons';
+import { ScaleFade, Text, VStack } from '@chakra-ui/react';
+import type { ReactNode } from 'react';
+import React from 'react';
 
 export const NoItems = ({ children }: { children: ReactNode }) => {
   return (

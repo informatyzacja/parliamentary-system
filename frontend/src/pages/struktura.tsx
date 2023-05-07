@@ -1,4 +1,4 @@
-import { usePagination } from "@ajna/pagination";
+import { usePagination } from '@ajna/pagination';
 import {
   Box,
   Center,
@@ -13,26 +13,26 @@ import {
   Tooltip,
   Tr,
   VStack,
-} from "@chakra-ui/react";
-import uniqBy from "lodash/uniqBy";
-import type { GetStaticProps } from "next";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useState } from "react";
+} from '@chakra-ui/react';
+import uniqBy from 'lodash/uniqBy';
+import type { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useState } from 'react';
 
-import { useStudentsQuery } from "../api/graphql";
-import { Loader } from "../components/Loader";
-import { NoItems } from "../components/NoItems";
-import { Pagination } from "../components/Pagination";
-import TermOfOfficeSelector from "../components/TermOfOfficeSelector";
-import { useCurrentTermId } from "../hooks/useCurrentTermId";
-import { useErrorHandler } from "../hooks/useErrorHandler";
+import { useStudentsQuery } from '../api/graphql';
+import { Loader } from '../components/Loader';
+import { NoItems } from '../components/NoItems';
+import { Pagination } from '../components/Pagination';
+import TermOfOfficeSelector from '../components/TermOfOfficeSelector';
+import { useCurrentTermId } from '../hooks/useCurrentTermId';
+import { useErrorHandler } from '../hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
 
 function OrganisationStructure() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
   const [currentTermId] = useCurrentTermId();
   const errorHandler = useErrorHandler();
   const [totalPages, setTotalPages] = useState<number | undefined>(undefined);
@@ -51,7 +51,7 @@ function OrganisationStructure() {
 
   const studentsQuery = useStudentsQuery({
     variables: {
-      termId: currentTermId ?? "",
+      termId: currentTermId ?? '',
       page: pagination.currentPage,
       pageSize: pagination.pageSize,
     },
@@ -62,30 +62,30 @@ function OrganisationStructure() {
     onError: errorHandler,
   });
 
-  const students = uniqBy(studentsQuery.data?.students.data, "id");
+  const students = uniqBy(studentsQuery.data?.students.data, 'id');
   return (
     <Center>
       <VStack>
         <Heading size="lg" mb={8}>
-          {t("organisation-structure")}
+          {t('organisation-structure')}
         </Heading>
-        <Tooltip label={t("term-of-office")}>
-          <Box mt={"1 !important"} mb={"4 !important"}>
+        <Tooltip label={t('term-of-office')}>
+          <Box mt={'1 !important'} mb={'4 !important'}>
             <TermOfOfficeSelector />
           </Box>
         </Tooltip>
         {studentsQuery.loading ? <Loader /> : null}
         {students.length > 0 ? (
           <ScaleFade in={true}>
-            <TableContainer px={4} maxW={["95vw", null, null, "1000px"]}>
+            <TableContainer px={4} maxW={['95vw', null, null, '1000px']}>
               <Table variant="simple" size="lg">
                 <Thead>
                   <Tr>
                     <Th>#</Th>
-                    <Th>{t("first-name")}</Th>
-                    <Th>{t("last-name")}</Th>
-                    <Th>{t("functions")}</Th>
-                    <Th>{t("student-number")}</Th>
+                    <Th>{t('first-name')}</Th>
+                    <Th>{t('last-name')}</Th>
+                    <Th>{t('functions')}</Th>
+                    <Th>{t('student-number')}</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
@@ -102,9 +102,9 @@ function OrganisationStructure() {
                         {student.attributes.functions
                           .at(0)
                           ?.functions.data.map(
-                            ({ attributes }) => attributes.name
+                            ({ attributes }) => attributes.name,
                           )
-                          .join(", ")}
+                          .join(', ')}
                       </Td>
                       <Td>{student.attributes.student_number}</Td>
                     </Tr>
@@ -124,7 +124,7 @@ function OrganisationStructure() {
         ) : null}
         {studentsQuery.data?.students.data.length === 0 &&
         !studentsQuery.loading ? (
-          <NoItems>{t("no-data")}</NoItems>
+          <NoItems>{t('no-data')}</NoItems>
         ) : null}
       </VStack>
     </Center>
@@ -133,7 +133,7 @@ function OrganisationStructure() {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "pl", ["common"])),
+    ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },
 });
 

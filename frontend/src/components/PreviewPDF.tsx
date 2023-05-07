@@ -1,5 +1,5 @@
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-import "react-pdf/dist/esm/Page/TextLayer.css";
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
 
 import {
   Box,
@@ -11,10 +11,10 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
-} from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
-import React, { useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
+} from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
+import React, { useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
@@ -25,7 +25,7 @@ export const PreviewPDF = ({
   url: string;
   filename: string;
 }) => {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation('common');
   const modal = useDisclosure();
   const [numberOfPages, setNumberOfPages] = useState<number>(0);
 
@@ -35,7 +35,7 @@ export const PreviewPDF = ({
 
   return (
     <>
-      <Button onClick={modal.onOpen}>{t("preview")}</Button>
+      <Button onClick={modal.onOpen}>{t('preview')}</Button>
       <Modal size="2xl" isOpen={modal.isOpen} onClose={modal.onClose}>
         <ModalOverlay />
         <ModalContent>

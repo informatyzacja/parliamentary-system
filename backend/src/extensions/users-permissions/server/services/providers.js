@@ -43,7 +43,7 @@ module.exports = ({ strapi }) => {
     const newStudentNumber = parseInt(profile.student_number);
 
     const isStudentAllowed = global.private_config.allowed_student_numbers.find(
-      (allowedStudentNumber) => newStudentNumber === allowedStudentNumber
+      (allowedStudentNumber) => newStudentNumber === allowedStudentNumber,
     );
 
     if (!isStudentAllowed) {
@@ -184,7 +184,7 @@ module.exports = ({ strapi }) => {
       apiPrefix,
       'connect',
       provider,
-      'callback'
+      'callback',
     );
   };
 

@@ -1,7 +1,7 @@
-import { Select } from "@chakra-ui/react";
+import { Select } from '@chakra-ui/react';
 
-import { useTermOfOfficesQuery } from "../api/graphql";
-import { useCurrentTermId } from "../hooks/useCurrentTermId";
+import { useTermOfOfficesQuery } from '../api/graphql';
+import { useCurrentTermId } from '../hooks/useCurrentTermId';
 
 const TermOfOfficeSelector = () => {
   const { data } = useTermOfOfficesQuery();

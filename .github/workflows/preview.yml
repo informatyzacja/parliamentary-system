@@ -20,10 +20,10 @@ jobs:
         uses: famly/pull-request-comment-trigger@master
         id: check
         with:
-          trigger: "/preview"
+          trigger: '/preview'
           reaction: eyes
         env:
-          GITHUB_TOKEN: "${{ steps.generate_token.outputs.token }}"
+          GITHUB_TOKEN: '${{ steps.generate_token.outputs.token }}'
       # When triggered by a comment, we do not have access to the usual github.sha
       # value, so we get it manually.
       - name: Extract current commit

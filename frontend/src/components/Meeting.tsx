@@ -1,4 +1,4 @@
-import { useApolloClient } from "@apollo/client";
+import { useApolloClient } from '@apollo/client';
 import {
   Center,
   Flex,
@@ -6,10 +6,10 @@ import {
   Stack,
   Text,
   useColorModeValue,
-} from "@chakra-ui/react";
-import { useRouter } from "next/router";
+} from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
-import { MeetingDocument } from "../api/graphql";
+import { MeetingDocument } from '../api/graphql';
 
 export const Meeting = ({
   id,
@@ -28,9 +28,9 @@ export const Meeting = ({
   return (
     <Center
       _hover={{
-        transform: "scale(1.05)",
-        cursor: "pointer",
-        opacity: "0.8",
+        transform: 'scale(1.05)',
+        cursor: 'pointer',
+        opacity: '0.8',
       }}
       onMouseOver={() => {
         void router.prefetch(`/posiedzenia/${id}`);
@@ -47,41 +47,41 @@ export const Meeting = ({
       transition="all 0.2s ease-in-out"
       transform="scale(1)"
       py={6}
-      w={{ base: "90vw", md: "400px" }}
+      w={{ base: '90vw', md: '400px' }}
     >
       <Flex
-        maxW={"445px"}
-        w={"full"}
+        maxW={'445px'}
+        w={'full'}
         shadow="lg"
-        bg={useColorModeValue("white", "gray.900")}
-        rounded={"md"}
+        bg={useColorModeValue('white', 'gray.900')}
+        rounded={'md'}
         h="200px"
         p={6}
-        overflow={"hidden"}
+        overflow={'hidden'}
         flexDirection="column"
         justifyContent="space-between"
       >
         <Stack>
           <Text
-            color={"blue.500"}
-            textTransform={"uppercase"}
+            color={'blue.500'}
+            textTransform={'uppercase'}
             fontWeight={800}
-            fontSize={"sm"}
+            fontSize={'sm'}
             letterSpacing={1.1}
           >
             {place}
           </Text>
           <Heading
-            color={useColorModeValue("gray.700", "white")}
-            fontSize={"2xl"}
-            fontFamily={"body"}
+            color={useColorModeValue('gray.700', 'white')}
+            fontSize={'2xl'}
+            fontFamily={'body'}
           >
             {name}
           </Heading>
         </Stack>
-        <Stack mt={"auto"} direction={"row"} spacing={4} align={"center"}>
-          <Stack direction={"column"} spacing={0} fontSize={"sm"}>
-            <Text color={"gray.500"}>{date}</Text>
+        <Stack mt={'auto'} direction={'row'} spacing={4} align={'center'}>
+          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+            <Text color={'gray.500'}>{date}</Text>
           </Stack>
         </Stack>
       </Flex>
