@@ -68,7 +68,7 @@
     "react-pdf": "^6.2.0"
   },
   "devDependencies": {
-    "@alergeek-ventures/eslint-config": "^5.0.115",
+    "@alergeek-ventures/eslint-config": "^5.0.116",
     "@babel/core": "^7.21.4",
     "@graphql-codegen/cli": "^3.3.1",
     "@graphql-codegen/client-preset": "^3.0.1",
