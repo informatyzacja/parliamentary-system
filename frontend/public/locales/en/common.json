@@ -12,6 +12,7 @@
   "last-meetings": "Last meetings",
   "last-name": "Last name",
   "last-resolutions": "Last resolutions",
+  "latest-updates": "Latest updates",
   "login": "Log in",
   "logout": "Log out",
   "meeting": {
@@ -19,7 +20,8 @@
     "no-reports": "No reports",
     "protocol": "Meeting protocol",
     "reports": "Meeting reports",
-    "title": "Meeting"
+    "title": "Meeting",
+    "title-plural": "Meetings"
   },
   "more": "More",
   "name": "Name",
