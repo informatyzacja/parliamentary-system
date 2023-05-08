@@ -156,6 +156,7 @@ export const Navbar = () => {
 };
 
 const DesktopNav = () => {
+  const { t } = useTranslation('common');
   const linkColor = useColorModeValue('gray.600', 'gray.200');
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const termOfOffice = useAtomValue(termOfOfficeIdAtom);
@@ -190,7 +191,7 @@ const DesktopNav = () => {
               color: linkHoverColor,
             }}
           >
-            {navItem.label}
+            {t(navItem.label)}
           </Link>
         </Center>
       ))}
@@ -237,7 +238,7 @@ const MobileNav = (mobileProps: MobileProps) => {
 const MobileNavItem = (mobileNavProps: MobileProps & NavItem) => {
   const { label, href } = mobileNavProps;
   const { onToggle } = mobileNavProps;
-
+  const { t } = useTranslation('common');
   return (
     <Stack spacing={4}>
       <Flex
@@ -255,7 +256,7 @@ const MobileNavItem = (mobileNavProps: MobileProps & NavItem) => {
           color={useColorModeValue('gray.600', 'gray.200')}
           onClick={onToggle}
         >
-          {label}
+          {t(label)}
         </Link>
       </Flex>
     </Stack>
@@ -276,22 +277,22 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   {
-    label: 'Aktualności',
+    label: 'latest-updates',
     href: '/',
     prefetch: LatestMeetingsAndResolutionsDocument,
   },
   {
-    label: 'Posiedzenia',
+    label: 'meeting.title-plural',
     href: '/posiedzenia',
     prefetch: MeetingsDocument,
   },
   {
-    label: 'Uchwały',
+    label: 'resolutions',
     href: '/uchwaly',
     prefetch: ResolutionsDocument,
   },
   {
-    label: 'Struktura organizacyjna',
+    label: 'organisation-structure',
     href: '/struktura',
     prefetch: StudentsDocument,
   },

@@ -12,6 +12,7 @@
   "last-meetings": "Ostatnie posiedzenia",
   "last-name": "Nazwisko",
   "last-resolutions": "Ostatnie uchwały",
+  "latest-updates": "Aktualności",
   "login": "Zaloguj się",
   "logout": "Wyloguj się",
   "meeting": {
@@ -19,7 +20,8 @@
     "no-reports": "Brak sprawozdań",
     "protocol": "Protokół z posiedzenia",
     "reports": "Sprawozdania z posiedzenia",
-    "title": "Posiedzenie"
+    "title": "Posiedzenie",
+    "title-plural": "Posiedzenia"
   },
   "more": "więcej",
   "name": "Nazwa",
