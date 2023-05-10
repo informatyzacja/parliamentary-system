@@ -4,7 +4,7 @@
   "version": "1.4.40",
   "scripts": {
     "dev:backend": "wait-on tcp:5432 && pnpm --dir backend dev",
-    "dev:frontend": "wait-on http://localhost:1337/admin && pnpm --dir frontend dev",
+    "dev:frontend": "wait-on http://0.0.0.0:1337/admin && pnpm --dir frontend dev",
     "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
     "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
     "postinstall": "husky install",
