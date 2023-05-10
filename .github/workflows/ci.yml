@@ -17,7 +17,11 @@ jobs:
       - uses: pnpm/action-setup@v2
         name: Install pnpm
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          pnpm install
+          cd backend
+          pnpm install
+          cd ..
       - name: format
         run: pnpm format:check
       - name: lint
@@ -45,7 +49,11 @@ jobs:
           echo NODE_ENV=production >> .env.local
           cd ..
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          pnpm install
+          cd backend
+          pnpm install
+          cd ..
       - name: Cache build
         uses: actions/cache@v3
         with:

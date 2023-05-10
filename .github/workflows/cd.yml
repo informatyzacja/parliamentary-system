@@ -56,6 +56,9 @@ jobs:
             cd ..
             git pull
             pnpm install --frozen-lockfile
+            cd backend
+            pnpm install --frozen-lockfile
+            cd ..
             pnpm build
             pm2 reload ecosystem.config.js
 
