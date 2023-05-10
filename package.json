@@ -16,7 +16,7 @@
     "format:check": "prettier --ignore-unknown --check backend frontend/src",
     "semantic-release": "semantic-release"
   },
-  "packageManager": "pnpm@8.3.1",
+  "packageManager": "pnpm@8.5.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/informatyzacja/parliamentary-system.git"
