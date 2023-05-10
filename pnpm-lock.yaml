@@ -54,9 +54,6 @@ importers:
       '@emotion/styled':
         specifier: ^11.11.0
         version: 11.11.0(@emotion/react@11.11.0)(@types/react@18.2.6)(react@18.2.0)
-      '@next/font':
-        specifier: ^13.4.1
-        version: 13.4.1
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
@@ -5413,13 +5410,6 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
-
-  /@next/font@13.4.1:
-    resolution:
-      {
-        integrity: sha512-GIgdVNXhWgGq92NUSGVd4n2yiF1k0i6U3dt/Pa9SFJvOEJyAJ99khXVq6cYJYJS8jhbL0yjE8+th8h+KjIGzuA==,
-      }
-    dev: false
 
   /@next/swc-darwin-arm64@13.4.1:
     resolution:

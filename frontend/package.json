@@ -52,7 +52,6 @@
     "@chakra-ui/system": "^2.5.7",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@next/font": "^13.4.1",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.12.10",
     "graphql": "16.6.0",
