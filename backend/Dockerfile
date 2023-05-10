@@ -1,10 +1,10 @@
 FROM node:18-bullseye as Backend
 WORKDIR /app
 COPY package.json .
-COPY yarn.lock .
+COPY pnpm-lock.yaml .
 COPY backend/package.json backend/
-RUN yarn install
+RUN pnpm install
 COPY . .
 WORKDIR /app/backend
-RUN yarn build
-CMD [ "yarn", "start" ]
+RUN pnpm build
+CMD [ "pnpm", "start" ]

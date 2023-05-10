@@ -1,5 +1,5 @@
 import { Center, chakra, Container, Text, VStack } from '@chakra-ui/react';
-import { Lato } from '@next/font/google';
+import { Lato } from 'next/font/google';
 import { useSession } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import type React from 'react';

@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n NextJS,GraphQL \"yarn dev:next\" \"yarn codegen:watch\"",
+    "dev": "concurrently -n NextJS,GraphQL \"pnpm dev:next\" \"pnpm codegen:watch\"",
     "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.graphql,.gql .",
     "codegen": "graphql-codegen --config codegen.ts",
-    "codegen:watch": "yarn codegen --watch",
+    "codegen:watch": "pnpm codegen --watch",
     "test:e2e": "playwright test"
   },
+  "packageManager": "pnpm@8.5.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/informatyzacja/parliamentary-system.git"
@@ -48,13 +49,12 @@
     "@apollo/client": "^3.7.14",
     "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.6.1",
-    "@chakra-ui/system": "^2.5.6",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "@next/font": "^13.4.1",
+    "@chakra-ui/system": "^2.5.7",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "date-fns": "^2.30.0",
-    "framer-motion": "^10",
-    "graphql": "^16.6.0",
+    "framer-motion": "^10.12.10",
+    "graphql": "16.6.0",
     "i18next": "^22.4.15",
     "jotai": "^2.1.0",
     "lodash": "^4.17.21",
@@ -65,17 +65,18 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.2.2",
     "react-icons": "^4.8.0",
-    "react-pdf": "^6.2.0"
+    "react-pdf": "^6.2.2"
   },
   "devDependencies": {
-    "@alergeek-ventures/eslint-config": "^5.0.117",
-    "@babel/core": "^7.21.4",
+    "@alergeek-ventures/eslint-config": "^5.0.118",
+    "@babel/core": "^7.21.8",
     "@graphql-codegen/cli": "^3.3.1",
     "@graphql-codegen/client-preset": "^3.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@graphql-codegen/typescript-resolvers": "^3.2.1",
     "@next/eslint-plugin-next": "^13.4.1",
     "@playwright/test": "^1.33.0",
+    "@types/lodash": "^4.14.194",
     "@types/node": "^18.16.7",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
@@ -88,5 +89,11 @@
     "postcss": "^8.4.23",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": "18.16.0"
+  },
+  "volta": {
+    "node": "18.16.0"
   }
 }

@@ -2,24 +2,21 @@
   "name": "parliamentary-system",
   "private": true,
   "version": "1.4.40",
-  "workspaces": [
-    "backend",
-    "frontend"
-  ],
   "scripts": {
-    "dev:backend": "wait-on tcp:5432 && yarn --cwd backend dev",
-    "dev:frontend": "wait-on http://localhost:1337/admin && yarn --cwd frontend dev",
+    "dev:backend": "wait-on tcp:5432 && pnpm --dir backend dev",
+    "dev:frontend": "wait-on http://0.0.0.0:1337/admin && pnpm --dir frontend dev",
     "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
     "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
     "postinstall": "husky install",
     "build": "npm-run-all -l -p build:*",
-    "build:backend": "yarn --cwd backend build",
-    "build:frontend": "yarn --cwd frontend build",
+    "build:backend": "pnpm --dir backend build",
+    "build:frontend": "pnpm --dir frontend build",
     "lint": "npm-run-all -l -p lint:*",
-    "lint:frontend": "yarn --cwd frontend lint",
+    "lint:frontend": "pnpm --dir frontend lint",
     "format:check": "prettier --ignore-unknown --check backend frontend/src",
     "semantic-release": "semantic-release"
   },
+  "packageManager": "pnpm@8.5.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/informatyzacja/parliamentary-system.git"
@@ -52,16 +49,17 @@
     "husky": "^8.0.3",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.8.8",
-    "semantic-release": "^21",
+    "semantic-release": "^21.0.2",
     "wait-on": "^7.0.1"
   },
   "resolutions": {
-    "graphql": "16.6.0",
-    "**/graphql": "16.6.0"
+    "graphql": "16.6.0"
+  },
+  "engines": {
+    "node": "18.16.0"
   },
   "volta": {
-    "node": "18.15.0",
-    "yarn": "1.22.19"
+    "node": "18.16.0"
   },
   "lint-staged": {
     "*": [

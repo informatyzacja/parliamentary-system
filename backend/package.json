@@ -9,6 +9,7 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
+  "packageManager": "pnpm@8.5.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/informatyzacja/parliamentary-system.git"
@@ -35,11 +36,11 @@
   },
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.10.1",
-    "@strapi/plugin-i18n": "^4.10.1",
-    "@strapi/plugin-users-permissions": "^4.10.1",
-    "@strapi/provider-email-nodemailer": "^4.10.1",
-    "@strapi/strapi": "^4.10.1",
+    "@strapi/plugin-graphql": "^4.10.4",
+    "@strapi/plugin-i18n": "^4.10.4",
+    "@strapi/plugin-users-permissions": "^4.10.4",
+    "@strapi/provider-email-nodemailer": "^4.10.4",
+    "@strapi/strapi": "^4.10.4",
     "graphql": "^16.6.0",
     "pg": "^8.10.0",
     "react-select": "^5.7.3"
