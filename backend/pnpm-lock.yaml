@@ -27,6 +27,10 @@ importers:
       react-select:
         specifier: ^5.7.3
         version: 5.7.3(react-dom@17.0.2)(react@17.0.2)
+    devDependencies:
+      path-to-regexp:
+        specifier: 1.8.0
+        version: 1.8.0
 
 packages:
   /@ampproject/remapping@2.2.1:
@@ -10101,7 +10105,6 @@ packages:
       {
         integrity: sha512-D2S+3GLxWH+uhrNEcoh/fnmYeP8E8/zHl644d/jdA0g2uyXvy3sb0qxotE+ne0LtccHknQzWwZEzhak7oJ0COQ==,
       }
-    dev: false
 
   /isarray@1.0.0:
     resolution:
@@ -12330,7 +12333,6 @@ packages:
       }
     dependencies:
       isarray: 0.0.1
-    dev: false
 
   /path-to-regexp@6.2.1:
     resolution:
