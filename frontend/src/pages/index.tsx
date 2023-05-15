@@ -1,18 +1,18 @@
 import { useApolloClient } from '@apollo/client';
+import { ArrowForwardIcon, DownloadIcon } from '@chakra-ui/icons';
 import {
+  Box,
+  Button,
   Card,
   CardBody,
   CardHeader,
   Center,
+  Divider,
   Flex,
   Heading,
   Link as ChakraLink,
   ScaleFade,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Tr,
+  VStack,
 } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import type { GetStaticProps } from 'next';
@@ -56,90 +56,132 @@ function LatestUpdates() {
   return (
     <>
       <Center>
-        <ScaleFade in={latestUpdatesQuery.data !== undefined}>
-          <Flex
-            flexDirection={['column', 'row']}
-            alignItems={['center', 'stretch']}
-            gap="8"
-          >
-            <Card w={['90vw', '600px']} h="100%">
-              <CardHeader>
-                <Heading size="md">{t('last-meetings')}</Heading>
-              </CardHeader>
-              <CardBody>
-                <TableContainer>
-                  <Table variant="simple" size="lg">
-                    <Tbody>
-                      {meetings.map((meeting) => (
-                        <Tr key={meeting.id}>
-                          <Td>
+        <VStack>
+          <Heading size="lg" mb={8}>
+            Aktualności
+          </Heading>
+          <ScaleFade in={latestUpdatesQuery.data !== undefined}>
+            <Flex
+              flexDirection={{ base: 'column', lg: 'row' }}
+              alignItems={['center', 'stretch']}
+              gap="8"
+            >
+              <Card w={{ base: '90vw', lg: '40vw' }} minH="100%">
+                <CardHeader>
+                  <Heading size="md">Ostatnie posiedzenia</Heading>
+                </CardHeader>
+                <CardBody>
+                  <Flex flexDirection={'column'}>
+                    {meetings.map((meeting) => (
+                      <>
+                        <Divider />
+                        <Flex
+                          key={meeting.id}
+                          gap={5}
+                          flex={1}
+                          alignItems={'center'}
+                          pl={'20px'}
+                          pr={'20px'}
+                          pt={'10px'}
+                          pb={'10px'}
+                        >
+                          <Box
+                            textAlign="left"
+                            minWidth={'20%'}
+                            display={{ base: 'none', md: 'block' }}
+                          >
                             {format(
                               new Date(meeting.attributes.date as string),
                               'dd-MM-yyyy',
                             )}
-                          </Td>
-                          <Td>{meeting.attributes.name}</Td>
-                          <Td
-                            onMouseOver={() => {
-                              void client.query({
-                                query: MeetingDocument,
-                                variables: {
-                                  id: meeting.id,
-                                },
-                              });
-                            }}
-                          >
+                          </Box>
+                          <Box textAlign="left" flex={1}>
+                            {meeting.attributes.name}
+                          </Box>
+                          <Box maxWidth={'fit-content'} justifySelf={'right'}>
                             <Link href={`/posiedzenia/${meeting.id}`}>
-                              {t('more')}
+                              <Button
+                                leftIcon={<ArrowForwardIcon />}
+                                size={'sm'}
+                                onMouseOver={() => {
+                                  void client.query({
+                                    query: MeetingDocument,
+                                    variables: {
+                                      id: meeting.id,
+                                    },
+                                  });
+                                }}
+                              >
+                                {t('more')}
+                              </Button>
                             </Link>
-                          </Td>
-                        </Tr>
-                      ))}
-                    </Tbody>
-                  </Table>
-                </TableContainer>
-              </CardBody>
-            </Card>
+                          </Box>
+                        </Flex>
+                      </>
+                    ))}
+                    <Divider />
+                  </Flex>
+                </CardBody>
+              </Card>
 
-            <Card w={['90vw', '600px']} minH="100%">
-              <CardHeader>
-                <Heading size="md">{t('last-resolutions')}</Heading>
-              </CardHeader>
-              <CardBody>
-                <TableContainer>
-                  <Table variant="simple" size="lg">
-                    <Tbody>
-                      {resolutions.map((resolution) => (
-                        <Tr key={resolution.id}>
-                          <Td>
+              <Card w={{ base: '90vw', lg: '40vw' }} minH="100%">
+                <CardHeader>
+                  <Heading size="md">{t('last-resolutions')}</Heading>
+                </CardHeader>
+                <CardBody>
+                  <Flex flexDirection={'column'}>
+                    {resolutions.map((resolution) => (
+                      <>
+                        <Divider />
+                        <Flex
+                          key={resolution.id}
+                          gap={5}
+                          flex={1}
+                          alignItems={'center'}
+                          pl={'20px'}
+                          pr={'20px'}
+                          pt={'10px'}
+                          pb={'10px'}
+                        >
+                          <Box
+                            textAlign="left"
+                            minWidth={'20%'}
+                            display={{ base: 'none', md: 'block' }}
+                          >
                             {format(
                               new Date(
                                 resolution.attributes.publishedAt as string,
                               ),
                               'dd-MM-yyyy',
                             )}
-                          </Td>
-                          <Td>{resolution.attributes.name}</Td>
-                          <Td>
+                          </Box>
+                          <Box textAlign="left" flex={1}>
+                            {resolution.attributes.name}
+                          </Box>
+                          <Box maxWidth={'fit-content'} justifySelf={'right'}>
                             <ChakraLink
                               href={
                                 process.env.NEXT_PUBLIC_API_URL +
                                 resolution.attributes.document.data.attributes
                                   .url
                               }
+                              target={'_blank'}
                             >
-                              {t('download')}
+                              <Button leftIcon={<DownloadIcon />} size={'sm'}>
+                                {t('download')}
+                              </Button>
                             </ChakraLink>
-                          </Td>
-                        </Tr>
-                      ))}
-                    </Tbody>
-                  </Table>
-                </TableContainer>
-              </CardBody>
-            </Card>
-          </Flex>
-        </ScaleFade>
+                          </Box>
+                        </Flex>
+                      </>
+                    ))}
+                    <Divider />
+                  </Flex>
+                </CardBody>
+              </Card>
+            </Flex>
+          </ScaleFade>
+        </VStack>
       </Center>
     </>
   );
