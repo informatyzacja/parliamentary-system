@@ -1,5 +1,5 @@
-import { useApolloClient } from "@apollo/client";
-import { ArrowForwardIcon, DownloadIcon } from "@chakra-ui/icons";
+import { useApolloClient } from '@apollo/client';
+import { ArrowForwardIcon, DownloadIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
@@ -12,9 +12,9 @@ import {
   Heading,
   Link as ChakraLink,
   ScaleFade,
-  VStack
-} from "@chakra-ui/react";
-import { format } from "date-fns";
+  VStack,
+} from '@chakra-ui/react';
+import { format } from 'date-fns';
 import type { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -22,18 +22,17 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
   MeetingDocument,
   useLatestMeetingsAndResolutionsQuery,
-} from "../api/graphql";
-import { Link } from "../components/Link";
-import { Loader } from "../components/Loader";
-import { NoItems } from "../components/NoItems";
-import { useErrorHandler } from "../hooks/useErrorHandler";
+} from '../api/graphql';
+import { Link } from '../components/Link';
+import { Loader } from '../components/Loader';
+import { NoItems } from '../components/NoItems';
+import { useErrorHandler } from '../hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Props {
-}
+interface Props {}
 
 function LatestUpdates() {
-  const {t} = useTranslation('common');
+  const { t } = useTranslation('common');
   const errorHandler = useErrorHandler();
   const latestUpdatesQuery = useLatestMeetingsAndResolutionsQuery({
     onError: errorHandler,
@@ -44,7 +43,7 @@ function LatestUpdates() {
   const resolutions = latestUpdatesQuery.data?.resolutions.data ?? [];
 
   if (latestUpdatesQuery.loading) {
-    return <Loader/>;
+    return <Loader />;
   }
 
   if (
@@ -63,33 +62,33 @@ function LatestUpdates() {
           </Heading>
           <ScaleFade in={latestUpdatesQuery.data !== undefined}>
             <Flex
-              flexDirection={{base: "column", lg: "row"}}
-              alignItems={["center", "stretch"]}
+              flexDirection={{ base: 'column', lg: 'row' }}
+              alignItems={['center', 'stretch']}
               gap="8"
             >
-              <Card w={{base: "90vw", lg: "40vw"}} minH="100%">
+              <Card w={{ base: '90vw', lg: '40vw' }} minH="100%">
                 <CardHeader>
                   <Heading size="md">Ostatnie posiedzenia</Heading>
                 </CardHeader>
                 <CardBody>
-                  <Flex flexDirection={"column"}>
+                  <Flex flexDirection={'column'}>
                     {meetings.map((meeting) => (
                       <>
-                        <Divider/>
+                        <Divider />
                         <Flex
                           key={meeting.id}
                           gap={5}
                           flex={1}
-                          alignItems={"center"}
-                          pl={"20px"}
-                          pr={"20px"}
-                          pt={"10px"}
-                          pb={"10px"}
+                          alignItems={'center'}
+                          pl={'20px'}
+                          pr={'20px'}
+                          pt={'10px'}
+                          pb={'10px'}
                         >
                           <Box
                             textAlign="left"
-                            minWidth={"20%"}
-                            display={{base: "none", md: "block"}}
+                            minWidth={'20%'}
+                            display={{ base: 'none', md: 'block' }}
                           >
                             {format(
                               new Date(meeting.attributes.date as string),
@@ -99,11 +98,11 @@ function LatestUpdates() {
                           <Box textAlign="left" flex={1}>
                             {meeting.attributes.name}
                           </Box>
-                          <Box maxWidth={"fit-content"} justifySelf={"right"}>
+                          <Box maxWidth={'fit-content'} justifySelf={'right'}>
                             <Link href={`/posiedzenia/${meeting.id}`}>
                               <Button
-                                leftIcon={<ArrowForwardIcon/>}
-                                size={"sm"}
+                                leftIcon={<ArrowForwardIcon />}
+                                size={'sm'}
                                 onMouseOver={() => {
                                   void client.query({
                                     query: MeetingDocument,
@@ -120,34 +119,34 @@ function LatestUpdates() {
                         </Flex>
                       </>
                     ))}
-                    <Divider/>
+                    <Divider />
                   </Flex>
                 </CardBody>
               </Card>
 
-              <Card w={{base: "90vw", lg: "40vw"}} minH="100%">
+              <Card w={{ base: '90vw', lg: '40vw' }} minH="100%">
                 <CardHeader>
                   <Heading size="md">{t('last-resolutions')}</Heading>
                 </CardHeader>
                 <CardBody>
-                  <Flex flexDirection={"column"}>
+                  <Flex flexDirection={'column'}>
                     {resolutions.map((resolution) => (
                       <>
-                        <Divider/>
+                        <Divider />
                         <Flex
                           key={resolution.id}
                           gap={5}
                           flex={1}
-                          alignItems={"center"}
-                          pl={"20px"}
-                          pr={"20px"}
-                          pt={"10px"}
-                          pb={"10px"}
+                          alignItems={'center'}
+                          pl={'20px'}
+                          pr={'20px'}
+                          pt={'10px'}
+                          pb={'10px'}
                         >
                           <Box
                             textAlign="left"
-                            minWidth={"20%"}
-                            display={{base: "none", md: "block"}}
+                            minWidth={'20%'}
+                            display={{ base: 'none', md: 'block' }}
                           >
                             {format(
                               new Date(
@@ -159,16 +158,16 @@ function LatestUpdates() {
                           <Box textAlign="left" flex={1}>
                             {resolution.attributes.name}
                           </Box>
-                          <Box maxWidth={"fit-content"} justifySelf={"right"}>
+                          <Box maxWidth={'fit-content'} justifySelf={'right'}>
                             <ChakraLink
                               href={
                                 process.env.NEXT_PUBLIC_API_URL +
                                 resolution.attributes.document.data.attributes
                                   .url
                               }
-                              target={"_blank"}
+                              target={'_blank'}
                             >
-                              <Button leftIcon={<DownloadIcon/>} size={"sm"}>
+                              <Button leftIcon={<DownloadIcon />} size={'sm'}>
                                 {t('download')}
                               </Button>
                             </ChakraLink>
@@ -176,7 +175,7 @@ function LatestUpdates() {
                         </Flex>
                       </>
                     ))}
-                    <Divider/>
+                    <Divider />
                   </Flex>
                 </CardBody>
               </Card>
@@ -188,7 +187,7 @@ function LatestUpdates() {
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async ({locale}) => ({
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },
