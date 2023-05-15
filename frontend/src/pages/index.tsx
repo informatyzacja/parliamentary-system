@@ -1,8 +1,5 @@
-import { useApolloClient } from '@apollo/client';
-import {
-  ArrowForwardIcon,
-  DownloadIcon
-} from "@chakra-ui/icons";
+import { useApolloClient } from "@apollo/client";
+import { ArrowForwardIcon, DownloadIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
