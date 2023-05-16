@@ -1,4 +1,7 @@
+import { DownloadIcon } from '@chakra-ui/icons';
 import {
+  Button,
+  Link as ChakraLink,
   Link,
   ScaleFade,
   Table,
@@ -38,7 +41,7 @@ export const Resolutions = ({
           attributes?: {
             url: string;
           };
-        };
+        } | null;
       };
       attachments?: {
         data: Array<{
@@ -100,16 +103,28 @@ export const Resolutions = ({
                   )}
                 </Td>
                 <Td>
-                  <Link
-                    target="_blank"
-                    href={
-                      process.env.NEXT_PUBLIC_API_URL +
-                      (resolution.attributes.document?.data.attributes?.url ??
-                        '/404')
-                    }
-                  >
-                    {t('Download')}
-                  </Link>
+                  {resolution.attributes.document?.data === null ? (
+                    <Button
+                      leftIcon={<DownloadIcon />}
+                      size={'sm'}
+                      isDisabled={true}
+                    >
+                      {t('Download')}
+                    </Button>
+                  ) : (
+                    <ChakraLink
+                      href={
+                        process.env.NEXT_PUBLIC_API_URL +
+                        (resolution.attributes.document?.data.attributes?.url ??
+                          '/404')
+                      }
+                      target={'_blank'}
+                    >
+                      <Button leftIcon={<DownloadIcon />} size={'sm'}>
+                        {t('Download')}
+                      </Button>
+                    </ChakraLink>
+                  )}
                 </Td>
               </Tr>
             ))}

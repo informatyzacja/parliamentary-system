@@ -159,18 +159,29 @@ function LatestUpdates() {
                             {resolution.attributes.name}
                           </Box>
                           <Box maxWidth={'fit-content'} justifySelf={'right'}>
-                            <ChakraLink
-                              href={
-                                process.env.NEXT_PUBLIC_API_URL +
-                                resolution.attributes.document.data.attributes
-                                  .url
-                              }
-                              target={'_blank'}
-                            >
-                              <Button leftIcon={<DownloadIcon />} size={'sm'}>
+                            {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
+                            {resolution.attributes.document.data === null ? (
+                              <Button
+                                leftIcon={<DownloadIcon />}
+                                size={'sm'}
+                                isDisabled={true}
+                              >
                                 {t('download')}
                               </Button>
-                            </ChakraLink>
+                            ) : (
+                              <ChakraLink
+                                href={
+                                  process.env.NEXT_PUBLIC_API_URL +
+                                  resolution.attributes.document.data.attributes
+                                    .url
+                                }
+                                target={'_blank'}
+                              >
+                                <Button leftIcon={<DownloadIcon />} size={'sm'}>
+                                  {t('download')}
+                                </Button>
+                              </ChakraLink>
+                            )}
                           </Box>
                         </Flex>
                       </>
