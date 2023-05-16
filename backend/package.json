@@ -9,7 +9,7 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "packageManager": "pnpm@8.5.0",
+  "packageManager": "pnpm@8.5.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/informatyzacja/parliamentary-system.git"
@@ -54,6 +54,6 @@
     "npm": ">=6.0.0"
   },
   "devDependencies": {
-    "path-to-regexp": "1.8.0"
+    "path-to-regexp": "^6.2.1"
   }
 }
