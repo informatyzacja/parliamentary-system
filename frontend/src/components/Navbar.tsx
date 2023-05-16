@@ -112,7 +112,7 @@ export const Navbar = () => {
             <Box ml={4} display={'flex'}>
               <Menu
                 direction="rtl"
-                placement={'start-start'}
+                placement={'bottom-start'}
                 autoSelect={false}
               >
                 <MenuButton
