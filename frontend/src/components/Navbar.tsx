@@ -6,9 +6,7 @@ import {
   Button,
   Center,
   Collapse,
-  Divider,
   Flex,
-  HStack,
   IconButton,
   Link,
   Menu,
@@ -19,7 +17,6 @@ import {
   Stack,
   useColorModeValue,
   useDisclosure,
-  VStack,
 } from '@chakra-ui/react';
 import type { DocumentNode } from 'graphql';
 import { useAtomValue } from 'jotai';
@@ -95,6 +92,7 @@ export const Navbar = () => {
             </Flex>
           ) : null}
         </Flex>
+
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
@@ -111,8 +109,12 @@ export const Navbar = () => {
             </Button>
           ) : null}
           {status === 'authenticated' ? (
-            <Box ml={4} display={{ base: 'none', md: 'flex' }}>
-              <Menu direction="rtl" placement="bottom" autoSelect={false}>
+            <Box ml={4} display={'flex'}>
+              <Menu
+                direction="rtl"
+                placement={'start-start'}
+                autoSelect={false}
+              >
                 <MenuButton
                   as={Button}
                   rounded={'full'}
@@ -125,7 +127,7 @@ export const Navbar = () => {
                   }}
                   aria-label={t('aria.user-menu') as string | undefined}
                 >
-                  <Avatar size={'sm'} />
+                  <Avatar size={'sm'} name={data.user?.name ?? ''} />
                 </MenuButton>
                 <MenuList alignItems={'center'} p={3}>
                   <Center>{data.user?.name ?? ''}</Center>
@@ -200,10 +202,6 @@ const DesktopNav = () => {
 };
 
 const MobileNav = (mobileProps: MobileProps) => {
-  const { t } = useTranslation('common');
-  const { data } = useSession();
-  const router = useRouter();
-
   return (
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
@@ -214,23 +212,6 @@ const MobileNav = (mobileProps: MobileProps) => {
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} {...mobileProps} />
       ))}
-      <Divider />
-      <VStack>
-        <HStack>
-          <Avatar size="sm" name={data?.user?.name ?? ''} />
-          <p>{data?.user?.email}</p>
-        </HStack>
-        <Button
-          variant="outline"
-          onClick={() => {
-            void signOut().then(() => {
-              void router.push('/');
-            });
-          }}
-        >
-          {t('logout')}
-        </Button>
-      </VStack>
     </Stack>
   );
 };
