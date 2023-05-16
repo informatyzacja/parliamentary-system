@@ -127,7 +127,7 @@ export const Navbar = () => {
                   }}
                   aria-label={t('aria.user-menu') as string | undefined}
                 >
-                  <Avatar size={'sm'} name={data.user?.name ?? ''} />
+                  <Avatar size={'sm'} />
                 </MenuButton>
                 <MenuList alignItems={'center'} p={3}>
                   <Center>{data.user?.name ?? ''}</Center>
