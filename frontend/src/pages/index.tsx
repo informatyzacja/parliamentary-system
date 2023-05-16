@@ -58,7 +58,7 @@ function LatestUpdates() {
       <Center>
         <VStack>
           <Heading size="lg" mb={8}>
-            Aktualności
+            {t('latest-updates')}
           </Heading>
           <ScaleFade in={latestUpdatesQuery.data !== undefined}>
             <Flex
@@ -68,7 +68,7 @@ function LatestUpdates() {
             >
               <Card w={{ base: '90vw', lg: '40vw' }} minH="100%">
                 <CardHeader>
-                  <Heading size="md">Ostatnie posiedzenia</Heading>
+                  <Heading size="md">{t('last-meetings')}</Heading>
                 </CardHeader>
                 <CardBody>
                   <Flex flexDirection={'column'}>
