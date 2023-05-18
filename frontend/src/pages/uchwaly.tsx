@@ -1,5 +1,5 @@
 import { usePagination } from '@ajna/pagination';
-import { Box, Center, Heading, Tooltip, VStack } from '@chakra-ui/react';
+import { Box, Center, Heading, VStack } from '@chakra-ui/react';
 import type { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -61,11 +61,9 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
           <Box mb={8}>
             <Heading size="lg">{t('resolutions')}</Heading>
           </Box>
-          <Tooltip label="term-of-office">
-            <Box mt={'1 !important'} mb={'4 !important'}>
-              <TermOfOfficeSelector />
-            </Box>
-          </Tooltip>
+          <Box mt={'1 !important'} mb={'4 !important'}>
+            <TermOfOfficeSelector />
+          </Box>
           {resolutionsQuery.loading ? <Loader /> : null}
           {resolutionsQuery.data?.resolutions.data.length === 0 &&
           !resolutionsQuery.loading ? (
