@@ -32,6 +32,7 @@ jobs:
             echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
             echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
             echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
+            echo DATABASE_FOLDER=${{ secrets.DATABASE_FOLDER }} >> .env
             cd frontend
             rm .env.local
             touch .env.local
@@ -53,6 +54,8 @@ jobs:
             echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env
             echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env
             echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env
+            echo STRAPI_PUBLIC_FOLDER=${{ secrets.STRAPI_PUBLIC_FOLDER }} >> .env
+            cp public/robots.txt ${{ secrets.STRAPI_PUBLIC_FOLDER }}
             cd ..
             git pull
             pnpm install --frozen-lockfile

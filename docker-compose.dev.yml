@@ -8,10 +8,11 @@ services:
       - POSTGRES_DB=${DATABASE_NAME}
       - POSTGRES_USER=${DATABASE_USERNAME}
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_FOLDER=${DATABASE_FOLDER}
     ports:
       - '5432:5432'
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - $DATABASE_FOLDER:/var/lib/postgresql/data
 
 volumes:
   postgres:
