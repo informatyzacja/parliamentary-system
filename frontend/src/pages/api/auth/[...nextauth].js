@@ -52,7 +52,7 @@ const options = {
           params.set('access_token', `${account?.access_token}`);
         }
         const response = await fetch(
-          `${config.NEXT_PUBLIC_API_URL}/api/auth/${
+          `${config.NEXT_PUBLIC_API_URL}/api/connect/${
             account?.provider
           }/callback?${params.toString()}`,
         );
