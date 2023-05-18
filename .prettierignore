@@ -15,3 +15,5 @@ graphql.ts
 
 .gitignore
 .prettierignore
+
+pnpm-lock.yaml
