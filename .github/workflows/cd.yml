@@ -12,96 +12,6 @@ jobs:
       name: production
       url: https://parlament.samorzad.pwr.edu.pl
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-      - name: Setup env
-        run: |
-          touch .env
-          echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
-          echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
-          echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
-          echo DATABASE_FOLDER=${{ secrets.DATABASE_FOLDER }} >> .env
-          cd frontend
-          touch .env.local
-          echo NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} >> .env.local
-          echo NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }} >> .env.local
-          echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
-          echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
-          echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
-          echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
-          echo NODE_ENV=production >> .env.local
-          cd ..
-          cd backend
-          touch .env
-          echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
-          echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
-          echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
-          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
-          echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env
-          echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env
-          echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env
-          echo STRAPI_PUBLIC_FOLDER=${{ secrets.STRAPI_PUBLIC_FOLDER }} >> .env
-          cd ..
-      - name: Install dependencies
-        run: |
-          pnpm install --frozen-lockfile
-          cd backend
-          pnpm install --frozen-lockfile
-          cd ..
-      - name: Cache build
-        uses: actions/cache@v3
-        with:
-          path: ${{ github.workspace }}/frontend/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
-      - name: Build
-        run: pnpm build
-      - name: Clear old deploy
-        uses: appleboy/ssh-action@v0.1.10
-        env:
-          CI: true
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          proxy_host: ${{ secrets.PROXY_HOST }}
-          proxy_username: ${{ secrets.PROXY_USERNAME }}
-          proxy_key: ${{ secrets.KEY }}
-          envs: CI
-          script: |
-            cd ${{ secrets.APP_DIR }}
-            rm *
-            rm backend/*
-            rm -rf backend/config
-            rm -rf backend/database
-            rm -rf backend/public
-            rm -rf backend/src
-            rm -rf backend/build
-            rm frontend/*
-            rm -rf frontend/public
-            rm -rf frontend/src
-            rm -rf frontend/tests
-            rm -rf frontend/.next
-      - name: Copy build output via SSH
-        uses: appleboy/scp-action@v0.1.4
-        env:
-          CI: true
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          proxy_host: ${{ secrets.PROXY_HOST }}
-          proxy_username: ${{ secrets.PROXY_USERNAME }}
-          proxy_key: ${{ secrets.KEY }}
-          source: '.env, package.json, ecosystem.config.js, docker-compose.dev.yml, pnpm-workspace.yaml, pnpm-lock.yaml, frontend/.env.local, frontend/.next/, frontend/package.json, frontend/public, frontend/pnpm-lock.yaml, frontend/next-i18next.config.js, backend/.env, backend/build/, backend/package.json, backend/pnpm-lock.yaml, backend/pnpm-workspace.yaml, backend/config/, backend/favicon.ico'
-          target: ${{ secrets.APP_DIR }}
       - name: Deploy to remote host
         uses: appleboy/ssh-action@v0.1.10
         env:
@@ -117,10 +27,42 @@ jobs:
           envs: CI
           script: |
             cd ${{ secrets.APP_DIR }}
+            rm .env
+            touch .env
+            echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
+            echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
+            echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
+            echo DATABASE_FOLDER=${{ secrets.DATABASE_FOLDER }} >> .env
+            cd frontend
+            rm .env.local
+            touch .env.local
+            echo NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} >> .env.local
+            echo NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }} >> .env.local
+            echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
+            echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
+            echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
+            echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
+            echo NODE_ENV=production >> .env.local
+            cd ..
+            cd backend
+            rm .env
+            touch .env
+            echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
+            echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
+            echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
+            echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
+            echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env
+            echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env
+            echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env
+            echo STRAPI_PUBLIC_FOLDER=${{ secrets.STRAPI_PUBLIC_FOLDER }} >> .env
+            cp public/robots.txt ${{ secrets.STRAPI_PUBLIC_FOLDER }}
+            cd ..
+            git pull
             pnpm install --frozen-lockfile
             cd backend
             pnpm install --frozen-lockfile
             cd ..
+            pnpm build
             pm2 reload ecosystem.config.js
 
   release:

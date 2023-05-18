@@ -1,6 +1,8 @@
 name: CI
 
 on:
+  push:
+    branches: ['main', 'auto-dependency-upgrade']
   pull_request:
     branches: ['main', 'auto-dependency-upgrade']
 

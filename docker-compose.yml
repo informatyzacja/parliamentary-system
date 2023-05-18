@@ -1,0 +1,43 @@
+services:
+  frontend:
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./frontend/Dockerfile
+    ports:
+      - 80:3000
+    volumes:
+      - ./frontend/.env:/app/frontend/.env
+    depends_on:
+      - backend
+
+  backend:
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./backend/Dockerfile
+
+    ports:
+      - 81:1337
+    volumes:
+      - ./backend/public/:/app/backend/public/
+      - ./backend/.env:/app/backend/.env
+    depends_on:
+      - postgres
+
+  postgres:
+    restart: always
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_FOLDER=${DATABASE_FOLDER}
+    ports:
+      - 5432:5432
+    volumes:
+      - $DATABASE_FOLDER:/var/lib/postgresql/data
+
+volumes:
+  postgres:
+    driver: local
