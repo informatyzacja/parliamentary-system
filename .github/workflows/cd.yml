@@ -55,6 +55,8 @@ jobs:
             echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env
             echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env
             echo STRAPI_PUBLIC_FOLDER=${{ secrets.STRAPI_PUBLIC_FOLDER }} >> .env
+            echo API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }} >> .env
+            echo AUTH_SECRET=${{ secrets.AUTH_SECRET }} >> .env
             cp public/robots.txt ${{ secrets.STRAPI_PUBLIC_FOLDER }}
             cd ..
             git pull
