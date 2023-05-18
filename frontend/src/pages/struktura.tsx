@@ -10,7 +10,6 @@ import {
   Td,
   Th,
   Thead,
-  Tooltip,
   Tr,
   VStack,
 } from '@chakra-ui/react';
@@ -69,11 +68,9 @@ function OrganisationStructure() {
         <Heading size="lg" mb={8}>
           {t('organisation-structure')}
         </Heading>
-        <Tooltip label={t('term-of-office')}>
-          <Box mt={'1 !important'} mb={'4 !important'}>
-            <TermOfOfficeSelector />
-          </Box>
-        </Tooltip>
+        <Box mt={'1 !important'} mb={'4 !important'}>
+          <TermOfOfficeSelector />
+        </Box>
         {studentsQuery.loading ? <Loader /> : null}
         {students.length > 0 ? (
           <ScaleFade in={true}>
