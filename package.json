@@ -1,7 +1,7 @@
 {
   "name": "parliamentary-system",
   "private": true,
-  "version": "1.4.40",
+  "version": "1.4.41",
   "scripts": {
     "dev:backend": "wait-on tcp:5432 && pnpm --dir backend dev",
     "dev:frontend": "wait-on http://0.0.0.0:1337/admin && pnpm --dir frontend dev",
