@@ -18,8 +18,6 @@ jobs:
         name: Install pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      - name: Install Playwright Browsers
-        run: npx playwright install
       - name: Cache build
         uses: actions/cache@v3
         with:
@@ -40,6 +38,8 @@ jobs:
           echo NODE_ENV=production >> .env.local
           cd ..
           pnpm --dir frontend build
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
       - name: Run Playwright tests
         env:
           TEST_USOS_LOGIN: ${{ secrets.TEST_USOS_LOGIN }}
