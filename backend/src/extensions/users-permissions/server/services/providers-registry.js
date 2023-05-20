@@ -1,7 +1,6 @@
 'use strict';
 
 const { strict: assert } = require('assert');
-const jwt = require('jsonwebtoken');
 
 const getInitialProviders = ({ purest }) => ({
   async google({ accessToken }) {

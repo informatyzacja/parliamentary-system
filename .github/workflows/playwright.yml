@@ -39,7 +39,7 @@ jobs:
           cd ..
           pnpm --dir frontend build
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: pnpm dlx create-playwright
       - name: Run Playwright tests
         env:
           TEST_USOS_LOGIN: ${{ secrets.TEST_USOS_LOGIN }}
