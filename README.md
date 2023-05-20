@@ -37,6 +37,7 @@ cp .env.example .env && cp backend/.env.example backend/.env && cp frontend/.env
 - `DATABASE_NAME`
 - `DATABASE_USERNAME`
 - `DATABASE_PASSWORD`
+- `DATABASE_FOLDER`
 
 #### backend/.env
 
