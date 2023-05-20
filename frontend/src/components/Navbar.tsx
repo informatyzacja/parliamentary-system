@@ -41,12 +41,19 @@ export const Navbar = () => {
   const router = useRouter();
 
   return (
-    <Box mb={16} w="100%" px={{ base: 0, md: 16 }}>
+    <Box
+      mb={16}
+      w="100%"
+      px={{ base: 0, md: 16 }}
+      py={4}
+      borderBottom={'solid 1px'}
+      borderColor={'gray.200'}
+      shadow={'base'}
+      backgroundColor={'white'}
+    >
       <Flex
-        bg={'white'}
         color={'gray.600'}
         minH={'60px'}
-        mt={4}
         mx="auto"
         py={{ base: 2 }}
         px={{ base: 4 }}
