@@ -63,7 +63,6 @@ export const Footer = () => {
       bg={useColorModeValue('gray.100', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}
       w="100vw"
-      shadow={'lg'}
     >
       <Container
         as={Stack}
