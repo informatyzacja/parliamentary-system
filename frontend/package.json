@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n NextJS,GraphQL \"pnpm dev:next\" \"pnpm codegen:watch\"",
+    "dev": "concurrently -n NextJS,GraphQL \"npm dev:next\" \"npm codegen:watch\"",
     "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx,.graphql,.gql .",
     "codegen": "graphql-codegen --config codegen.ts",
-    "codegen:watch": "pnpm codegen --watch",
+    "codegen:watch": "npm codegen --watch",
     "test:e2e": "playwright test"
   },
-  "packageManager": "pnpm@8.5.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/informatyzacja/parliamentary-system.git"

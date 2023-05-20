@@ -33,7 +33,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: process.env.CI ? 'pnpm start' : 'pnpm dev:next',
+    command: process.env.CI ? 'npm start' : 'npm dev:next',
     port: 3000,
   },
 });

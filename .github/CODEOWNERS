@@ -5,5 +5,5 @@
 
 # force bot to be a black hole for notifications
 package.json    @Informatyzacja-CI
-pnpm-lock.yaml  @Informatyzacja-CI
+package-lock.json  @Informatyzacja-CI
 yarn.lock       @Informatyzacja-CI

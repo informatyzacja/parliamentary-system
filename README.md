@@ -70,9 +70,8 @@ Wykonaj poniższe polecenia
 ```bash
 git clone https://github.com/informatyzacja/parliamentary-system.git
 cd parliamentary-system
-pnpm i && pnpm postinstall
-cd backend && pnpm i && cd ..
-pnpm dev
+npm i && npm postinstall
+npm dev
 ```
 
 ## Deployment

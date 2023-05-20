@@ -14,18 +14,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
       - name: Install dependencies
         run: |
-          pnpm install
-          cd backend
-          pnpm install
-          cd ..
+          npm install
       - name: format
-        run: pnpm format:check
+        run: npm format:check
       - name: lint
-        run: pnpm lint
+        run: npm lint
 
   build:
     runs-on: ubuntu-latest
@@ -34,8 +29,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
       - name: Setup env
         run: |
           cd frontend
@@ -50,16 +43,13 @@ jobs:
           cd ..
       - name: Install dependencies
         run: |
-          pnpm install
-          cd backend
-          pnpm install
-          cd ..
+          npm install
       - name: Cache build
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/frontend/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.yaml') }}-
       - name: Build
-        run: pnpm build
+        run: npm run build

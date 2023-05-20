@@ -2,21 +2,24 @@
   "name": "parliamentary-system",
   "private": true,
   "version": "1.4.41",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "dev:backend": "wait-on tcp:5432 && pnpm --dir backend dev",
-    "dev:frontend": "wait-on http://0.0.0.0:1337/admin && pnpm --dir frontend dev",
-    "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
+    "dev:backend": "wait-on tcp:5432 && npm run dev --dir backend",
+    "dev:frontend": "wait-on http://0.0.0.0:1337/admin && npm run dev --dir frontend",
+    "dev:database": "docker compose -f docker-compose.db.yml up --force-recreate -V",
     "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
     "postinstall": "husky install",
     "build": "npm-run-all -l -p build:*",
-    "build:backend": "pnpm --dir backend build",
-    "build:frontend": "pnpm --dir frontend build",
+    "build:backend": "npm run build --dir backend",
+    "build:frontend": "npm run build --dir frontend",
     "lint": "npm-run-all -l -p lint:*",
-    "lint:frontend": "pnpm --dir frontend lint",
+    "lint:frontend": "npm run lint --dir frontend",
     "format:check": "prettier --ignore-unknown --check backend frontend/src",
     "semantic-release": "semantic-release"
   },
-  "packageManager": "pnpm@8.5.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/informatyzacja/parliamentary-system.git"
