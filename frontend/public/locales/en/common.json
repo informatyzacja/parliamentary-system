@@ -7,8 +7,22 @@
   },
   "download": "download",
   "Download": "Download",
+  "error": {
+    "title": "Error",
+    "change-language-error": "An error occurred while changing the language"
+  },
   "first-name": "First name",
   "functions": "Functions",
+  "languages": {
+    "pl": {
+      "flag": "\uD83C\uDDF5\uD83C\uDDF1",
+      "name": "Polski"
+    },
+    "en": {
+      "flag": "\uD83C\uDDEC\uD83C\uDDE7",
+      "name": "English"
+    }
+  },
   "last-meetings": "Last meetings",
   "last-name": "Last name",
   "last-resolutions": "Last resolutions",

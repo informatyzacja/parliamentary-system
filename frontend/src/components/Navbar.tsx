@@ -26,6 +26,8 @@ import { useRouter } from 'next/router';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+
 import {
   LatestMeetingsAndResolutionsDocument,
   MeetingsDocument,
@@ -139,6 +141,8 @@ export const Navbar = () => {
                 <MenuList alignItems={'center'} p={3}>
                   <Center>{data.user?.name ?? ''}</Center>
                   <Center>({data.user?.email?.split('@')[0]})</Center>
+                  <MenuDivider />
+                  <LanguageSwitcher />
                   <MenuDivider />
                   <MenuItem
                     onClick={() => {

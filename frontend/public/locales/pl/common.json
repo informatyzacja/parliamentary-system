@@ -7,8 +7,22 @@
   },
   "download": "pobierz",
   "Download": "Pobierz",
+  "error": {
+    "title": "Error",
+    "change-language-error": "An error occurred while changing the language"
+  },
   "first-name": "Imię",
   "functions": "Funkcje",
+  "languages": {
+    "pl": {
+      "flag": "\uD83C\uDDF5\uD83C\uDDF1",
+      "name": "Polski"
+    },
+    "en": {
+      "flag": "\uD83C\uDDEC\uD83C\uDDE7",
+      "name": "English"
+    }
+  },
   "last-meetings": "Ostatnie posiedzenia",
   "last-name": "Nazwisko",
   "last-resolutions": "Ostatnie uchwały",
