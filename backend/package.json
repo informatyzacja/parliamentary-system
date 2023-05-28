@@ -42,6 +42,7 @@
     "@strapi/provider-email-nodemailer": "^4.10.6",
     "@strapi/strapi": "^4.10.6",
     "graphql": "^16.6.0",
+    "oauth": "0.9.15",
     "pg": "^8.11.0",
     "react-select": "^5.7.3"
   },

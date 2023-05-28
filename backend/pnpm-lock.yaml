@@ -22,6 +22,9 @@ importers:
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
+      oauth:
+        specifier: 0.9.15
+        version: 0.9.15
       pg:
         specifier: ^8.11.0
         version: 8.11.0
@@ -8735,6 +8738,10 @@ packages:
 
   /oauth-sign@0.9.0:
     resolution: {integrity: sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ==}
+    dev: false
+
+  /oauth@0.9.15:
+    resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
     dev: false
 
   /object-assign@4.1.1:
