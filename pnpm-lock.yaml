@@ -65,8 +65,8 @@ importers:
         specifier: 16.6.0
         version: 16.6.0
       i18next:
-        specifier: ^22.5.0
-        version: 22.5.0
+        specifier: ^22.5.1
+        version: 22.5.1
       jotai:
         specifier: ^2.1.0
         version: 2.1.0(react@18.2.0)
@@ -81,7 +81,7 @@ importers:
         version: 4.22.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
       next-i18next:
         specifier: ^13.2.2
-        version: 13.2.2(i18next@22.5.0)(next@13.4.3)(react-i18next@12.3.1)(react@18.2.0)
+        version: 13.2.2(i18next@22.5.1)(next@13.4.3)(react-i18next@12.3.1)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -90,7 +90,7 @@ importers:
         version: 18.2.0(react@18.2.0)
       react-i18next:
         specifier: ^12.3.1
-        version: 12.3.1(i18next@22.5.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 12.3.1(i18next@22.5.1)(react-dom@18.2.0)(react@18.2.0)
       react-icons:
         specifier: ^4.8.0
         version: 4.8.0(react@18.2.0)
@@ -9436,8 +9436,8 @@ packages:
     resolution: {integrity: sha512-y9vl8HC8b1ayqZELzKvaKgnphrxgbaGGSNQjPU0JoTVP1M3NI6C69SwiAAXi6xuF1FSySJG52EdQZdMUETlwRA==}
     dev: false
 
-  /i18next@22.5.0:
-    resolution: {integrity: sha512-sqWuJFj+wJAKQP2qBQ+b7STzxZNUmnSxrehBCCj9vDOW9RDYPfqCaK1Hbh2frNYQuPziz6O2CGoJPwtzY3vAYA==}
+  /i18next@22.5.1:
+    resolution: {integrity: sha512-8TGPgM3pAD+VRsMtUMNknRz3kzqwp/gPALrWMsDnmC1mKqJwpWyooQRLMcbTwq8z8YwSmuj+ZYvc+xCuEpkssA==}
     dependencies:
       '@babel/runtime': 7.21.5
     dev: false
@@ -11236,7 +11236,7 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /next-i18next@13.2.2(i18next@22.5.0)(next@13.4.3)(react-i18next@12.3.1)(react@18.2.0):
+  /next-i18next@13.2.2(i18next@22.5.1)(next@13.4.3)(react-i18next@12.3.1)(react@18.2.0):
     resolution: {integrity: sha512-t0WU6K+HJoq2nVQ0n6OiiEZja9GyMqtDSU74FmOafgk4ljns+iZ18bsNJiI8rOUXfFfkW96ea1N7D5kbMyT+PA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -11249,11 +11249,11 @@ packages:
       '@types/hoist-non-react-statics': 3.3.1
       core-js: 3.30.2
       hoist-non-react-statics: 3.3.2
-      i18next: 22.5.0
+      i18next: 22.5.1
       i18next-fs-backend: 2.1.2
       next: 13.4.3(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      react-i18next: 12.3.1(i18next@22.5.0)(react-dom@18.2.0)(react@18.2.0)
+      react-i18next: 12.3.1(i18next@22.5.1)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /next@13.4.3(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0):
@@ -13109,7 +13109,7 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.2.7)(react@18.2.0)
     dev: false
 
-  /react-i18next@12.3.1(i18next@22.5.0)(react-dom@18.2.0)(react@18.2.0):
+  /react-i18next@12.3.1(i18next@22.5.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-5v8E2XjZDFzK7K87eSwC7AJcAkcLt5xYZ4+yTPDAW1i7C93oOY1dnr4BaQM7un4Hm+GmghuiPvevWwlca5PwDA==}
     peerDependencies:
       i18next: '>= 19.0.0'
@@ -13124,7 +13124,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.5
       html-parse-stringify: 3.0.1
-      i18next: 22.5.0
+      i18next: 22.5.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
