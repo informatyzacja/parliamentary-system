@@ -65,7 +65,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.3.1",
     "react-icons": "^4.8.0",
-    "react-pdf": "^6.2.2"
+    "react-pdf": "^7.1.1"
   },
   "devDependencies": {
     "@alergeek-ventures/eslint-config": "^5.0.122",
@@ -80,7 +80,7 @@
     "@types/node": "^18.16.14",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
-    "@types/react-pdf": "^6.2.0",
+    "@types/react-pdf": "^7.0.0",
     "concurrently": "^8.0.1",
     "dotenv": "^16.0.3",
     "eslint": "^8.41.0",
