@@ -77,7 +77,7 @@
     "@graphql-codegen/typescript-resolvers": "^3.2.1",
     "@next/eslint-plugin-next": "^13.4.3",
     "@types/lodash": "^4.14.194",
-    "@types/node": "^18.16.14",
+    "@types/node": "^20.3.1",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
     "@types/react-pdf": "^7.0.0",
