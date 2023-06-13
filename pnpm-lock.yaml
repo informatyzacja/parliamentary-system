@@ -105,8 +105,8 @@ importers:
         specifier: ^7.22.5
         version: 7.22.5
       '@babel/eslint-parser':
-        specifier: ^7.21.8
-        version: 7.21.8(@babel/core@7.22.5)(eslint@8.42.0)
+        specifier: ^7.22.5
+        version: 7.22.5(@babel/core@7.22.5)(eslint@8.42.0)
       '@graphql-codegen/cli':
         specifier: ^3.3.1
         version: 3.3.1(@babel/core@7.22.5)(@types/node@20.3.1)(graphql@16.6.0)
@@ -344,20 +344,6 @@ packages:
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
-
-  /@babel/eslint-parser@7.21.8(@babel/core@7.22.5)(eslint@8.42.0):
-    resolution: {integrity: sha512-HLhI+2q+BP3sf78mFUZNCGc10KEmoUqtUT1OCdMZsN+qr4qFeLUod62/zAnF3jNQstwyasDkZnVXwfK2Bml7MQ==}
-    engines: {node: ^10.13.0 || ^12.13.0 || >=14.0.0}
-    peerDependencies:
-      '@babel/core': '>=7.11.0'
-      eslint: ^7.5.0 || ^8.0.0
-    dependencies:
-      '@babel/core': 7.22.5
-      '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
-      eslint: 8.42.0
-      eslint-visitor-keys: 2.1.0
-      semver: 6.3.0
-    dev: true
 
   /@babel/eslint-parser@7.22.5(@babel/core@7.22.5)(eslint@8.42.0):
     resolution: {integrity: sha512-C69RWYNYtrgIRE5CmTd77ZiLDXqgBipahJc/jHP3sLcAGj6AJzxNIuKNpVnICqbyK7X3pFUfEvL++rvtbQpZkQ==}
