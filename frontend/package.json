@@ -82,7 +82,7 @@
     "@types/react-dom": "^18.2.5",
     "@types/react-pdf": "^7.0.0",
     "concurrently": "^8.0.1",
-    "dotenv": "^16.1.4",
+    "dotenv": "^16.2.0",
     "eslint": "^8.42.0",
     "graphql-tag": "^2.12.6",
     "postcss": "^8.4.24",
