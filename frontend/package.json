@@ -70,7 +70,7 @@
   "devDependencies": {
     "@alergeek-ventures/eslint-config": "^5.0.152",
     "@babel/core": "^7.22.8",
-    "@babel/eslint-parser": "^7.22.6",
+    "@babel/eslint-parser": "^7.22.7",
     "@graphql-codegen/cli": "^4.0.1",
     "@graphql-codegen/client-preset": "^4.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
