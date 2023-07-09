@@ -23,6 +23,7 @@
       "name": "English"
     }
   },
+  "language-code": "en-GB",
   "last-meetings": "Last meetings",
   "last-name": "Last name",
   "last-resolutions": "Last resolutions",
@@ -49,5 +50,6 @@
   "resolutions": "Resolutions",
   "student-number": "Student number",
   "system-status": "System status",
-  "to-use-you-must-login": "To use the application, you must log in"
+  "to-use-you-must-login": "To use the application, you must log in",
+  "upcoming": "Upcoming meeting"
 }

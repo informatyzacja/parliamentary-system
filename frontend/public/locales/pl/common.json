@@ -23,6 +23,7 @@
       "name": "English"
     }
   },
+  "language-code": "pl",
   "last-meetings": "Ostatnie posiedzenia",
   "last-name": "Nazwisko",
   "last-resolutions": "Ostatnie uchwały",
@@ -37,7 +38,7 @@
     "title": "Posiedzenie",
     "title-plural": "Posiedzenia"
   },
-  "more": "więcej",
+  "more": "Więcej",
   "name": "Nazwa",
   "no-data": "Brak danych",
   "no-meetings": "Brak posiedzeń",
@@ -49,5 +50,6 @@
   "resolutions": "Uchwały",
   "student-number": "Numer indeksu",
   "system-status": "Status systemów",
-  "to-use-you-must-login": "Aby korzystać z aplikacji musisz się zalogować"
+  "to-use-you-must-login": "Aby korzystać z aplikacji musisz się zalogować",
+  "upcoming": "Nadchodzące posiedzenie"
 }
