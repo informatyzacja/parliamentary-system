@@ -99,7 +99,7 @@ export const Resolutions = ({
                 <Td>
                   {format(
                     new Date(resolution.attributes.publishedAt),
-                    'dd-MM-yyyy HH:mm:ss',
+                    'dd/MM/yyyy HH:mm:ss',
                   )}
                 </Td>
                 <Td>

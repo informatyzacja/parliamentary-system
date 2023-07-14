@@ -44,7 +44,7 @@ export const Navbar = () => {
 
   return (
     <Box
-      mb={16}
+      mb={2}
       w="100%"
       px={{ base: 0, md: 16 }}
       py={4}

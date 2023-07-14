@@ -12,9 +12,10 @@ import {
   Heading,
   Link as ChakraLink,
   ScaleFade,
+  Text,
   VStack,
 } from '@chakra-ui/react';
-import { format } from 'date-fns';
+import { format, formatRelative } from 'date-fns';
 import type { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -33,6 +34,8 @@ interface Props {}
 
 function LatestUpdates() {
   const { t } = useTranslation('common');
+  const getLocale = (locale: string) =>
+    require(`date-fns/locale/${locale}/index.js`);
   const errorHandler = useErrorHandler();
   const latestUpdatesQuery = useLatestMeetingsAndResolutionsQuery({
     onError: errorHandler,
@@ -41,6 +44,10 @@ function LatestUpdates() {
 
   const meetings = latestUpdatesQuery.data?.meetings.data ?? [];
   const resolutions = latestUpdatesQuery.data?.resolutions.data ?? [];
+  const upcomingMeeting = meetings.findLast(
+    (meeting) =>
+      new Date(meeting.attributes.date as string).getTime() > Date.now(),
+  );
 
   if (latestUpdatesQuery.loading) {
     return <Loader />;
@@ -67,58 +74,104 @@ function LatestUpdates() {
               gap="8"
             >
               <Card w={{ base: '90vw', lg: '40vw' }} minH="100%">
-                <CardHeader>
-                  <Heading size="md">{t('last-meetings')}</Heading>
-                </CardHeader>
+                {upcomingMeeting !== undefined ? (
+                  <CardHeader backgroundColor={'blue.100'} px={10}>
+                    <Flex
+                      flexDirection={'row'}
+                      alignItems={'center'}
+                      flex={1}
+                      justifyContent={'space-between'}
+                    >
+                      <Flex flexDirection={'column'}>
+                        <Heading size={'md'}>{t('upcoming')}</Heading>
+                        <Text fontSize={{ base: 'md', md: 'lg' }}>
+                          {upcomingMeeting.attributes.name}
+                        </Text>
+                        <Text fontSize={{ base: 'md', md: 'lg' }}>
+                          {formatRelative(
+                            new Date(upcomingMeeting.attributes.date as string),
+                            new Date(),
+                            { locale: getLocale(t('language-code')) },
+                          )}
+                        </Text>
+                      </Flex>
+                      <Flex>
+                        <Link href={`/posiedzenia/${upcomingMeeting.id}`}>
+                          <Button
+                            leftIcon={<ArrowForwardIcon />}
+                            size={'sm'}
+                            backgroundColor={'blue.50'}
+                            onMouseOver={() => {
+                              void client.query({
+                                query: MeetingDocument,
+                                variables: {
+                                  id: upcomingMeeting.id,
+                                },
+                              });
+                            }}
+                          >
+                            {t('more')}
+                          </Button>
+                        </Link>
+                      </Flex>
+                    </Flex>
+                  </CardHeader>
+                ) : (
+                  <CardHeader>
+                    <Heading size="md">{t('last-meetings')}</Heading>
+                  </CardHeader>
+                )}
                 <CardBody>
                   <Flex flexDirection={'column'}>
-                    {meetings.map((meeting) => (
-                      <>
-                        <Divider />
-                        <Flex
-                          key={meeting.id}
-                          gap={5}
-                          flex={1}
-                          alignItems={'center'}
-                          pl={'20px'}
-                          pr={'20px'}
-                          pt={'10px'}
-                          pb={'10px'}
-                        >
-                          <Box
-                            textAlign="left"
-                            minWidth={'20%'}
-                            display={{ base: 'none', md: 'block' }}
+                    {meetings
+                      .filter(
+                        (meeting) =>
+                          Date.now() >
+                          new Date(meeting.attributes.date as string).getTime(),
+                      )
+                      .slice(0, 5)
+                      .map((meeting) => (
+                        <>
+                          <Divider />
+                          <Flex
+                            key={meeting.id}
+                            gap={5}
+                            flex={1}
+                            alignItems={'center'}
+                            px={5}
+                            py={2.5}
                           >
-                            {format(
-                              new Date(meeting.attributes.date as string),
-                              'dd-MM-yyyy',
-                            )}
-                          </Box>
-                          <Box textAlign="left" flex={1}>
-                            {meeting.attributes.name}
-                          </Box>
-                          <Box maxWidth={'fit-content'} justifySelf={'right'}>
-                            <Link href={`/posiedzenia/${meeting.id}`}>
-                              <Button
-                                leftIcon={<ArrowForwardIcon />}
-                                size={'sm'}
-                                onMouseOver={() => {
-                                  void client.query({
-                                    query: MeetingDocument,
-                                    variables: {
-                                      id: meeting.id,
-                                    },
-                                  });
-                                }}
-                              >
-                                {t('more')}
-                              </Button>
-                            </Link>
-                          </Box>
-                        </Flex>
-                      </>
-                    ))}
+                            <Box
+                              minWidth={'20%'}
+                              display={{ base: 'none', md: 'block' }}
+                            >
+                              {format(
+                                new Date(meeting.attributes.date as string),
+                                'dd/MM/yyyy',
+                              )}
+                            </Box>
+                            <Box flex={1}>{meeting.attributes.name}</Box>
+                            <Box maxWidth={'fit-content'} justifySelf={'right'}>
+                              <Link href={`/posiedzenia/${meeting.id}`}>
+                                <Button
+                                  leftIcon={<ArrowForwardIcon />}
+                                  size={'sm'}
+                                  onMouseOver={() => {
+                                    void client.query({
+                                      query: MeetingDocument,
+                                      variables: {
+                                        id: meeting.id,
+                                      },
+                                    });
+                                  }}
+                                >
+                                  {t('more')}
+                                </Button>
+                              </Link>
+                            </Box>
+                          </Flex>
+                        </>
+                      ))}
                     <Divider />
                   </Flex>
                 </CardBody>
@@ -130,7 +183,7 @@ function LatestUpdates() {
                 </CardHeader>
                 <CardBody>
                   <Flex flexDirection={'column'}>
-                    {resolutions.map((resolution) => (
+                    {resolutions.slice(0, 5).map((resolution) => (
                       <>
                         <Divider />
                         <Flex
@@ -138,10 +191,8 @@ function LatestUpdates() {
                           gap={5}
                           flex={1}
                           alignItems={'center'}
-                          pl={'20px'}
-                          pr={'20px'}
-                          pt={'10px'}
-                          pb={'10px'}
+                          px={5}
+                          py={2.5}
                         >
                           <Box
                             textAlign="left"
@@ -152,7 +203,7 @@ function LatestUpdates() {
                               new Date(
                                 resolution.attributes.publishedAt as string,
                               ),
-                              'dd-MM-yyyy',
+                              'dd/MM/yyyy',
                             )}
                           </Box>
                           <Box textAlign="left" flex={1}>
@@ -166,7 +217,7 @@ function LatestUpdates() {
                                 size={'sm'}
                                 isDisabled={true}
                               >
-                                {t('download')}
+                                {t('Download')}
                               </Button>
                             ) : (
                               <ChakraLink
