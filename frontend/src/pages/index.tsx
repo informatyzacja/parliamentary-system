@@ -183,7 +183,7 @@ function LatestUpdates() {
                 </CardHeader>
                 <CardBody>
                   <Flex flexDirection={'column'}>
-                    {resolutions.map((resolution) => (
+                    {resolutions.slice(0, 5).map((resolution) => (
                       <>
                         <Divider />
                         <Flex
