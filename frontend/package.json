@@ -53,7 +53,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "date-fns": "^2.30.0",
-    "framer-motion": "^10.12.20",
+    "framer-motion": "^10.12.21",
     "graphql": "16.7.1",
     "i18next": "^23.2.11",
     "jotai": "^2.2.2",
