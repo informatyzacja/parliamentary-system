@@ -147,7 +147,7 @@ function LatestUpdates() {
                             >
                               {format(
                                 new Date(meeting.attributes.date as string),
-                                'dd-MM-yyyy',
+                                'dd/MM/yyyy',
                               )}
                             </Box>
                             <Box flex={1}>{meeting.attributes.name}</Box>
@@ -203,7 +203,7 @@ function LatestUpdates() {
                               new Date(
                                 resolution.attributes.publishedAt as string,
                               ),
-                              'dd-MM-yyyy',
+                              'dd/MM/yyyy',
                             )}
                           </Box>
                           <Box textAlign="left" flex={1}>
