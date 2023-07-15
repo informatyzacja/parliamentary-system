@@ -55,41 +55,39 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
   const resolutions = resolutionsQuery.data?.resolutions.data ?? [];
 
   return (
-    <>
-      <Center>
-        <VStack>
-          <Box mb={8}>
-            <Heading size="lg">{t('resolutions')}</Heading>
-          </Box>
-          <Box mt={'1 !important'} mb={'4 !important'}>
-            <TermOfOfficeSelector />
-          </Box>
-          {resolutionsQuery.loading ? <Loader /> : null}
-          {resolutionsQuery.data?.resolutions.data.length === 0 &&
-          !resolutionsQuery.loading ? (
-            <NoItems>{t('no-resolutions')}</NoItems>
-          ) : null}
-          {resolutions.length > 0 ? (
-            <>
-              <Resolutions
-                showMeetings={true}
-                resolutions={resolutions}
-                pagination={{
-                  currentPage: pagination.currentPage,
-                  pageSize: pagination.currentPage,
-                }}
-              />
-              <Pagination
-                pages={pagination.pages}
-                current={pagination.currentPage}
-                pageCount={pageCount}
-                setCurrent={pagination.setCurrentPage}
-              />
-            </>
-          ) : null}
-        </VStack>
-      </Center>
-    </>
+    <Center>
+      <VStack>
+        <Box mb={8}>
+          <Heading size="lg">{t('resolutions')}</Heading>
+        </Box>
+        <Box mt="1 !important" mb="4 !important">
+          <TermOfOfficeSelector />
+        </Box>
+        {resolutionsQuery.loading ? <Loader /> : null}
+        {resolutionsQuery.data?.resolutions.data.length === 0 &&
+        !resolutionsQuery.loading ? (
+          <NoItems>{t('no-resolutions')}</NoItems>
+        ) : null}
+        {resolutions.length > 0 ? (
+          <>
+            <Resolutions
+              showMeetings={true}
+              resolutions={resolutions}
+              pagination={{
+                currentPage: pagination.currentPage,
+                pageSize: pagination.currentPage,
+              }}
+            />
+            <Pagination
+              pages={pagination.pages}
+              current={pagination.currentPage}
+              pageCount={pageCount}
+              setCurrent={pagination.setCurrentPage}
+            />
+          </>
+        ) : null}
+      </VStack>
+    </Center>
   );
 };
 

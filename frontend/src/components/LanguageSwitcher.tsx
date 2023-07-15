@@ -42,7 +42,7 @@ export const LanguageSwitcher = () => {
   );
 
   return (
-    <Menu placement={'left-start'}>
+    <Menu placement="left-start">
       <MenuButton
         px={15}
         py={7.5}
@@ -55,7 +55,7 @@ export const LanguageSwitcher = () => {
         {t(`languages.${i18n.language}.name`)}
         <ChevronDownIcon />
       </MenuButton>
-      <MenuList minW={0} w={'fit-content'}>
+      <MenuList minW={0} w="fit-content">
         {availableLanguages.map((language) => (
           <MenuItem
             key={language}

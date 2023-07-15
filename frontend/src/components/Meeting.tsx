@@ -49,38 +49,38 @@ export const Meeting = ({
       w={{ base: '90vw', md: '400px' }}
     >
       <Flex
-        maxW={'445px'}
-        w={'full'}
+        maxW="445px"
+        w="full"
         shadow="lg"
         bg={useColorModeValue('white', 'gray.900')}
-        rounded={'md'}
+        rounded="md"
         h="200px"
         p={6}
-        overflow={'hidden'}
+        overflow="hidden"
         flexDirection="column"
         justifyContent="space-between"
       >
         <Stack>
           <Text
-            color={'blue.500'}
-            textTransform={'uppercase'}
+            color="blue.500"
+            textTransform="uppercase"
             fontWeight={800}
-            fontSize={'sm'}
+            fontSize="sm"
             letterSpacing={1.1}
           >
             {place}
           </Text>
           <Heading
             color={useColorModeValue('gray.700', 'white')}
-            fontSize={'2xl'}
-            fontFamily={'body'}
+            fontSize="2xl"
+            fontFamily="body"
           >
             {name}
           </Heading>
         </Stack>
-        <Stack mt={'auto'} direction={'row'} spacing={4} align={'center'}>
-          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text color={'gray.500'}>{date}</Text>
+        <Stack mt="auto" direction="row" spacing={4} align="center">
+          <Stack direction="column" spacing={0} fontSize="sm">
+            <Text color="gray.500">{date}</Text>
           </Stack>
         </Stack>
       </Flex>

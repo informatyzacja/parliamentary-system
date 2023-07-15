@@ -55,7 +55,7 @@ const Meeting = () => {
           </Heading>
           <Divider mb={8} />
         </Box>
-        {meeting?.attributes.agenda.data && (
+        {meeting?.attributes.agenda.data ? (
           <ScaleFade in={true}>
             <Heading color="blue.500" size="sm" mb={8}>
               <Link
@@ -69,8 +69,8 @@ const Meeting = () => {
               </Link>
             </Heading>
           </ScaleFade>
-        )}
-        {meeting?.attributes.protocol.data && (
+        ) : null}
+        {meeting?.attributes.protocol.data ? (
           <ScaleFade in={true}>
             <Heading color="blue.500" size="sm" mb={8}>
               <Link
@@ -84,7 +84,7 @@ const Meeting = () => {
               </Link>
             </Heading>
           </ScaleFade>
-        )}
+        ) : null}
         <Box mt={16}>
           <Heading size="md">{t('meeting.reports')}</Heading>
         </Box>
@@ -98,55 +98,56 @@ const Meeting = () => {
                 <Text size="md">{t('meeting.no-reports')}</Text>
               </VStack>
             ) : (
-              <TableContainer maxW={'90vw'}>
+              <TableContainer maxW="90vw">
                 <Table size="lg" w="800px">
                   <Thead>
                     <Tr>
                       <Th>#</Th>
                       <Th>{t('name')}</Th>
-                      <Th></Th>
-                      <Th></Th>
+                      <Th />
+                      <Th />
                     </Tr>
                   </Thead>
                   <Tbody>
-                    {meeting?.attributes.reports.data &&
-                      meeting.attributes.reports.data.map(
-                        (report, index: number) => (
-                          <Tr key={meeting.id}>
-                            <Td>{index + 1}</Td>
-                            <Td>
-                              <Link
-                                target={'_blank'}
-                                href={
-                                  process.env.NEXT_PUBLIC_API_URL +
-                                  report.attributes.url
-                                }
-                              >
-                                {report.attributes.name}
-                              </Link>
-                            </Td>
-                            <Td w="10">
-                              <PreviewPDF
-                                url={
-                                  process.env.NEXT_PUBLIC_API_URL +
-                                  report.attributes.url
-                                }
-                                filename={report.attributes.name}
-                              />
-                            </Td>
-                            <Td w="10">
-                              <Link
-                                href={
-                                  process.env.NEXT_PUBLIC_API_URL +
-                                  report.attributes.url
-                                }
-                              >
-                                {t('Download')}
-                              </Link>
-                            </Td>
-                          </Tr>
-                        ),
-                      )}
+                    {meeting?.attributes.reports.data
+                      ? meeting.attributes.reports.data.map(
+                          (report, index: number) => (
+                            <Tr key={meeting.id}>
+                              <Td>{index + 1}</Td>
+                              <Td>
+                                <Link
+                                  target="_blank"
+                                  href={
+                                    process.env.NEXT_PUBLIC_API_URL +
+                                    report.attributes.url
+                                  }
+                                >
+                                  {report.attributes.name}
+                                </Link>
+                              </Td>
+                              <Td w="10">
+                                <PreviewPDF
+                                  url={
+                                    process.env.NEXT_PUBLIC_API_URL +
+                                    report.attributes.url
+                                  }
+                                  filename={report.attributes.name}
+                                />
+                              </Td>
+                              <Td w="10">
+                                <Link
+                                  href={
+                                    process.env.NEXT_PUBLIC_API_URL +
+                                    report.attributes.url
+                                  }
+                                >
+                                  {t('Download')}
+                                </Link>
+                              </Td>
+                            </Tr>
+                          ),
+                        )
+                      : null}
                   </Tbody>
                 </Table>
               </TableContainer>

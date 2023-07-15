@@ -65,7 +65,7 @@ export default function Meetings() {
         <Box mb={8}>
           <Heading size="lg">{t('parliament-meetings')}</Heading>
         </Box>
-        <Box mt={'1 !important'} mb={'4 !important'}>
+        <Box mt="1 !important" mb="4 !important">
           <TermOfOfficeSelector />
         </Box>
         {meetingsQuery.loading ? <Loader /> : null}

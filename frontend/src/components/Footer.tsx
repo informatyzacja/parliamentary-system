@@ -32,17 +32,17 @@ const SocialButton = ({
   return (
     <chakra.button
       bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
-      rounded={'full'}
+      rounded="full"
       w={8}
       h={8}
-      cursor={'pointer'}
-      as={'a'}
+      cursor="pointer"
+      as="a"
       href={href}
       target="_blank"
-      display={'inline-flex'}
-      alignItems={'center'}
-      justifyContent={'center'}
-      transition={'background 0.3s ease'}
+      display="inline-flex"
+      alignItems="center"
+      justifyContent="center"
+      transition="background 0.3s ease"
       _hover={{
         bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
       }}
@@ -66,7 +66,7 @@ export const Footer = () => {
     >
       <Container
         as={Stack}
-        maxW={'6xl'}
+        maxW="6xl"
         py={4}
         direction={{ base: 'column', md: 'row' }}
         spacing={4}
@@ -77,9 +77,9 @@ export const Footer = () => {
           Made with ❤️ by Komisja ds. Informatyzacji
         </Text>
         <Link
-          href={'https://status.samorzad.pwr.edu.pl/'}
+          href="https://status.samorzad.pwr.edu.pl/"
           p={2}
-          fontSize={'sm'}
+          fontSize="sm"
           fontWeight={500}
           color={linkColor}
           _hover={{
@@ -90,34 +90,34 @@ export const Footer = () => {
         >
           {t('system-status')}
         </Link>
-        <Stack direction={'row'} spacing={6}>
-          <SocialButton label={'WWW'} href={'https://samorzad.pwr.edu.pl/'}>
+        <Stack direction="row" spacing={6}>
+          <SocialButton label="WWW" href="https://samorzad.pwr.edu.pl/">
             <FaGlobe />
           </SocialButton>
-          <SocialButton label={'Email'} href={'mailto:samorzad@pwr.edu.pl'}>
+          <SocialButton label="Email" href="mailto:samorzad@pwr.edu.pl">
             <FaRegEnvelope />
           </SocialButton>
           <SocialButton
-            label={'Facebook'}
-            href={'https://www.facebook.com/SamorzadPWr/'}
+            label="Facebook"
+            href="https://www.facebook.com/SamorzadPWr/"
           >
             <FaFacebookF />
           </SocialButton>
           <SocialButton
-            label={'Instagram'}
-            href={'https://www.instagram.com/samorzadpwr/'}
+            label="Instagram"
+            href="https://www.instagram.com/samorzadpwr/"
           >
             <FaInstagram />
           </SocialButton>
           <SocialButton
-            label={'LinkedIn'}
-            href={'https://www.linkedin.com/company/samorzad-studencki-pwr/'}
+            label="LinkedIn"
+            href="https://www.linkedin.com/company/samorzad-studencki-pwr/"
           >
             <FaLinkedinIn />
           </SocialButton>
           <SocialButton
-            label={'GitHub'}
-            href={'https://github.com/informatyzacja/parliamentary-system/'}
+            label="GitHub"
+            href="https://github.com/informatyzacja/parliamentary-system/"
           >
             <FaGithub />
           </SocialButton>
