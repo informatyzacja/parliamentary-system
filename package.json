@@ -44,19 +44,19 @@
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
-    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "conventional-changelog-conventionalcommits": "^6.1.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.8",
-    "semantic-release": "^21.0.2",
+    "prettier": "^3.0.0",
+    "semantic-release": "^21.0.7",
     "wait-on": "^7.0.1"
   },
   "resolutions": {
     "graphql": "16.6.0"
   },
   "engines": {
-    "node": "18.16.0"
+    "node": "^18.16.0"
   },
   "volta": {
     "node": "18.16.0"

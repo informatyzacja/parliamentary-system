@@ -64,15 +64,15 @@ export const Resolutions = ({
 
   return (
     <ScaleFade initialScale={0.9} in={true}>
-      <TableContainer maxW={'90vw'}>
+      <TableContainer maxW="90vw">
         <Table size="lg">
           <Thead>
             <Tr>
               <Th>#</Th>
               <Th>{t('name')}</Th>
-              {showMeetings && <Th>{t('meeting.title')}</Th>}
+              {showMeetings ? <Th>{t('meeting.title')}</Th> : null}
               <Th>{t('addition-date')}</Th>
-              <Th></Th>
+              <Th />
             </Tr>
           </Thead>
           <Tbody>
@@ -84,18 +84,18 @@ export const Resolutions = ({
                     (pagination.currentPage - 1) * pagination.pageSize}
                 </Td>
                 <Td>{resolution.attributes.name}</Td>
-                {showMeetings && resolution.attributes.meeting && (
+                {showMeetings && resolution.attributes.meeting ? (
                   <Td>
                     <NextLink
                       href={`/posiedzenia/${resolution.attributes.meeting.data.id}`}
-                      passHref
+                      passHref={true}
                     >
                       <Link>
                         {resolution.attributes.meeting.data.attributes.name}
                       </Link>
                     </NextLink>
                   </Td>
-                )}
+                ) : null}
                 <Td>
                   {format(
                     new Date(resolution.attributes.publishedAt),
@@ -106,7 +106,7 @@ export const Resolutions = ({
                   {resolution.attributes.document?.data === null ? (
                     <Button
                       leftIcon={<DownloadIcon />}
-                      size={'sm'}
+                      size="sm"
                       isDisabled={true}
                     >
                       {t('Download')}
@@ -118,9 +118,9 @@ export const Resolutions = ({
                         (resolution.attributes.document?.data.attributes?.url ??
                           '/404')
                       }
-                      target={'_blank'}
+                      target="_blank"
                     >
-                      <Button leftIcon={<DownloadIcon />} size={'sm'}>
+                      <Button leftIcon={<DownloadIcon />} size="sm">
                         {t('Download')}
                       </Button>
                     </ChakraLink>

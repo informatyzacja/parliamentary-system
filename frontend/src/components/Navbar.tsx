@@ -48,18 +48,18 @@ export const Navbar = () => {
       w="100%"
       px={{ base: 0, md: 16 }}
       py={4}
-      borderBottom={'solid 1px'}
-      borderColor={'gray.200'}
-      shadow={'base'}
-      backgroundColor={'white'}
+      borderBottom="solid 1px"
+      borderColor="gray.200"
+      shadow="base"
+      backgroundColor="white"
     >
       <Flex
-        color={'gray.600'}
-        minH={'60px'}
+        color="gray.600"
+        minH="60px"
         mx="auto"
         py={{ base: 2 }}
         px={{ base: 4 }}
-        align={'center'}
+        align="center"
       >
         {status === 'authenticated' ? (
           <Flex
@@ -76,14 +76,14 @@ export const Navbar = () => {
                   <HamburgerIcon w={5} h={5} />
                 )
               }
-              variant={'ghost'}
+              variant="ghost"
               aria-label={t('aria.toggle-navigation')}
             />
           </Flex>
         ) : null}
 
         <Flex flex={1} justify={{ base: 'center', md: 'space-between' }}>
-          <NextLink href="/" passHref>
+          <NextLink href="/" passHref={true}>
             <Image
               src="/logo.svg"
               loading="eager"
@@ -104,8 +104,8 @@ export const Navbar = () => {
 
         <Stack
           flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
+          justify="flex-end"
+          direction="row"
           spacing={6}
         >
           {status === 'unauthenticated' ? (
@@ -118,27 +118,23 @@ export const Navbar = () => {
             </Button>
           ) : null}
           {status === 'authenticated' ? (
-            <Box ml={4} display={'flex'}>
-              <Menu
-                direction="rtl"
-                placement={'bottom-start'}
-                autoSelect={false}
-              >
+            <Box ml={4} display="flex">
+              <Menu direction="rtl" placement="bottom-start" autoSelect={false}>
                 <MenuButton
                   as={Button}
-                  rounded={'full'}
-                  variant={'link'}
-                  cursor={'pointer'}
+                  rounded="full"
+                  variant="link"
+                  cursor="pointer"
                   minW={0}
-                  border={'2px solid transparent'}
+                  border="2px solid transparent"
                   _hover={{
                     border: '2px solid black',
                   }}
                   aria-label={t('aria.user-menu') as string | undefined}
                 >
-                  <Avatar size={'sm'} />
+                  <Avatar size="sm" />
                 </MenuButton>
-                <MenuList alignItems={'center'} p={3}>
+                <MenuList alignItems="center" p={3}>
                   <Center>{data.user?.name ?? ''}</Center>
                   <Center>({data.user?.email?.split('@')[0]})</Center>
                   <MenuDivider />
@@ -160,7 +156,7 @@ export const Navbar = () => {
         </Stack>
       </Flex>
       {status === 'authenticated' ? (
-        <Collapse in={isOpen} animateOpacity>
+        <Collapse in={isOpen} animateOpacity={true}>
           <MobileNav onToggle={onToggle} />
         </Collapse>
       ) : null}
@@ -176,7 +172,7 @@ const DesktopNav = () => {
   const client = useApolloClient();
 
   return (
-    <Stack direction={'row'} spacing={6}>
+    <Stack direction="row" spacing={6}>
       {NAV_ITEMS.map((navItem) => (
         <Center key={navItem.label}>
           <Link
@@ -197,7 +193,7 @@ const DesktopNav = () => {
               }
             }}
             p={2}
-            fontSize={'sm'}
+            fontSize="sm"
             fontWeight={500}
             color={linkColor}
             _hover={{
@@ -235,8 +231,8 @@ const MobileNavItem = (mobileNavProps: MobileProps & NavItem) => {
     <Stack spacing={4}>
       <Flex
         py={2}
-        justify={'space-between'}
-        align={'center'}
+        justify="space-between"
+        align="center"
         _hover={{
           textDecoration: 'none',
         }}
