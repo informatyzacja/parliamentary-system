@@ -68,7 +68,7 @@ function OrganisationStructure() {
         <Heading size="lg" mb={8}>
           {t('organisation-structure')}
         </Heading>
-        <Box mt={'1 !important'} mb={'4 !important'}>
+        <Box mt="1 !important" mb="4 !important">
           <TermOfOfficeSelector />
         </Box>
         {studentsQuery.loading ? <Loader /> : null}
