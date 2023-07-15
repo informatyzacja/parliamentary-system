@@ -12,7 +12,7 @@
     "codegen:watch": "pnpm codegen --watch",
     "test:e2e": "playwright test"
   },
-  "packageManager": "pnpm@8.5.1",
+  "packageManager": "pnpm@8.6.7",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/informatyzacja/parliamentary-system.git"
