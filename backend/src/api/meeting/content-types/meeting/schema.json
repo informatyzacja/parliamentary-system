@@ -26,7 +26,7 @@
       "type": "enumeration",
       "enum": [
         "remote",
-        "a1s241",
+        "a1r241",
         "c16r117"
       ],
       "default": "remote",

@@ -96,7 +96,7 @@ export type DateTimeFilterInput = {
 };
 
 export enum Enum_Meeting_Place {
-  A1s241 = 'a1s241',
+  A1r241 = 'a1r241',
   C16r117 = 'c16r117',
   Remote = 'remote'
 }
