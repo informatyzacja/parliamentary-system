@@ -25,11 +25,11 @@
     "place": {
       "type": "enumeration",
       "enum": [
-        "Zdalnie",
-        "Sala Centrum Kongresowego",
-        "C-16 s. 1.17"
+        "remote",
+        "a1s241",
+        "c16r117"
       ],
-      "default": "Sala Centrum Kongresowego",
+      "default": "remote",
       "required": true
     },
     "term_of_office": {
@@ -47,11 +47,12 @@
       ]
     },
     "protocol": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "files"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "reports": {
       "type": "media",

@@ -33,6 +33,11 @@
   "meeting": {
     "agenda": "Agenda posiedzenia",
     "no-reports": "Brak sprawozdań",
+    "place": {
+      "a1s241": "A-1 s. 241",
+      "c16r117": "C-16 s. 1.17",
+      "remote": "Zdalnie"
+    },
     "protocol": "Protokół z posiedzenia",
     "reports": "Sprawozdania z posiedzenia",
     "title": "Posiedzenie",
