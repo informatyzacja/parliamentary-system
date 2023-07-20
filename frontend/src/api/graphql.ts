@@ -96,9 +96,9 @@ export type DateTimeFilterInput = {
 };
 
 export enum Enum_Meeting_Place {
-  C_16S_1_17 = 'C_16_s_1_17',
-  SalaCentrumKongresowego = 'Sala_Centrum_Kongresowego',
-  Zdalnie = 'Zdalnie'
+  A1r241 = 'a1r241',
+  C16r117 = 'c16r117',
+  Remote = 'remote'
 }
 
 export enum Enum_Student_Department {

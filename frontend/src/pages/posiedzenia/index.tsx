@@ -79,7 +79,7 @@ export default function Meetings() {
                 <Meeting
                   id={meeting.id}
                   name={meeting.attributes.name}
-                  place={meeting.attributes.place.replace(/_/, ' ')}
+                  place={meeting.attributes.place}
                   date={format(
                     new Date(meeting.attributes.date as string),
                     'dd.MM.yyyy',

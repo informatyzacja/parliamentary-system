@@ -8,8 +8,9 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
-import { MeetingDocument } from '../api/graphql';
+import { MeetingDocument } from '@/api/graphql';
 
 export const Meeting = ({
   id,
@@ -24,6 +25,8 @@ export const Meeting = ({
 }) => {
   const router = useRouter();
   const client = useApolloClient();
+
+  const { t } = useTranslation('common');
 
   return (
     <Center
@@ -68,7 +71,7 @@ export const Meeting = ({
             fontSize="sm"
             letterSpacing={1.1}
           >
-            {place}
+            {t(`meeting.place.${place}`)}
           </Text>
           <Heading
             color={useColorModeValue('gray.700', 'white')}
