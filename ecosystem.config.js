@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'backend',
-      cwd: './backend',
+      cwd: './apps/backend',
       script: 'npm',
       args: 'start',
       interpreter: 'none',
@@ -12,7 +12,7 @@ module.exports = {
     },
     {
       name: 'frontend',
-      cwd: './frontend',
+      cwd: './apps/frontend',
       script: 'npm',
       args: 'start',
       interpreter: 'none',

@@ -2,7 +2,7 @@ services:
   frontend:
     restart: always
     build:
-      context: ./
+      context: ./apps/
       dockerfile: ./frontend/Dockerfile
     ports:
       - 80:3000
@@ -14,7 +14,7 @@ services:
   backend:
     restart: always
     build:
-      context: ./
+      context: ./apps/
       dockerfile: ./backend/Dockerfile
 
     ports:

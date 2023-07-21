@@ -33,7 +33,7 @@ jobs:
             echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
             echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
             echo DATABASE_FOLDER=${{ secrets.DATABASE_FOLDER }} >> .env
-            cd frontend
+            cd apps/frontend
             rm .env.local
             touch .env.local
             echo NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} >> .env.local
@@ -43,8 +43,8 @@ jobs:
             echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
             echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
             echo NODE_ENV=production >> .env.local
-            cd ..
-            cd backend
+            cd ../..
+            cd apps/backend
             rm .env
             touch .env
             echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
@@ -59,7 +59,7 @@ jobs:
             echo AUTH_SECRET=${{ secrets.AUTH_SECRET }} >> .env
             echo STRAPI_URL=${{ vars.NEXT_PUBLIC_API_URL }} >> .env
             cp public/robots.txt ${{ secrets.STRAPI_PUBLIC_FOLDER }}
-            cd ..
+            cd ../..
             git pull
             npm ci
             npm run build
