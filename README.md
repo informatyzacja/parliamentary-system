@@ -18,9 +18,9 @@ Aplikacja webowa do przekazywania dokumentów Parlamentu Studenckiego.
 
 ## Tech Stack
 
-**Backend:** Strapi
+**api:** Strapi
 
-**Frontend:** Next, React, Chakra UI, Emotion, TypeScript
+**web:** Next, React, Chakra UI, Emotion, TypeScript
 
 **Ogólne:** Docker, GitHub Actions, GraphQL
 
@@ -29,7 +29,7 @@ Aplikacja webowa do przekazywania dokumentów Parlamentu Studenckiego.
 Do uruchomienia projektu niezbędne jest uruchomienie poniższego kodu oraz ustawienie poniższych zmiennych
 
 ```bash
-cp .env.example .env && cp backend/.env.example backend/.env && cp frontend/.env.example frontend/.env
+cp .env.example .env && cp api/.env.example api/.env && cp web/.env.example web/.env
 ```
 
 #### .env
@@ -39,7 +39,7 @@ cp .env.example .env && cp backend/.env.example backend/.env && cp frontend/.env
 - `DATABASE_PASSWORD`
 - `DATABASE_FOLDER`
 
-#### backend/.env
+#### api/.env
 
 - `USOS_CLIENT_ID`
 - `USOS_CLIENT_SECRET`
@@ -52,7 +52,7 @@ gdzie klucze do USOS uzyskasz od swojej uczelni
 
 tak samo jak wyżej w `.env`
 
-#### frontend/.env
+#### web/.env
 
 - `NEXT_PUBLIC_API_URL` - url backendu
 - `NEXTAUTH_URL` - url frontendu
@@ -62,7 +62,7 @@ tak samo jak wyżej w `.env`
 - `USOS_CLIENT_ID`
 - `USOS_CLIENT_SECRET`
 
-tak samo jak wyżej w `backend/.env`
+tak samo jak wyżej w `api/.env`
 
 ## Instalacja
 
@@ -72,7 +72,7 @@ Wykonaj poniższe polecenia
 git clone https://github.com/informatyzacja/parliamentary-system.git
 cd parliamentary-system
 npm i && npm run postinstall
-cd backend && npm i && cd ..
+cd api && npm i && cd ..
 npm run dev
 ```
 

@@ -48,7 +48,7 @@ jobs:
         if: steps.check.outputs.triggered == 'true'
         with:
           node-version: 18
-      - name: Start frontend tunnel
+      - name: Start web tunnel
         id: expose-tunnel
         if: steps.check.outputs.triggered == 'true'
         uses: codetalkio/expose-tunnel@v1
@@ -67,14 +67,14 @@ jobs:
       - name: Cache build
         uses: actions/cache@v3
         with:
-          path: ${{ github.workspace }}/apps/frontend/.next/cache
+          path: ${{ github.workspace }}/apps/web/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-      - name: Build frontend
+      - name: Build web
         if: steps.check.outputs.triggered == 'true'
         run: |
-          cd apps/frontend
+          cd apps/web
           touch .env.local
           echo NEXTAUTH_URL=${{ steps.tunnel-url.outputs.tunnel-url }} >> .env.local
           echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env.local
@@ -84,11 +84,11 @@ jobs:
           echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
           echo NODE_ENV=production >> .env.local
           cd ../..
-          npm run build:frontend
+          npm run build:web
 
       - name: Starting app
         if: steps.check.outputs.triggered == 'true'
-        run: npm run start:frontend &
+        run: npm run start:web &
 
       # Post a comment on the Pull Request with the URL to the tunnel.
       - name: Post preview environment as comment on PR

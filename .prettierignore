@@ -9,7 +9,7 @@ documentation/
 schema.json
 .strapi-updater.json
 
-# Frontend files
+# web files
 **/postgres-data
 graphql.ts
 

@@ -31,7 +31,7 @@ jobs:
           node-version: 18
       - name: Setup env
         run: |
-          cd apps/frontend
+          cd apps/web
           touch .env.local
           echo NEXTAUTH_URL=http://localhost:3000 >> .env.local
           echo NEXT_PUBLIC_API_URL=http://0.0.0.0:1337 >> .env.local
@@ -48,7 +48,7 @@ jobs:
       - name: Cache build
         uses: actions/cache@v3
         with:
-          path: ${{ github.workspace }}/apps/frontend/.next/cache
+          path: ${{ github.workspace }}/apps/web/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-

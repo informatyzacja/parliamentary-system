@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: 'backend',
-      cwd: './apps/backend',
+      name: 'api',
+      cwd: './apps/api',
       script: 'npm',
       args: 'start',
       interpreter: 'none',
@@ -11,8 +11,8 @@ module.exports = {
       },
     },
     {
-      name: 'frontend',
-      cwd: './apps/frontend',
+      name: 'web',
+      cwd: './apps/web',
       script: 'npm',
       args: 'start',
       interpreter: 'none',

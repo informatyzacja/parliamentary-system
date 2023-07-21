@@ -1,10 +1,10 @@
-FROM node:18-bullseye as Backend
+FROM node:18-bullseye as api
 WORKDIR /app
 COPY package.json .
 COPY package-lock.json .
-COPY backend/package.json backend/
+COPY api/package.json api/
 RUN npm ci
 COPY . .
-WORKDIR /app/backend
+WORKDIR /app/api
 RUN npm run build
 CMD [ "npm", "start" ]

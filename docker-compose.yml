@@ -1,27 +1,27 @@
 services:
-  frontend:
+  web:
     restart: always
     build:
       context: ./apps/
-      dockerfile: ./frontend/Dockerfile
+      dockerfile: ./web/Dockerfile
     ports:
       - 80:3000
     volumes:
-      - ./frontend/.env:/app/frontend/.env
+      - ./web/.env:/app/web/.env
     depends_on:
-      - backend
+      - api
 
-  backend:
+  api:
     restart: always
     build:
       context: ./apps/
-      dockerfile: ./backend/Dockerfile
+      dockerfile: ./api/Dockerfile
 
     ports:
       - 81:1337
     volumes:
-      - ./backend/public/:/app/backend/public/
-      - ./backend/.env:/app/backend/.env
+      - ./api/public/:/app/api/public/
+      - ./api/.env:/app/api/.env
     depends_on:
       - postgres
 
