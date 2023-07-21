@@ -2,6 +2,10 @@
   "name": "parliamentary-system",
   "private": true,
   "version": "1.4.41",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
     "dev:backend": "wait-on tcp:5432 && npm --prefix run run backend dev",
     "dev:frontend": "wait-on http://0.0.0.0:1337/admin && npm --prefix run frontend dev",
