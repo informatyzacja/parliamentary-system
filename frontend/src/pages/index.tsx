@@ -95,7 +95,9 @@ function LatestUpdates() {
                       </Text>
                     </Flex>
                     <Flex>
-                      <Link href={`/posiedzenia/${upcomingMeeting.id}`}>
+                      <Link
+                        href={`/posiedzenia/${upcomingMeeting.id as string}`}
+                      >
                         <Button
                           leftIcon={<ArrowForwardIcon />}
                           size="sm"

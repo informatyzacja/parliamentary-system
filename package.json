@@ -2,21 +2,25 @@
   "name": "parliamentary-system",
   "private": true,
   "version": "1.4.41",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "dev:backend": "wait-on tcp:5432 && pnpm --dir backend dev",
-    "dev:frontend": "wait-on http://0.0.0.0:1337/admin && pnpm --dir frontend dev",
+    "dev:backend": "wait-on tcp:5432 && npm --prefix backend run dev",
+    "dev:frontend": "wait-on http://0.0.0.0:1337/admin && npm --prefix frontend run dev",
     "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
     "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
     "postinstall": "husky install",
     "build": "npm-run-all -l -p build:*",
-    "build:backend": "pnpm --dir backend build",
-    "build:frontend": "pnpm --dir frontend build",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
     "lint": "npm-run-all -l -p lint:*",
-    "lint:frontend": "pnpm --dir frontend lint",
+    "lint:frontend": "npm --prefix frontend run lint",
     "format:check": "prettier --ignore-unknown --check backend frontend/src",
     "semantic-release": "semantic-release"
   },
-  "packageManager": "pnpm@8.6.7",
+  "packageManager": "npm@9.6.7",
   "repository": {
     "type": "git",
     "url": "https://github.com/informatyzacja/parliamentary-system.git"
@@ -56,10 +60,11 @@
     "graphql": "16.6.0"
   },
   "engines": {
-    "node": "^18.16.0"
+    "node": "^18.17.0"
   },
   "volta": {
-    "node": "18.16.0"
+    "node": "18.17.0",
+    "npm": "9.8.1"
   },
   "lint-staged": {
     "*": [

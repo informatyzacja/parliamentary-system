@@ -1,10 +1,10 @@
 FROM node:18-bullseye as Frontend
 WORKDIR /app
 COPY package.json .
-COPY pnpm-lock.yaml .
+COPY package-lock.json .
 COPY frontend/package.json frontend/
-RUN pnpm install
+RUN npm ci
 COPY . .
 WORKDIR /app/frontend
-RUN pnpm build
-CMD [ "pnpm", "start" ]
+RUN npm run build
+CMD [ "npm", "start" ]
