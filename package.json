@@ -7,16 +7,16 @@
     "frontend"
   ],
   "scripts": {
-    "dev:backend": "wait-on tcp:5432 && npm --prefix run run backend dev",
-    "dev:frontend": "wait-on http://0.0.0.0:1337/admin && npm --prefix run frontend dev",
+    "dev:backend": "wait-on tcp:5432 && npm --prefix backend run dev",
+    "dev:frontend": "wait-on http://0.0.0.0:1337/admin && npm --prefix frontend run dev",
     "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
     "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
     "postinstall": "husky install",
     "build": "npm-run-all -l -p build:*",
-    "build:backend": "npm --prefix run backend build",
-    "build:frontend": "npm --prefix run frontend build",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
     "lint": "npm-run-all -l -p lint:*",
-    "lint:frontend": "npm --prefix run frontend lint",
+    "lint:frontend": "npm --prefix frontend run lint",
     "format:check": "prettier --ignore-unknown --check backend frontend/src",
     "semantic-release": "semantic-release"
   },
