@@ -124,8 +124,8 @@ importers:
         specifier: ^4.0.1
         version: 4.0.1(graphql@16.6.0)
       '@next/eslint-plugin-next':
-        specifier: ^13.4.10
-        version: 13.4.10
+        specifier: ^13.4.11
+        version: 13.4.11
       '@types/lodash':
         specifier: ^4.14.195
         version: 4.14.195
@@ -4366,8 +4366,8 @@ packages:
     resolution: {integrity: sha512-BbPLOkfFFca+OpwSmGhNrl56B3ZzOFS4eJ85SpGTDpjlXoz7XFfS3MMOfjUCTuW1laTrQjm98I9Q30tsYpr8ew==}
     dev: false
 
-  /@next/eslint-plugin-next@13.4.10:
-    resolution: {integrity: sha512-YJqyq6vk39JQfvaNtN83t/p5Jy45+bazRL+V4QI8FPd3FBqFYMEsULiwRLgSJMgFqkk4t4JbeZurz+gILEAFpA==}
+  /@next/eslint-plugin-next@13.4.11:
+    resolution: {integrity: sha512-BsxI1DLtTZLX/MEoSg5Rilk2c6tlcjGseByxwasBPeoNH+fda/DZe8RkOmmmncNmTV/OzTBj/Pq6Pc3BqgLuBA==}
     dependencies:
       glob: 7.1.7
     dev: true
