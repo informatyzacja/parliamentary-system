@@ -9,10 +9,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "dev:db": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check",
     "lint": "turbo run lint",
-    "format": "prettier --write apps/api apps/web/src",
-    "format:check": "prettier --ignore-unknown --check apps/api apps/web/src",
     "postinstall": "husky install",
+    "preinstall": "npx npm-force-resolutions",
     "semantic-release": "semantic-release"
   },
   "packageManager": "npm@9.6.7",
@@ -48,11 +49,17 @@
     "husky": "^8.0.3",
     "prettier": "^3.0.0",
     "semantic-release": "^21.0.7",
-    "turbo": "^1.10.9"
+    "turbo": "^1.10.9",
+    "wait-on": "^7.0.1"
   },
   "resolutions": {
     "graphql": "16.6.0",
     "**/graphql": "16.6.0"
+  },
+  "overrides": {
+    "graphql": {
+      ".": "16.6.0"
+    }
   },
   "engines": {
     "node": "^18.17.0"

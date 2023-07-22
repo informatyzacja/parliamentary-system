@@ -5,7 +5,9 @@
   "description": "A Strapi application",
   "scripts": {
     "build": "strapi build",
-    "dev": "strapi develop",
+    "dev": "wait-on tcp:5432 && strapi develop",
+    "format": "prettier --ignore-unknown --write .",
+    "format:check": "prettier --ignore-unknown --check .",
     "start": "strapi start",
     "strapi": "strapi"
   },
