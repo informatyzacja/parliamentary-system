@@ -28,6 +28,9 @@ module.exports = {
     'jest-dom/prefer-to-have-attribute': 'off',
   },
   settings: {
+    next: {
+      rootDir: 'apps/web/',
+    },
     react: {
       version: 'detect',
     },

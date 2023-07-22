@@ -8,6 +8,7 @@
     "browser": false
   },
   "parserOptions": {
+    "requireConfigFile": false,
     "ecmaFeatures": {
       "experimentalObjectRestSpread": true,
       "jsx": false
