@@ -26,7 +26,7 @@
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    ".eslintrc.cjs"
+    ".eslintrc.js"
   ],
   "exclude": ["node_modules"]
 }

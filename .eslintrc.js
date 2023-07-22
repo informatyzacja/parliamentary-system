@@ -1,4 +1,10 @@
 module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    tsconfigRootDir: `${__dirname}/apps/web`,
+    project: ['./tsconfig.json'],
+  },
   extends: [
     '@alergeek-ventures/eslint-config/typescript',
     '@alergeek-ventures/eslint-config/react',
@@ -6,13 +12,15 @@ module.exports = {
     '@alergeek-ventures/eslint-config/cspell-eslint',
     'plugin:@next/next/recommended',
   ],
-  parser: '@typescript-eslint/parser',
-  root: true,
-  parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json'],
-  },
   ignorePatterns: ['graphql.ts', '*.graphql', '.next', 'node_modules', '*.js'],
+  settings: {
+    next: {
+      rootDir: ['apps/*/'],
+    },
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
     '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
@@ -26,13 +34,5 @@ module.exports = {
     'no-shadow': 'off',
     'jest-dom/prefer-in-document': 'off',
     'jest-dom/prefer-to-have-attribute': 'off',
-  },
-  settings: {
-    next: {
-      rootDir: 'apps/web/',
-    },
-    react: {
-      version: 'detect',
-    },
   },
 };

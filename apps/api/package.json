@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "description": "A Strapi application",
   "scripts": {
+    "build": "strapi build",
     "dev": "strapi develop",
     "start": "strapi start",
-    "build": "strapi build",
     "strapi": "strapi"
   },
   "packageManager": "npm@9.6.7",

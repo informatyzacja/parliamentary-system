@@ -17,4 +17,3 @@ graphql.ts
 .prettierignore
 
 package-lock.json
-package.json
