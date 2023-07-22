@@ -51,7 +51,8 @@
     "turbo": "^1.10.9"
   },
   "resolutions": {
-    "graphql": "16.6.0"
+    "graphql": "16.6.0",
+    "**/graphql": "16.6.0"
   },
   "engines": {
     "node": "^18.17.0"

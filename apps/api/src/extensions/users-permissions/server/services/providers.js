@@ -6,7 +6,8 @@
 
 // Public node modules.
 const _ = require('lodash');
-const urlJoin = require('url-join');
+const urlJoin = (...args) =>
+  import('url-join').then(({ default: urlJoin }) => urlJoin(...args));
 
 const { getAbsoluteServerUrl } = require('@strapi/utils');
 const { getService } = require('@strapi/plugin-users-permissions/server/utils');

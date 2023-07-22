@@ -9,7 +9,9 @@
  */
 const crypto = require('crypto');
 const _ = require('lodash');
-const urljoin = require('url-join');
+// const urljoin = await import('url-join');
+const urljoin = (...args) =>
+  import('url-join').then(({ default: urlJoin }) => urlJoin(...args));
 const { getService } = require('@strapi/plugin-users-permissions/server/utils');
 const usersPermissionsActions = require('@strapi/plugin-users-permissions/server/bootstrap/users-permissions-actions');
 
