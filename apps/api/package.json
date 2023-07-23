@@ -12,25 +12,20 @@
     "strapi": "strapi"
   },
   "packageManager": "npm@9.6.7",
+  "engines": {
+    "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/informatyzacja/parliamentary-system.git"
   },
-  "author": {
-    "name": "Michał Korczak",
-    "url": "https://omikor.in"
-  },
+  "author": "Michał Korczak (https://omikor.in)",
   "maintainers": [
-    {
-      "name": "Michał Korczak",
-      "url": "https://omikor.in"
-    },
-    {
-      "name": "Dawid Stachowiak"
-    },
-    {
-      "name": "Bartosz Gotowski"
-    }
+    "Michał Korczak (https://omikor.in)",
+    "Dawid Stachowiak",
+    "Bartosz Gotowski",
+    "Jakub Wiczkowski"
   ],
   "license": "ISC",
   "bugs": {
@@ -48,15 +43,11 @@
     "pg": "^8.11.0",
     "react-select": "^5.7.3"
   },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0"
+  },
   "strapi": {
     "uuid": "a4710531-0f36-48ca-a0c3-b0ef4a254ec9",
     "telemetryDisabled": true
-  },
-  "engines": {
-    "node": ">=14.19.1 <=18.x.x",
-    "npm": ">=6.0.0"
-  },
-  "devDependencies": {
-    "babel-eslint": "^10.1.0"
   }
 }
