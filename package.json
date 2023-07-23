@@ -13,7 +13,6 @@
     "format:check": "turbo run format:check",
     "lint": "turbo run lint",
     "postinstall": "husky install",
-    "preinstall": "npx npm-force-resolutions",
     "semantic-release": "semantic-release"
   },
   "packageManager": "npm@9.6.7",
