@@ -49,15 +49,6 @@
     "turbo": "^1.10.9",
     "wait-on": "^7.0.1"
   },
-  "resolutions": {
-    "graphql": "16.6.0",
-    "**/graphql": "16.6.0"
-  },
-  "overrides": {
-    "graphql": {
-      ".": "16.6.0"
-    }
-  },
   "lint-staged": {
     "*": [
       "prettier --ignore-unknown --write"
