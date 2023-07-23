@@ -3,17 +3,20 @@ build
 dist
 coverage
 
-# Strapi files
+# auto generated files
+## Strapi files
 .cache
 documentation/
 schema.json
 .strapi-updater.json
+apps/api/src/api/**/*.json
 
-# web files
-**/postgres-data
-graphql.ts
+## web files
+apps/web/graphql.ts
 
+# ignore files
 .gitignore
 .prettierignore
 
+# lockfiles
 package-lock.json
