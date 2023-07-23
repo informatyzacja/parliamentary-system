@@ -9,10 +9,6 @@ coverage
 documentation/
 schema.json
 .strapi-updater.json
-apps/api/src/api/**/*.json
-
-## web files
-apps/web/graphql.ts
 
 # ignore files
 .gitignore
