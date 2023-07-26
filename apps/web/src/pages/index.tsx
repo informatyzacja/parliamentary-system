@@ -23,11 +23,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import {
   MeetingDocument,
   useLatestMeetingsAndResolutionsQuery,
-} from '../api/graphql';
-import { Link } from '../components/Link';
-import { Loader } from '../components/Loader';
-import { NoItems } from '../components/NoItems';
-import { useErrorHandler } from '../hooks/useErrorHandler';
+} from '@/api/graphql';
+import { Link } from '@/components/Link';
+import { Loader } from '@/components/Loader';
+import { NoItems } from '@/components/NoItems';
+import { useErrorHandler } from '@/hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}

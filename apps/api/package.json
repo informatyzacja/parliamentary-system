@@ -33,12 +33,11 @@
   },
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.10.6",
-    "@strapi/plugin-i18n": "^4.10.6",
-    "@strapi/plugin-users-permissions": "^4.10.6",
-    "@strapi/provider-email-nodemailer": "^4.10.6",
-    "@strapi/strapi": "^4.10.6",
-    "graphql": "^16.6.0",
+    "@strapi/plugin-graphql": "4.10.6",
+    "@strapi/plugin-i18n": "4.10.6",
+    "@strapi/plugin-users-permissions": "4.10.6",
+    "@strapi/provider-email-nodemailer": "4.10.6",
+    "@strapi/strapi": "4.10.6",
     "oauth": "0.9.15",
     "pg": "^8.11.0",
     "react-select": "^5.7.3"
@@ -46,8 +45,17 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0"
   },
+  "overrides": {
+    "@strapi/plugin-graphql@4.10.6": {
+      "graphql": "16.7.1"
+    },
+    "graphql": "16.7.1"
+  },
   "strapi": {
     "uuid": "a4710531-0f36-48ca-a0c3-b0ef4a254ec9",
     "telemetryDisabled": true
+  },
+  "volta": {
+    "node": "18.17.0"
   }
 }

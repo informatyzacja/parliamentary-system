@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.4.41",
   "workspaces": [
-    "apps/*"
+    "apps/web/",
+    "apps/api/"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -48,6 +49,9 @@
     "semantic-release": "^21.0.7",
     "turbo": "^1.10.9",
     "wait-on": "^7.0.1"
+  },
+  "overrides": {
+    "graphql": "16.7.1"
   },
   "lint-staged": {
     "*": [
