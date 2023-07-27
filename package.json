@@ -10,19 +10,19 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "dev:db": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
-    "format": "turbo run format",
+    "format": "format",
     "format:check": "turbo run format:check",
     "lint": "turbo run lint",
     "postinstall": "husky install",
     "semantic-release": "semantic-release"
   },
-  "packageManager": "npm@9.6.7",
+  "packageManager": "yarn@3.6.1",
   "engines": {
-    "node": "^18.17.0"
+    "node": "^18.x.x"
   },
   "volta": {
     "node": "18.17.0",
-    "npm": "9.6.7"
+    "yarn": "3.6.1"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
+    "@testing-library/dom": "^9.3.1",
     "conventional-changelog-conventionalcommits": "^6.1.0",
     "eslint": "^8.45.0",
     "husky": "^8.0.3",
@@ -49,9 +50,6 @@
     "semantic-release": "^21.0.7",
     "turbo": "^1.10.9",
     "wait-on": "^7.0.1"
-  },
-  "overrides": {
-    "graphql": "16.7.1"
   },
   "lint-staged": {
     "*": [

@@ -61,8 +61,8 @@ jobs:
             cp public/robots.txt ${{ secrets.STRAPI_PUBLIC_FOLDER }}
             cd ../..
             git pull
-            npm ci
-            npm run build
+            yarn install --frozen-lockfile
+            yarn build
             pm2 reload ecosystem.config.js
 
   release:
@@ -88,4 +88,4 @@ jobs:
           GIT_AUTHOR_EMAIL: ${{ vars.GIT_AUTHOR_EMAIL }}
           GIT_COMMITTER_NAME: ${{ vars.GIT_COMMITTER_NAME }}
           GIT_COMMITTER_EMAIL: ${{ vars.GIT_COMMITTER_EMAIL }}
-        run: npm run semantic-release
+        run: yarn semantic-release

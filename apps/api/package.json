@@ -11,10 +11,10 @@
     "start": "strapi start",
     "strapi": "strapi"
   },
-  "packageManager": "npm@9.6.7",
+  "packageManager": "yarn@3.6.1",
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
-    "npm": ">=6.0.0"
+    "yarn": ">=3.0.0"
   },
   "repository": {
     "type": "git",
@@ -45,17 +45,12 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0"
   },
-  "overrides": {
-    "@strapi/plugin-graphql@4.10.6": {
-      "graphql": "16.7.1"
-    },
-    "graphql": "16.7.1"
-  },
   "strapi": {
     "uuid": "a4710531-0f36-48ca-a0c3-b0ef4a254ec9",
     "telemetryDisabled": true
   },
   "volta": {
-    "node": "18.17.0"
+    "node": "18.17.0",
+    "yarn": "3.6.1"
   }
 }
