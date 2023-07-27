@@ -61,7 +61,7 @@ jobs:
             cp public/robots.txt ${{ secrets.STRAPI_PUBLIC_FOLDER }}
             cd ../..
             git pull
-            yarn install --frozen-lockfile
+            yarn install --immutable
             yarn build
             pm2 reload ecosystem.config.js
 
@@ -78,9 +78,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: bahmutov/npm-install@v1
+      - uses: borales/actions-yarn@v4
         with:
-          useRollingCache: true
+          cmd: install
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}

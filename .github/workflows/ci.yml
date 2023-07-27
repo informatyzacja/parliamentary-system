@@ -14,13 +14,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: bahmutov/npm-install@v1
+      - uses: borales/actions-yarn@v4
         with:
-          useRollingCache: true
+          cmd: install
       - name: format
-        run: npm run format:check
+        run: yarn format:check
       - name: lint
-        run: npm run lint
+        run: yarn lint
 
   build:
     runs-on: ubuntu-latest
@@ -41,16 +41,16 @@ jobs:
           echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
           echo NODE_ENV=production >> .env.local
           cd ../..
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Run install
+        uses: borales/actions-yarn@v4
         with:
-          useRollingCache: true
+          cmd: install
       - name: Cache build
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/apps/web/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
       - name: Build
-        run: npm run build
+        run: yarn build
