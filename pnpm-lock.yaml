@@ -103,8 +103,8 @@ importers:
         version: 7.2.0(@types/react@18.2.16)(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@alergeek-ventures/eslint-config':
-        specifier: ^6.0.9
-        version: 6.0.9(@testing-library/dom@8.20.0)(jest@27.5.1)(typescript@5.1.6)
+        specifier: ^7.0.0
+        version: 7.0.0(@testing-library/dom@8.20.0)(jest@27.5.1)(typescript@5.1.6)
       '@babel/core':
         specifier: ^7.22.9
         version: 7.22.9
@@ -190,8 +190,8 @@ packages:
       react-scripts: 5.0.1(@babel/plugin-syntax-flow@7.21.4)(@babel/plugin-transform-react-jsx@7.21.5)(eslint@8.45.0)(react@18.2.0)(ts-node@10.9.1)(typescript@5.1.6)
     dev: false
 
-  /@alergeek-ventures/eslint-config@6.0.9(@testing-library/dom@8.20.0)(jest@27.5.1)(typescript@5.1.6):
-    resolution: {integrity: sha512-GUrHaPjLzwQ2RIcZSR7sjHbdTM8Z9NS7CDSrn/UmB7FLFLzwE5lLCOKVdJF0m71ztXSJQ83aiaUk84EAwEvA0g==}
+  /@alergeek-ventures/eslint-config@7.0.0(@testing-library/dom@8.20.0)(jest@27.5.1)(typescript@5.1.6):
+    resolution: {integrity: sha512-7S52+QL4MmuPjaeIrKHSAVDY9z1x613QluCABnMvGJuXhZe5tY8+1/aDtP/mbzu0+mxIFnCU2zXwPvC8GRS5rA==}
     dependencies:
       '@babel/core': 7.22.9
       '@babel/eslint-parser': 7.22.9(@babel/core@7.22.9)(eslint@8.45.0)
