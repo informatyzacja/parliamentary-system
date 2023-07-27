@@ -76,7 +76,7 @@
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
     "@next/eslint-plugin-next": "^13.4.12",
-    "@types/lodash": "^4.14.195",
+    "@types/lodash": "^4.14.196",
     "@types/node": "^20.4.4",
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
