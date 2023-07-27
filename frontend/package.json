@@ -71,7 +71,7 @@
     "@alergeek-ventures/eslint-config": "^7.0.0",
     "@babel/core": "^7.22.9",
     "@babel/eslint-parser": "^7.22.9",
-    "@graphql-codegen/cli": "^4.0.1",
+    "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/client-preset": "^4.1.0",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
