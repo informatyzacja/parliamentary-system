@@ -14,7 +14,12 @@
   "packageManager": "yarn@3.6.1",
   "engines": {
     "node": ">=14.19.1 <=18.x.x",
+    "npm": ">=6.0.0",
     "yarn": ">=3.0.0"
+  },
+  "volta": {
+    "node": "18.17.0",
+    "yarn": "3.6.1"
   },
   "repository": {
     "type": "git",
@@ -48,9 +53,5 @@
   "strapi": {
     "uuid": "a4710531-0f36-48ca-a0c3-b0ef4a254ec9",
     "telemetryDisabled": true
-  },
-  "volta": {
-    "node": "18.17.0",
-    "yarn": "3.6.1"
   }
 }
