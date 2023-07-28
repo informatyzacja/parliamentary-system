@@ -14,7 +14,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: borales/actions-yarn@v4
+      - name: Setup yarn
+        run: |
+          yarn set version 3.6.1
+      - uses: borales/actions-yarn@v4.2.0
         with:
           cmd: install
       - name: format
@@ -29,6 +32,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: Setup yarn
+        run: |
+          yarn set version 3.6.1
       - name: Setup env
         run: |
           cd apps/web
@@ -42,7 +48,7 @@ jobs:
           echo NODE_ENV=production >> .env.local
           cd ../..
       - name: Run install
-        uses: borales/actions-yarn@v4
+        uses: borales/actions-yarn@v4.2.0
         with:
           cmd: install
       - name: Cache build
