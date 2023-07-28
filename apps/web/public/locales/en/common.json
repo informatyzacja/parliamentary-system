@@ -15,11 +15,11 @@
   "functions": "Functions",
   "languages": {
     "pl": {
-      "flag": "🇵🇱",
+      "flag": "\uD83C\uDDF5\uD83C\uDDF1",
       "name": "Polski"
     },
     "en": {
-      "flag": "🇬🇧",
+      "flag": "\uD83C\uDDEC\uD83C\uDDE7",
       "name": "English"
     }
   },
