@@ -8,22 +8,34 @@
   "download": "pobierz",
   "Download": "Pobierz",
   "error": {
-    "title": "Błąd",
-    "change-language-error": "Wystąpił błąd podczas zmiany języka"
+    "change-language-error": "Wystąpił błąd podczas zmiany języka",
+    "title": "Błąd"
   },
   "first-name": "Imię",
   "functions": "Funkcje",
+  "language-code": "pl",
   "languages": {
-    "pl": {
-      "flag": "🇵🇱",
-      "name": "Polski"
+    "de": {
+      "flag": "🇩🇪",
+      "name": "Deutsch"
     },
     "en": {
       "flag": "🇬🇧",
       "name": "Angielski"
+    },
+    "pl": {
+      "flag": "🇵🇱",
+      "name": "polski"
+    },
+    "ru": {
+      "flag": "🇷🇺",
+      "name": "Русский"
+    },
+    "uk": {
+      "flag": "🇺🇦",
+      "name": "Українська"
     }
   },
-  "language-code": "pl",
   "last-meetings": "Ostatnie posiedzenia",
   "last-name": "Nazwisko",
   "last-resolutions": "Ostatnie uchwały",
