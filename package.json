@@ -3,8 +3,7 @@
   "private": true,
   "version": "1.4.41",
   "workspaces": [
-    "apps/web/",
-    "apps/api/"
+    "apps/*"
   ],
   "scripts": {
     "build": "turbo run build",
