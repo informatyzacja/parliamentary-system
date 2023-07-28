@@ -1,18 +1,18 @@
 {
-  "addition-date": "Date of addition",
+  "addition-date": "Дата додавання",
   "aria": {
-    "students-union-logo": "Student Union logo",
-    "toggle-navigation": "Toggle navigation",
-    "user-menu": "User menu"
+    "students-union-logo": "Логотип студентського Союзу",
+    "toggle-navigation": "Переключити навігацію",
+    "user-menu": "Меню користувача"
   },
-  "download": "download",
-  "Download": "Download",
+  "download": "звантажити",
+  "Download": "Звантажити",
   "error": {
-    "title": "Error",
-    "change-language-error": "An error occurred while changing the language"
+    "title": "Помилка",
+    "change-language-error": "Помилка при зміні мови"
   },
-  "first-name": "First name",
-  "functions": "Functions",
+  "first-name": "Ім'я",
+  "functions": "Функції",
   "languages": {
     "pl": {
       "flag": "🇵🇱",
@@ -20,41 +20,41 @@
     },
     "en": {
       "flag": "🇬🇧",
-      "name": "English"
+      "name": "Українська"
     }
   },
-  "language-code": "en-GB",
-  "last-meetings": "Last meetings",
-  "last-name": "Last name",
-  "last-resolutions": "Last resolutions",
-  "latest-updates": "Latest updates",
-  "login": "Log in",
-  "logout": "Log out",
+  "language-code": "uk",
+  "last-meetings": "Останні зустрічі",
+  "last-name": "Прізвище",
+  "last-resolutions": "Останні роздільні елементи",
+  "latest-updates": "Останні оновлення",
+  "login": "Ввійти",
+  "logout": "Вийти з системи",
   "meeting": {
-    "agenda": "Meeting agenda",
-    "no-reports": "No reports",
+    "agenda": "Порядок денний зустрічі",
+    "no-reports": "Немає повідомлень",
     "place": {
       "a1r241": "A-1 r. 241",
-      "c16r117": "C-16 r. 1.17",
-      "remote": "Remote"
+      "c16r117": "С-16 r. 1.17",
+      "remote": "Пульт"
     },
-    "protocol": "Meeting protocol",
-    "reports": "Meeting reports",
-    "title": "Meeting",
-    "title-plural": "Meetings"
+    "protocol": "Протокол зустрічі",
+    "reports": "Звіти про зустріч",
+    "title": "Зустріч",
+    "title-plural": "Зустрічі"
   },
-  "more": "More",
-  "name": "Name",
-  "no-data": "No data",
-  "no-meetings": "No meetings",
-  "no-news": "No news",
-  "no-resolutions": "No resolutions",
-  "organisation-structure": "Organizational structure",
-  "parliament-meetings": "Parliament meetings",
-  "preview": "Preview",
-  "resolutions": "Resolutions",
-  "student-number": "Student number",
-  "system-status": "System status",
-  "to-use-you-must-login": "To use the application, you must log in",
-  "upcoming": "Upcoming meeting"
+  "more": "Більше",
+  "name": "Ім'я",
+  "no-data": "Немає даних",
+  "no-meetings": "Немає зустрічей",
+  "no-news": "Новини відсутні",
+  "no-resolutions": "Без роздільників",
+  "organisation-structure": "Організаційна структура",
+  "parliament-meetings": "Збори парламенту",
+  "preview": "Прев'ю",
+  "resolutions": "Резолюції",
+  "student-number": "Номер учня",
+  "system-status": "Статус системи",
+  "to-use-you-must-login": "Щоб скористатися програмою, вам потрібно увійти в систему",
+  "upcoming": "Майбутня зустріч"
 }
