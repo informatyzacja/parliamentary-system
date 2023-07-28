@@ -1,0 +1,60 @@
+{
+  "addition-date": "Date of addition",
+  "aria": {
+    "students-union-logo": "Student Union logo",
+    "toggle-navigation": "Toggle navigation",
+    "user-menu": "User menu"
+  },
+  "download": "download",
+  "Download": "Download",
+  "error": {
+    "title": "Error",
+    "change-language-error": "An error occurred while changing the language"
+  },
+  "first-name": "First name",
+  "functions": "Functions",
+  "languages": {
+    "pl": {
+      "flag": "🇵🇱",
+      "name": "Polski"
+    },
+    "en": {
+      "flag": "🇬🇧",
+      "name": "English"
+    }
+  },
+  "language-code": "en-GB",
+  "last-meetings": "Last meetings",
+  "last-name": "Last name",
+  "last-resolutions": "Last resolutions",
+  "latest-updates": "Latest updates",
+  "login": "Log in",
+  "logout": "Log out",
+  "meeting": {
+    "agenda": "Meeting agenda",
+    "no-reports": "No reports",
+    "place": {
+      "a1r241": "A-1 r. 241",
+      "c16r117": "C-16 r. 1.17",
+      "remote": "Remote"
+    },
+    "protocol": "Meeting protocol",
+    "reports": "Meeting reports",
+    "title": "Meeting",
+    "title-plural": "Meetings"
+  },
+  "more": "More",
+  "name": "Name",
+  "no-data": "No data",
+  "no-meetings": "No meetings",
+  "no-news": "No news",
+  "no-resolutions": "No resolutions",
+  "organisation-structure": "Organizational structure",
+  "parliament-meetings": "Parliament meetings",
+  "preview": "Preview",
+  "resolutions": "Resolutions",
+  "student-number": "Student number",
+  "system-status": "System status",
+  "to-use-you-must-login": "To use the application, you must log in",
+  "upcoming": "Upcoming meeting"
+}
