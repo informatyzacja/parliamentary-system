@@ -17,9 +17,8 @@ jobs:
       - name: Setup yarn
         run: |
           yarn set version 3.6.1
-      - uses: borales/actions-yarn@v4
-        with:
-          cmd: install
+      - name: Run install
+        run: yarn install --immutable
       - name: format
         run: yarn format:check
       - name: lint
@@ -32,9 +31,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'yarn'
       - name: Setup yarn
-        run: |
-          yarn set version 3.6.1
+        run: yarn set version 3.6.1
       - name: Setup env
         run: |
           cd apps/web
@@ -48,9 +47,7 @@ jobs:
           echo NODE_ENV=production >> .env.local
           cd ../..
       - name: Run install
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: install
+        run: yarn install --immutable
       - name: Cache build
         uses: actions/cache@v3
         with:
