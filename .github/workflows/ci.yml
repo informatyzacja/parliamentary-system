@@ -19,6 +19,9 @@ jobs:
           yarn set version 3.6.1
       - name: Run install
         run: yarn install --immutable
+      - uses: dtinth/setup-github-actions-caching-for-turbo@v1
+        with:
+          cache-prefix: parliamentary_
       - name: format
         run: yarn format:check
       - name: lint
@@ -48,12 +51,8 @@ jobs:
           cd ../..
       - name: Run install
         run: yarn install --immutable
-      - name: Cache build
-        uses: actions/cache@v3
+      - uses: dtinth/setup-github-actions-caching-for-turbo@v1
         with:
-          path: ${{ github.workspace }}/apps/web/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+          cache-prefix: parliamentary_
       - name: Build
         run: yarn build
