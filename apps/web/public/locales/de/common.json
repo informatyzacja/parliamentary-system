@@ -8,22 +8,34 @@
   "download": "downloaden",
   "Download": "Download",
   "error": {
-    "title": "Fehler",
-    "change-language-error": "Fehler beim Ändern der Sprache"
+    "change-language-error": "Fehler beim Ändern der Sprache",
+    "title": "Fehler"
   },
   "first-name": "Vorname",
   "functions": "Funktionen",
+  "language-code": "de",
   "languages": {
-    "pl": {
-      "flag": "🇵🇱",
-      "name": "Polski"
+    "de": {
+      "flag": "🇩🇪",
+      "name": "Deutsch"
     },
     "en": {
       "flag": "🇬🇧",
       "name": "Englisch"
+    },
+    "pl": {
+      "flag": "🇵🇱",
+      "name": "polski"
+    },
+    "ru": {
+      "flag": "🇷🇺",
+      "name": "Русский"
+    },
+    "uk": {
+      "flag": "🇺🇦",
+      "name": "Українська"
     }
   },
-  "language-code": "de",
   "last-meetings": "Letzte Meetings",
   "last-name": "Nachname",
   "last-resolutions": "Letzte Entschließungen",
