@@ -54,7 +54,7 @@
     "@emotion/styled": "^11.11.0",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.15.0",
-    "graphql": "16.7.1",
+    "graphql": "^16.7.1",
     "i18next": "^23.3.0",
     "jotai": "^2.2.2",
     "lodash": "^4.17.21",

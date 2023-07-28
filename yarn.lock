@@ -7151,16 +7151,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/provider-email-nodemailer@npm:4.10.6":
-  version: 4.10.6
-  resolution: "@strapi/provider-email-nodemailer@npm:4.10.6"
-  dependencies:
-    lodash: 4.17.21
-    nodemailer: 6.9.1
-  checksum: 90b61735143f82672e00e1f82dbdddf0ecad9974c208f1a6aafb8a2f878780f165ded0506392a1841ff3750aa980f87041d008976c4c0caed915aa214ce21a7a
-  languageName: node
-  linkType: hard
-
 "@strapi/provider-email-sendmail@npm:4.10.6":
   version: 4.10.6
   resolution: "@strapi/provider-email-sendmail@npm:4.10.6"
@@ -8819,7 +8809,6 @@ __metadata:
     "@strapi/plugin-graphql": 4.10.6
     "@strapi/plugin-i18n": 4.10.6
     "@strapi/plugin-users-permissions": 4.10.6
-    "@strapi/provider-email-nodemailer": 4.10.6
     "@strapi/strapi": 4.10.6
     oauth: ^0.10.0
     pg: ^8.11.1
@@ -14312,17 +14301,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:16.7.1":
-  version: 16.7.1
-  resolution: "graphql@npm:16.7.1"
-  checksum: c924d8428daf0e96a5ea43e9bc3cd1b6802899907d284478ac8f705c8fd233a0a51eef915f7569fb5de8acb2e85b802ccc6c85c2b157ad805c1e9adba5a299bd
-  languageName: node
-  linkType: hard
-
 "graphql@npm:^15.5.1":
   version: 15.8.0
   resolution: "graphql@npm:15.8.0"
   checksum: 423325271db8858428641b9aca01699283d1fe5b40ef6d4ac622569ecca927019fce8196208b91dd1d8eb8114f00263fe661d241d0eb40c10e5bfd650f86ec5e
+  languageName: node
+  linkType: hard
+
+"graphql@npm:^16.7.1":
+  version: 16.7.1
+  resolution: "graphql@npm:16.7.1"
+  checksum: c924d8428daf0e96a5ea43e9bc3cd1b6802899907d284478ac8f705c8fd233a0a51eef915f7569fb5de8acb2e85b802ccc6c85c2b157ad805c1e9adba5a299bd
   languageName: node
   linkType: hard
 
@@ -18323,13 +18312,6 @@ __metadata:
   dependencies:
     nodemailer-fetch: 1.6.0
   checksum: 2fe270e83ca42ecfc06e2523aa20b32641912e6b5e0e4e4e149bcade05344166e5347c0a2738850cd4f8a17ee9ebbb348118c81baa17e684ac9ee6fc99cca293
-  languageName: node
-  linkType: hard
-
-"nodemailer@npm:6.9.1":
-  version: 6.9.1
-  resolution: "nodemailer@npm:6.9.1"
-  checksum: b1b9670afc170b4454665abae3fc9acd7e781adb9f579d1c2cd991bf75c647ebe345593f8a057e48d7bf9e4c9a9218869f87db8fb7171c614f557000ab654572
   languageName: node
   linkType: hard
 
@@ -24282,7 +24264,7 @@ __metadata:
     dotenv: ^16.3.1
     eslint: ^8.45.0
     framer-motion: ^10.15.0
-    graphql: 16.7.1
+    graphql: ^16.7.1
     graphql-tag: ^2.12.6
     i18next: ^23.3.0
     jotai: ^2.2.2
