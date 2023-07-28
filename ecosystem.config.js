@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'api',
       cwd: './apps/api',
-      script: 'npm',
+      script: 'yarn',
       args: 'start',
       interpreter: 'none',
       env: {
@@ -13,7 +13,7 @@ module.exports = {
     {
       name: 'web',
       cwd: './apps/web',
-      script: 'npm',
+      script: 'yarn',
       args: 'start',
       interpreter: 'none',
       env: {
