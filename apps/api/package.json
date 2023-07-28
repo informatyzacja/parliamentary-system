@@ -43,7 +43,7 @@
     "@strapi/plugin-users-permissions": "4.10.6",
     "@strapi/provider-email-nodemailer": "4.10.6",
     "@strapi/strapi": "4.10.6",
-    "oauth": "0.9.15",
+    "oauth": "^0.10.0",
     "pg": "^8.11.1",
     "react-select": "^5.7.4"
   },
