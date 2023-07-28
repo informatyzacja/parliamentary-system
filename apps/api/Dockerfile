@@ -1,10 +1,10 @@
 FROM node:18-bullseye as api
 WORKDIR /app
 COPY package.json .
-COPY package-lock.json .
+COPY yarn.lock .
 COPY api/package.json api/
-RUN npm ci
+RUN yarn install --immutable
 COPY . .
 WORKDIR /app/api
-RUN npm run build
-CMD [ "npm", "start" ]
+RUN yarn build
+CMD [ "yarn", "start" ]

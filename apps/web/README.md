@@ -7,7 +7,7 @@ First, copy `.env.example` as `.env`
 Second, run the development server:
 
 ```bash
-npm run dev
+yarn dev
 # or
 pnpm dev
 ```
