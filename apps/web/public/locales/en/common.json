@@ -8,22 +8,34 @@
   "download": "download",
   "Download": "Download",
   "error": {
-    "title": "Error",
-    "change-language-error": "An error occurred while changing the language"
+    "change-language-error": "An error occurred while changing the language",
+    "title": "Error"
   },
   "first-name": "First name",
   "functions": "Functions",
+  "language-code": "en-GB",
   "languages": {
-    "pl": {
-      "flag": "\uD83C\uDDF5\uD83C\uDDF1",
-      "name": "Polski"
+    "de": {
+      "flag": "\uD83C\uDDE9\uD83C\uDDEA",
+      "name": "Deutsch"
     },
     "en": {
       "flag": "\uD83C\uDDEC\uD83C\uDDE7",
       "name": "English"
+    },
+    "pl": {
+      "flag": "\uD83C\uDDF5\uD83C\uDDF1",
+      "name": "polski"
+    },
+    "ru": {
+      "flag": "\uD83C\uDDF7\uD83C\uDDFA",
+      "name": "Русский"
+    },
+    "uk": {
+      "flag": "\uD83C\uDDFA\uD83C\uDDE6",
+      "name": "Українська"
     }
   },
-  "language-code": "en-GB",
   "last-meetings": "Last meetings",
   "last-name": "Last name",
   "last-resolutions": "Last resolutions",
