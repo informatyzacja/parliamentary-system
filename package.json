@@ -3,43 +3,36 @@
   "private": true,
   "version": "1.4.41",
   "workspaces": [
-    "backend",
-    "frontend"
+    "apps/*"
   ],
   "scripts": {
-    "dev:backend": "wait-on tcp:5432 && npm --prefix backend run dev",
-    "dev:frontend": "wait-on http://0.0.0.0:1337/admin && npm --prefix frontend run dev",
-    "dev:database": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
-    "dev": "cross-env FORCE_COLOR=1 npm-run-all -l -p dev:*",
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "dev:db": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
+    "format": "format",
+    "format:check": "turbo run format:check",
+    "lint": "turbo run lint",
     "postinstall": "husky install",
-    "build": "npm-run-all -l -p build:*",
-    "build:backend": "npm --prefix backend run build",
-    "build:frontend": "npm --prefix frontend run build",
-    "lint": "npm-run-all -l -p lint:*",
-    "lint:frontend": "npm --prefix frontend run lint",
-    "format:check": "prettier --ignore-unknown --check backend frontend/src",
     "semantic-release": "semantic-release"
   },
-  "packageManager": "npm@9.6.7",
+  "packageManager": "yarn@3.6.1",
+  "engines": {
+    "node": "^18"
+  },
+  "volta": {
+    "node": "18.17.0",
+    "yarn": "3.6.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/informatyzacja/parliamentary-system.git"
   },
-  "author": {
-    "name": "Michał Korczak",
-    "url": "https://omikor.in"
-  },
+  "author": "Michał Korczak (https://omikor.in)",
   "maintainers": [
-    {
-      "name": "Michał Korczak",
-      "url": "https://omikor.in"
-    },
-    {
-      "name": "Dawid Stachowiak"
-    },
-    {
-      "name": "Bartosz Gotowski"
-    }
+    "Michał Korczak (https://omikor.in)",
+    "Dawid Stachowiak",
+    "Bartosz Gotowski",
+    "Jakub Wiczkowski"
   ],
   "license": "ISC",
   "bugs": {
@@ -48,23 +41,14 @@
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
+    "@testing-library/dom": "^9.3.1",
     "conventional-changelog-conventionalcommits": "^6.1.0",
-    "cross-env": "^7.0.3",
+    "eslint": "^8.45.0",
     "husky": "^8.0.3",
-    "npm-run-all": "^4.1.5",
     "prettier": "^3.0.0",
     "semantic-release": "^21.0.7",
+    "turbo": "^1.10.12",
     "wait-on": "^7.0.1"
-  },
-  "resolutions": {
-    "graphql": "16.6.0"
-  },
-  "engines": {
-    "node": "^18.17.0"
-  },
-  "volta": {
-    "node": "18.17.0",
-    "npm": "9.8.1"
   },
   "lint-staged": {
     "*": [

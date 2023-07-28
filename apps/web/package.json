@@ -1,0 +1,92 @@
+{
+  "name": "web",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "next build",
+    "dev": "wait-on http://0.0.0.0:1337/admin && yarn dev:concurrently",
+    "dev:concurrently": "concurrently -n NextJS,GraphQL \"yarn dev:next\" \"yarn codegen:watch\"",
+    "dev:next": "next dev",
+    "format": "prettier --ignore-unknown --write src",
+    "format:check": "prettier --ignore-unknown --check src",
+    "start": "next start",
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "codegen:watch": "yarn codegen --watch"
+  },
+  "packageManager": "yarn@3.6.1",
+  "engines": {
+    "node": "^18"
+  },
+  "volta": {
+    "node": "18.17.0",
+    "yarn": "3.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/informatyzacja/parliamentary-system.git"
+  },
+  "author": "Michał Korczak (https://omikor.in)",
+  "maintainers": [
+    "Michał Korczak (https://omikor.in)",
+    "Dawid Stachowiak",
+    "Bartosz Gotowski",
+    "Jakub Wiczkowski"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/informatyzacja/parliamentary-system/issues"
+  },
+  "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
+  "browserslist": [
+    ">0.3%",
+    "not ie 11",
+    "not dead",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "@ajna/pagination": "^1.4.19",
+    "@apollo/client": "^3.7.17",
+    "@chakra-ui/icons": "^2.1.0",
+    "@chakra-ui/react": "^2.8.0",
+    "@chakra-ui/system": "^2.6.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "date-fns": "^2.30.0",
+    "framer-motion": "^10.15.0",
+    "graphql": "^16.7.1",
+    "i18next": "^23.3.0",
+    "jotai": "^2.2.2",
+    "lodash": "^4.17.21",
+    "next": "^13.4.12",
+    "next-auth": "^4.22.3",
+    "next-i18next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.0.2",
+    "react-icons": "^4.10.1",
+    "react-pdf": "7.2.0"
+  },
+  "devDependencies": {
+    "@alergeek-ventures/eslint-config": "^7.0.3",
+    "@babel/core": "^7.22.9",
+    "@babel/eslint-parser": "^7.22.9",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@graphql-codegen/typescript-resolvers": "^4.0.1",
+    "@next/eslint-plugin-next": "^13.4.12",
+    "@types/lodash": "^4.14.196",
+    "@types/node": "^18.17.1",
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7",
+    "@types/react-pdf": "^7.0.0",
+    "concurrently": "^8.2.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.45.0",
+    "graphql-tag": "^2.12.6",
+    "postcss": "^8.4.27",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}
