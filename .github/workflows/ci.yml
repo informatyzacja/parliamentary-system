@@ -17,7 +17,7 @@ jobs:
       - name: Setup yarn
         run: |
           yarn set version 3.6.1
-      - uses: borales/actions-yarn@v4.2.0
+      - uses: borales/actions-yarn@v4
         with:
           cmd: install
       - name: format
@@ -48,7 +48,7 @@ jobs:
           echo NODE_ENV=production >> .env.local
           cd ../..
       - name: Run install
-        uses: borales/actions-yarn@v4.2.0
+        uses: borales/actions-yarn@v4
         with:
           cmd: install
       - name: Cache build
