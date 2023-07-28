@@ -44,10 +44,6 @@ jobs:
         if: steps.check.outputs.triggered == 'true'
         with:
           ref: ${{ steps.sha.outputs.result }}
-      - uses: actions/setup-node@v3
-        if: steps.check.outputs.triggered == 'true'
-        with:
-          node-version: 18
       - name: Start web tunnel
         id: expose-tunnel
         if: steps.check.outputs.triggered == 'true'
@@ -61,16 +57,24 @@ jobs:
           url=${{ steps.expose-tunnel.outputs.tunnel-url }}
           fixedUrl=${url::-6}
           echo "tunnel-url=${fixedUrl}" >> $GITHUB_OUTPUT
-      - name: Install dependencies
+      - uses: actions/setup-node@v3
         if: steps.check.outputs.triggered == 'true'
-        uses: bahmutov/npm-install@v1
+        with:
+          node-version: 18
+          cache: 'yarn'
+      - name: Setup yarn
+        if: steps.check.outputs.triggered == 'true'
+        run: yarn set version 3.6.1
+      - name: Run install
+        if: steps.check.outputs.triggered == 'true'
+        run: yarn install --immutable
       - name: Cache build
         uses: actions/cache@v3
         with:
           path: ${{ github.workspace }}/apps/web/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
       - name: Build web
         if: steps.check.outputs.triggered == 'true'
         run: |
@@ -83,11 +87,11 @@ jobs:
           echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
           echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
           echo NODE_ENV=production >> .env.local
-          npm run build
+          yarn build
 
       - name: Starting app
         if: steps.check.outputs.triggered == 'true'
-        run: npm start &
+        run: yarn start &
 
       # Post a comment on the Pull Request with the URL to the tunnel.
       - name: Post preview environment as comment on PR

@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'yarn'
       - name: Setup yarn
-        run: |
-          yarn set version 3.6.1
+        run: yarn set version 3.6.1
       - name: Run install
         run: yarn install --immutable
       - uses: dtinth/setup-github-actions-caching-for-turbo@v1

@@ -1,10 +1,10 @@
 FROM node:18-bullseye as Frontend
 WORKDIR /app
 COPY package.json .
-COPY package-lock.json .
+COPY yarn.lock .
 COPY frontend/package.json frontend/
-RUN npm ci
+RUN yarn install --immutable
 COPY . .
 WORKDIR /app/frontend
-RUN npm run build
-CMD [ "npm", "start" ]
+RUN yarn build
+CMD [ "yarn", "start" ]
