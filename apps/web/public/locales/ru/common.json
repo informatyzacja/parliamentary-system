@@ -8,22 +8,34 @@
   "download": "скачать",
   "Download": "Скачать",
   "error": {
-    "title": "Ошибка",
-    "change-language-error": "Произошла ошибка при смене языка"
+    "change-language-error": "Произошла ошибка при смене языка",
+    "title": "Ошибка"
   },
   "first-name": "Имя",
   "functions": "Функции",
+  "language-code": "ru",
   "languages": {
-    "pl": {
-      "flag": "🇵🇱",
-      "name": "Polski"
+    "de": {
+      "flag": "🇩🇪",
+      "name": "Deutsch"
     },
     "en": {
       "flag": "🇬🇧",
       "name": "Russian"
+    },
+    "pl": {
+      "flag": "🇵🇱",
+      "name": "polski"
+    },
+    "ru": {
+      "flag": "🇷🇺",
+      "name": "Русский"
+    },
+    "uk": {
+      "flag": "🇺🇦",
+      "name": "Українська"
     }
   },
-  "language-code": "ru",
   "last-meetings": "Последние встречи",
   "last-name": "Фамилия",
   "last-resolutions": "Последнее разрешение",
