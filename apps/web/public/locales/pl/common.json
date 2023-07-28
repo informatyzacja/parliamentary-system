@@ -2,14 +2,14 @@
   "addition-date": "Data dodania",
   "aria": {
     "students-union-logo": "Logo samorządu",
-    "toggle-navigation": "Toggle navigation",
+    "toggle-navigation": "Przełącz nawigację",
     "user-menu": "Menu użytkownika"
   },
   "download": "pobierz",
   "Download": "Pobierz",
   "error": {
-    "title": "Error",
-    "change-language-error": "An error occurred while changing the language"
+    "title": "Błąd",
+    "change-language-error": "Wystąpił błąd podczas zmiany języka"
   },
   "first-name": "Imię",
   "functions": "Funkcje",
@@ -20,7 +20,7 @@
     },
     "en": {
       "flag": "🇬🇧",
-      "name": "English"
+      "name": "Angielski"
     }
   },
   "language-code": "pl",
@@ -38,7 +38,7 @@
       "c16r117": "C-16 s. 1.17",
       "remote": "Zdalnie"
     },
-    "protocol": "Protokół z posiedzenia",
+    "protocol": "Protokół posiedzenia",
     "reports": "Sprawozdania z posiedzenia",
     "title": "Posiedzenie",
     "title-plural": "Posiedzenia"
@@ -55,6 +55,6 @@
   "resolutions": "Uchwały",
   "student-number": "Numer indeksu",
   "system-status": "Status systemów",
-  "to-use-you-must-login": "Aby korzystać z aplikacji musisz się zalogować",
+  "to-use-you-must-login": "Aby korzystać z aplikacji, musisz się zalogować",
   "upcoming": "Nadchodzące posiedzenie"
 }
