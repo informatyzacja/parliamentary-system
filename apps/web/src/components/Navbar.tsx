@@ -26,15 +26,14 @@ import { useRouter } from 'next/router';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
-
 import {
   LatestMeetingsAndResolutionsDocument,
   MeetingsDocument,
   ResolutionsDocument,
   StudentsDocument,
-} from '../api/graphql';
-import { termOfOfficeIdAtom } from '../atoms/termOfOffice.atom';
+} from '@/api/graphql';
+import { termOfOfficeIdAtom } from '@/atoms/termOfOffice.atom';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 export const Navbar = () => {
   const { t } = useTranslation('common');

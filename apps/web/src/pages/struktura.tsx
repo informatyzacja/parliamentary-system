@@ -19,13 +19,13 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useState } from 'react';
 
-import { useStudentsQuery } from '../api/graphql';
-import { Loader } from '../components/Loader';
-import { NoItems } from '../components/NoItems';
-import { Pagination } from '../components/Pagination';
-import TermOfOfficeSelector from '../components/TermOfOfficeSelector';
-import { useCurrentTermId } from '../hooks/useCurrentTermId';
-import { useErrorHandler } from '../hooks/useErrorHandler';
+import { useStudentsQuery } from '@/api/graphql';
+import { Loader } from '@/components/Loader';
+import { NoItems } from '@/components/NoItems';
+import { Pagination } from '@/components/Pagination';
+import { TermOfOfficeSelector } from '@/components/TermOfOfficeSelector';
+import { useCurrentTermId } from '@/hooks/useCurrentTermId';
+import { useErrorHandler } from '@/hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}

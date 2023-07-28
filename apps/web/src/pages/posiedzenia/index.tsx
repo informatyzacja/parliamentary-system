@@ -19,7 +19,7 @@ import { Loader } from '@/components/Loader';
 import { Meeting } from '@/components/Meeting';
 import { NoItems } from '@/components/NoItems';
 import { Pagination } from '@/components/Pagination';
-import TermOfOfficeSelector from '@/components/TermOfOfficeSelector';
+import { TermOfOfficeSelector } from '@/components/TermOfOfficeSelector';
 import { useCurrentTermId } from '@/hooks/useCurrentTermId';
 import { useErrorHandler } from '@/hooks/useErrorHandler';
 
