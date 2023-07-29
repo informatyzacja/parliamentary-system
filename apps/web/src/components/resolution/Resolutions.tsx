@@ -17,43 +17,18 @@ import NextLink from 'next/link';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 
+import type {
+  MeetingEntity,
+  ResolutionEntity,
+  UploadFileEntity,
+} from '@/api/graphql';
+
 export const Resolutions = ({
   resolutions,
   showMeetings = false,
   pagination,
 }: {
-  resolutions: Array<{
-    id: string;
-    attributes: {
-      name: string;
-      publishedAt: Date;
-      meeting?: {
-        data: {
-          id: string;
-          attributes: {
-            name: string;
-          };
-        };
-      };
-      document?: {
-        data: {
-          id?: string;
-          attributes?: {
-            url: string;
-          };
-        } | null;
-      };
-      attachments?: {
-        data: Array<{
-          id?: string;
-          attributes?: {
-            name: string;
-            url: string;
-          };
-        }>;
-      };
-    };
-  }>;
+  resolutions: ResolutionEntity[];
   showMeetings?: boolean;
   pagination: {
     currentPage: number;
@@ -84,7 +59,10 @@ export const Resolutions = ({
                     (pagination.currentPage - 1) * pagination.pageSize}
                 </Td>
                 <Td>{resolution.attributes.name}</Td>
-                {showMeetings && resolution.attributes.meeting ? (
+                {showMeetings &&
+                (resolution.attributes.meeting.data as
+                  | MeetingEntity
+                  | undefined) !== undefined ? (
                   <Td>
                     <NextLink
                       href={`/posiedzenia/${resolution.attributes.meeting.data.id}`}
@@ -98,12 +76,14 @@ export const Resolutions = ({
                 ) : null}
                 <Td>
                   {format(
-                    new Date(resolution.attributes.publishedAt),
+                    new Date(resolution.attributes.publishedAt as string),
                     'dd/MM/yyyy HH:mm:ss',
                   )}
                 </Td>
                 <Td>
-                  {resolution.attributes.document?.data === null ? (
+                  {!(resolution.attributes.document.data as
+                    | UploadFileEntity
+                    | undefined) ? (
                     <Button
                       leftIcon={<DownloadIcon />}
                       size="sm"
@@ -115,8 +95,7 @@ export const Resolutions = ({
                     <ChakraLink
                       href={
                         process.env.NEXT_PUBLIC_API_URL +
-                        (resolution.attributes.document?.data.attributes?.url ??
-                          '/404')
+                        resolution.attributes.document.data.attributes.url
                       }
                       target="_blank"
                     >

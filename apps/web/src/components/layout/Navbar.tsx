@@ -33,7 +33,7 @@ import {
   StudentsDocument,
 } from '@/api/graphql';
 import { termOfOfficeIdAtom } from '@/atoms/termOfOffice.atom';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { LanguageSwitcher } from '@/components/i18n/LanguageSwitcher';
 
 export const Navbar = () => {
   const { t } = useTranslation('common');

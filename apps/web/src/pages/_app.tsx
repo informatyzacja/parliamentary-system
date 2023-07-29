@@ -13,7 +13,7 @@ import type { Session as NextAuthSession } from 'next-auth';
 import { getSession, SessionProvider } from 'next-auth/react';
 import { appWithTranslation } from 'next-i18next';
 
-import Layout from '@/components/Layout';
+import Layout from '@/components/layout/Layout';
 import config from '@/config';
 import { theme } from '@/styles/theme';
 

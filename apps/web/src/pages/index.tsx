@@ -24,9 +24,9 @@ import {
   MeetingDocument,
   useLatestMeetingsAndResolutionsQuery,
 } from '@/api/graphql';
-import { Link } from '@/components/Link';
-import { Loader } from '@/components/Loader';
-import { NoItems } from '@/components/NoItems';
+import { Loader } from '@/components/layout/Loader';
+import { NoItems } from '@/components/layout/NoItems';
+import { Link } from '@/components/misc/Link';
 import { useErrorHandler } from '@/hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

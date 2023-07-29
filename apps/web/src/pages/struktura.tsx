@@ -20,10 +20,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useState } from 'react';
 
 import { useStudentsQuery } from '@/api/graphql';
-import { Loader } from '@/components/Loader';
-import { NoItems } from '@/components/NoItems';
-import { Pagination } from '@/components/Pagination';
-import { TermOfOfficeSelector } from '@/components/TermOfOfficeSelector';
+import { Loader } from '@/components/layout/Loader';
+import { NoItems } from '@/components/layout/NoItems';
+import { Pagination } from '@/components/layout/Pagination';
+import { TermOfOfficeSelector } from '@/components/misc/TermOfOfficeSelector';
 import { useCurrentTermId } from '@/hooks/useCurrentTermId';
 import { useErrorHandler } from '@/hooks/useErrorHandler';
 
