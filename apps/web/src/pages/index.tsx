@@ -1,5 +1,6 @@
 import { useApolloClient } from '@apollo/client';
 import { ArrowForwardIcon, DownloadIcon } from '@chakra-ui/icons';
+import { Link } from '@chakra-ui/next-js';
 import {
   Box,
   Button,
@@ -26,7 +27,6 @@ import {
 } from '@/api/graphql';
 import { Loader } from '@/components/layout/Loader';
 import { NoItems } from '@/components/layout/NoItems';
-import { Link } from '@/components/misc/Link';
 import { useErrorHandler } from '@/hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
