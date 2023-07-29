@@ -1,7 +1,4 @@
-import { strict as assert } from 'assert';
 import type { OAuthConfig, OAuthUserConfig } from 'next-auth/providers';
-
-import serverConfig from '@/config.server';
 
 export interface UsosProfile extends Record<string, string> {
   first_name: string;
@@ -11,9 +8,12 @@ export interface UsosProfile extends Record<string, string> {
 }
 
 export default function UsosProvider<P extends UsosProfile>(
-  options: OAuthUserConfig<P>,
+  options: OAuthUserConfig<P> & {
+    usosBaseUrl: string;
+    publicUrl: string;
+  },
 ): OAuthConfig<P> {
-  assert(serverConfig.USOS_BASE_URL, 'USOS_BASE_URL is not defined');
+  const { publicUrl, usosBaseUrl } = options;
 
   return {
     id: 'usos',
@@ -21,13 +21,13 @@ export default function UsosProvider<P extends UsosProfile>(
     type: 'oauth',
     version: '1.0',
     authorization: {
-      url: `${serverConfig.USOS_BASE_URL}/services/oauth/authorize`,
+      url: `${usosBaseUrl}/services/oauth/authorize`,
     },
-    accessTokenUrl: `${serverConfig.USOS_BASE_URL}/services/oauth/access_token`,
-    requestTokenUrl: `${serverConfig.USOS_BASE_URL}/services/oauth/request_token?scopes=studies|email`,
-    profileUrl: `${serverConfig.USOS_BASE_URL}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
+    accessTokenUrl: `${usosBaseUrl}/services/oauth/access_token`,
+    requestTokenUrl: `${usosBaseUrl}/services/oauth/request_token?scopes=studies|email`,
+    profileUrl: `${usosBaseUrl}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
     userinfo: {
-      url: `${serverConfig.USOS_BASE_URL}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
+      url: `${usosBaseUrl}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
     },
     profile(profile) {
       return {
@@ -37,8 +37,8 @@ export default function UsosProvider<P extends UsosProfile>(
       };
     },
     style: {
-      logo: 'https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png',
-      logoDark: 'https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png',
+      logo: `${publicUrl}/usos-logo.png`,
+      logoDark: `${publicUrl}/usos-logo.png`,
       bgDark: '#fff',
       bg: '#fff',
       text: '#000',
