@@ -32,7 +32,7 @@ export const LatestMeetings = ({ meetings }: { meetings: MeetingEntity[] }) => {
 
   return (
     <Card w={{ base: '90vw', lg: '40vw' }} minH="100%">
-      {upcomingMeeting !== undefined ? (
+      {upcomingMeeting ? (
         <CardHeader backgroundColor="blue.100" px={10}>
           <Flex
             flexDirection="row"

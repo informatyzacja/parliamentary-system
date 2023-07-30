@@ -13,7 +13,8 @@ import {
 import { format } from 'date-fns';
 import { useTranslation } from 'next-i18next';
 
-import type { ResolutionEntity } from '@/api/graphql';
+import type { ResolutionEntity, UploadFileEntity } from '@/api/graphql';
+import type { Optional } from '@/types/Optional';
 
 export const LatestResolutions = ({
   resolutions,
@@ -54,16 +55,8 @@ export const LatestResolutions = ({
                   {resolution.attributes.name}
                 </Box>
                 <Box maxWidth="fit-content" justifySelf="right">
-                  {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-                  {resolution.attributes.document.data === null ? (
-                    <Button
-                      leftIcon={<DownloadIcon />}
-                      size="sm"
-                      isDisabled={true}
-                    >
-                      {t('Download')}
-                    </Button>
-                  ) : (
+                  {(resolution.attributes.document
+                    .data as Optional<UploadFileEntity>) ? (
                     <Link
                       href={
                         process.env.NEXT_PUBLIC_API_URL +
@@ -75,6 +68,14 @@ export const LatestResolutions = ({
                         {t('Download')}
                       </Button>
                     </Link>
+                  ) : (
+                    <Button
+                      leftIcon={<DownloadIcon />}
+                      size="sm"
+                      isDisabled={true}
+                    >
+                      {t('Download')}
+                    </Button>
                   )}
                 </Box>
               </Flex>

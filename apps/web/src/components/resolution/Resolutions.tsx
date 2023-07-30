@@ -22,6 +22,7 @@ import type {
   ResolutionEntity,
   UploadFileEntity,
 } from '@/api/graphql';
+import type { Optional } from '@/types/Optional';
 
 export const Resolutions = ({
   resolutions,
@@ -60,9 +61,8 @@ export const Resolutions = ({
                 </Td>
                 <Td>{resolution.attributes.name}</Td>
                 {showMeetings &&
-                (resolution.attributes.meeting.data as
-                  | MeetingEntity
-                  | undefined) !== undefined ? (
+                (resolution.attributes.meeting
+                  .data as Optional<MeetingEntity>) ? (
                   <Td>
                     <NextLink
                       href={`/posiedzenia/${resolution.attributes.meeting.data.id}`}
@@ -81,17 +81,8 @@ export const Resolutions = ({
                   )}
                 </Td>
                 <Td>
-                  {!(resolution.attributes.document.data as
-                    | UploadFileEntity
-                    | undefined) ? (
-                    <Button
-                      leftIcon={<DownloadIcon />}
-                      size="sm"
-                      isDisabled={true}
-                    >
-                      {t('Download')}
-                    </Button>
-                  ) : (
+                  {(resolution.attributes.document
+                    .data as Optional<UploadFileEntity>) ? (
                     <ChakraLink
                       href={
                         process.env.NEXT_PUBLIC_API_URL +
@@ -103,6 +94,14 @@ export const Resolutions = ({
                         {t('Download')}
                       </Button>
                     </ChakraLink>
+                  ) : (
+                    <Button
+                      leftIcon={<DownloadIcon />}
+                      size="sm"
+                      isDisabled={true}
+                    >
+                      {t('Download')}
+                    </Button>
                   )}
                 </Td>
               </Tr>
