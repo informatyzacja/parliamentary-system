@@ -26,7 +26,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Setup GitHub Actions cache for Turbo
-      - uses: dtinth/setup-github-actions-caching-for-turbo@v1
+        uses: dtinth/setup-github-actions-caching-for-turbo@v1
         with:
           cache-prefix: parliamentary_
 
@@ -55,7 +55,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Setup GitHub Actions cache for Turbo
-      - uses: dtinth/setup-github-actions-caching-for-turbo@v1
+        uses: dtinth/setup-github-actions-caching-for-turbo@v1
         with:
           cache-prefix: parliamentary_
 
