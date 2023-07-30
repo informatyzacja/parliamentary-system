@@ -23,6 +23,8 @@ if (serverConfig.USOS_CLIENT_ID && serverConfig.USOS_CLIENT_SECRET) {
       clientSecret: serverConfig.USOS_CLIENT_SECRET,
       usosBaseUrl: serverConfig.USOS_BASE_URL,
       publicUrl: serverConfig.NEXTAUTH_URL,
+      usosScopes: serverConfig.USOS_SCOPES,
+      usosFields: serverConfig.USOS_FIELDS,
     }),
   );
 }

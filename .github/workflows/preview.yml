@@ -86,6 +86,8 @@ jobs:
           echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
           echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
           echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
+          echo USOS_SCOPES=${{ secrets.USOS_SCOPES }} >> .env.local
+          echo USOS_FIELDS=${{ secrets.USOS_FIELDS }} >> .env.local
           echo NODE_ENV=production >> .env.local
           yarn build
 

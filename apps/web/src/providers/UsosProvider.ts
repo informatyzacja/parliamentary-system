@@ -11,9 +11,11 @@ export default function UsosProvider<P extends UsosProfile>(
   options: OAuthUserConfig<P> & {
     usosBaseUrl: string;
     publicUrl: string;
+    usosScopes: string;
+    usosFields: string;
   },
 ): OAuthConfig<P> {
-  const { publicUrl, usosBaseUrl } = options;
+  const { usosBaseUrl, publicUrl, usosScopes, usosFields } = options;
 
   return {
     id: 'usos',
@@ -24,15 +26,15 @@ export default function UsosProvider<P extends UsosProfile>(
       url: `${usosBaseUrl}/services/oauth/authorize`,
     },
     accessTokenUrl: `${usosBaseUrl}/services/oauth/access_token`,
-    requestTokenUrl: `${usosBaseUrl}/services/oauth/request_token?scopes=studies|email`,
-    profileUrl: `${usosBaseUrl}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
+    requestTokenUrl: `${usosBaseUrl}/services/oauth/request_token?scopes=${usosScopes}`,
+    profileUrl: `${usosBaseUrl}/services/users/user?fields=${usosFields}`,
     userinfo: {
-      url: `${usosBaseUrl}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
+      url: `${usosBaseUrl}/services/users/user?fields=${usosFields}`,
     },
     profile(profile) {
       return {
         id: profile.student_number,
-        name: profile.first_name + ' ' + profile.last_name,
+        name: `${profile.first_name} ${profile.last_name}`,
         email: profile.email,
       };
     },
