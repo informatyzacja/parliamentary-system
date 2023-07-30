@@ -14,6 +14,7 @@ jobs:
         with:
           app_id: ${{ secrets.BOT_APP_ID }}
           private_key: ${{ secrets.BOT_PRIVATE_KEY }}
+
       # The first thing we do is check if the comment was indeed a trigger.
       - name: Check if the comment was a command, and react with 👀 if it was
         if: github.event.issue.pull_request
@@ -24,6 +25,7 @@ jobs:
           reaction: eyes
         env:
           GITHUB_TOKEN: '${{ steps.generate_token.outputs.token }}'
+
       # When triggered by a comment, we do not have access to the usual github.sha
       # value, so we get it manually.
       - name: Extract current commit
@@ -40,10 +42,13 @@ jobs:
               pull_number,
             });
             return pr.data.head.sha
-      - uses: actions/checkout@v3
+
+      - name: Checkout
+        uses: actions/checkout@v3
         if: steps.check.outputs.triggered == 'true'
         with:
           ref: ${{ steps.sha.outputs.result }}
+
       - name: Start web tunnel
         id: expose-tunnel
         if: steps.check.outputs.triggered == 'true'
@@ -51,23 +56,29 @@ jobs:
         with:
           service: localhost.run
           port: 3000
+
       - name: Fix tunnel url
         id: tunnel-url
         run: |
           url=${{ steps.expose-tunnel.outputs.tunnel-url }}
           fixedUrl=${url::-6}
           echo "tunnel-url=${fixedUrl}" >> $GITHUB_OUTPUT
-      - uses: actions/setup-node@v3
+
+      - name: Setup node
         if: steps.check.outputs.triggered == 'true'
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: 'yarn'
+
       - name: Setup yarn
         if: steps.check.outputs.triggered == 'true'
         run: yarn set version 3.6.1
-      - name: Run install
+
+      - name: Install dependencies
         if: steps.check.outputs.triggered == 'true'
         run: yarn install --immutable
+
       - name: Cache build
         uses: actions/cache@v3
         with:
@@ -75,11 +86,14 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+
       - name: Build web
         if: steps.check.outputs.triggered == 'true'
         run: |
           cd apps/web
+
           touch .env.local
+
           echo NEXTAUTH_URL=${{ steps.tunnel-url.outputs.tunnel-url }} >> .env.local
           echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env.local
           echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
@@ -89,9 +103,10 @@ jobs:
           echo USOS_SCOPES=${{ secrets.USOS_SCOPES }} >> .env.local
           echo USOS_FIELDS=${{ secrets.USOS_FIELDS }} >> .env.local
           echo NODE_ENV=production >> .env.local
+
           yarn build
 
-      - name: Starting app
+      - name: Start app
         if: steps.check.outputs.triggered == 'true'
         run: yarn start &
 
