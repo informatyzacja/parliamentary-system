@@ -1,5 +1,6 @@
 import { useApolloClient } from '@apollo/client';
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
+import { Link } from '@chakra-ui/next-js';
 import {
   Avatar,
   Box,
@@ -8,7 +9,6 @@ import {
   Collapse,
   Flex,
   IconButton,
-  Link,
   Menu,
   MenuButton,
   MenuDivider,
@@ -175,7 +175,6 @@ const DesktopNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <Center key={navItem.label}>
           <Link
-            as={NextLink}
             href={navItem.href}
             onMouseOver={() => {
               if (navItem.prefetch && termOfOffice) {
@@ -237,7 +236,6 @@ const MobileNavItem = (mobileNavProps: MobileProps & NavItem) => {
         }}
       >
         <Link
-          as={NextLink}
           href={href}
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}
@@ -259,7 +257,7 @@ interface NavItem {
   subLabel?: string;
   prefetch?: DocumentNode;
   children?: NavItem[];
-  href?: string;
+  href: string;
 }
 
 const NAV_ITEMS: NavItem[] = [

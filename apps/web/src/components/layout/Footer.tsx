@@ -1,7 +1,7 @@
+import { Link } from '@chakra-ui/next-js';
 import {
   Box,
   Container,
-  Link,
   Stack,
   Text,
   useColorModeValue,
@@ -53,6 +53,7 @@ export const Footer = () => {
             textDecoration: 'underline',
           }}
           target="_blank"
+          prefetch={false}
         >
           {t('system-status')}
         </Link>

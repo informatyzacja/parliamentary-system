@@ -1,8 +1,7 @@
 import { DownloadIcon } from '@chakra-ui/icons';
+import { Link } from '@chakra-ui/next-js';
 import {
   Button,
-  Link as ChakraLink,
-  Link,
   ScaleFade,
   Table,
   TableContainer,
@@ -13,7 +12,6 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import { format } from 'date-fns';
-import NextLink from 'next/link';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 
@@ -64,14 +62,11 @@ export const Resolutions = ({
                 (resolution.attributes.meeting
                   .data as Optional<MeetingEntity>) ? (
                   <Td>
-                    <NextLink
+                    <Link
                       href={`/posiedzenia/${resolution.attributes.meeting.data.id}`}
-                      passHref={true}
                     >
-                      <Link>
-                        {resolution.attributes.meeting.data.attributes.name}
-                      </Link>
-                    </NextLink>
+                      {resolution.attributes.meeting.data.attributes.name}
+                    </Link>
                   </Td>
                 ) : null}
                 <Td>
@@ -83,17 +78,18 @@ export const Resolutions = ({
                 <Td>
                   {(resolution.attributes.document
                     .data as Optional<UploadFileEntity>) ? (
-                    <ChakraLink
+                    <Link
                       href={
                         process.env.NEXT_PUBLIC_API_URL +
                         resolution.attributes.document.data.attributes.url
                       }
                       target="_blank"
+                      prefetch={false}
                     >
                       <Button leftIcon={<DownloadIcon />} size="sm">
                         {t('Download')}
                       </Button>
-                    </ChakraLink>
+                    </Link>
                   ) : (
                     <Button
                       leftIcon={<DownloadIcon />}

@@ -1,10 +1,10 @@
 import { InfoOutlineIcon } from '@chakra-ui/icons';
+import { Link } from '@chakra-ui/next-js';
 import {
   Box,
   Center,
   Divider,
   Heading,
-  Link,
   ScaleFade,
   Table,
   TableContainer,
@@ -66,6 +66,7 @@ const Meeting = () => {
                   process.env.NEXT_PUBLIC_API_URL +
                   meeting.attributes.agenda.data.attributes.url
                 }
+                prefetch={false}
               >
                 {t('meeting.agenda')}
               </Link>
@@ -81,6 +82,7 @@ const Meeting = () => {
                   process.env.NEXT_PUBLIC_API_URL +
                   meeting.attributes.protocol.data.attributes.url
                 }
+                prefetch={false}
               >
                 {t('meeting.protocol')}
               </Link>
@@ -123,6 +125,7 @@ const Meeting = () => {
                                     process.env.NEXT_PUBLIC_API_URL +
                                     report.attributes.url
                                   }
+                                  prefetch={false}
                                 >
                                   {report.attributes.name}
                                 </Link>
@@ -142,6 +145,7 @@ const Meeting = () => {
                                     process.env.NEXT_PUBLIC_API_URL +
                                     report.attributes.url
                                   }
+                                  prefetch={false}
                                 >
                                   {t('Download')}
                                 </Link>
