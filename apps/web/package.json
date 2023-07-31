@@ -65,7 +65,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^13.0.2",
     "react-icons": "^4.10.1",
-    "react-pdf": "7.2.0"
+    "react-pdf": "7.3.0"
   },
   "devDependencies": {
     "@alergeek-ventures/eslint-config": "^7.0.3",
