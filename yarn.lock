@@ -16196,7 +16196,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-event-props@npm:^1.5.0, make-event-props@npm:^1.6.0":
+"make-event-props@npm:^1.6.0":
   version: 1.6.1
   resolution: "make-event-props@npm:1.6.1"
   checksum: 0457abdaf0c5edea1a284ec58ca5afed0e3de96efd3754dca02fbe767b6d17607eb28862802bc769656e06bb6374cd0b568e960d23996798dc872d09de537f71
@@ -19495,13 +19495,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-pdf@npm:7.2.0":
-  version: 7.2.0
-  resolution: "react-pdf@npm:7.2.0"
+"react-pdf@npm:7.3.2":
+  version: 7.3.2
+  resolution: "react-pdf@npm:7.3.2"
   dependencies:
     clsx: ^2.0.0
     make-cancellable-promise: ^1.3.1
-    make-event-props: ^1.5.0
+    make-event-props: ^1.6.0
     merge-refs: ^1.2.1
     pdfjs-dist: 3.6.172
     prop-types: ^15.6.2
@@ -19514,7 +19514,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 12fbb020195dcc358eea91c1334bf1ccfa532980514cceab7806a313165430a5fba9e24ed403a09adb86e020ea25681ca8b23ab29c7f5d7ba0c0977e9283b152
+  checksum: 426a463c1139549e530f137c7eb8bba370ef69ae7ec938e01dc52ca4992c8bfe0376c966735f680936d4d8b2b61a5027d3211dcd0b71f8e06e6f128ecc0f6c32
   languageName: node
   linkType: hard
 
@@ -23070,7 +23070,7 @@ __metadata:
     react-dom: ^18.2.0
     react-i18next: ^13.0.3
     react-icons: ^4.10.1
-    react-pdf: 7.2.0
+    react-pdf: 7.3.2
     ts-node: ^10.9.1
     typescript: ^5.1.6
   languageName: unknown
