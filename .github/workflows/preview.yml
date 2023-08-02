@@ -108,7 +108,10 @@ jobs:
 
       - name: Start app
         if: steps.check.outputs.triggered == 'true'
-        run: yarn start &
+        run: |
+          cd apps/web
+          
+          yarn start &
 
       # Post a comment on the Pull Request with the URL to the tunnel.
       - name: Post preview environment as comment on PR
