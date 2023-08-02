@@ -42,8 +42,9 @@
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
     "@testing-library/dom": "^9.3.1",
+    "@typescript-eslint/parser": "^6.2.1",
     "conventional-changelog-conventionalcommits": "^6.1.0",
-    "eslint": "^8.45.0",
+    "eslint": "^8.46.0",
     "husky": "^8.0.3",
     "prettier": "^3.0.0",
     "semantic-release": "^21.0.7",
