@@ -30,9 +30,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alergeek-ventures/eslint-config@npm:^7.0.5":
-  version: 7.0.5
-  resolution: "@alergeek-ventures/eslint-config@npm:7.0.5"
+"@alergeek-ventures/eslint-config@npm:^7.0.6":
+  version: 7.0.6
+  resolution: "@alergeek-ventures/eslint-config@npm:7.0.6"
   dependencies:
     "@babel/core": 7.22.9
     "@babel/eslint-parser": 7.22.9
@@ -54,7 +54,7 @@ __metadata:
     eslint-plugin-react-native-a11y: 3.3.0
     eslint-plugin-simple-import-sort: 10.0.0
     eslint-plugin-testing-library: 5.11.0
-  checksum: 95708d1a55257cf6e38a92a9d779209025308b33c2b82741199fb8da62a3a6dd4a9d67bb168b57fe730534661fad005c68c851c0cc29e8e363045b33fb9d7763
+  checksum: efe440a656dd0f016bd08802836f4efa4b4c223f69ad0ef0f34089a12c40e0994837c21cdd6583f47babbcd7e917081255d5d1fe88cac8f0afb77ebf5cbd1b1b
   languageName: node
   linkType: hard
 
@@ -22908,7 +22908,7 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@ajna/pagination": ^1.4.19
-    "@alergeek-ventures/eslint-config": ^7.0.5
+    "@alergeek-ventures/eslint-config": ^7.0.6
     "@apollo/client": ^3.7.17
     "@babel/core": ^7.22.9
     "@babel/eslint-parser": ^7.22.9
