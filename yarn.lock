@@ -30,9 +30,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alergeek-ventures/eslint-config@npm:^7.0.6":
-  version: 7.0.6
-  resolution: "@alergeek-ventures/eslint-config@npm:7.0.6"
+"@alergeek-ventures/eslint-config@npm:^7.0.8":
+  version: 7.0.8
+  resolution: "@alergeek-ventures/eslint-config@npm:7.0.8"
   dependencies:
     "@babel/core": 7.22.9
     "@babel/eslint-parser": 7.22.9
@@ -46,15 +46,15 @@ __metadata:
     eslint-plugin-cypress: 2.13.3
     eslint-plugin-import: 2.28.0
     eslint-plugin-jest: 27.2.3
-    eslint-plugin-jest-dom: 5.0.1
+    eslint-plugin-jest-dom: 5.0.2
     eslint-plugin-jsx-a11y: 6.7.1
     eslint-plugin-react: 7.33.1
     eslint-plugin-react-hooks: 4.6.0
     eslint-plugin-react-native: 4.0.0
     eslint-plugin-react-native-a11y: 3.3.0
     eslint-plugin-simple-import-sort: 10.0.0
-    eslint-plugin-testing-library: 5.11.0
-  checksum: efe440a656dd0f016bd08802836f4efa4b4c223f69ad0ef0f34089a12c40e0994837c21cdd6583f47babbcd7e917081255d5d1fe88cac8f0afb77ebf5cbd1b1b
+    eslint-plugin-testing-library: 5.11.1
+  checksum: 39f92bc30d971af28682ec4b6d5390e7791d6c93b5c49a464c73196912bfb143fc70eb7d0e92a2bb8293ea2eae011ed214109bc4b9e290e223b848c71e3b80d0
   languageName: node
   linkType: hard
 
@@ -11531,16 +11531,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest-dom@npm:5.0.1":
-  version: 5.0.1
-  resolution: "eslint-plugin-jest-dom@npm:5.0.1"
+"eslint-plugin-jest-dom@npm:5.0.2":
+  version: 5.0.2
+  resolution: "eslint-plugin-jest-dom@npm:5.0.2"
   dependencies:
     "@babel/runtime": ^7.16.3
     requireindex: ^1.2.0
   peerDependencies:
     "@testing-library/dom": ^8.0.0 || ^9.0.0
     eslint: ^6.8.0 || ^7.0.0 || ^8.0.0
-  checksum: aad1ccae292e8b77be0e034499a62502e074d6d631320efa8b7d9de4a1e484f0ab27480820fb4974cec49101df35c9d4a320643a7c93d2a08778fec283b1e2fd
+  checksum: 83bda8d1f86edfaf4b8e3039f15b73ad8ec035b6afc2403828cea70d4ed792e015406aa58c3dab91235d230f4561f33d26a80064cf7b298fd6edc72a1c27273a
   languageName: node
   linkType: hard
 
@@ -11663,14 +11663,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-testing-library@npm:5.11.0":
-  version: 5.11.0
-  resolution: "eslint-plugin-testing-library@npm:5.11.0"
+"eslint-plugin-testing-library@npm:5.11.1":
+  version: 5.11.1
+  resolution: "eslint-plugin-testing-library@npm:5.11.1"
   dependencies:
     "@typescript-eslint/utils": ^5.58.0
   peerDependencies:
     eslint: ^7.5.0 || ^8.0.0
-  checksum: 7f19d3dedd7788b411ca3d9045de682feb26025b9c26d97d4e2f0bf62f5eaa276147d946bd5d0cd967b822e546a954330fdb7ef80485301264f646143f011a02
+  checksum: 9f3fc68ef9f13016a4381b33ab5dbffcc189e5de3eaeba184bcf7d2771faa7f54e59c04b652162fb1c0f83fb52428dd909db5450a25508b94be59eba69fcc990
   languageName: node
   linkType: hard
 
@@ -22915,7 +22915,7 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@ajna/pagination": ^1.4.19
-    "@alergeek-ventures/eslint-config": ^7.0.6
+    "@alergeek-ventures/eslint-config": ^7.0.8
     "@apollo/client": ^3.7.17
     "@babel/core": ^7.22.9
     "@babel/eslint-parser": ^7.22.9
