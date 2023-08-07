@@ -4326,12 +4326,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:^13.4.12":
-  version: 13.4.12
-  resolution: "@next/eslint-plugin-next@npm:13.4.12"
+"@next/eslint-plugin-next@npm:^13.4.13":
+  version: 13.4.13
+  resolution: "@next/eslint-plugin-next@npm:13.4.13"
   dependencies:
     glob: 7.1.7
-  checksum: a20cf430efe7602b819e69d826c33659a9c2cfa7c6162f63d91b607ff6ac9da0e79ff27f38cebd79117500640329bd107521b4874e6a2d009ddafab762885c82
+  checksum: cd1e9c2a2bcda62ac28dc0bb5d19f8d74b31ac85adbd5e101c1c854480bcff3dfc7bc11be12d386898e61f0256e6d8c33022cfcf288a2bd5c4d061ab473c336f
   languageName: node
   linkType: hard
 
@@ -22928,7 +22928,7 @@ __metadata:
     "@graphql-codegen/client-preset": ^4.1.0
     "@graphql-codegen/typescript-react-apollo": ^3.3.7
     "@graphql-codegen/typescript-resolvers": ^4.0.1
-    "@next/eslint-plugin-next": ^13.4.12
+    "@next/eslint-plugin-next": ^13.4.13
     "@types/lodash": ^4.14.196
     "@types/node": ^20.4.8
     "@types/react": ^18.2.18
