@@ -68,17 +68,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:^3.7.17":
-  version: 3.7.17
-  resolution: "@apollo/client@npm:3.7.17"
+"@apollo/client@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "@apollo/client@npm:3.8.0"
   dependencies:
     "@graphql-typed-document-node/core": ^3.1.1
-    "@wry/context": ^0.7.0
-    "@wry/equality": ^0.5.0
-    "@wry/trie": ^0.4.0
+    "@wry/context": ^0.7.3
+    "@wry/equality": ^0.5.6
+    "@wry/trie": ^0.4.3
     graphql-tag: ^2.12.6
     hoist-non-react-statics: ^3.3.2
-    optimism: ^0.16.2
+    optimism: ^0.17.5
     prop-types: ^15.7.2
     response-iterator: ^0.2.6
     symbol-observable: ^4.0.0
@@ -100,7 +100,7 @@ __metadata:
       optional: true
     subscriptions-transport-ws:
       optional: true
-  checksum: d25e955f3c409885185405ca5876cb74538becafa202257a27483c07d7faa9ce83b34d4cab4b7fd9ad217f80d768e651881292c406dbbca221c91013917890d7
+  checksum: bf1fb4fa82ece6c7c274c0d6b196854fb19c0634b48692deed40fea491b25b385883101521860365b6af609bd0e84e32b1d82955a43e50ae920e971c7707d556
   languageName: node
   linkType: hard
 
@@ -7692,7 +7692,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wry/context@npm:^0.7.0":
+"@wry/context@npm:^0.7.0, @wry/context@npm:^0.7.3":
   version: 0.7.3
   resolution: "@wry/context@npm:0.7.3"
   dependencies:
@@ -7701,7 +7701,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wry/equality@npm:^0.5.0":
+"@wry/equality@npm:^0.5.6":
   version: 0.5.6
   resolution: "@wry/equality@npm:0.5.6"
   dependencies:
@@ -7710,16 +7710,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wry/trie@npm:^0.3.0":
-  version: 0.3.2
-  resolution: "@wry/trie@npm:0.3.2"
-  dependencies:
-    tslib: ^2.3.0
-  checksum: 151d06b519e1ff1c3acf6ee6846161b1d7d50bbecd4c48e5cd1b05f9e37c30602aff02e88f20105f6e6c54ae4123f9c4eb7715044d7fd927d4ba4ec3e755cd36
-  languageName: node
-  linkType: hard
-
-"@wry/trie@npm:^0.4.0":
+"@wry/trie@npm:^0.4.3":
   version: 0.4.3
   resolution: "@wry/trie@npm:0.4.3"
   dependencies:
@@ -18006,13 +17997,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"optimism@npm:^0.16.2":
-  version: 0.16.2
-  resolution: "optimism@npm:0.16.2"
+"optimism@npm:^0.17.5":
+  version: 0.17.5
+  resolution: "optimism@npm:0.17.5"
   dependencies:
     "@wry/context": ^0.7.0
-    "@wry/trie": ^0.3.0
-  checksum: a98ed9a0b8ee2b031010222099b60860d52860bf8182889f2695a7cf2185f21aca59020f78e2b47c0ae7697843caa576798d792967314ff59f6aa7c5d9de7f3a
+    "@wry/trie": ^0.4.3
+    tslib: ^2.3.0
+  checksum: 5990217d989e9857dc523a64cb6e5a9205eae68c7acac78f7dde8fbe50045d0f11ca8068cdbb51b1eae15510d96ad593a99cf98c6f86c41d1b6f90e54956ff11
   languageName: node
   linkType: hard
 
@@ -23031,7 +23023,7 @@ __metadata:
   dependencies:
     "@ajna/pagination": ^1.4.19
     "@alergeek-ventures/eslint-config": ^7.0.8
-    "@apollo/client": ^3.7.17
+    "@apollo/client": ^3.8.0
     "@babel/core": ^7.22.10
     "@babel/eslint-parser": ^7.22.9
     "@chakra-ui/icons": ^2.1.0
