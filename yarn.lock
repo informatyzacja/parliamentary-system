@@ -30,15 +30,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alergeek-ventures/eslint-config@npm:^7.0.8":
-  version: 7.0.8
-  resolution: "@alergeek-ventures/eslint-config@npm:7.0.8"
+"@alergeek-ventures/eslint-config@npm:^7.0.10":
+  version: 7.0.10
+  resolution: "@alergeek-ventures/eslint-config@npm:7.0.10"
   dependencies:
-    "@babel/core": 7.22.9
-    "@babel/eslint-parser": 7.22.9
+    "@babel/core": 7.22.10
+    "@babel/eslint-parser": 7.22.10
     "@cspell/dict-pl_pl": 3.0.0
     "@cspell/eslint-plugin": 6.31.2
-    "@rushstack/eslint-patch": 1.3.2
+    "@rushstack/eslint-patch": 1.3.3
     "@typescript-eslint/eslint-plugin": 5.62.0
     "@typescript-eslint/parser": 5.62.0
     eslint: 8.46.0
@@ -54,7 +54,7 @@ __metadata:
     eslint-plugin-react-native-a11y: 3.3.0
     eslint-plugin-simple-import-sort: 10.0.0
     eslint-plugin-testing-library: 5.11.1
-  checksum: 39f92bc30d971af28682ec4b6d5390e7791d6c93b5c49a464c73196912bfb143fc70eb7d0e92a2bb8293ea2eae011ed214109bc4b9e290e223b848c71e3b80d0
+  checksum: edf8cf73881e9ce5ce5b804e12a39da200e4eb6052d3eeac9e5976801eefd2519e62e463e99c69af691b0500c193641f6fe9b682ee4d977cbc4f4fa5c32ad75e
   languageName: node
   linkType: hard
 
@@ -322,30 +322,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.22.9, @babel/core@npm:^7.14.0, @babel/core@npm:^7.22.9":
-  version: 7.22.9
-  resolution: "@babel/core@npm:7.22.9"
-  dependencies:
-    "@ampproject/remapping": ^2.2.0
-    "@babel/code-frame": ^7.22.5
-    "@babel/generator": ^7.22.9
-    "@babel/helper-compilation-targets": ^7.22.9
-    "@babel/helper-module-transforms": ^7.22.9
-    "@babel/helpers": ^7.22.6
-    "@babel/parser": ^7.22.7
-    "@babel/template": ^7.22.5
-    "@babel/traverse": ^7.22.8
-    "@babel/types": ^7.22.5
-    convert-source-map: ^1.7.0
-    debug: ^4.1.0
-    gensync: ^1.0.0-beta.2
-    json5: ^2.2.2
-    semver: ^6.3.1
-  checksum: 7bf069aeceb417902c4efdaefab1f7b94adb7dea694a9aed1bda2edf4135348a080820529b1a300c6f8605740a00ca00c19b2d5e74b5dd489d99d8c11d5e56d1
-  languageName: node
-  linkType: hard
-
-"@babel/core@npm:^7.22.10":
+"@babel/core@npm:7.22.10, @babel/core@npm:^7.22.10":
   version: 7.22.10
   resolution: "@babel/core@npm:7.22.10"
   dependencies:
@@ -368,21 +345,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:7.22.9":
+"@babel/core@npm:^7.14.0, @babel/core@npm:^7.22.9":
   version: 7.22.9
-  resolution: "@babel/eslint-parser@npm:7.22.9"
+  resolution: "@babel/core@npm:7.22.9"
   dependencies:
-    "@nicolo-ribaudo/eslint-scope-5-internals": 5.1.1-v1
-    eslint-visitor-keys: ^2.1.0
+    "@ampproject/remapping": ^2.2.0
+    "@babel/code-frame": ^7.22.5
+    "@babel/generator": ^7.22.9
+    "@babel/helper-compilation-targets": ^7.22.9
+    "@babel/helper-module-transforms": ^7.22.9
+    "@babel/helpers": ^7.22.6
+    "@babel/parser": ^7.22.7
+    "@babel/template": ^7.22.5
+    "@babel/traverse": ^7.22.8
+    "@babel/types": ^7.22.5
+    convert-source-map: ^1.7.0
+    debug: ^4.1.0
+    gensync: ^1.0.0-beta.2
+    json5: ^2.2.2
     semver: ^6.3.1
-  peerDependencies:
-    "@babel/core": ">=7.11.0"
-    eslint: ^7.5.0 || ^8.0.0
-  checksum: 4f417796c803056aad2c8fa69b8a7a78a1fdacc307d95702f22894cab42b83554e47de7d0b3cfbee667f25014bca0179f859aa86ceb684b09803192e1200b48d
+  checksum: 7bf069aeceb417902c4efdaefab1f7b94adb7dea694a9aed1bda2edf4135348a080820529b1a300c6f8605740a00ca00c19b2d5e74b5dd489d99d8c11d5e56d1
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:^7.22.10":
+"@babel/eslint-parser@npm:7.22.10, @babel/eslint-parser@npm:^7.22.10":
   version: 7.22.10
   resolution: "@babel/eslint-parser@npm:7.22.10"
   dependencies:
@@ -5628,10 +5614,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/eslint-patch@npm:1.3.2":
-  version: 1.3.2
-  resolution: "@rushstack/eslint-patch@npm:1.3.2"
-  checksum: 010c87ef2d901faaaf70ea1bf86fd3e7b74f24e23205f836e9a32790bca2076afe5de58ded03c35cb482f83691c8d22b1a0c34291b075bfe81afd26cfa5d14cc
+"@rushstack/eslint-patch@npm:1.3.3":
+  version: 1.3.3
+  resolution: "@rushstack/eslint-patch@npm:1.3.3"
+  checksum: fd8a19ec5842634da8e4c2c479a4d13ecbefa4f212e42c7f9c39e8706f9eeef7a50db8d6ea939884ac0ff36bb21930c9642068cf68e8309ad491c54f2fc30c01
   languageName: node
   linkType: hard
 
@@ -23036,7 +23022,7 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@ajna/pagination": ^1.4.19
-    "@alergeek-ventures/eslint-config": ^7.0.8
+    "@alergeek-ventures/eslint-config": ^7.0.10
     "@apollo/client": ^3.8.0
     "@babel/core": ^7.22.10
     "@babel/eslint-parser": ^7.22.10
