@@ -80,7 +80,7 @@ jobs:
             yarn install --immutable
             yarn build
 
-            pm2 reload ecosystem.config.js
+            pm2 restart ecosystem.config.js
 
   release:
     name: Release
