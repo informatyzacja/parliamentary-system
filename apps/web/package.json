@@ -16,10 +16,10 @@
   },
   "packageManager": "yarn@3.6.1",
   "engines": {
-    "node": "^18"
+    "node": "^20"
   },
   "volta": {
-    "node": "18.17.0",
+    "node": "20.5.0",
     "yarn": "3.6.1"
   },
   "repository": {
@@ -40,7 +40,6 @@
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "browserslist": [
     ">0.3%",
-    "not ie 11",
     "not dead",
     "not op_mini all"
   ],
@@ -48,6 +47,7 @@
     "@ajna/pagination": "^1.4.19",
     "@apollo/client": "^3.7.17",
     "@chakra-ui/icons": "^2.1.0",
+    "@chakra-ui/next-js": "^2.1.5",
     "@chakra-ui/react": "^2.8.0",
     "@chakra-ui/system": "^2.6.0",
     "@emotion/react": "^11.11.1",

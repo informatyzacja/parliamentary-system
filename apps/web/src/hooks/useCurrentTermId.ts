@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 
-import { useCurrentTermOfOfficeQuery } from '../api/graphql';
-import { termOfOfficeIdAtom } from '../atoms/termOfOffice.atom';
+import { useCurrentTermOfOfficeQuery } from '@/api/graphql';
+import { termOfOfficeIdAtom } from '@/atoms/termOfOffice.atom';
 
 export const useCurrentTermId = () => {
   const [currentTerm, setCurrentTerm] = useAtom(termOfOfficeIdAtom);

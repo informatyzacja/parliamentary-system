@@ -7,9 +7,10 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "codegen": "turbo run codegen",
     "dev": "turbo run dev",
     "dev:db": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
-    "format": "format",
+    "format": "turbo run format",
     "format:check": "turbo run format:check",
     "lint": "turbo run lint",
     "postinstall": "husky install",
@@ -17,10 +18,10 @@
   },
   "packageManager": "yarn@3.6.1",
   "engines": {
-    "node": "^18"
+    "node": "^20"
   },
   "volta": {
-    "node": "18.17.0",
+    "node": "20.5.0",
     "yarn": "3.6.1"
   },
   "repository": {

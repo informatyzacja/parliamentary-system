@@ -1,8 +1,7 @@
 import { DownloadIcon } from '@chakra-ui/icons';
+import { Link } from '@chakra-ui/next-js';
 import {
   Button,
-  Link as ChakraLink,
-  Link,
   ScaleFade,
   Table,
   TableContainer,
@@ -13,47 +12,22 @@ import {
   Tr,
 } from '@chakra-ui/react';
 import { format } from 'date-fns';
-import NextLink from 'next/link';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
+
+import type {
+  MeetingEntity,
+  ResolutionEntity,
+  UploadFileEntity,
+} from '@/api/graphql';
+import type { Optional } from '@/types/Optional';
 
 export const Resolutions = ({
   resolutions,
   showMeetings = false,
   pagination,
 }: {
-  resolutions: Array<{
-    id: string;
-    attributes: {
-      name: string;
-      publishedAt: Date;
-      meeting?: {
-        data: {
-          id: string;
-          attributes: {
-            name: string;
-          };
-        };
-      };
-      document?: {
-        data: {
-          id?: string;
-          attributes?: {
-            url: string;
-          };
-        } | null;
-      };
-      attachments?: {
-        data: Array<{
-          id?: string;
-          attributes?: {
-            name: string;
-            url: string;
-          };
-        }>;
-      };
-    };
-  }>;
+  resolutions: ResolutionEntity[];
   showMeetings?: boolean;
   pagination: {
     currentPage: number;
@@ -84,26 +58,39 @@ export const Resolutions = ({
                     (pagination.currentPage - 1) * pagination.pageSize}
                 </Td>
                 <Td>{resolution.attributes.name}</Td>
-                {showMeetings && resolution.attributes.meeting ? (
+                {showMeetings &&
+                (resolution.attributes.meeting
+                  .data as Optional<MeetingEntity>) ? (
                   <Td>
-                    <NextLink
+                    <Link
                       href={`/posiedzenia/${resolution.attributes.meeting.data.id}`}
-                      passHref={true}
                     >
-                      <Link>
-                        {resolution.attributes.meeting.data.attributes.name}
-                      </Link>
-                    </NextLink>
+                      {resolution.attributes.meeting.data.attributes.name}
+                    </Link>
                   </Td>
                 ) : null}
                 <Td>
                   {format(
-                    new Date(resolution.attributes.publishedAt),
+                    new Date(resolution.attributes.publishedAt as string),
                     'dd/MM/yyyy HH:mm:ss',
                   )}
                 </Td>
                 <Td>
-                  {resolution.attributes.document?.data === null ? (
+                  {(resolution.attributes.document
+                    .data as Optional<UploadFileEntity>) ? (
+                    <Link
+                      href={
+                        process.env.NEXT_PUBLIC_API_URL +
+                        resolution.attributes.document.data.attributes.url
+                      }
+                      target="_blank"
+                      prefetch={false}
+                    >
+                      <Button leftIcon={<DownloadIcon />} size="sm">
+                        {t('Download')}
+                      </Button>
+                    </Link>
+                  ) : (
                     <Button
                       leftIcon={<DownloadIcon />}
                       size="sm"
@@ -111,19 +98,6 @@ export const Resolutions = ({
                     >
                       {t('Download')}
                     </Button>
-                  ) : (
-                    <ChakraLink
-                      href={
-                        process.env.NEXT_PUBLIC_API_URL +
-                        (resolution.attributes.document?.data.attributes?.url ??
-                          '/404')
-                      }
-                      target="_blank"
-                    >
-                      <Button leftIcon={<DownloadIcon />} size="sm">
-                        {t('Download')}
-                      </Button>
-                    </ChakraLink>
                   )}
                 </Td>
               </Tr>

@@ -6,14 +6,15 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type { FC } from 'react';
 import { useState } from 'react';
 
-import { useResolutionsQuery } from '../api/graphql';
-import { Loader } from '../components/Loader';
-import { NoItems } from '../components/NoItems';
-import { Pagination } from '../components/Pagination';
-import { Resolutions } from '../components/Resolutions';
-import TermOfOfficeSelector from '../components/TermOfOfficeSelector';
-import { useCurrentTermId } from '../hooks/useCurrentTermId';
-import { useErrorHandler } from '../hooks/useErrorHandler';
+import type { ResolutionEntity } from '@/api/graphql';
+import { useResolutionsQuery } from '@/api/graphql';
+import { Loader } from '@/components/layout/Loader';
+import { NoItems } from '@/components/layout/NoItems';
+import { Pagination } from '@/components/layout/Pagination';
+import { TermOfOfficeSelector } from '@/components/misc/TermOfOfficeSelector';
+import { Resolutions } from '@/components/resolution/Resolutions';
+import { useCurrentTermId } from '@/hooks/useCurrentTermId';
+import { useErrorHandler } from '@/hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Props {}
@@ -52,7 +53,8 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
   });
   const pageCount =
     resolutionsQuery.data?.resolutions.meta.pagination.pageCount ?? 1;
-  const resolutions = resolutionsQuery.data?.resolutions.data ?? [];
+  const resolutions = (resolutionsQuery.data?.resolutions.data ??
+    []) as ResolutionEntity[];
 
   return (
     <Center>

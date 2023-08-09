@@ -1,10 +1,10 @@
 import { InfoOutlineIcon } from '@chakra-ui/icons';
+import { Link } from '@chakra-ui/next-js';
 import {
   Box,
   Center,
   Divider,
   Heading,
-  Link,
   ScaleFade,
   Table,
   TableContainer,
@@ -21,10 +21,11 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import type { ResolutionEntity } from '@/api/graphql';
 import { useMeetingQuery } from '@/api/graphql';
-import { Loader } from '@/components/Loader';
-import { PreviewPDF } from '@/components/PreviewPDF';
-import { Resolutions } from '@/components/Resolutions';
+import { Loader } from '@/components/layout/Loader';
+import { PreviewPDF } from '@/components/misc/PreviewPDF';
+import { Resolutions } from '@/components/resolution/Resolutions';
 import { useErrorHandler } from '@/hooks/useErrorHandler';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -44,7 +45,8 @@ const Meeting = () => {
   });
 
   const meeting = meetingQuery.data?.meeting.data;
-  const resolutions = meeting?.attributes.resolutions.data;
+  const resolutions = meeting?.attributes.resolutions
+    .data as ResolutionEntity[];
 
   return (
     <Center>
@@ -64,6 +66,7 @@ const Meeting = () => {
                   process.env.NEXT_PUBLIC_API_URL +
                   meeting.attributes.agenda.data.attributes.url
                 }
+                prefetch={false}
               >
                 {t('meeting.agenda')}
               </Link>
@@ -79,6 +82,7 @@ const Meeting = () => {
                   process.env.NEXT_PUBLIC_API_URL +
                   meeting.attributes.protocol.data.attributes.url
                 }
+                prefetch={false}
               >
                 {t('meeting.protocol')}
               </Link>
@@ -121,6 +125,7 @@ const Meeting = () => {
                                     process.env.NEXT_PUBLIC_API_URL +
                                     report.attributes.url
                                   }
+                                  prefetch={false}
                                 >
                                   {report.attributes.name}
                                 </Link>
@@ -140,6 +145,7 @@ const Meeting = () => {
                                     process.env.NEXT_PUBLIC_API_URL +
                                     report.attributes.url
                                   }
+                                  prefetch={false}
                                 >
                                   {t('Download')}
                                 </Link>
@@ -166,7 +172,7 @@ const Meeting = () => {
         ) : (
           <Resolutions
             showMeetings={false}
-            resolutions={resolutions ?? []}
+            resolutions={resolutions}
             pagination={{
               pageSize: 1000,
               currentPage: 1,

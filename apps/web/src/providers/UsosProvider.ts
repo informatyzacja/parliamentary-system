@@ -1,7 +1,4 @@
-import { strict as assert } from 'assert';
 import type { OAuthConfig, OAuthUserConfig } from 'next-auth/providers';
-
-import serverConfig from '@/config.server';
 
 export interface UsosProfile extends Record<string, string> {
   first_name: string;
@@ -11,9 +8,14 @@ export interface UsosProfile extends Record<string, string> {
 }
 
 export default function UsosProvider<P extends UsosProfile>(
-  options: OAuthUserConfig<P>,
+  options: OAuthUserConfig<P> & {
+    usosBaseUrl: string;
+    publicUrl: string;
+    usosScopes: string;
+    usosFields: string;
+  },
 ): OAuthConfig<P> {
-  assert(serverConfig.USOS_BASE_URL, 'USOS_BASE_URL is not defined');
+  const { usosBaseUrl, publicUrl, usosScopes, usosFields } = options;
 
   return {
     id: 'usos',
@@ -21,24 +23,24 @@ export default function UsosProvider<P extends UsosProfile>(
     type: 'oauth',
     version: '1.0',
     authorization: {
-      url: `${serverConfig.USOS_BASE_URL}/services/oauth/authorize`,
+      url: `${usosBaseUrl}/services/oauth/authorize`,
     },
-    accessTokenUrl: `${serverConfig.USOS_BASE_URL}/services/oauth/access_token`,
-    requestTokenUrl: `${serverConfig.USOS_BASE_URL}/services/oauth/request_token?scopes=studies|email`,
-    profileUrl: `${serverConfig.USOS_BASE_URL}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
+    accessTokenUrl: `${usosBaseUrl}/services/oauth/access_token`,
+    requestTokenUrl: `${usosBaseUrl}/services/oauth/request_token?scopes=${usosScopes}`,
+    profileUrl: `${usosBaseUrl}/services/users/user?fields=${usosFields}`,
     userinfo: {
-      url: `${serverConfig.USOS_BASE_URL}/services/users/user?fields=first_name|last_name|sex|student_number|email`,
+      url: `${usosBaseUrl}/services/users/user?fields=${usosFields}`,
     },
     profile(profile) {
       return {
         id: profile.student_number,
-        name: profile.first_name + ' ' + profile.last_name,
+        name: `${profile.first_name} ${profile.last_name}`,
         email: profile.email,
       };
     },
     style: {
-      logo: 'https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png',
-      logoDark: 'https://parlament.samorzad.pwr.edu.pl/usos-logo-32x32.png',
+      logo: `${publicUrl}/usos-logo.png`,
+      logoDark: `${publicUrl}/usos-logo.png`,
       bgDark: '#fff',
       bg: '#fff',
       text: '#000',

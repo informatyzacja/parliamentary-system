@@ -10,37 +10,61 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'yarn'
+
       - name: Setup yarn
         run: yarn set version 3.6.1
-      - name: Run install
+
+      - name: Install dependencies
         run: yarn install --immutable
-      - uses: dtinth/setup-github-actions-caching-for-turbo@v1
+
+      - name: Setup GitHub Actions cache for Turbo
+        uses: dtinth/setup-github-actions-caching-for-turbo@v1
         with:
           cache-prefix: parliamentary_
-      - name: format
+
+      - name: Format check
         run: yarn format:check
-      - name: lint
+
+      - name: Lint
         run: yarn lint
 
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'yarn'
+
       - name: Setup yarn
         run: yarn set version 3.6.1
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Setup GitHub Actions cache for Turbo
+        uses: dtinth/setup-github-actions-caching-for-turbo@v1
+        with:
+          cache-prefix: parliamentary_
+
       - name: Setup env
         run: |
           cd apps/web
+
           touch .env.local
+
           echo NEXTAUTH_URL=http://localhost:3000 >> .env.local
           echo NEXT_PUBLIC_API_URL=http://0.0.0.0:1337 >> .env.local
           echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
@@ -48,11 +72,8 @@ jobs:
           echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
           echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
           echo NODE_ENV=production >> .env.local
+
           cd ../..
-      - name: Run install
-        run: yarn install --immutable
-      - uses: dtinth/setup-github-actions-caching-for-turbo@v1
-        with:
-          cache-prefix: parliamentary_
+
       - name: Build
         run: yarn build
