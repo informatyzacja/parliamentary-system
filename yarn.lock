@@ -30,9 +30,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alergeek-ventures/eslint-config@npm:^7.0.13":
-  version: 7.0.13
-  resolution: "@alergeek-ventures/eslint-config@npm:7.0.13"
+"@alergeek-ventures/eslint-config@npm:^7.0.14":
+  version: 7.0.14
+  resolution: "@alergeek-ventures/eslint-config@npm:7.0.14"
   dependencies:
     "@babel/core": 7.22.10
     "@babel/eslint-parser": 7.22.10
@@ -42,7 +42,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 5.62.0
     "@typescript-eslint/parser": 5.62.0
     eslint: 8.46.0
-    eslint-import-resolver-typescript: 3.5.5
+    eslint-import-resolver-typescript: 3.6.0
     eslint-plugin-cypress: 2.14.0
     eslint-plugin-import: 2.28.0
     eslint-plugin-jest: 27.2.3
@@ -54,7 +54,7 @@ __metadata:
     eslint-plugin-react-native-a11y: 3.3.0
     eslint-plugin-simple-import-sort: 10.0.0
     eslint-plugin-testing-library: 5.11.1
-  checksum: 012e3981fb098eaca10de81de433e51b11bb4192b4975c0a6b5e6063e08fde1240f4c8dd9a4c9cc219ba42f9bdeeacbc524b042a6d1a4647f66b5d9655eda1f6
+  checksum: 510a24c7855dbe4592fdbb89cb9744008429ba55590850d62290c568f1a413a48daf1d04041c4374e2eaf97489102106c7dec8e7cd02ded36e37f815cac7f07a
   languageName: node
   linkType: hard
 
@@ -11570,22 +11570,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-typescript@npm:3.5.5":
-  version: 3.5.5
-  resolution: "eslint-import-resolver-typescript@npm:3.5.5"
+"eslint-import-resolver-typescript@npm:3.6.0":
+  version: 3.6.0
+  resolution: "eslint-import-resolver-typescript@npm:3.6.0"
   dependencies:
     debug: ^4.3.4
     enhanced-resolve: ^5.12.0
     eslint-module-utils: ^2.7.4
+    fast-glob: ^3.3.1
     get-tsconfig: ^4.5.0
-    globby: ^13.1.3
     is-core-module: ^2.11.0
     is-glob: ^4.0.3
-    synckit: ^0.8.5
   peerDependencies:
     eslint: "*"
     eslint-plugin-import: "*"
-  checksum: 27e6276fdff5d377c9036362ff736ac29852106e883ff589ea9092dc57d4bc2a67a82d75134221124f05045f9a7e2114a159b2c827d1f9f64d091f7afeab0f58
+  checksum: 57b1b3859149f847e0d4174ff979cf35362d60c951df047f01b96f4c3794a7ea0d4e1ec85be25e610d3706902c3acfb964a66b825c1a55e3ce3a124b9a7a13bd
   languageName: node
   linkType: hard
 
@@ -12167,7 +12166,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.0.3, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0":
+"fast-glob@npm:^3.0.3, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0, fast-glob@npm:^3.3.1":
   version: 3.3.1
   resolution: "fast-glob@npm:3.3.1"
   dependencies:
@@ -13151,7 +13150,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^13.1.3, globby@npm:^13.1.4":
+"globby@npm:^13.1.4":
   version: 13.2.2
   resolution: "globby@npm:13.2.2"
   dependencies:
@@ -23022,7 +23021,7 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@ajna/pagination": ^1.4.19
-    "@alergeek-ventures/eslint-config": ^7.0.13
+    "@alergeek-ventures/eslint-config": ^7.0.14
     "@apollo/client": ^3.8.0
     "@babel/core": ^7.22.10
     "@babel/eslint-parser": ^7.22.10
