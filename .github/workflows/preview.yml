@@ -107,7 +107,9 @@ jobs:
 
           echo NODE_ENV="production" >> .env.local
 
-          yarn build
+          cd ../..
+
+          yarn build --filter=web
 
       - name: Start app
         if: steps.check.outputs.triggered == 'true'
