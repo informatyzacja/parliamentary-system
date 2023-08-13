@@ -78,9 +78,8 @@ Wykonaj poniższe polecenia
 ```bash
 git clone https://github.com/informatyzacja/parliamentary-system.git
 cd parliamentary-system
-yarn && yarn postinstall
-cd api && yarn && cd ..
-yarn dev
+yarn install --immutable
+turbo dev
 ```
 
 ## Deployment

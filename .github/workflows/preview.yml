@@ -94,24 +94,29 @@ jobs:
 
           touch .env.local
 
-          echo NEXTAUTH_URL=${{ steps.tunnel-url.outputs.tunnel-url }} >> .env.local
-          echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env.local
-          echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
-          echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
-          echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
-          echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
-          echo USOS_SCOPES=${{ secrets.USOS_SCOPES }} >> .env.local
-          echo USOS_FIELDS=${{ secrets.USOS_FIELDS }} >> .env.local
-          echo NODE_ENV=production >> .env.local
+          echo NEXT_PUBLIC_API_URL="${{ vars.NEXT_PUBLIC_API_URL }}" >> .env.local
+          echo NEXT_PUBLIC_OAUTH_DOMAIN="${{ vars.NEXT_PUBLIC_OAUTH_DOMAIN }}" >> .env.local
+          echo NEXT_PUBLIC_USOS_BASE_URL="${{ vars.NEXT_PUBLIC_USOS_BASE_URL }}" >> .env.local
+          echo NEXT_PUBLIC_USOS_SCOPES="${{ vars.NEXT_PUBLIC_USOS_SCOPES }}" >> .env.local
+          echo NEXT_PUBLIC_USOS_FIELDS="${{ vars.NEXT_PUBLIC_USOS_FIELDS }}" >> .env.local
+          echo NEXTAUTH_URL="${{ steps.tunnel-url.outputs.tunnel-url }}" >> .env.local
 
-          yarn build
+          echo NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}" >> .env.local
+          echo USOS_CLIENT_ID="${{ secrets.USOS_CLIENT_ID }}" >> .env.local
+          echo USOS_CLIENT_SECRET="${{ secrets.USOS_CLIENT_SECRET }}" >> .env.local
+
+          echo NODE_ENV="production" >> .env.local
+
+          cd ../..
+
+          yarn build --filter=web
 
       - name: Start app
         if: steps.check.outputs.triggered == 'true'
         run: |
           cd apps/web
-          
-          yarn start &
+
+          yarn start --filter=web &
 
       # Post a comment on the Pull Request with the URL to the tunnel.
       - name: Post preview environment as comment on PR

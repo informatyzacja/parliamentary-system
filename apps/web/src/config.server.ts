@@ -17,9 +17,9 @@ const googleConfig = {
 const usosConfig = {
   USOS_CLIENT_ID: process.env.USOS_CLIENT_ID,
   USOS_CLIENT_SECRET: process.env.USOS_CLIENT_SECRET,
-  USOS_BASE_URL: process.env.USOS_BASE_URL?.replace(/\/$/, ''),
-  USOS_SCOPES: process.env.USOS_SCOPES,
-  USOS_FIELDS: process.env.USOS_FIELDS,
+  USOS_BASE_URL: process.env.NEXT_PUBLIC_USOS_BASE_URL?.replace(/\/$/, ''),
+  USOS_SCOPES: process.env.NEXT_PUBLIC_USOS_SCOPES,
+  USOS_FIELDS: process.env.NEXT_PUBLIC_USOS_FIELDS,
 };
 
 type RequiredProperty<T> = { [P in keyof T]: Required<NonNullable<T[P]>> };
