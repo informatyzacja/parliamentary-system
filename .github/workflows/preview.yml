@@ -114,7 +114,7 @@ jobs:
         run: |
           cd apps/web
 
-          turbo start --filter=web &
+          yarn start --filter=web &
 
       # Post a comment on the Pull Request with the URL to the tunnel.
       - name: Post preview environment as comment on PR

@@ -31,10 +31,10 @@ jobs:
           cache-prefix: parliamentary_
 
       - name: Format check
-        run: turbo format:check
+        run: yarn format:check
 
       - name: Lint
-        run: turbo lint
+        run: yarn lint
 
   build:
     runs-on: ubuntu-latest
@@ -81,4 +81,4 @@ jobs:
           cd ../..
 
       - name: Build
-        run: turbo build
+        run: yarn build
