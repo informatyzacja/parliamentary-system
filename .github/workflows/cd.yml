@@ -60,9 +60,9 @@ jobs:
             rm .env
             touch .env
 
-            echo USOS_BASE_URL="${{ vars.USOS_BASE_URL }}" >> .env
-            echo USOS_SCOPES="${{ vars.USOS_SCOPES }}" >> .env
-            echo USOS_FIELDS="${{ vars.USOS_FIELDS }}" >> .env
+            echo NEXT_PUBLIC_USOS_BASE_URL="${{ vars.NEXT_PUBLIC_USOS_BASE_URL }}" >> .env
+            echo NEXT_PUBLIC_USOS_SCOPES="${{ vars.NEXT_PUBLIC_USOS_SCOPES }}" >> .env
+            echo NEXT_PUBLIC_USOS_FIELDS="${{ vars.NEXT_PUBLIC_USOS_FIELDS }}" >> .env
             echo STRAPI_URL="${{ vars.NEXT_PUBLIC_API_URL }}" >> .env
 
             echo DATABASE_NAME="${{ secrets.DATABASE_NAME }}" >> .env
