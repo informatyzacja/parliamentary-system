@@ -31,10 +31,10 @@ jobs:
           cache-prefix: parliamentary_
 
       - name: Format check
-        run: yarn format:check
+        run: turbo format:check
 
       - name: Lint
-        run: yarn lint
+        run: turbo lint
 
   build:
     runs-on: ubuntu-latest
@@ -65,15 +65,20 @@ jobs:
 
           touch .env.local
 
-          echo NEXTAUTH_URL=http://localhost:3000 >> .env.local
           echo NEXT_PUBLIC_API_URL=http://0.0.0.0:1337 >> .env.local
+          echo NEXT_PUBLIC_OAUTH_DOMAIN=${{ vars.NEXT_PUBLIC_OAUTH_DOMAIN }} >> .env.local
+          echo NEXT_PUBLIC_USOS_BASE_URL=${{ vars.NEXT_PUBLIC_USOS_BASE_URL }} >> .env.local
+          echo NEXT_PUBLIC_USOS_SCOPES=${{ vars.NEXT_PUBLIC_USOS_SCOPES }} >> .env.local
+          echo NEXT_PUBLIC_USOS_FIELDS=${{ vars.NEXT_PUBLIC_USOS_FIELDS }} >> .env.local
+          echo NEXTAUTH_URL=http://localhost:3000 >> .env.local
+
           echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
           echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
           echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
-          echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
+
           echo NODE_ENV=production >> .env.local
 
           cd ../..
 
       - name: Build
-        run: yarn build
+        run: turbo build
