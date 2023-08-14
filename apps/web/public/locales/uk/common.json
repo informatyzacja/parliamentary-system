@@ -1,12 +1,12 @@
 {
   "addition-date": "Дата додавання",
   "aria": {
-    "students-union-logo": "Логотип студентського Союзу",
+    "students-union-logo": "Логотип студентського Самоуряду",
     "toggle-navigation": "Переключити навігацію",
     "user-menu": "Меню користувача"
   },
-  "download": "звантажити",
-  "Download": "Звантажити",
+  "download": "завантажити",
+  "Download": "Завантажити",
   "error": {
     "change-language-error": "Помилка при зміні мови",
     "title": "Помилка"
@@ -38,17 +38,17 @@
   },
   "last-meetings": "Останні зустрічі",
   "last-name": "Прізвище",
-  "last-resolutions": "Останні роздільні елементи",
+  "last-resolutions": "Останні резолюції",
   "latest-updates": "Останні оновлення",
-  "login": "Ввійти",
-  "logout": "Вийти з системи",
+  "login": "Залогуватися",
+  "logout": "Вилогуватися",
   "meeting": {
     "agenda": "Порядок денний зустрічі",
-    "no-reports": "Немає повідомлень",
+    "no-reports": "Немає рапортів",
     "place": {
-      "a1r241": "A-1 r. 241",
-      "c16r117": "С-16 r. 1.17",
-      "remote": "Пульт"
+      "a1r241": "A-1 к. 241",
+      "c16r117": "С-16 к. 1.17",
+      "remote": "Віддалена форма"
     },
     "protocol": "Протокол зустрічі",
     "reports": "Звіти про зустріч",
@@ -60,13 +60,13 @@
   "no-data": "Немає даних",
   "no-meetings": "Немає зустрічей",
   "no-news": "Новини відсутні",
-  "no-resolutions": "Без роздільників",
+  "no-resolutions": "Без резолюцій",
   "organisation-structure": "Організаційна структура",
   "parliament-meetings": "Збори парламенту",
   "preview": "Прев'ю",
   "resolutions": "Резолюції",
-  "student-number": "Номер учня",
+  "student-number": "Номер індексу",
   "system-status": "Статус системи",
-  "to-use-you-must-login": "Щоб скористатися програмою, вам потрібно увійти в систему",
-  "upcoming": "Майбутня зустріч"
+  "to-use-you-must-login": "Щоб скористатися програмою, вам потрібно залогуватися",
+  "upcoming": "Найближча зустріч"
 }
