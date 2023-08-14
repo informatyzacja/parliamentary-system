@@ -16,6 +16,10 @@
   "functions": "Funkcje",
   "language-code": "pl",
   "languages": {
+    "be": {
+      "flag": "🇧🇾",
+      "name": "беларуская"
+    },
     "de": {
       "flag": "🇩🇪",
       "name": "Deutsch"
