@@ -20,6 +20,8 @@ const nextConfig = {
       frame-ancestors 'none';
     `;
 
+    if (process.env.NODE_ENV === 'development') return [];
+
     return [
       {
         source: '/(.*)',
