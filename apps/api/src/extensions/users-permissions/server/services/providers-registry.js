@@ -29,8 +29,8 @@ const getInitialProviders = ({ purest }) => ({
       USOS_FIELDS: process.env.NEXT_PUBLIC_USOS_FIELDS,
     };
 
-    assert(secrets.CLIENT_ID, 'USOS_CLIENT_ID is not defined');
-    assert(secrets.CLIENT_SECRET, 'USOS_CLIENT_SECRET is not defined');
+    assert(secrets.USOS_CLIENT_ID, 'USOS_CLIENT_ID is not defined');
+    assert(secrets.USOS_CLIENT_SECRET, 'USOS_CLIENT_SECRET is not defined');
     assert(secrets.USOS_BASE_URL, 'USOS_BASE_URL is not defined');
     assert(secrets.USOS_SCOPES, 'USOS_SCOPES is not defined');
     assert(secrets.USOS_FIELDS, 'USOS_FIELDS is not defined');
@@ -38,8 +38,8 @@ const getInitialProviders = ({ purest }) => ({
     const client = new OAuth(
       '',
       '',
-      secrets.CLIENT_ID,
-      secrets.CLIENT_SECRET,
+      secrets.USOS_CLIENT_ID,
+      secrets.USOS_CLIENT_SECRET,
       '1.0',
       null,
       'HMAC-SHA1',
