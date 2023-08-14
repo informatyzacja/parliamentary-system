@@ -19314,9 +19314,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^13.0.3":
-  version: 13.0.3
-  resolution: "react-i18next@npm:13.0.3"
+"react-i18next@npm:^13.1.2":
+  version: 13.1.2
+  resolution: "react-i18next@npm:13.1.2"
   dependencies:
     "@babel/runtime": ^7.22.5
     html-parse-stringify: ^3.0.1
@@ -19328,7 +19328,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 5b23c517204ac7ce66191368b185bb278c34e75778714ffdae84dd4672fdaf8c500c7965cb87508c686de55ac7c8853f05134ee61aa21add1b8c8e02bcc0a0a4
+  checksum: 105a17fe24a554af2fe8e44fefb279e0a044197aafaa8a46a046f655db2fdf094c68a70e0a6b23ed818c68a622c80f09f6cf2d94373a7ebe55bfcd993168a811
   languageName: node
   linkType: hard
 
@@ -22958,7 +22958,7 @@ __metadata:
     postcss: ^8.4.27
     react: ^18.2.0
     react-dom: ^18.2.0
-    react-i18next: ^13.0.3
+    react-i18next: ^13.1.2
     react-icons: ^4.10.1
     react-pdf: 7.3.3
     ts-node: ^10.9.1
