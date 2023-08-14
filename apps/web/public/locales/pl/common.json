@@ -2,28 +2,40 @@
   "addition-date": "Data dodania",
   "aria": {
     "students-union-logo": "Logo samorządu",
-    "toggle-navigation": "Toggle navigation",
+    "toggle-navigation": "Przełącz nawigację",
     "user-menu": "Menu użytkownika"
   },
   "download": "pobierz",
   "Download": "Pobierz",
   "error": {
-    "title": "Error",
-    "change-language-error": "An error occurred while changing the language"
+    "change-language-error": "Wystąpił błąd podczas zmiany języka",
+    "title": "Błąd"
   },
   "first-name": "Imię",
   "functions": "Funkcje",
+  "language-code": "pl",
   "languages": {
-    "pl": {
-      "flag": "\uD83C\uDDF5\uD83C\uDDF1",
-      "name": "Polski"
+    "de": {
+      "flag": "🇩🇪",
+      "name": "Deutsch"
     },
     "en": {
-      "flag": "\uD83C\uDDEC\uD83C\uDDE7",
+      "flag": "🇬🇧",
       "name": "English"
+    },
+    "pl": {
+      "flag": "🇵🇱",
+      "name": "polski"
+    },
+    "ru": {
+      "flag": "🇷🇺",
+      "name": "Русский"
+    },
+    "uk": {
+      "flag": "🇺🇦",
+      "name": "Українська"
     }
   },
-  "language-code": "pl",
   "last-meetings": "Ostatnie posiedzenia",
   "last-name": "Nazwisko",
   "last-resolutions": "Ostatnie uchwały",
@@ -38,7 +50,7 @@
       "c16r117": "C-16 s. 1.17",
       "remote": "Zdalnie"
     },
-    "protocol": "Protokół z posiedzenia",
+    "protocol": "Protokół posiedzenia",
     "reports": "Sprawozdania z posiedzenia",
     "title": "Posiedzenie",
     "title-plural": "Posiedzenia"
@@ -55,6 +67,6 @@
   "resolutions": "Uchwały",
   "student-number": "Numer indeksu",
   "system-status": "Status systemów",
-  "to-use-you-must-login": "Aby korzystać z aplikacji musisz się zalogować",
+  "to-use-you-must-login": "Aby korzystać z aplikacji, musisz się zalogować",
   "upcoming": "Nadchodzące posiedzenie"
 }
