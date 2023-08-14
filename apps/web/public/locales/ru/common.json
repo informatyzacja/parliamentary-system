@@ -15,6 +15,10 @@
   "functions": "Функции",
   "language-code": "ru",
   "languages": {
+    "be": {
+      "flag": "🇧🇾",
+      "name": "беларуская"
+    },
     "de": {
       "flag": "🇩🇪",
       "name": "Deutsch"
