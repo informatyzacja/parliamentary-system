@@ -322,7 +322,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.22.10":
+"@babel/core@npm:7.22.10, @babel/core@npm:^7.22.10":
   version: 7.22.10
   resolution: "@babel/core@npm:7.22.10"
   dependencies:
@@ -23134,7 +23134,7 @@ __metadata:
     "@ajna/pagination": ^1.4.19
     "@alergeek-ventures/eslint-config": ^7.0.15
     "@apollo/client": ^3.8.1
-    "@babel/core": ^7.22.9
+    "@babel/core": ^7.22.10
     "@babel/eslint-parser": ^7.22.9
     "@chakra-ui/icons": ^2.1.0
     "@chakra-ui/next-js": ^2.1.5
