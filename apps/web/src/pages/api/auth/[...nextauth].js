@@ -1,7 +1,6 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import UsosProvider from '../../../providers/UsosProvider';
-import { strict as assert } from 'assert';
+import UsosProvider from '@/providers/UsosProvider';
 
 import serverConfig from '@/config.server';
 import config from '@/config';
@@ -22,6 +21,10 @@ if (serverConfig.USOS_CLIENT_ID && serverConfig.USOS_CLIENT_SECRET) {
     UsosProvider({
       clientId: serverConfig.USOS_CLIENT_ID,
       clientSecret: serverConfig.USOS_CLIENT_SECRET,
+      usosBaseUrl: serverConfig.USOS_BASE_URL,
+      publicUrl: serverConfig.NEXTAUTH_URL,
+      usosScopes: serverConfig.USOS_SCOPES,
+      usosFields: serverConfig.USOS_FIELDS,
     }),
   );
 }

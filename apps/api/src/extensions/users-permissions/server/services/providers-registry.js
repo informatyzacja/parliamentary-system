@@ -22,14 +22,18 @@ const getInitialProviders = ({ purest }) => ({
     const OAuth = require('oauth').OAuth;
 
     const secrets = {
-      CLIENT_ID: process.env['USOS_CLIENT_ID'],
-      CLIENT_SECRET: process.env['USOS_CLIENT_SECRET'],
-      BASE_URL: process.env['USOS_BASE_URL']?.replace(/\/$/, ''),
+      USOS_CLIENT_ID: process.env.USOS_CLIENT_ID,
+      USOS_CLIENT_SECRET: process.env.USOS_CLIENT_SECRET,
+      USOS_BASE_URL: process.env.NEXT_PUBLIC_USOS_BASE_URL?.replace(/\/$/, ''),
+      USOS_SCOPES: process.env.NEXT_PUBLIC_USOS_SCOPES,
+      USOS_FIELDS: process.env.NEXT_PUBLIC_USOS_FIELDS,
     };
 
     assert(secrets.CLIENT_ID, 'USOS_CLIENT_ID is not defined');
     assert(secrets.CLIENT_SECRET, 'USOS_CLIENT_SECRET is not defined');
-    assert(secrets.BASE_URL, 'USOS_BASE_URL is not defined');
+    assert(secrets.USOS_BASE_URL, 'USOS_BASE_URL is not defined');
+    assert(secrets.USOS_SCOPES, 'USOS_SCOPES is not defined');
+    assert(secrets.USOS_FIELDS, 'USOS_FIELDS is not defined');
 
     const client = new OAuth(
       '',
@@ -42,7 +46,7 @@ const getInitialProviders = ({ purest }) => ({
     );
     return new Promise((resolve, reject) => {
       client.getProtectedResource(
-        `${secrets.BASE_URL}/services/users/user?fields=first_name|last_name|student_number|email`,
+        `${secrets.USOS_BASE_URL}/services/users/user?fields=${secrets.USOS_FIELDS}`,
         'GET',
         query.oauth_token,
         query.oauth_token_secret,

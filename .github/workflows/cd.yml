@@ -27,43 +27,64 @@ jobs:
           envs: CI
           script: |
             cd ${{ secrets.APP_DIR }}
+
             rm .env
             touch .env
-            echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
-            echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
-            echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
-            echo DATABASE_FOLDER=${{ secrets.DATABASE_FOLDER }} >> .env
+
+            echo DATABASE_NAME="${{ secrets.DATABASE_NAME }}" >> .env
+            echo DATABASE_USERNAME="${{ secrets.DATABASE_USERNAME }}" >> .env
+            echo DATABASE_PASSWORD="${{ secrets.DATABASE_PASSWORD }}" >> .env
+            echo DATABASE_FOLDER="${{ secrets.DATABASE_FOLDER }}" >> .env
+
             cd apps/web
+
             rm .env.local
             touch .env.local
-            echo NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} >> .env.local
-            echo NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }} >> .env.local
-            echo NEXTAUTH_SECRET=${{ secrets.NEXTAUTH_SECRET }} >> .env.local
-            echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env.local
-            echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env.local
-            echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env.local
-            echo NODE_ENV=production >> .env.local
+
+            echo NEXT_PUBLIC_API_URL="${{ vars.NEXT_PUBLIC_API_URL }}" >> .env.local
+            echo NEXT_PUBLIC_OAUTH_DOMAIN="${{ vars.NEXT_PUBLIC_OAUTH_DOMAIN }}" >> .env.local
+            echo NEXT_PUBLIC_USOS_BASE_URL="${{ vars.NEXT_PUBLIC_USOS_BASE_URL }}" >> .env.local
+            echo NEXT_PUBLIC_USOS_SCOPES="${{ vars.NEXT_PUBLIC_USOS_SCOPES }}" >> .env.local
+            echo NEXT_PUBLIC_USOS_FIELDS="${{ vars.NEXT_PUBLIC_USOS_FIELDS }}" >> .env.local
+            echo NEXTAUTH_URL="${{ vars.NEXTAUTH_URL }}" >> .env.local
+
+            echo NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}" >> .env.local
+            echo USOS_CLIENT_ID="${{ secrets.USOS_CLIENT_ID }}" >> .env.local
+            echo USOS_CLIENT_SECRET="${{ secrets.USOS_CLIENT_SECRET }}" >> .env.local
+
+            echo NODE_ENV="production" >> .env.local
+
             cd ../..
             cd apps/api
+
             rm .env
             touch .env
-            echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
-            echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
-            echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
-            echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
-            echo USOS_CLIENT_ID=${{ secrets.USOS_CLIENT_ID }} >> .env
-            echo USOS_CLIENT_SECRET=${{ secrets.USOS_CLIENT_SECRET }} >> .env
-            echo USOS_BASE_URL=${{ secrets.USOS_BASE_URL }} >> .env
-            echo STRAPI_PUBLIC_FOLDER=${{ secrets.STRAPI_PUBLIC_FOLDER }} >> .env
-            echo API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }} >> .env
-            echo AUTH_SECRET=${{ secrets.AUTH_SECRET }} >> .env
-            echo STRAPI_URL=${{ vars.NEXT_PUBLIC_API_URL }} >> .env
-            cp public/robots.txt ${{ secrets.STRAPI_PUBLIC_FOLDER }}
+
+            echo NEXT_PUBLIC_USOS_BASE_URL="${{ vars.NEXT_PUBLIC_USOS_BASE_URL }}" >> .env
+            echo NEXT_PUBLIC_USOS_SCOPES="${{ vars.NEXT_PUBLIC_USOS_SCOPES }}" >> .env
+            echo NEXT_PUBLIC_USOS_FIELDS="${{ vars.NEXT_PUBLIC_USOS_FIELDS }}" >> .env
+            echo STRAPI_URL="${{ vars.NEXT_PUBLIC_API_URL }}" >> .env
+
+            echo DATABASE_NAME="${{ secrets.DATABASE_NAME }}" >> .env
+            echo DATABASE_USERNAME="${{ secrets.DATABASE_USERNAME }}" >> .env
+            echo DATABASE_PASSWORD="${{ secrets.DATABASE_PASSWORD }}" >> .env
+            echo JWT_SECRET="${{ secrets.JWT_SECRET }}" >> .env
+            echo USOS_CLIENT_ID="${{ secrets.USOS_CLIENT_ID }}" >> .env
+            echo USOS_CLIENT_SECRET="${{ secrets.USOS_CLIENT_SECRET }}" >> .env
+            echo STRAPI_PUBLIC_FOLDER="${{ secrets.STRAPI_PUBLIC_FOLDER }}" >> .env
+            echo API_TOKEN_SALT="${{ secrets.API_TOKEN_SALT }}" >> .env
+            echo AUTH_SECRET="${{ secrets.AUTH_SECRET }}" >> .env
+
+            cp public/robots.txt "${{ secrets.STRAPI_PUBLIC_FOLDER }}"
+
             cd ../..
+
             git pull
+
             yarn install --immutable
             yarn build
-            pm2 reload ecosystem.config.js
+
+            pm2 restart ecosystem.config.js
 
   release:
     name: Release
@@ -75,14 +96,19 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/setup-node@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'yarn'
+
       - name: Setup yarn
         run: yarn set version 3.6.1
-      - name: Run install
+
+      - name: Install dependencies
         run: yarn install --immutable
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}

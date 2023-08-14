@@ -1,9 +1,9 @@
 import { Select } from '@chakra-ui/react';
 
-import { useTermOfOfficesQuery } from '../api/graphql';
-import { useCurrentTermId } from '../hooks/useCurrentTermId';
+import { useTermOfOfficesQuery } from '@/api/graphql';
+import { useCurrentTermId } from '@/hooks/useCurrentTermId';
 
-const TermOfOfficeSelector = () => {
+export const TermOfOfficeSelector = () => {
   const { data } = useTermOfOfficesQuery();
 
   const [selectedTerm, setSelectedTerm] = useCurrentTermId();
@@ -29,5 +29,3 @@ const TermOfOfficeSelector = () => {
     </Select>
   );
 };
-
-export default TermOfOfficeSelector;
