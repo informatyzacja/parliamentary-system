@@ -9,6 +9,7 @@
   "Download": "Download",
   "error": {
     "change-language-error": "An error occurred while changing the language",
+    "login-error": "An error occurred while logging in",
     "title": "Error"
   },
   "first-name": "First name",
@@ -45,6 +46,7 @@
   "last-resolutions": "Last resolutions",
   "latest-updates": "Latest updates",
   "login": "Log in",
+  "login-with": "Log in using",
   "logout": "Log out",
   "meeting": {
     "agenda": "Meeting agenda",

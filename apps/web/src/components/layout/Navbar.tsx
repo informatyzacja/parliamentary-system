@@ -23,7 +23,7 @@ import { useAtomValue } from 'jotai';
 import Image from 'next/image';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 
 import {
@@ -107,15 +107,6 @@ export const Navbar = () => {
           direction="row"
           spacing={6}
         >
-          {status === 'unauthenticated' ? (
-            <Button
-              onClick={() => {
-                void signIn();
-              }}
-            >
-              {t('login')}
-            </Button>
-          ) : null}
           {status === 'authenticated' ? (
             <Box ml={4} display="flex">
               <Menu direction="rtl" placement="bottom-start" autoSelect={false}>

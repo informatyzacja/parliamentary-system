@@ -17,7 +17,7 @@ export const LanguageSwitcher = () => {
   const linkHoverColor = useColorModeValue('gray.800', 'white');
   const router = useRouter();
 
-  const availableLanguages = ['pl', 'en'];
+  const availableLanguages = ['be', 'de', 'en', 'pl', 'ru', 'uk'];
 
   const toast = useToast({
     title: t('error.title'),
