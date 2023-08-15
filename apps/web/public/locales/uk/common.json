@@ -9,6 +9,7 @@
   "Download": "Завантажити",
   "error": {
     "change-language-error": "Помилка при зміні мови",
+    "login-error": "An error occurred while logging in",
     "title": "Помилка"
   },
   "first-name": "Ім'я",
@@ -45,6 +46,7 @@
   "last-resolutions": "Останні резолюції",
   "latest-updates": "Останні оновлення",
   "login": "Залогуватися",
+  "login-with": "Log in using",
   "logout": "Вилогуватися",
   "meeting": {
     "agenda": "Порядок денний зустрічі",
