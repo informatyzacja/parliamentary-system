@@ -9,6 +9,7 @@
   "Download": "Herunterladen",
   "error": {
     "change-language-error": "Fehler beim Ändern der Sprache",
+    "login-error": "An error occurred while logging in",
     "title": "Fehler"
   },
   "first-name": "Vorname",
@@ -45,6 +46,7 @@
   "last-resolutions": "Letzte Beschlüsse",
   "latest-updates": "Nachrichten",
   "login": "Anmelden",
+  "login-with": "Log in using",
   "logout": "Abmelden",
   "meeting": {
     "agenda": "Sitzung-Agenda",
