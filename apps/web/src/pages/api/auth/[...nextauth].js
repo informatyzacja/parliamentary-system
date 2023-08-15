@@ -45,7 +45,7 @@ const options = {
       return session;
     },
     async jwt({ token, user, account }) {
-      const isSignIn = user ? true : false;
+      const isSignIn = !!user;
       if (isSignIn) {
         const params = new URLSearchParams();
         if (account.provider === 'usos') {
