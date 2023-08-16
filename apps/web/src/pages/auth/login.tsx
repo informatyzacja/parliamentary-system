@@ -12,20 +12,27 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import type { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { getProviders, signIn } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+interface Props {}
 
 interface Provider {
   id: string;
   name: string;
 }
 
-function Login({
-  providers,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+const providers: Provider[] = [
+  {
+    id: 'usos',
+    name: 'USOS',
+  },
+];
+
+function Login() {
   const { t } = useTranslation('common');
   const router = useRouter();
   const { error } = router.query;
@@ -81,20 +88,12 @@ function Login({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<{
-  providers: Provider[];
-}> = async ({ locale }) => {
-  const providerList = await getProviders();
-  const translations = await serverSideTranslations(locale ?? 'pl', ['common']);
-
-  if (providerList === null) {
-    return { props: { providers: [], ...translations } };
-  }
-
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  locale,
+}) => {
   return {
     props: {
-      providers: Object.values(providerList) as Provider[],
-      ...translations,
+      ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
     },
   };
 };
