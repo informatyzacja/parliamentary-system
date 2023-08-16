@@ -9,7 +9,7 @@
   "Download": "Скачать",
   "error": {
     "change-language-error": "Произошла ошибка при смене языка",
-    "login-error": "An error occurred while logging in",
+    "login-error": "Произошла ошибка при входе в систему",
     "title": "Ошибка"
   },
   "first-name": "Имя",
@@ -46,7 +46,7 @@
   "last-resolutions": "Последнее разрешение",
   "latest-updates": "Последние обновления",
   "login": "Вход",
-  "login-with": "Log in using",
+  "login-with": "Вход через",
   "logout": "Выйти",
   "meeting": {
     "agenda": "Повестка дня",
