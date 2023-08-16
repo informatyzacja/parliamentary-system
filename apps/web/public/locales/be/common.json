@@ -1,19 +1,19 @@
 {
-  "addition-date": "Date of addition",
+  "addition-date": "Дата дапаўнення",
   "aria": {
-    "students-union-logo": "Student Union logo",
-    "toggle-navigation": "Toggle navigation",
-    "user-menu": "User menu"
+    "students-union-logo": "Лагатып Студэнцкага Самакіравання",
+    "toggle-navigation": "Пераключыць навігацыю",
+    "user-menu": "Меню карыстальніка"
   },
-  "download": "download",
-  "Download": "Download",
+  "download": "загрузіць",
+  "Download": "Загрузіць",
   "error": {
-    "change-language-error": "An error occurred while changing the language",
-    "login-error": "An error occurred while logging in",
-    "title": "Error"
+    "change-language-error": "Адбылася памылка пры змене мовы",
+    "login-error": "Адбылася памылка пры ўваходзе ў сістэму",
+    "title": "Памылка"
   },
-  "first-name": "First name",
-  "functions": "Functions",
+  "first-name": "Імя",
+  "functions": "Функцыі",
   "language-code": "be",
   "languages": {
     "be": {
@@ -41,9 +41,9 @@
       "name": "Українська"
     }
   },
-  "last-meetings": "Last meetings",
-  "last-name": "Last name",
-  "last-resolutions": "Last resolutions",
+  "last-meetings": "Нядаўнія сустрэчы",
+  "last-name": "Прозвішча",
+  "last-resolutions": "Апошнія пастановы",
   "latest-updates": "Latest updates",
   "login": "Log in",
   "login-with": "Log in using",
