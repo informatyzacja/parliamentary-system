@@ -9,12 +9,17 @@
   "Download": "Herunterladen",
   "error": {
     "change-language-error": "Fehler beim Ändern der Sprache",
+    "login-error": "Beim Anmelden ist ein Fehler aufgetreten",
     "title": "Fehler"
   },
   "first-name": "Vorname",
   "functions": "Funktionen",
   "language-code": "de",
   "languages": {
+    "be": {
+      "flag": "🇧🇾",
+      "name": "беларуская"
+    },
     "de": {
       "flag": "🇩🇪",
       "name": "Deutsch"
@@ -41,6 +46,7 @@
   "last-resolutions": "Letzte Beschlüsse",
   "latest-updates": "Nachrichten",
   "login": "Anmelden",
+  "login-with": "Anmelden mit",
   "logout": "Abmelden",
   "meeting": {
     "agenda": "Sitzung-Agenda",
