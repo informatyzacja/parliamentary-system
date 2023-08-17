@@ -43,7 +43,7 @@
     "@strapi/plugin-users-permissions": "4.12.4",
     "@strapi/strapi": "4.12.4",
     "oauth": "^0.10.0",
-    "pg": "^8.11.2",
+    "pg": "^8.11.3",
     "react-select": "^5.7.4"
   },
   "strapi": {
