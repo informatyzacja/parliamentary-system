@@ -163,8 +163,7 @@ const Meeting = () => {
         <Box mt={16}>
           <Heading size="md">{t('resolutions')}</Heading>
         </Box>
-        {meetingQuery.data?.meeting.data.attributes.resolutions.data.length ===
-        0 ? (
+        {meetingQuery.loading || resolutions.length === 0 ? (
           <VStack>
             <InfoOutlineIcon mt={2} />
             <Text size="md">{t('no-resolutions')}</Text>

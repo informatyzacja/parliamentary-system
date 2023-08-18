@@ -65,6 +65,8 @@ jobs:
             echo NEXT_PUBLIC_USOS_FIELDS="${{ vars.NEXT_PUBLIC_USOS_FIELDS }}" >> .env
             echo STRAPI_URL="${{ vars.NEXT_PUBLIC_API_URL }}" >> .env
 
+            echo WEB_URL="${{ vars.NEXTAUTH_URL }}" >> .env.local
+
             echo DATABASE_NAME="${{ secrets.DATABASE_NAME }}" >> .env
             echo DATABASE_USERNAME="${{ secrets.DATABASE_USERNAME }}" >> .env
             echo DATABASE_PASSWORD="${{ secrets.DATABASE_PASSWORD }}" >> .env

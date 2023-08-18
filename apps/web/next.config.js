@@ -13,6 +13,8 @@ const config = {
       process.env.NEXT_PUBLIC_USOS_BASE_URL,
       process.env.NEXT_PUBLIC_OAUTH_DOMAIN,
     ],
+    'object-src': ["'self'", process.env.NEXT_PUBLIC_API_URL],
+    'frame-src': ["'self'", process.env.NEXT_PUBLIC_API_URL],
     'style-src': ["'self'", "'unsafe-inline'"],
     'prefetch-src': false,
   },
