@@ -37,8 +37,13 @@ export const PreviewPDF = ({
             {filename}
           </ModalHeader>
           <ModalCloseButton />
-          <ModalBody mb={4}>
-            <Box shadow="md" h="100%" overflowY="scroll">
+          <ModalBody px={0} pb={0}>
+            <Box
+              shadow="md"
+              h="100%"
+              overflowY="scroll"
+              borderBottomRadius={{ md: 'md' }}
+            >
               <object
                 type="application/pdf"
                 data={url}
