@@ -26,14 +26,16 @@ export const PreviewPDF = ({
     <>
       <Button onClick={modal.onOpen}>{t('preview')}</Button>
       <Modal
-        size="4xl"
+        size={{ base: 'full', md: '3xl', lg: '4xl' }}
         isOpen={modal.isOpen}
         onClose={modal.onClose}
         isCentered={true}
       >
         <ModalOverlay backdropFilter="blur(10px)" />
-        <ModalContent height="90vh">
-          <ModalHeader>{filename}</ModalHeader>
+        <ModalContent height={{ base: '100%', md: '90vh' }}>
+          <ModalHeader mr={8} textOverflow="ellipsis">
+            {filename}
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody mb={4}>
             <Box shadow="md" h="100%" overflowY="scroll">
