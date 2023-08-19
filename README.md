@@ -59,6 +59,8 @@ gdzie klucze do USOS uzyskasz od swojej uczelni
 
 tak samo jak wyżej w `.env`
 
+- `WEB_URL` - url frontendu
+
 #### web/.env
 
 - `NEXT_PUBLIC_API_URL` - url backendu

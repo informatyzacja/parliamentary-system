@@ -19418,29 +19418,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-pdf@npm:7.3.3":
-  version: 7.3.3
-  resolution: "react-pdf@npm:7.3.3"
-  dependencies:
-    clsx: ^2.0.0
-    make-cancellable-promise: ^1.3.1
-    make-event-props: ^1.6.0
-    merge-refs: ^1.2.1
-    pdfjs-dist: 3.6.172
-    prop-types: ^15.6.2
-    tiny-invariant: ^1.0.0
-    tiny-warning: ^1.0.0
-  peerDependencies:
-    "@types/react": ^16.8.0 || ^17.0.0 || ^18.0.0
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 472712275ba76bccc4e17fd217a31835780a43a900572ae4b7ebd064926fd19a0d86da2e0691d8f4f452fd1475e14569da6ddfd687bbae366ccb18a7a069129b
-  languageName: node
-  linkType: hard
-
 "react-query@npm:3.39.3":
   version: 3.39.3
   resolution: "react-query@npm:3.39.3"
@@ -22970,7 +22947,6 @@ __metadata:
     react-dom: ^18.2.0
     react-i18next: ^13.0.3
     react-icons: ^4.10.1
-    react-pdf: 7.3.3
     ts-node: ^10.9.1
     typescript: ^5.1.6
   languageName: unknown
