@@ -30,9 +30,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alergeek-ventures/eslint-config@npm:^7.0.17":
-  version: 7.0.17
-  resolution: "@alergeek-ventures/eslint-config@npm:7.0.17"
+"@alergeek-ventures/eslint-config@npm:^7.0.21":
+  version: 7.0.21
+  resolution: "@alergeek-ventures/eslint-config@npm:7.0.21"
   dependencies:
     "@babel/core": 7.22.10
     "@babel/eslint-parser": 7.22.10
@@ -44,7 +44,7 @@ __metadata:
     eslint: 8.47.0
     eslint-import-resolver-typescript: 3.6.0
     eslint-plugin-cypress: 2.14.0
-    eslint-plugin-import: 2.28.0
+    eslint-plugin-import: 2.28.1
     eslint-plugin-jest: 27.2.3
     eslint-plugin-jest-dom: 5.0.2
     eslint-plugin-jsx-a11y: 6.7.1
@@ -54,7 +54,7 @@ __metadata:
     eslint-plugin-react-native-a11y: 3.3.0
     eslint-plugin-simple-import-sort: 10.0.0
     eslint-plugin-testing-library: 5.11.1
-  checksum: 1bd96a0d2384795c7d7fc2ce73f1cfbada755e00adb064ac14997f99585bfac3ffdd509c973b2f106433ace0f77eccd04f35ec0aa2f883833de0e2d0c1d8cb18
+  checksum: c9cfa3700f084d83d1ad6aa0e3f084f89c3fd2e62a7661e38f41a536df45f980f27e8aeafe066c8a4eb69950c7f6bc496d59c5e453f742cc7e5e057da11af523
   languageName: node
   linkType: hard
 
@@ -11659,9 +11659,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import@npm:2.28.0":
-  version: 2.28.0
-  resolution: "eslint-plugin-import@npm:2.28.0"
+"eslint-plugin-import@npm:2.28.1":
+  version: 2.28.1
+  resolution: "eslint-plugin-import@npm:2.28.1"
   dependencies:
     array-includes: ^3.1.6
     array.prototype.findlastindex: ^1.2.2
@@ -11672,18 +11672,17 @@ __metadata:
     eslint-import-resolver-node: ^0.3.7
     eslint-module-utils: ^2.8.0
     has: ^1.0.3
-    is-core-module: ^2.12.1
+    is-core-module: ^2.13.0
     is-glob: ^4.0.3
     minimatch: ^3.1.2
     object.fromentries: ^2.0.6
     object.groupby: ^1.0.0
     object.values: ^1.1.6
-    resolve: ^1.22.3
     semver: ^6.3.1
     tsconfig-paths: ^3.14.2
   peerDependencies:
     eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-  checksum: f9eba311b93ca1bb89311856b1f7285bd79e0181d7eb70fe115053ff77e2235fea749b30f538b78927dc65769340b5be61f4c9581d1c82bcdcccb2061f440ad1
+  checksum: e8ae6dd8f06d8adf685f9c1cfd46ac9e053e344a05c4090767e83b63a85c8421ada389807a39e73c643b9bff156715c122e89778169110ed68d6428e12607edf
   languageName: node
   linkType: hard
 
@@ -14526,12 +14525,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-core-module@npm:^2.11.0, is-core-module@npm:^2.12.0, is-core-module@npm:^2.12.1, is-core-module@npm:^2.5.0, is-core-module@npm:^2.8.1, is-core-module@npm:^2.9.0":
+"is-core-module@npm:^2.11.0, is-core-module@npm:^2.12.0, is-core-module@npm:^2.5.0, is-core-module@npm:^2.8.1, is-core-module@npm:^2.9.0":
   version: 2.12.1
   resolution: "is-core-module@npm:2.12.1"
   dependencies:
     has: ^1.0.3
   checksum: f04ea30533b5e62764e7b2e049d3157dc0abd95ef44275b32489ea2081176ac9746ffb1cdb107445cf1ff0e0dfcad522726ca27c27ece64dadf3795428b8e468
+  languageName: node
+  linkType: hard
+
+"is-core-module@npm:^2.13.0":
+  version: 2.13.0
+  resolution: "is-core-module@npm:2.13.0"
+  dependencies:
+    has: ^1.0.3
+  checksum: 053ab101fb390bfeb2333360fd131387bed54e476b26860dc7f5a700bbf34a0ec4454f7c8c4d43e8a0030957e4b3db6e16d35e1890ea6fb654c833095e040355
   languageName: node
   linkType: hard
 
@@ -20420,7 +20428,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.1.6, resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.12.0, resolve@npm:^1.19.0, resolve@npm:^1.20.0, resolve@npm:^1.22.1, resolve@npm:^1.22.3":
+"resolve@npm:^1.1.6, resolve@npm:^1.1.7, resolve@npm:^1.10.0, resolve@npm:^1.12.0, resolve@npm:^1.19.0, resolve@npm:^1.20.0, resolve@npm:^1.22.1":
   version: 1.22.3
   resolution: "resolve@npm:1.22.3"
   dependencies:
@@ -20446,7 +20454,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.1.6#~builtin<compat/resolve>, resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.3#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.1.6#~builtin<compat/resolve>, resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>":
   version: 1.22.3
   resolution: "resolve@patch:resolve@npm%3A1.22.3#~builtin<compat/resolve>::version=1.22.3&hash=c3c19d"
   dependencies:
@@ -23189,7 +23197,7 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@ajna/pagination": ^1.4.19
-    "@alergeek-ventures/eslint-config": ^7.0.17
+    "@alergeek-ventures/eslint-config": ^7.0.21
     "@apollo/client": ^3.8.1
     "@babel/core": ^7.22.10
     "@babel/eslint-parser": ^7.22.10
