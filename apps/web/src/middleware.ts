@@ -5,10 +5,8 @@ export const config = {
     '/',
     '/resolutions',
     '/resolutions/:path*',
-    '/struktura',
-    '/sprawozdania',
-    '/aktualnosci',
-    '/posiedzenia',
-    '/posiedzenia/:path*',
+    '/structure',
+    '/meetings',
+    '/meetings/:path*',
   ],
 };

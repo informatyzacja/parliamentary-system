@@ -259,7 +259,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     label: 'meeting.title-plural',
-    href: '/posiedzenia',
+    href: '/meetings',
     prefetch: MeetingsDocument,
   },
   {
@@ -269,7 +269,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     label: 'organisation-structure',
-    href: '/struktura',
+    href: '/structure',
     prefetch: StudentsDocument,
   },
 ];
