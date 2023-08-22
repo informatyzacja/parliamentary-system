@@ -60,7 +60,7 @@ const ResolutionPage = () => {
             flexDirection={{ base: 'column', lg: 'row' }}
             alignItems="stretch"
             gap={4}
-            w={{ base: '90vw', md: '60vw' }}
+            w={{ base: '90vw', lg: '70vw' }}
           >
             <Card flex={1} minH="90vh">
               <CardHeader pb={0}>
@@ -86,18 +86,16 @@ const ResolutionPage = () => {
                   }
                   aria-label={mainDocument?.attributes.name}
                   w="100%"
-                  h="100%"
+                  h="90vh"
                   mb={0}
                   pb={0}
-                  display="block"
-                  position="relative"
                   borderBottomRadius="md"
                 >
                   {mainDocument?.attributes.name}
                 </Object>
               </CardBody>
             </Card>
-            <VStack gap={4} w={{ base: '90vw', md: '25vw' }}>
+            <VStack gap={4} w={{ base: '90vw', lg: '25vw' }}>
               <Card w="100%">
                 <CardHeader>
                   <Heading size="md">Informacje</Heading>
@@ -132,10 +130,7 @@ const ResolutionPage = () => {
                           <Text flex={1} mr={8} overflowX="hidden">
                             {attachment.attributes.name}
                           </Text>
-                          <Button
-                            leftIcon={<DownloadIcon />}
-                            size={{ base: 'xs', md: 'sm' }}
-                          >
+                          <Button leftIcon={<DownloadIcon />} size="sm">
                             {t('Download')}
                           </Button>
                         </Flex>
