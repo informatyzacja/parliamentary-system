@@ -77,7 +77,8 @@
     "date-of-publication": "Data publikacji",
     "information": "Informacje",
     "main-document": "Dokument uchwały",
-    "no-attachments": "Brak załączników"
+    "no-attachments": "Brak załączników",
+    "no-main-document": "Brak dokumentu uchwały"
   },
   "resolutions": "Uchwały",
   "student-number": "Numer indeksu",

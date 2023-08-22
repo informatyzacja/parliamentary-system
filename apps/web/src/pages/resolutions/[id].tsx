@@ -1,4 +1,5 @@
 import { DownloadIcon } from '@chakra-ui/icons';
+import { Link } from '@chakra-ui/next-js';
 import {
   Button,
   Card,
@@ -62,37 +63,61 @@ const ResolutionPage = () => {
             gap={4}
             w={{ base: '90vw', lg: '70vw' }}
           >
-            <Card flex={1} minH="90vh">
+            <Card flex={1} minH={mainDocument ? '90vh' : 'fit-content'}>
               <CardHeader pb={0}>
                 <Flex alignItems="center">
                   <Heading size="md" flex={1}>
                     {t('resolution.main-document')}
                   </Heading>
-                  <Button
-                    leftIcon={<DownloadIcon />}
-                    size={{ base: 'sm', md: 'md' }}
-                  >
-                    {t('Download')}
-                  </Button>
+                  {mainDocument ? (
+                    <Link
+                      href={
+                        process.env.NEXT_PUBLIC_API_URL +
+                        mainDocument.attributes.url
+                      }
+                      target="_blank"
+                    >
+                      <Button
+                        leftIcon={<DownloadIcon />}
+                        size={{ base: 'sm', md: 'md' }}
+                      >
+                        {t('Download')}
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      leftIcon={<DownloadIcon />}
+                      size={{ base: 'sm', md: 'md' }}
+                      isDisabled={true}
+                    >
+                      {t('Download')}
+                    </Button>
+                  )}
                 </Flex>
               </CardHeader>
               <CardBody px={0} pb={0}>
-                <Object
-                  type="application/pdf"
-                  data={
-                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                    process.env.NEXT_PUBLIC_API_URL! +
-                    mainDocument?.attributes.url
-                  }
-                  aria-label={mainDocument?.attributes.name}
-                  w="100%"
-                  h="90vh"
-                  mb={0}
-                  pb={0}
-                  borderBottomRadius="md"
-                >
-                  {mainDocument?.attributes.name}
-                </Object>
+                {mainDocument ? (
+                  <Object
+                    type="application/pdf"
+                    data={
+                      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                      process.env.NEXT_PUBLIC_API_URL! +
+                      mainDocument.attributes.url
+                    }
+                    aria-label={mainDocument.attributes.name}
+                    w="100%"
+                    h="90vh"
+                    mb={0}
+                    pb={0}
+                    borderBottomRadius="md"
+                  >
+                    {mainDocument.attributes.name}
+                  </Object>
+                ) : (
+                  <Text textAlign="center">
+                    {t('resolution.no-main-document')}
+                  </Text>
+                )}
               </CardBody>
             </Card>
             <VStack gap={4} w={{ base: '90vw', lg: '25vw' }}>
@@ -133,9 +158,17 @@ const ResolutionPage = () => {
                             <Text flex={1} mr={8} overflowX="hidden">
                               {attachment.attributes.name}
                             </Text>
-                            <Button leftIcon={<DownloadIcon />} size="sm">
-                              {t('Download')}
-                            </Button>
+                            <Link
+                              href={
+                                process.env.NEXT_PUBLIC_API_URL +
+                                attachment.attributes.url
+                              }
+                              target="_blank"
+                            >
+                              <Button leftIcon={<DownloadIcon />} size="sm">
+                                {t('Download')}
+                              </Button>
+                            </Link>
                           </Flex>
                         </ListItem>
                       ))

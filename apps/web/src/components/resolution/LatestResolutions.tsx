@@ -1,4 +1,4 @@
-import { DownloadIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon, DownloadIcon } from '@chakra-ui/icons';
 import { Link } from '@chakra-ui/next-js';
 import {
   Box,
@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import { useTranslation } from 'next-i18next';
+import React from 'react';
 
 import type { ResolutionEntity, UploadFileEntity } from '@/api/graphql';
 import type { Optional } from '@/types/Optional';
@@ -48,28 +49,11 @@ export const LatestResolutions = ({
                   {resolution.attributes.name}
                 </Box>
                 <Box maxWidth="fit-content" justifySelf="right">
-                  {(resolution.attributes.document
-                    .data as Optional<UploadFileEntity>) ? (
-                    <Link
-                      href={
-                        process.env.NEXT_PUBLIC_API_URL +
-                        resolution.attributes.document.data.attributes.url
-                      }
-                      target="_blank"
-                    >
-                      <Button leftIcon={<DownloadIcon />} size="sm">
-                        {t('Download')}
-                      </Button>
-                    </Link>
-                  ) : (
-                    <Button
-                      leftIcon={<DownloadIcon />}
-                      size="sm"
-                      isDisabled={true}
-                    >
-                      {t('Download')}
+                  <Link href={`/resolutions/${resolution.id}`}>
+                    <Button leftIcon={<ArrowForwardIcon />} size="sm">
+                      {t('More')}
                     </Button>
-                  )}
+                  </Link>
                 </Box>
               </Flex>
             </Box>

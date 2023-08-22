@@ -77,7 +77,8 @@
     "date-of-publication": "Date of publication",
     "information": "Information",
     "main-document": "Main document",
-    "no-attachments": "No attachments"
+    "no-attachments": "No attachments",
+    "no-main-document": "No main document"
   },
   "resolutions": "Resolutions",
   "student-number": "Student number",
