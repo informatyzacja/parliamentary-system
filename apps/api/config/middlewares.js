@@ -1,6 +1,16 @@
 module.exports = [
   'strapi::errors',
-  'strapi::security',
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        directives: {
+          'frame-ancestors': ["'self'", process.env.WEB_URL],
+        },
+      },
+      frameguard: false,
+    },
+  },
   'strapi::cors',
   'strapi::logger',
   'strapi::query',

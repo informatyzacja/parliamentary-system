@@ -37,6 +37,9 @@ if (providers.length === 0) {
 
 const options = {
   providers,
+  pages: {
+    signIn: '/auth/login',
+  },
   session: { strategy: 'jwt' },
   callbacks: {
     async session({ session, token, user }) {

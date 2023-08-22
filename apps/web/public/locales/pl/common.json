@@ -9,12 +9,17 @@
   "Download": "Pobierz",
   "error": {
     "change-language-error": "Wystąpił błąd podczas zmiany języka",
+    "login-error": "Wystąpił błąd podczas logowania",
     "title": "Błąd"
   },
   "first-name": "Imię",
   "functions": "Funkcje",
   "language-code": "pl",
   "languages": {
+    "be": {
+      "flag": "🇧🇾",
+      "name": "беларуская"
+    },
     "de": {
       "flag": "🇩🇪",
       "name": "Deutsch"
@@ -41,6 +46,7 @@
   "last-resolutions": "Ostatnie uchwały",
   "latest-updates": "Aktualności",
   "login": "Zaloguj się",
+  "login-with": "Zaloguj się używając",
   "logout": "Wyloguj się",
   "meeting": {
     "agenda": "Agenda posiedzenia",
