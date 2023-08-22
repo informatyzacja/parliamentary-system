@@ -1,0 +1,37 @@
+query Resolution($id: ID!) {
+  resolution(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        publishedAt
+        meeting {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        document {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+        attachments {
+          data {
+            id
+            attributes {
+              name
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,12 @@
 import { DownloadIcon } from '@chakra-ui/icons';
 import { Link } from '@chakra-ui/next-js';
 import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
   Button,
   ScaleFade,
   Table,
@@ -38,6 +44,21 @@ export const Resolutions = ({
 
   return (
     <ScaleFade initialScale={0.9} in={true}>
+      <Accordion allowMultiple={true} allowToggle={true}>
+        {resolutions.map((resolution) => (
+          <AccordionItem key={resolution.id}>
+            <h2>
+              <AccordionButton>
+                <Box as="span" flex="1" textAlign="left">
+                  {resolution.attributes.name}
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+            </h2>
+            <AccordionPanel>id: {resolution.id}</AccordionPanel>
+          </AccordionItem>
+        ))}
+      </Accordion>
       <TableContainer maxW="90vw">
         <Table size="lg">
           <Thead>

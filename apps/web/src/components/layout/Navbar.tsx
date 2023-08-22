@@ -264,7 +264,7 @@ const NAV_ITEMS: NavItem[] = [
   },
   {
     label: 'resolutions',
-    href: '/uchwaly',
+    href: '/resolutions',
     prefetch: ResolutionsDocument,
   },
   {

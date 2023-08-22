@@ -31,16 +31,9 @@ export const LatestResolutions = ({
       <CardBody>
         <Flex flexDirection="column">
           {resolutions.slice(0, 5).map((resolution) => (
-            <>
+            <Box key={resolution.id}>
               <Divider />
-              <Flex
-                key={resolution.id}
-                gap={5}
-                flex={1}
-                alignItems="center"
-                px={5}
-                py={2.5}
-              >
+              <Flex gap={5} flex={1} alignItems="center" px={5} py={2.5}>
                 <Box
                   textAlign="left"
                   minWidth="20%"
@@ -79,7 +72,7 @@ export const LatestResolutions = ({
                   )}
                 </Box>
               </Flex>
-            </>
+            </Box>
           ))}
           <Divider />
         </Flex>
