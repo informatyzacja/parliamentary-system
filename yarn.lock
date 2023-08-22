@@ -17222,7 +17222,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-
 "next-safe@npm:^3.4.1":
   version: 3.4.1
   resolution: "next-safe@npm:3.4.1"
