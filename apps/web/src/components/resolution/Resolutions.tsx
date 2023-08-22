@@ -1,4 +1,4 @@
-import { DownloadIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon, DownloadIcon } from '@chakra-ui/icons';
 import { Link } from '@chakra-ui/next-js';
 import {
   Accordion,
@@ -44,21 +44,6 @@ export const Resolutions = ({
 
   return (
     <ScaleFade initialScale={0.9} in={true}>
-      <Accordion allowMultiple={true} allowToggle={true}>
-        {resolutions.map((resolution) => (
-          <AccordionItem key={resolution.id}>
-            <h2>
-              <AccordionButton>
-                <Box as="span" flex="1" textAlign="left">
-                  {resolution.attributes.name}
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel>id: {resolution.id}</AccordionPanel>
-          </AccordionItem>
-        ))}
-      </Accordion>
       <TableContainer maxW="90vw">
         <Table size="lg">
           <Thead>
@@ -84,7 +69,7 @@ export const Resolutions = ({
                   .data as Optional<MeetingEntity>) ? (
                   <Td>
                     <Link
-                      href={`/posiedzenia/${resolution.attributes.meeting.data.id}`}
+                      href={`/meetings/${resolution.attributes.meeting.data.id}`}
                     >
                       {resolution.attributes.meeting.data.attributes.name}
                     </Link>
@@ -97,29 +82,11 @@ export const Resolutions = ({
                   )}
                 </Td>
                 <Td>
-                  {(resolution.attributes.document
-                    .data as Optional<UploadFileEntity>) ? (
-                    <Link
-                      href={
-                        process.env.NEXT_PUBLIC_API_URL +
-                        resolution.attributes.document.data.attributes.url
-                      }
-                      target="_blank"
-                      prefetch={false}
-                    >
-                      <Button leftIcon={<DownloadIcon />} size="sm">
-                        {t('Download')}
-                      </Button>
-                    </Link>
-                  ) : (
-                    <Button
-                      leftIcon={<DownloadIcon />}
-                      size="sm"
-                      isDisabled={true}
-                    >
-                      {t('Download')}
+                  <Link href={`/resolutions/${resolution.id}`}>
+                    <Button leftIcon={<ArrowForwardIcon />} size="sm">
+                      {t('More')}
                     </Button>
-                  )}
+                  </Link>
                 </Td>
               </Tr>
             ))}

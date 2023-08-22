@@ -53,7 +53,7 @@ const ResolutionPage = () => {
             <Text fontSize="md" mb={8}>
               {resolution?.attributes.meeting.data
                 ? resolution.attributes.meeting.data.attributes.name
-                : 'Circulation vote'}
+                : t('resolution.circulation-vote')}
             </Text>
           </VStack>
           <Flex
@@ -66,7 +66,7 @@ const ResolutionPage = () => {
               <CardHeader pb={0}>
                 <Flex alignItems="center">
                   <Heading size="md" flex={1}>
-                    Dokument uchwały
+                    {t('resolution.main-document')}
                   </Heading>
                   <Button
                     leftIcon={<DownloadIcon />}
@@ -97,14 +97,16 @@ const ResolutionPage = () => {
             </Card>
             <VStack gap={4} w={{ base: '90vw', lg: '25vw' }}>
               <Card w="100%">
-                <CardHeader>
-                  <Heading size="md">Informacje</Heading>
+                <CardHeader pb={0}>
+                  <Heading size="md">{t('resolution.information')}</Heading>
                 </CardHeader>
                 <CardBody>
                   <UnorderedList>
                     <ListItem>
                       <Flex>
-                        <Text flex={1}>Data publikacji:</Text>
+                        <Text flex={1}>
+                          {t('resolution.date-of-publication')}:
+                        </Text>
                         <Text>
                           {format(
                             new Date(
@@ -119,23 +121,27 @@ const ResolutionPage = () => {
                 </CardBody>
               </Card>
               <Card w="100%">
-                <CardHeader>
-                  <Heading size="md">Załączniki</Heading>
+                <CardHeader pb={0}>
+                  <Heading size="md">{t('resolution.attachments')}</Heading>
                 </CardHeader>
                 <CardBody overflowY="scroll">
                   <List spacing={4}>
-                    {attachments.map((attachment) => (
-                      <ListItem key={attachment.id}>
-                        <Flex alignItems="center">
-                          <Text flex={1} mr={8} overflowX="hidden">
-                            {attachment.attributes.name}
-                          </Text>
-                          <Button leftIcon={<DownloadIcon />} size="sm">
-                            {t('Download')}
-                          </Button>
-                        </Flex>
-                      </ListItem>
-                    ))}
+                    {attachments.length ? (
+                      attachments.map((attachment) => (
+                        <ListItem key={attachment.id}>
+                          <Flex alignItems="center">
+                            <Text flex={1} mr={8} overflowX="hidden">
+                              {attachment.attributes.name}
+                            </Text>
+                            <Button leftIcon={<DownloadIcon />} size="sm">
+                              {t('Download')}
+                            </Button>
+                          </Flex>
+                        </ListItem>
+                      ))
+                    ) : (
+                      <Center>{t('resolution.no-attachments')}</Center>
+                    )}
                   </List>
                 </CardBody>
               </Card>
