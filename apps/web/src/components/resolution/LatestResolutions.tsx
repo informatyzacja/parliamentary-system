@@ -51,7 +51,7 @@ export const LatestResolutions = ({
                 <Box maxWidth="fit-content" justifySelf="right">
                   <Link href={`/resolutions/${resolution.id}`}>
                     <Button leftIcon={<ArrowForwardIcon />} size="sm">
-                      {t('More')}
+                      {t('more')}
                     </Button>
                   </Link>
                 </Box>

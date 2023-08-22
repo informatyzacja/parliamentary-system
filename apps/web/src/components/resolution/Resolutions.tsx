@@ -84,7 +84,7 @@ export const Resolutions = ({
                 <Td>
                   <Link href={`/resolutions/${resolution.id}`}>
                     <Button leftIcon={<ArrowForwardIcon />} size="sm">
-                      {t('More')}
+                      {t('more')}
                     </Button>
                   </Link>
                 </Td>
