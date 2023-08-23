@@ -68,7 +68,7 @@ export const Resolutions = ({
                 <Td>
                   {format(
                     new Date(resolution.attributes.date as string),
-                    'dd/MM/yyyy HH:mm:ss',
+                    'dd/MM/yyyy',
                   )}
                 </Td>
                 <Td>

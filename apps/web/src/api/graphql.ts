@@ -28,6 +28,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
+  Date: { input: any; output: any };
   DateTime: { input: any; output: any };
   JSON: { input: any; output: any };
   Long: { input: any; output: any };
@@ -88,6 +89,31 @@ export type ComponentStudentCouncilFunctionsInput = {
   functions: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   id: InputMaybe<Scalars['ID']['input']>;
   term_of_office: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type DateFilterInput = {
+  and: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  between: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  contains: InputMaybe<Scalars['Date']['input']>;
+  containsi: InputMaybe<Scalars['Date']['input']>;
+  endsWith: InputMaybe<Scalars['Date']['input']>;
+  eq: InputMaybe<Scalars['Date']['input']>;
+  eqi: InputMaybe<Scalars['Date']['input']>;
+  gt: InputMaybe<Scalars['Date']['input']>;
+  gte: InputMaybe<Scalars['Date']['input']>;
+  in: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  lt: InputMaybe<Scalars['Date']['input']>;
+  lte: InputMaybe<Scalars['Date']['input']>;
+  ne: InputMaybe<Scalars['Date']['input']>;
+  nei: InputMaybe<Scalars['Date']['input']>;
+  not: InputMaybe<DateFilterInput>;
+  notContains: InputMaybe<Scalars['Date']['input']>;
+  notContainsi: InputMaybe<Scalars['Date']['input']>;
+  notIn: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  notNull: InputMaybe<Scalars['Boolean']['input']>;
+  null: InputMaybe<Scalars['Boolean']['input']>;
+  or: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  startsWith: InputMaybe<Scalars['Date']['input']>;
 };
 
 export type DateTimeFilterInput = {
@@ -847,7 +873,7 @@ export type Resolution = {
   __typename?: 'Resolution';
   attachments: Maybe<UploadFileRelationResponseCollection>;
   createdAt: Maybe<Scalars['DateTime']['output']>;
-  date: Scalars['DateTime']['output'];
+  date: Scalars['Date']['output'];
   document: Maybe<UploadFileEntityResponse>;
   meeting: Maybe<MeetingEntityResponse>;
   name: Scalars['String']['output'];
@@ -881,7 +907,7 @@ export type ResolutionEntityResponseCollection = {
 export type ResolutionFiltersInput = {
   and: InputMaybe<Array<InputMaybe<ResolutionFiltersInput>>>;
   createdAt: InputMaybe<DateTimeFilterInput>;
-  date: InputMaybe<DateTimeFilterInput>;
+  date: InputMaybe<DateFilterInput>;
   id: InputMaybe<IdFilterInput>;
   meeting: InputMaybe<MeetingFiltersInput>;
   name: InputMaybe<StringFilterInput>;
@@ -893,7 +919,7 @@ export type ResolutionFiltersInput = {
 
 export type ResolutionInput = {
   attachments: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
-  date: InputMaybe<Scalars['DateTime']['input']>;
+  date: InputMaybe<Scalars['Date']['input']>;
   document: InputMaybe<Scalars['ID']['input']>;
   meeting: InputMaybe<Scalars['ID']['input']>;
   name: InputMaybe<Scalars['String']['input']>;
@@ -1499,7 +1525,7 @@ export type MeetingQuery = {
             attributes: {
               __typename?: 'Resolution';
               name: string;
-              publishedAt: any;
+              date: any;
               document: {
                 __typename?: 'UploadFileEntityResponse';
                 data: {
@@ -1923,7 +1949,6 @@ export const MeetingDocument = gql`
               id
               attributes {
                 name
-                publishedAt
                 document {
                   data {
                     attributes {
@@ -1932,6 +1957,7 @@ export const MeetingDocument = gql`
                     }
                   }
                 }
+                date
               }
             }
           }

@@ -34,7 +34,7 @@ export const DocumentInformation = ({
               <Text>
                 {format(
                   new Date(resolution.attributes.date as string),
-                  'dd/MM/yyyy HH:mm:ss',
+                  'dd/MM/yyyy',
                 )}
               </Text>
             </Flex>
