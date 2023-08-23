@@ -1,12 +1,6 @@
-import { ArrowForwardIcon, DownloadIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Link } from '@chakra-ui/next-js';
 import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-  Box,
   Button,
   ScaleFade,
   Table,
@@ -21,11 +15,7 @@ import { format } from 'date-fns';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 
-import type {
-  MeetingEntity,
-  ResolutionEntity,
-  UploadFileEntity,
-} from '@/api/graphql';
+import type { MeetingEntity, ResolutionEntity } from '@/api/graphql';
 import type { Optional } from '@/types/Optional';
 
 export const Resolutions = ({
@@ -77,7 +67,7 @@ export const Resolutions = ({
                 ) : null}
                 <Td>
                   {format(
-                    new Date(resolution.attributes.publishedAt as string),
+                    new Date(resolution.attributes.date as string),
                     'dd/MM/yyyy HH:mm:ss',
                   )}
                 </Td>

@@ -7,7 +7,6 @@ query Resolutions($page: Int, $pageSize: Int, $termId: ID!) {
       id
       attributes {
         name
-        publishedAt
         meeting {
           data {
             id
@@ -34,6 +33,7 @@ query Resolutions($page: Int, $pageSize: Int, $termId: ID!) {
             }
           }
         }
+        date
       }
     }
     meta {

@@ -847,6 +847,7 @@ export type Resolution = {
   __typename?: 'Resolution';
   attachments: Maybe<UploadFileRelationResponseCollection>;
   createdAt: Maybe<Scalars['DateTime']['output']>;
+  date: Scalars['DateTime']['output'];
   document: Maybe<UploadFileEntityResponse>;
   meeting: Maybe<MeetingEntityResponse>;
   name: Scalars['String']['output'];
@@ -880,6 +881,7 @@ export type ResolutionEntityResponseCollection = {
 export type ResolutionFiltersInput = {
   and: InputMaybe<Array<InputMaybe<ResolutionFiltersInput>>>;
   createdAt: InputMaybe<DateTimeFilterInput>;
+  date: InputMaybe<DateTimeFilterInput>;
   id: InputMaybe<IdFilterInput>;
   meeting: InputMaybe<MeetingFiltersInput>;
   name: InputMaybe<StringFilterInput>;
@@ -891,6 +893,7 @@ export type ResolutionFiltersInput = {
 
 export type ResolutionInput = {
   attachments: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  date: InputMaybe<Scalars['DateTime']['input']>;
   document: InputMaybe<Scalars['ID']['input']>;
   meeting: InputMaybe<Scalars['ID']['input']>;
   name: InputMaybe<Scalars['String']['input']>;
@@ -1460,7 +1463,7 @@ export type LatestMeetingsAndResolutionsQuery = {
       attributes: {
         __typename?: 'Resolution';
         name: string;
-        publishedAt: any;
+        date: any;
         document: {
           __typename?: 'UploadFileEntityResponse';
           data: {
@@ -1604,7 +1607,7 @@ export type ResolutionQuery = {
       attributes: {
         __typename?: 'Resolution';
         name: string;
-        publishedAt: any;
+        date: any;
         meeting: {
           __typename?: 'MeetingEntityResponse';
           data: {
@@ -1658,7 +1661,7 @@ export type ResolutionsQuery = {
       attributes: {
         __typename?: 'Resolution';
         name: string;
-        publishedAt: any;
+        date: any;
         meeting: {
           __typename?: 'MeetingEntityResponse';
           data: {
@@ -1839,15 +1842,11 @@ export const LatestMeetingsAndResolutionsDocument = gql`
         }
       }
     }
-    resolutions(
-      sort: ["publishedAt:desc", "id:desc"]
-      pagination: { limit: 10 }
-    ) {
+    resolutions(sort: ["date:desc", "id:desc"], pagination: { limit: 10 }) {
       data {
         id
         attributes {
           name
-          publishedAt
           document {
             data {
               attributes {
@@ -1855,6 +1854,7 @@ export const LatestMeetingsAndResolutionsDocument = gql`
               }
             }
           }
+          date
         }
       }
     }
@@ -2097,7 +2097,6 @@ export const ResolutionDocument = gql`
         id
         attributes {
           name
-          publishedAt
           meeting {
             data {
               id
@@ -2124,6 +2123,7 @@ export const ResolutionDocument = gql`
               }
             }
           }
+          date
         }
       }
     }
@@ -2188,7 +2188,6 @@ export const ResolutionsDocument = gql`
         id
         attributes {
           name
-          publishedAt
           meeting {
             data {
               id
@@ -2215,6 +2214,7 @@ export const ResolutionsDocument = gql`
               }
             }
           }
+          date
         }
       }
       meta {

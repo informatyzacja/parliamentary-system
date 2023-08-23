@@ -4,7 +4,6 @@ query Resolution($id: ID!) {
       id
       attributes {
         name
-        publishedAt
         meeting {
           data {
             id
@@ -31,6 +30,7 @@ query Resolution($id: ID!) {
             }
           }
         }
+        date
       }
     }
   }

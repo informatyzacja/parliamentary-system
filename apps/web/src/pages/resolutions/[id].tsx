@@ -100,8 +100,7 @@ const ResolutionPage = () => {
                   <Object
                     type="application/pdf"
                     data={
-                      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                      process.env.NEXT_PUBLIC_API_URL! +
+                      process.env.NEXT_PUBLIC_API_URL +
                       mainDocument.attributes.url
                     }
                     aria-label={mainDocument.attributes.name}
@@ -134,10 +133,8 @@ const ResolutionPage = () => {
                         </Text>
                         <Text>
                           {format(
-                            new Date(
-                              resolution?.attributes.publishedAt as string,
-                            ),
-                            'dd/MM/yyyy',
+                            new Date(resolution?.attributes.date as string),
+                            'dd/MM/yyyy HH:mm:ss',
                           )}
                         </Text>
                       </Flex>
