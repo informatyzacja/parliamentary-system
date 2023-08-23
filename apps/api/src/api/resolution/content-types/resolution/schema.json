@@ -37,6 +37,11 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "date": {
+      "type": "date",
+      "required": true,
+      "default": "2023-08-23"
     }
   }
 }

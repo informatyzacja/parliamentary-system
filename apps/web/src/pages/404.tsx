@@ -2,9 +2,6 @@ import { Center, Text } from '@chakra-ui/react';
 import type { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Props {}
-
 function Error404Page() {
   return (
     <Center>
@@ -15,7 +12,7 @@ function Error404Page() {
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+export const getStaticProps: GetStaticProps<object> = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },

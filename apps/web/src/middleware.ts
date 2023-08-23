@@ -4,9 +4,9 @@ export const config = {
   matcher: [
     '/',
     '/resolutions',
-    '/struktura',
-    '/sprawozdania',
-    '/aktualnosci',
-    '/posiedzenia',
+    '/resolutions/:path*',
+    '/structure',
+    '/meetings',
+    '/meetings/:path*',
   ],
 };

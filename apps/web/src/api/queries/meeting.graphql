@@ -10,7 +10,6 @@ query Meeting($id: ID!) {
             id
             attributes {
               name
-              publishedAt
               document {
                 data {
                   attributes {
@@ -19,6 +18,7 @@ query Meeting($id: ID!) {
                   }
                 }
               }
+              date
             }
           }
         }

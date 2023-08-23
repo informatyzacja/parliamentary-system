@@ -22,7 +22,7 @@ export default function Layout({ children }: LayoutProps) {
   const { status } = useSession();
 
   return (
-    <VStack minH="100vh" spacing={8} className={lato.variable}>
+    <VStack minH="100vh" spacing={8} className={lato.className}>
       <Navbar />
       <Container maxW="container.xl" flex={1} display="flex" flexDir="column">
         <chakra.main>

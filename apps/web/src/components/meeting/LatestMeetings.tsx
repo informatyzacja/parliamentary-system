@@ -54,7 +54,7 @@ export const LatestMeetings = ({ meetings }: { meetings: MeetingEntity[] }) => {
               </Text>
             </Flex>
             <Flex>
-              <Link href={`/posiedzenia/${upcomingMeeting.id}`}>
+              <Link href={`/meetings/${upcomingMeeting.id}`}>
                 <Button
                   leftIcon={<ArrowForwardIcon />}
                   size="sm"
@@ -89,16 +89,9 @@ export const LatestMeetings = ({ meetings }: { meetings: MeetingEntity[] }) => {
             )
             .slice(0, 5)
             .map((meeting) => (
-              <>
+              <Box key={meeting.id}>
                 <Divider />
-                <Flex
-                  key={meeting.id}
-                  gap={5}
-                  flex={1}
-                  alignItems="center"
-                  px={5}
-                  py={2.5}
-                >
+                <Flex gap={5} flex={1} alignItems="center" px={5} py={2.5}>
                   <Box minWidth="20%" display={{ base: 'none', md: 'block' }}>
                     {format(
                       new Date(meeting.attributes.date as string),
@@ -107,7 +100,7 @@ export const LatestMeetings = ({ meetings }: { meetings: MeetingEntity[] }) => {
                   </Box>
                   <Box flex={1}>{meeting.attributes.name}</Box>
                   <Box maxWidth="fit-content" justifySelf="right">
-                    <Link href={`/posiedzenia/${meeting.id}`}>
+                    <Link href={`/meetings/${meeting.id}`}>
                       <Button
                         leftIcon={<ArrowForwardIcon />}
                         size="sm"
@@ -125,7 +118,7 @@ export const LatestMeetings = ({ meetings }: { meetings: MeetingEntity[] }) => {
                     </Link>
                   </Box>
                 </Flex>
-              </>
+              </Box>
             ))}
           <Divider />
         </Flex>

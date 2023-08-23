@@ -69,7 +69,17 @@
   "no-resolutions": "Brak uchwał",
   "organisation-structure": "Struktura organizacyjna",
   "parliament-meetings": "Posiedzenia parlamentu",
+  "parliamentary-system": "System Parlamentarny",
   "preview": "Podgląd",
+  "resolution": {
+    "attachments": "Załączniki",
+    "circulation-vote": "Głosowanie obiegowe",
+    "date-of-publication": "Data publikacji",
+    "information": "Informacje",
+    "main-document": "Dokument uchwały",
+    "no-attachments": "Brak załączników",
+    "no-main-document": "Brak dokumentu uchwały"
+  },
   "resolutions": "Uchwały",
   "student-number": "Numer indeksu",
   "system-status": "Status systemów",

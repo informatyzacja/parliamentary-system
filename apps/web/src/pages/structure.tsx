@@ -27,9 +27,6 @@ import { TermOfOfficeSelector } from '@/components/misc/TermOfOfficeSelector';
 import { useCurrentTermId } from '@/hooks/useCurrentTermId';
 import { useErrorHandler } from '@/hooks/useErrorHandler';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Props {}
-
 function OrganisationStructure() {
   const { t } = useTranslation('common');
   const [currentTermId] = useCurrentTermId();
@@ -128,7 +125,7 @@ function OrganisationStructure() {
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+export const getStaticProps: GetStaticProps<object> = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },

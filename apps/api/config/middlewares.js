@@ -15,7 +15,12 @@ module.exports = [
   'strapi::logger',
   'strapi::query',
   'strapi::body',
-  'strapi::session',
+  {
+    name: 'strapi::session',
+    config: {
+      maxAge: 2592000,
+    },
+  },
   'strapi::favicon',
   'strapi::public',
 ];

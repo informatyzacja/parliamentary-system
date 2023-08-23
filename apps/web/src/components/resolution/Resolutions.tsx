@@ -1,4 +1,4 @@
-import { DownloadIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Link } from '@chakra-ui/next-js';
 import {
   Button,
@@ -15,11 +15,7 @@ import { format } from 'date-fns';
 import { useTranslation } from 'next-i18next';
 import React from 'react';
 
-import type {
-  MeetingEntity,
-  ResolutionEntity,
-  UploadFileEntity,
-} from '@/api/graphql';
+import type { MeetingEntity, ResolutionEntity } from '@/api/graphql';
 import type { Optional } from '@/types/Optional';
 
 export const Resolutions = ({
@@ -63,7 +59,7 @@ export const Resolutions = ({
                   .data as Optional<MeetingEntity>) ? (
                   <Td>
                     <Link
-                      href={`/posiedzenia/${resolution.attributes.meeting.data.id}`}
+                      href={`/meetings/${resolution.attributes.meeting.data.id}`}
                     >
                       {resolution.attributes.meeting.data.attributes.name}
                     </Link>
@@ -71,34 +67,16 @@ export const Resolutions = ({
                 ) : null}
                 <Td>
                   {format(
-                    new Date(resolution.attributes.publishedAt as string),
-                    'dd/MM/yyyy HH:mm:ss',
+                    new Date(resolution.attributes.date as string),
+                    'dd/MM/yyyy',
                   )}
                 </Td>
                 <Td>
-                  {(resolution.attributes.document
-                    .data as Optional<UploadFileEntity>) ? (
-                    <Link
-                      href={
-                        process.env.NEXT_PUBLIC_API_URL +
-                        resolution.attributes.document.data.attributes.url
-                      }
-                      target="_blank"
-                      prefetch={false}
-                    >
-                      <Button leftIcon={<DownloadIcon />} size="sm">
-                        {t('Download')}
-                      </Button>
-                    </Link>
-                  ) : (
-                    <Button
-                      leftIcon={<DownloadIcon />}
-                      size="sm"
-                      isDisabled={true}
-                    >
-                      {t('Download')}
+                  <Link href={`/resolutions/${resolution.id}`}>
+                    <Button leftIcon={<ArrowForwardIcon />} size="sm">
+                      {t('more')}
                     </Button>
-                  )}
+                  </Link>
                 </Td>
               </Tr>
             ))}

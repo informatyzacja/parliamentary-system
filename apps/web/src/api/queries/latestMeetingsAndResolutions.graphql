@@ -8,15 +8,11 @@ query LatestMeetingsAndResolutions {
       }
     }
   }
-  resolutions(
-    sort: ["publishedAt:desc", "id:desc"]
-    pagination: { limit: 10 }
-  ) {
+  resolutions(sort: ["date:desc", "id:desc"], pagination: { limit: 10 }) {
     data {
       id
       attributes {
         name
-        publishedAt
         document {
           data {
             attributes {
@@ -24,6 +20,7 @@ query LatestMeetingsAndResolutions {
             }
           }
         }
+        date
       }
     }
   }

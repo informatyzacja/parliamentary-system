@@ -69,7 +69,17 @@
   "no-resolutions": "No resolutions",
   "organisation-structure": "Organizational structure",
   "parliament-meetings": "Parliament meetings",
+  "parliamentary-system": "Parliamentary system",
   "preview": "Preview",
+  "resolution": {
+    "attachments": "Attachments",
+    "circulation-vote": "Circulation vote",
+    "date-of-publication": "Date of publication",
+    "information": "Information",
+    "main-document": "Main document",
+    "no-attachments": "No attachments",
+    "no-main-document": "No main document"
+  },
   "resolutions": "Resolutions",
   "student-number": "Student number",
   "system-status": "System status",
