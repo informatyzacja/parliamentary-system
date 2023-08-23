@@ -54,7 +54,7 @@ export const LatestMeetings = ({ meetings }: { meetings: MeetingEntity[] }) => {
               </Text>
             </Flex>
             <Flex>
-              <Link href={`/posiedzenia/${upcomingMeeting.id}`}>
+              <Link href={`/meetings/${upcomingMeeting.id}`}>
                 <Button
                   leftIcon={<ArrowForwardIcon />}
                   size="sm"
@@ -100,7 +100,7 @@ export const LatestMeetings = ({ meetings }: { meetings: MeetingEntity[] }) => {
                   </Box>
                   <Box flex={1}>{meeting.attributes.name}</Box>
                   <Box maxWidth="fit-content" justifySelf="right">
-                    <Link href={`/posiedzenia/${meeting.id}`}>
+                    <Link href={`/meetings/${meeting.id}`}>
                       <Button
                         leftIcon={<ArrowForwardIcon />}
                         size="sm"
