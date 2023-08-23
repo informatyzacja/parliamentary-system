@@ -69,7 +69,17 @@
   "no-resolutions": "Keine Beschlüsse",
   "organisation-structure": "Organisationsstruktur",
   "parliament-meetings": "Parlamentssitzungen",
+  "parliamentary-system": "Parliamentary system",
   "preview": "Vorschau",
+  "resolution": {
+    "attachments": "Attachments",
+    "circulation-vote": "Circulation vote",
+    "date-of-publication": "Date of publication",
+    "information": "Information",
+    "main-document": "Main document",
+    "no-attachments": "No attachments",
+    "no-main-document": "No main document"
+  },
   "resolutions": "Beschlüsse",
   "student-number": "Teilnehmernummer",
   "system-status": "Systemstatus",
