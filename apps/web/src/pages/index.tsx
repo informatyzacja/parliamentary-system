@@ -11,9 +11,6 @@ import { LatestMeetings } from '@/components/meeting/LatestMeetings';
 import { LatestResolutions } from '@/components/resolution/LatestResolutions';
 import { useErrorHandler } from '@/hooks/useErrorHandler';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Props {}
-
 function LatestUpdates() {
   const { t } = useTranslation('common');
   const errorHandler = useErrorHandler();
@@ -58,7 +55,7 @@ function LatestUpdates() {
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+export const getStaticProps: GetStaticProps<object> = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },

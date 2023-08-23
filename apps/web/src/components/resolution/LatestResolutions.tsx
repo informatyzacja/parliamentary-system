@@ -1,4 +1,4 @@
-import { DownloadIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Link } from '@chakra-ui/next-js';
 import {
   Box,
@@ -12,9 +12,9 @@ import {
 } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import { useTranslation } from 'next-i18next';
+import React from 'react';
 
-import type { ResolutionEntity, UploadFileEntity } from '@/api/graphql';
-import type { Optional } from '@/types/Optional';
+import type { ResolutionEntity } from '@/api/graphql';
 
 export const LatestResolutions = ({
   resolutions,
@@ -31,23 +31,16 @@ export const LatestResolutions = ({
       <CardBody>
         <Flex flexDirection="column">
           {resolutions.slice(0, 5).map((resolution) => (
-            <>
+            <Box key={resolution.id}>
               <Divider />
-              <Flex
-                key={resolution.id}
-                gap={5}
-                flex={1}
-                alignItems="center"
-                px={5}
-                py={2.5}
-              >
+              <Flex gap={5} flex={1} alignItems="center" px={5} py={2.5}>
                 <Box
                   textAlign="left"
                   minWidth="20%"
                   display={{ base: 'none', md: 'block' }}
                 >
                   {format(
-                    new Date(resolution.attributes.publishedAt as string),
+                    new Date(resolution.attributes.date as string),
                     'dd/MM/yyyy',
                   )}
                 </Box>
@@ -55,31 +48,14 @@ export const LatestResolutions = ({
                   {resolution.attributes.name}
                 </Box>
                 <Box maxWidth="fit-content" justifySelf="right">
-                  {(resolution.attributes.document
-                    .data as Optional<UploadFileEntity>) ? (
-                    <Link
-                      href={
-                        process.env.NEXT_PUBLIC_API_URL +
-                        resolution.attributes.document.data.attributes.url
-                      }
-                      target="_blank"
-                    >
-                      <Button leftIcon={<DownloadIcon />} size="sm">
-                        {t('Download')}
-                      </Button>
-                    </Link>
-                  ) : (
-                    <Button
-                      leftIcon={<DownloadIcon />}
-                      size="sm"
-                      isDisabled={true}
-                    >
-                      {t('Download')}
+                  <Link href={`/resolutions/${resolution.id}`}>
+                    <Button leftIcon={<ArrowForwardIcon />} size="sm">
+                      {t('more')}
                     </Button>
-                  )}
+                  </Link>
                 </Box>
               </Flex>
-            </>
+            </Box>
           ))}
           <Divider />
         </Flex>

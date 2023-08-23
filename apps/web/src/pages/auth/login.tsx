@@ -18,8 +18,6 @@ import { signIn } from 'next-auth/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-interface Props {}
-
 interface Provider {
   id: string;
   name: string;
@@ -41,7 +39,7 @@ function Login() {
     <Center>
       <VStack gap={4}>
         <Heading size="lg" mb={6}>
-          System Parlamentarny
+          {t('parliamentary-system')}
         </Heading>
         <Card minH="100%" minW="fit-content" align="center">
           <CardHeader>
@@ -88,7 +86,7 @@ function Login() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({
+export const getServerSideProps: GetServerSideProps<object> = async ({
   locale,
 }) => {
   return {

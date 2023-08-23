@@ -28,9 +28,6 @@ import { PreviewPDF } from '@/components/misc/PreviewPDF';
 import { Resolutions } from '@/components/resolution/Resolutions';
 import { useErrorHandler } from '@/hooks/useErrorHandler';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Props {}
-
 const Meeting = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
@@ -183,7 +180,7 @@ const Meeting = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({
+export const getServerSideProps: GetServerSideProps<object> = async ({
   locale,
 }) => ({
   props: {

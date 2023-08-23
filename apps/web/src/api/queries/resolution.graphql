@@ -1,8 +1,5 @@
-query Resolutions($page: Int, $pageSize: Int, $termId: ID!) {
-  resolutions(
-    pagination: { page: $page, pageSize: $pageSize }
-    filters: { meeting: { term_of_office: { id: { eq: $termId } } } }
-  ) {
+query Resolution($id: ID!) {
+  resolution(id: $id) {
     data {
       id
       attributes {
@@ -34,11 +31,6 @@ query Resolutions($page: Int, $pageSize: Int, $termId: ID!) {
           }
         }
         date
-      }
-    }
-    meta {
-      pagination {
-        pageCount
       }
     }
   }

@@ -16,9 +16,6 @@ import { Resolutions } from '@/components/resolution/Resolutions';
 import { useCurrentTermId } from '@/hooks/useCurrentTermId';
 import { useErrorHandler } from '@/hooks/useErrorHandler';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface Props {}
-
 interface ResolutionsProps {
   meetingId?: number;
 }
@@ -93,7 +90,7 @@ const ResolutionsPage: FC<ResolutionsProps> = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+export const getStaticProps: GetStaticProps<object> = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? 'pl', ['common'])),
   },

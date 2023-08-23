@@ -48,6 +48,7 @@ export type BooleanFilterInput = {
   lt: InputMaybe<Scalars['Boolean']['input']>;
   lte: InputMaybe<Scalars['Boolean']['input']>;
   ne: InputMaybe<Scalars['Boolean']['input']>;
+  nei: InputMaybe<Scalars['Boolean']['input']>;
   not: InputMaybe<BooleanFilterInput>;
   notContains: InputMaybe<Scalars['Boolean']['input']>;
   notContainsi: InputMaybe<Scalars['Boolean']['input']>;
@@ -103,6 +104,7 @@ export type DateTimeFilterInput = {
   lt: InputMaybe<Scalars['DateTime']['input']>;
   lte: InputMaybe<Scalars['DateTime']['input']>;
   ne: InputMaybe<Scalars['DateTime']['input']>;
+  nei: InputMaybe<Scalars['DateTime']['input']>;
   not: InputMaybe<DateTimeFilterInput>;
   notContains: InputMaybe<Scalars['DateTime']['input']>;
   notContainsi: InputMaybe<Scalars['DateTime']['input']>;
@@ -158,6 +160,7 @@ export type FloatFilterInput = {
   lt: InputMaybe<Scalars['Float']['input']>;
   lte: InputMaybe<Scalars['Float']['input']>;
   ne: InputMaybe<Scalars['Float']['input']>;
+  nei: InputMaybe<Scalars['Float']['input']>;
   not: InputMaybe<FloatFilterInput>;
   notContains: InputMaybe<Scalars['Float']['input']>;
   notContainsi: InputMaybe<Scalars['Float']['input']>;
@@ -302,6 +305,7 @@ export type IdFilterInput = {
   lt: InputMaybe<Scalars['ID']['input']>;
   lte: InputMaybe<Scalars['ID']['input']>;
   ne: InputMaybe<Scalars['ID']['input']>;
+  nei: InputMaybe<Scalars['ID']['input']>;
   not: InputMaybe<IdFilterInput>;
   notContains: InputMaybe<Scalars['ID']['input']>;
   notContainsi: InputMaybe<Scalars['ID']['input']>;
@@ -326,6 +330,7 @@ export type IntFilterInput = {
   lt: InputMaybe<Scalars['Int']['input']>;
   lte: InputMaybe<Scalars['Int']['input']>;
   ne: InputMaybe<Scalars['Int']['input']>;
+  nei: InputMaybe<Scalars['Int']['input']>;
   not: InputMaybe<IntFilterInput>;
   notContains: InputMaybe<Scalars['Int']['input']>;
   notContainsi: InputMaybe<Scalars['Int']['input']>;
@@ -350,6 +355,7 @@ export type JsonFilterInput = {
   lt: InputMaybe<Scalars['JSON']['input']>;
   lte: InputMaybe<Scalars['JSON']['input']>;
   ne: InputMaybe<Scalars['JSON']['input']>;
+  nei: InputMaybe<Scalars['JSON']['input']>;
   not: InputMaybe<JsonFilterInput>;
   notContains: InputMaybe<Scalars['JSON']['input']>;
   notContainsi: InputMaybe<Scalars['JSON']['input']>;
@@ -374,6 +380,7 @@ export type LongFilterInput = {
   lt: InputMaybe<Scalars['Long']['input']>;
   lte: InputMaybe<Scalars['Long']['input']>;
   ne: InputMaybe<Scalars['Long']['input']>;
+  nei: InputMaybe<Scalars['Long']['input']>;
   not: InputMaybe<LongFilterInput>;
   notContains: InputMaybe<Scalars['Long']['input']>;
   notContainsi: InputMaybe<Scalars['Long']['input']>;
@@ -840,6 +847,7 @@ export type Resolution = {
   __typename?: 'Resolution';
   attachments: Maybe<UploadFileRelationResponseCollection>;
   createdAt: Maybe<Scalars['DateTime']['output']>;
+  date: Scalars['DateTime']['output'];
   document: Maybe<UploadFileEntityResponse>;
   meeting: Maybe<MeetingEntityResponse>;
   name: Scalars['String']['output'];
@@ -873,6 +881,7 @@ export type ResolutionEntityResponseCollection = {
 export type ResolutionFiltersInput = {
   and: InputMaybe<Array<InputMaybe<ResolutionFiltersInput>>>;
   createdAt: InputMaybe<DateTimeFilterInput>;
+  date: InputMaybe<DateTimeFilterInput>;
   id: InputMaybe<IdFilterInput>;
   meeting: InputMaybe<MeetingFiltersInput>;
   name: InputMaybe<StringFilterInput>;
@@ -884,6 +893,7 @@ export type ResolutionFiltersInput = {
 
 export type ResolutionInput = {
   attachments: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  date: InputMaybe<Scalars['DateTime']['input']>;
   document: InputMaybe<Scalars['ID']['input']>;
   meeting: InputMaybe<Scalars['ID']['input']>;
   name: InputMaybe<Scalars['String']['input']>;
@@ -914,6 +924,7 @@ export type StringFilterInput = {
   lt: InputMaybe<Scalars['String']['input']>;
   lte: InputMaybe<Scalars['String']['input']>;
   ne: InputMaybe<Scalars['String']['input']>;
+  nei: InputMaybe<Scalars['String']['input']>;
   not: InputMaybe<StringFilterInput>;
   notContains: InputMaybe<Scalars['String']['input']>;
   notContainsi: InputMaybe<Scalars['String']['input']>;
@@ -1452,7 +1463,7 @@ export type LatestMeetingsAndResolutionsQuery = {
       attributes: {
         __typename?: 'Resolution';
         name: string;
-        publishedAt: any;
+        date: any;
         document: {
           __typename?: 'UploadFileEntityResponse';
           data: {
@@ -1582,6 +1593,58 @@ export type MeetingsQuery = {
   };
 };
 
+export type ResolutionQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+export type ResolutionQuery = {
+  __typename?: 'Query';
+  resolution: {
+    __typename?: 'ResolutionEntityResponse';
+    data: {
+      __typename?: 'ResolutionEntity';
+      id: string;
+      attributes: {
+        __typename?: 'Resolution';
+        name: string;
+        date: any;
+        meeting: {
+          __typename?: 'MeetingEntityResponse';
+          data: {
+            __typename?: 'MeetingEntity';
+            id: string;
+            attributes: { __typename?: 'Meeting'; name: string };
+          };
+        };
+        document: {
+          __typename?: 'UploadFileEntityResponse';
+          data: {
+            __typename?: 'UploadFileEntity';
+            id: string;
+            attributes: {
+              __typename?: 'UploadFile';
+              name: string;
+              url: string;
+            };
+          };
+        };
+        attachments: {
+          __typename?: 'UploadFileRelationResponseCollection';
+          data: Array<{
+            __typename?: 'UploadFileEntity';
+            id: string;
+            attributes: {
+              __typename?: 'UploadFile';
+              name: string;
+              url: string;
+            };
+          }>;
+        };
+      };
+    };
+  };
+};
+
 export type ResolutionsQueryVariables = Exact<{
   page: InputMaybe<Scalars['Int']['input']>;
   pageSize: InputMaybe<Scalars['Int']['input']>;
@@ -1598,7 +1661,7 @@ export type ResolutionsQuery = {
       attributes: {
         __typename?: 'Resolution';
         name: string;
-        publishedAt: any;
+        date: any;
         meeting: {
           __typename?: 'MeetingEntityResponse';
           data: {
@@ -1779,15 +1842,11 @@ export const LatestMeetingsAndResolutionsDocument = gql`
         }
       }
     }
-    resolutions(
-      sort: ["publishedAt:desc", "id:desc"]
-      pagination: { limit: 10 }
-    ) {
+    resolutions(sort: ["date:desc", "id:desc"], pagination: { limit: 10 }) {
       data {
         id
         attributes {
           name
-          publishedAt
           document {
             data {
               attributes {
@@ -1795,6 +1854,7 @@ export const LatestMeetingsAndResolutionsDocument = gql`
               }
             }
           }
+          date
         }
       }
     }
@@ -2030,17 +2090,13 @@ export type MeetingsQueryResult = Apollo.QueryResult<
   MeetingsQuery,
   MeetingsQueryVariables
 >;
-export const ResolutionsDocument = gql`
-  query Resolutions($page: Int, $pageSize: Int, $termId: ID!) {
-    resolutions(
-      pagination: { page: $page, pageSize: $pageSize }
-      filters: { meeting: { term_of_office: { id: { eq: $termId } } } }
-    ) {
+export const ResolutionDocument = gql`
+  query Resolution($id: ID!) {
+    resolution(id: $id) {
       data {
         id
         attributes {
           name
-          publishedAt
           meeting {
             data {
               id
@@ -2067,6 +2123,98 @@ export const ResolutionsDocument = gql`
               }
             }
           }
+          date
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useResolutionQuery__
+ *
+ * To run a query within a React component, call `useResolutionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useResolutionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useResolutionQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useResolutionQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    ResolutionQuery,
+    ResolutionQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<ResolutionQuery, ResolutionQueryVariables>(
+    ResolutionDocument,
+    options,
+  );
+}
+export function useResolutionLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ResolutionQuery,
+    ResolutionQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<ResolutionQuery, ResolutionQueryVariables>(
+    ResolutionDocument,
+    options,
+  );
+}
+export type ResolutionQueryHookResult = ReturnType<typeof useResolutionQuery>;
+export type ResolutionLazyQueryHookResult = ReturnType<
+  typeof useResolutionLazyQuery
+>;
+export type ResolutionQueryResult = Apollo.QueryResult<
+  ResolutionQuery,
+  ResolutionQueryVariables
+>;
+export const ResolutionsDocument = gql`
+  query Resolutions($page: Int, $pageSize: Int, $termId: ID!) {
+    resolutions(
+      pagination: { page: $page, pageSize: $pageSize }
+      filters: { meeting: { term_of_office: { id: { eq: $termId } } } }
+    ) {
+      data {
+        id
+        attributes {
+          name
+          meeting {
+            data {
+              id
+              attributes {
+                name
+              }
+            }
+          }
+          document {
+            data {
+              id
+              attributes {
+                name
+                url
+              }
+            }
+          }
+          attachments {
+            data {
+              id
+              attributes {
+                name
+                url
+              }
+            }
+          }
+          date
         }
       }
       meta {
