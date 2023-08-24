@@ -15165,9 +15165,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jotai@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "jotai@npm:2.3.1"
+"jotai@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "jotai@npm:2.4.0"
   peerDependencies:
     "@types/react": ">=17.0.0"
     react: ">=17.0.0"
@@ -15176,7 +15176,7 @@ __metadata:
       optional: true
     react:
       optional: true
-  checksum: c2e3dcb3206749cd7f63ab9cfec5d0bacd19ac8c1710e688716fcbdaa031c6bb78f10ed24ea8da65cd98b4dc3c04170c05eedb4d3284b9ad80858f834c69a914
+  checksum: 692c450bae3412da81f886a44cd589a0988479aadafabf01977c6bcd0b8793d5ba85d20f51fea40c4c786db50f29916fbe00c87d147726b86f05f72d7e9a3cdb
   languageName: node
   linkType: hard
 
@@ -23211,7 +23211,7 @@ __metadata:
     graphql: ^16.8.0
     graphql-tag: ^2.12.6
     i18next: ^23.4.5
-    jotai: ^2.3.1
+    jotai: ^2.4.0
     lodash: ^4.17.21
     next: ^13.4.19
     next-auth: ^4.23.1
