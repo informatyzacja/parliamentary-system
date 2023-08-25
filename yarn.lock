@@ -18474,7 +18474,7 @@ __metadata:
     eslint: ^8.47.0
     husky: ^8.0.3
     prettier: ^3.0.2
-    semantic-release: ^21.1.0
+    semantic-release: ^21.1.1
     turbo: ^1.10.13
     wait-on: ^7.0.1
   languageName: unknown
@@ -20731,9 +20731,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:^21.1.0":
-  version: 21.1.0
-  resolution: "semantic-release@npm:21.1.0"
+"semantic-release@npm:^21.1.1":
+  version: 21.1.1
+  resolution: "semantic-release@npm:21.1.1"
   dependencies:
     "@semantic-release/commit-analyzer": ^10.0.0
     "@semantic-release/error": ^4.0.0
@@ -20765,7 +20765,7 @@ __metadata:
     yargs: ^17.5.1
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: f232984072808bd6b3423f3e0dfc220484beba979688791c78a8dbfbb773230672e9cef0d3681592140d98c4e84b5060652fb86a0310f00a22ed949e968deb3f
+  checksum: 46ebaeac46d7dfe4610617a79b6ceee3b1bd5fb7025cb800ce523b91d22a1f35ff31143164dc4fe7d15a1139488652cde887946b8f33e8839e8ba9875c9f83af
   languageName: node
   linkType: hard
 
