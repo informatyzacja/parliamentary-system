@@ -68,7 +68,7 @@
     "react-icons": "^4.10.1"
   },
   "devDependencies": {
-    "@alergeek-ventures/eslint-config": "^7.0.23",
+    "@alergeek-ventures/eslint-config": "^7.0.27",
     "@babel/core": "^7.22.11",
     "@babel/eslint-parser": "^7.22.11",
     "@graphql-codegen/cli": "^5.0.0",
