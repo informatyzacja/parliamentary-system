@@ -1,33 +1,33 @@
 services:
   web:
-    restart: always
-    build:
-      context: ./apps/
-      dockerfile: ./web/Dockerfile
+    restart: no
+    image: parliamentary-system-web
     ports:
-      - 80:3000
-    volumes:
-      - ./web/.env:/app/web/.env
+      - 3000:3000
     depends_on:
       - api
-
+    networks:
+      - parliamentary-system
+    env_file:
+      - apps/web/.env
   api:
-    restart: always
-    build:
-      context: ./apps/
-      dockerfile: ./api/Dockerfile
-
+    restart: no
+    image: parliamentary-system-api
     ports:
-      - 81:1337
+      - 1337:1337
     volumes:
-      - ./api/public/:/app/api/public/
-      - ./api/.env:/app/api/.env
+      - ./apps/api/public/:/app/api/public/
     depends_on:
       - postgres
-
+    networks:
+      - parliamentary-system
+    env_file:
+      - apps/api/.env
   postgres:
-    restart: always
+    restart: no
     image: postgres:15-alpine
+    env_file:
+      - .env
     environment:
       - POSTGRES_DB=${DATABASE_NAME}
       - POSTGRES_USER=${DATABASE_USERNAME}
@@ -37,7 +37,13 @@ services:
       - 5432:5432
     volumes:
       - $DATABASE_FOLDER:/var/lib/postgresql/data
+    networks:
+      - parliamentary-system
 
 volumes:
   postgres:
     driver: local
+
+networks:
+  parliamentary-system:
+    name: 'parliamentary-system'

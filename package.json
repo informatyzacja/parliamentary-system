@@ -9,7 +9,6 @@
     "build": "turbo run build",
     "codegen": "turbo run codegen",
     "dev": "turbo run dev",
-    "dev:db": "docker compose -f docker-compose.dev.yml up --force-recreate -V",
     "format": "turbo run format",
     "format:check": "turbo run format:check",
     "lint": "turbo run lint",
