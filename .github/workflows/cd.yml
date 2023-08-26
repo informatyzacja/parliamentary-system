@@ -40,6 +40,7 @@ jobs:
             rm .env
             touch .env
 
+            echo DATABASE_HOST="postgres" >> .env
             echo DATABASE_NAME="${{ secrets.DATABASE_NAME }}" >> .env
             echo DATABASE_USERNAME="${{ secrets.DATABASE_USERNAME }}" >> .env
             echo DATABASE_PASSWORD="${{ secrets.DATABASE_PASSWORD }}" >> .env
