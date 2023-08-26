@@ -25,7 +25,7 @@ jobs:
         run: yarn set version 3.6.1
 
       - name: Install deps
-        uses: ./.github/actions/yarn-nm-install
+        uses: ./.github/actions/yarn-install
 
       - name: Setup GitHub Actions cache for Turbo
         uses: dtinth/setup-github-actions-caching-for-turbo@v1

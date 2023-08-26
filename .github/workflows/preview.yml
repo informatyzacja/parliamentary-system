@@ -76,7 +76,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.check.outputs.triggered == 'true'
-        uses: ./.github/actions/yarn-nm-install
+        uses: ./.github/actions/yarn-install
 
       - name: Cache build
         uses: actions/cache@v3
