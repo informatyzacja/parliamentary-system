@@ -33,4 +33,4 @@ USER runner
 
 COPY --from=installer --chown=runner:nodejs /app .
 
-CMD ["yarn", "start"]
+CMD yarn start --filter=api

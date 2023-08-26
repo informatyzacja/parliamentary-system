@@ -12,7 +12,7 @@ services:
     ports:
       - 1337:1337
     volumes:
-      - ./apps/api/public/:/app/api/public/
+      - ${STRAPI_PUBLIC_FOLDER}:/app/apps/api/public/
     depends_on:
       - postgres
     env_file:
