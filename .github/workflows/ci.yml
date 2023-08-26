@@ -48,7 +48,7 @@ jobs:
       contents: read
       packages: write
     env:
-      IMAGE_NAME: informatyzacja/parliamentary-system/${{ matrix.app }}
+      IMAGE_NAME: ${{ github.repository }}/${{ matrix.app }}
       DOCKERFILE_PATH: ./apps/${{ matrix.app }}/Dockerfile
     steps:
       - name: Checkout
