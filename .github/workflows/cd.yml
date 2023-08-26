@@ -2,7 +2,8 @@ name: CD
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -12,6 +13,13 @@ jobs:
       name: production
       url: https://parlament.samorzad.pwr.edu.pl
     steps:
+      - name: Wait for build
+        uses: lewagon/wait-on-check-action@v1.3.1
+        with:
+          ref: ${{ github.sha }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          running-workflow-name: wait-for-check-regexp
+          check-regexp: build .?
       - name: Deploy to remote host
         uses: appleboy/ssh-action@v0.1.10
         env:
