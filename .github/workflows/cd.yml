@@ -88,8 +88,8 @@ jobs:
       - name: Setup yarn
         run: yarn set version 3.6.1
 
-      - name: Install dependencies
-        run: yarn install --immutable
+      - name: Install deps
+        uses: ./.github/actions/yarn-install
 
       - name: Release
         env:
