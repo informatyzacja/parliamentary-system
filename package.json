@@ -8,6 +8,7 @@
   "scripts": {
     "build": "turbo run build",
     "codegen": "turbo run codegen",
+    "start": "turbo run start",
     "dev": "turbo run dev",
     "format": "turbo run format",
     "format:check": "turbo run format:check",
