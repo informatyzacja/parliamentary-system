@@ -1,5 +1,4 @@
 FROM node:20-alpine AS base
-LABEL org.opencontainers.image.source https://github.com/informatyzacja/parliamentary-system
 RUN corepack enable && corepack prepare yarn@3.6.1 --activate && yarn set version 3.6.1
 
 FROM base AS builder
