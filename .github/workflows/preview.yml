@@ -70,6 +70,7 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
+          cache-dependency-path: yarn.lock
 
       - name: Setup yarn
         if: steps.check.outputs.triggered == 'true'

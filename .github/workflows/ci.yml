@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: 20
           cache: 'yarn'
+          cache-dependency-path: yarn.lock
 
       - name: Setup yarn
         run: yarn set version 3.6.1
