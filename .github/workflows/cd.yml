@@ -56,6 +56,7 @@ jobs:
             echo AUTH_SECRET="${{ secrets.AUTH_SECRET }}" >> .env
 
             docker compose pull && docker compose up -d
+            docker system prune -f
 
   release:
     name: Release
