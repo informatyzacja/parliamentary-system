@@ -19,7 +19,7 @@ jobs:
           ref: ${{ github.sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           running-workflow-name: wait-for-check-regexp
-          check-regexp: build .?
+          check-regexp: build.?
       - name: Deploy to remote host
         uses: appleboy/ssh-action@v0.1.10
         env:
@@ -51,9 +51,9 @@ jobs:
             echo NEXT_PUBLIC_USOS_SCOPES="${{ vars.NEXT_PUBLIC_USOS_SCOPES }}" >> .env
             echo NEXT_PUBLIC_USOS_FIELDS="${{ vars.NEXT_PUBLIC_USOS_FIELDS }}" >> .env
             echo NEXTAUTH_URL="${{ vars.NEXTAUTH_URL }}" >> .env
-            echo NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}" >> .env.local
-            echo USOS_CLIENT_ID="${{ secrets.USOS_CLIENT_ID }}" >> .env.local
-            echo USOS_CLIENT_SECRET="${{ secrets.USOS_CLIENT_SECRET }}" >> .env.local
+            echo NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}" >> .env
+            echo USOS_CLIENT_ID="${{ secrets.USOS_CLIENT_ID }}" >> .env
+            echo USOS_CLIENT_SECRET="${{ secrets.USOS_CLIENT_SECRET }}" >> .env
             echo NODE_ENV="production" >> .env
 
             echo STRAPI_URL="${{ vars.NEXT_PUBLIC_API_URL }}" >> .env
