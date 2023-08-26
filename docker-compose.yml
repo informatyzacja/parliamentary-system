@@ -19,7 +19,7 @@ services:
     ports:
       - 1337:1337
     volumes:
-      - ${STRAPI_PUBLIC_FOLDER}:/app/apps/api/public/
+      - ${STRAPI_PUBLIC_FOLDER_FOR_DOCKER}:/app/apps/api/public/
     healthcheck:
       test: ['CMD', 'wget', '-q', '--spider', 'http://localhost:1337']
       interval: 10s

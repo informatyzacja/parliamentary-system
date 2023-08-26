@@ -60,7 +60,7 @@ jobs:
             echo WEB_URL="${{ vars.NEXTAUTH_URL }}" >> .env
 
             echo JWT_SECRET="${{ secrets.JWT_SECRET }}" >> .env
-            echo STRAPI_PUBLIC_FOLDER="${{ secrets.STRAPI_PUBLIC_FOLDER }}" >> .env
+            echo STRAPI_PUBLIC_FOLDER_FOR_DOCKER="${{ secrets.STRAPI_PUBLIC_FOLDER }}" >> .env
             echo API_TOKEN_SALT="${{ secrets.API_TOKEN_SALT }}" >> .env
             echo AUTH_SECRET="${{ secrets.AUTH_SECRET }}" >> .env
 
