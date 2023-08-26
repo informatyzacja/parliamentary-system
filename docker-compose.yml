@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/informatyzacja/parliamentary-system/web
+    image: ghcr.io/informatyzacja/parliamentary-system/web:main
     ports:
       - 3000:3000
     depends_on:
@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
   api:
-    image: ghcr.io/informatyzacja/parliamentary-system/api
+    image: ghcr.io/informatyzacja/parliamentary-system/api:main
     ports:
       - 1337:1337
     volumes:
