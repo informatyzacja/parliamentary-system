@@ -20,14 +20,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'yarn'
-          cache-dependency-path: yarn.lock
 
       - name: Setup yarn
         run: yarn set version 3.6.1
 
-      - name: Install dependencies
-        run: yarn install --immutable
+      - name: Install deps
+        uses: ./.github/actions/yarn-nm-install
 
       - name: Setup GitHub Actions cache for Turbo
         uses: dtinth/setup-github-actions-caching-for-turbo@v1
