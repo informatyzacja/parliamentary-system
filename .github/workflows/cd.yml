@@ -2,7 +2,8 @@ name: CD
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -12,6 +13,13 @@ jobs:
       name: production
       url: https://parlament.samorzad.pwr.edu.pl
     steps:
+      - name: Wait for build
+        uses: lewagon/wait-on-check-action@v1.3.1
+        with:
+          ref: ${{ github.sha }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          running-workflow-name: wait-for-check-regexp
+          check-regexp: build.?
       - name: Deploy to remote host
         uses: appleboy/ssh-action@v0.1.10
         env:
@@ -32,6 +40,7 @@ jobs:
             rm .env
             touch .env
 
+            echo DATABASE_HOST="postgres" >> .env
             echo DATABASE_NAME="${{ secrets.DATABASE_NAME }}" >> .env
             echo DATABASE_USERNAME="${{ secrets.DATABASE_USERNAME }}" >> .env
             echo DATABASE_PASSWORD="${{ secrets.DATABASE_PASSWORD }}" >> .env
@@ -43,16 +52,16 @@ jobs:
             echo NEXT_PUBLIC_USOS_SCOPES="${{ vars.NEXT_PUBLIC_USOS_SCOPES }}" >> .env
             echo NEXT_PUBLIC_USOS_FIELDS="${{ vars.NEXT_PUBLIC_USOS_FIELDS }}" >> .env
             echo NEXTAUTH_URL="${{ vars.NEXTAUTH_URL }}" >> .env
-            echo NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}" >> .env.local
-            echo USOS_CLIENT_ID="${{ secrets.USOS_CLIENT_ID }}" >> .env.local
-            echo USOS_CLIENT_SECRET="${{ secrets.USOS_CLIENT_SECRET }}" >> .env.local
+            echo NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}" >> .env
+            echo USOS_CLIENT_ID="${{ secrets.USOS_CLIENT_ID }}" >> .env
+            echo USOS_CLIENT_SECRET="${{ secrets.USOS_CLIENT_SECRET }}" >> .env
             echo NODE_ENV="production" >> .env
 
             echo STRAPI_URL="${{ vars.NEXT_PUBLIC_API_URL }}" >> .env
             echo WEB_URL="${{ vars.NEXTAUTH_URL }}" >> .env
 
             echo JWT_SECRET="${{ secrets.JWT_SECRET }}" >> .env
-            echo STRAPI_PUBLIC_FOLDER="${{ secrets.STRAPI_PUBLIC_FOLDER }}" >> .env
+            echo STRAPI_PUBLIC_FOLDER_FOR_DOCKER="${{ secrets.STRAPI_PUBLIC_FOLDER }}" >> .env
             echo API_TOKEN_SALT="${{ secrets.API_TOKEN_SALT }}" >> .env
             echo AUTH_SECRET="${{ secrets.AUTH_SECRET }}" >> .env
 
@@ -79,8 +88,8 @@ jobs:
       - name: Setup yarn
         run: yarn set version 3.6.1
 
-      - name: Install dependencies
-        run: yarn install --immutable
+      - name: Install deps
+        uses: ./.github/actions/yarn-install
 
       - name: Release
         env:

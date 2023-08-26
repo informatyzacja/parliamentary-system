@@ -5,7 +5,7 @@ services:
     ports:
       - 3000:3000
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:3000']
+      test: ['CMD', 'wget', '-q', '--spider', 'http://localhost:3000']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -19,9 +19,9 @@ services:
     ports:
       - 1337:1337
     volumes:
-      - ${STRAPI_PUBLIC_FOLDER}:/app/apps/api/public/
+      - ${STRAPI_PUBLIC_FOLDER_FOR_DOCKER}:/app/apps/api/public/
     healthcheck:
-      test: ['CMD', 'curl', '-f', 'http://localhost:1337']
+      test: ['CMD', 'wget', '-q', '--spider', 'http://localhost:1337']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -44,8 +44,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    ports:
-      - 5432:5432
     volumes:
       - $DATABASE_FOLDER:/var/lib/postgresql/data
 
