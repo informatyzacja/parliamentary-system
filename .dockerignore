@@ -1,2 +1,9 @@
-node_modules
-postgres-data
+**/node_modules/
+**/dist
+**/build
+**/.turbo
+.github
+**/out
+.git
+*/Dockerfile
+.env

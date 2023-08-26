@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: ['main', 'auto-dependency-upgrade']
 
+env:
+  REGISTRY: ghcr.io
+
 jobs:
   linting:
     runs-on: ubuntu-latest
@@ -17,13 +20,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'yarn'
 
       - name: Setup yarn
         run: yarn set version 3.6.1
 
-      - name: Install dependencies
-        run: yarn install --immutable
+      - name: Install deps
+        uses: ./.github/actions/yarn-install
 
       - name: Setup GitHub Actions cache for Turbo
         uses: dtinth/setup-github-actions-caching-for-turbo@v1
@@ -38,47 +40,44 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [api, web]
+    permissions:
+      contents: read
+      packages: write
+    env:
+      IMAGE_NAME: ${{ github.repository }}/${{ matrix.app }}
+      DOCKERFILE_PATH: ./apps/${{ matrix.app }}/Dockerfile
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
         with:
-          node-version: 20
-          cache: 'yarn'
-
-      - name: Setup yarn
-        run: yarn set version 3.6.1
-
-      - name: Install dependencies
-        run: yarn install --immutable
-
-      - name: Setup GitHub Actions cache for Turbo
-        uses: dtinth/setup-github-actions-caching-for-turbo@v1
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
         with:
-          cache-prefix: parliamentary_
-
-      - name: Setup env
-        run: |
-          cd apps/web
-
-          touch .env.local
-
-          echo NEXT_PUBLIC_API_URL="http://0.0.0.0:1337" >> .env.local
-          echo NEXT_PUBLIC_OAUTH_DOMAIN="${{ vars.NEXT_PUBLIC_OAUTH_DOMAIN }}" >> .env.local
-          echo NEXT_PUBLIC_USOS_BASE_URL="${{ vars.NEXT_PUBLIC_USOS_BASE_URL }}" >> .env.local
-          echo NEXT_PUBLIC_USOS_SCOPES="${{ vars.NEXT_PUBLIC_USOS_SCOPES }}" >> .env.local
-          echo NEXT_PUBLIC_USOS_FIELDS="${{ vars.NEXT_PUBLIC_USOS_FIELDS }}" >> .env.local
-          echo NEXTAUTH_URL="http://localhost:3000" >> .env.local
-
-          echo NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}" >> .env.local
-          echo USOS_CLIENT_ID="${{ secrets.USOS_CLIENT_ID }}" >> .env.local
-          echo USOS_CLIENT_SECRET="${{ secrets.USOS_CLIENT_SECRET }}" >> .env.local
-
-          echo NODE_ENV="production" >> .env.local
-
-          cd ../..
-
-      - name: Build
-        run: yarn build
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ${{ env.DOCKERFILE_PATH }}
+          push: true
+          build-args: |
+            NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}
+            NEXT_PUBLIC_OAUTH_DOMAIN=${{ vars.NEXT_PUBLIC_OAUTH_DOMAIN }}
+            NEXT_PUBLIC_USOS_BASE_URL=${{ vars.NEXT_PUBLIC_USOS_BASE_URL }}
+            NEXT_PUBLIC_USOS_SCOPES=${{ vars.NEXT_PUBLIC_USOS_SCOPES }}
+            NEXT_PUBLIC_USOS_FIELDS=${{ vars.NEXT_PUBLIC_USOS_FIELDS }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache,mode=max
