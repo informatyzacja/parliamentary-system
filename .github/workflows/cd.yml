@@ -27,6 +27,7 @@ jobs:
           envs: CI
           script: |
             cd ${{ secrets.APP_DIR }}
+            git pull
 
             rm .env
             touch .env
