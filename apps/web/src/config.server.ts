@@ -5,9 +5,11 @@ const requiredConfig = {
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
 };
 
-Object.entries(requiredConfig).forEach(([key, value]) => {
-  assert(value, `${key} is not defined`);
-});
+if (!process.env.SKIP_ENV_VALIDATION) {
+  Object.entries(requiredConfig).forEach(([key, value]) => {
+    assert(value, `${key} is not defined`);
+  });
+}
 
 const googleConfig = {
   GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
