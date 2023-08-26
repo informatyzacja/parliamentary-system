@@ -63,8 +63,8 @@ jobs:
           context: .
           file: ./apps/web/Dockerfile
           push: true
-          tags: user/app:${{ github.sha }}
-          cache-from: type=registry,ref=user/app:buildcache
+          tags: informatyzacja/parliamentary-system-web:${{ github.sha }}
+          cache-from: type=registry,ref=informatyzacja/parliamentary-system-web:buildcache
           cache-to: type=registry,ref=user/app:buildcache,mode=max
 
   build-api:
@@ -87,6 +87,6 @@ jobs:
           context: .
           file: ./apps/api/Dockerfile
           push: true
-          tags: user/app:${{ github.sha }}
-          cache-from: type=registry,ref=user/app:buildcache
-          cache-to: type=registry,ref=user/app:buildcache,mode=max
+          tags: informatyzacja/parliamentary-system-api:${{ github.sha }}
+          cache-from: type=registry,ref=informatyzacja/parliamentary-system-api:buildcache
+          cache-to: type=registry,ref=informatyzacja/parliamentary-system-api:buildcache,mode=max
