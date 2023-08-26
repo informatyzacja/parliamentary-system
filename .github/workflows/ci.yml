@@ -10,7 +10,7 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
-  linting:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

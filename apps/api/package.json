@@ -38,12 +38,11 @@
   },
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "dependencies": {
-    "@strapi/plugin-graphql": "4.12.1",
-    "@strapi/plugin-i18n": "4.12.1",
-    "@strapi/plugin-users-permissions": "4.12.1",
-    "@strapi/strapi": "4.12.1",
+    "@strapi/plugin-graphql": "4.12.7",
+    "@strapi/plugin-users-permissions": "4.12.7",
+    "@strapi/strapi": "4.12.7",
     "oauth": "^0.10.0",
-    "pg": "^8.11.2",
+    "pg": "^8.11.3",
     "react-select": "^5.7.4"
   },
   "strapi": {
