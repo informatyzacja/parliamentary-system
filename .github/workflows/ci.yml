@@ -45,6 +45,9 @@ jobs:
 
   build-web:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: parliamentary-system-web
+      DOCKERFILE_PATH: ./apps/web/Dockerfile
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -56,19 +59,26 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./apps/web/Dockerfile
+          file: ${{ env.DOCKERFILE_PATH }}
           push: true
-          tags: informatyzacja/parliamentary-system-web:${{ github.sha }}
-          cache-from: type=registry,ref=informatyzacja/parliamentary-system-web:buildcache
-          cache-to: type=registry,ref=user/app:buildcache,mode=max
-
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache,mode=max
   build-api:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: parliamentary-system-api
+      DOCKERFILE_PATH: ./apps/api/Dockerfile
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -80,13 +90,18 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./apps/api/Dockerfile
+          file: ${{ env.DOCKERFILE_PATH }}
           push: true
-          tags: informatyzacja/parliamentary-system-api:${{ github.sha }}
-          cache-from: type=registry,ref=informatyzacja/parliamentary-system-api:buildcache
-          cache-to: type=registry,ref=informatyzacja/parliamentary-system-api:buildcache,mode=max
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache,mode=max
