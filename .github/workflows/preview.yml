@@ -3,92 +3,68 @@ name: Preview
 on:
   issue_comment:
     types: [created]
+  pull_request:
+    branches: [main]
 
 jobs:
-  check-comment:
+  check:
     runs-on: ubuntu-latest
+    outputs:
+      triggered: ${{ steps.check.outputs.triggered }}
     steps:
-      - name: Generate token
-        id: generate_token
-        uses: tibdex/github-app-token@v1
-        with:
-          app_id: ${{ secrets.BOT_APP_ID }}
-          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
-
-      # The first thing we do is check if the comment was indeed a trigger.
-      - name: Check if the comment was a command, and react with 👀 if it was
-        if: github.event.issue.pull_request
-        uses: famly/pull-request-comment-trigger@master
+      - uses: Rei-x/pull-request-preview-action/comment@main
         id: check
         with:
-          trigger: '/preview'
-          reaction: eyes
-        env:
-          GITHUB_TOKEN: '${{ steps.generate_token.outputs.token }}'
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
 
-      # When triggered by a comment, we do not have access to the usual github.sha
-      # value, so we get it manually.
-      - name: Extract current commit
-        if: steps.check.outputs.triggered == 'true'
-        id: sha
-        uses: actions/github-script@v6
-        with:
-          result-encoding: string
-          script: |
-            const { owner, repo, number: pull_number } = context.issue;
-            const pr = await github.rest.pulls.get({
-              owner,
-              repo,
-              pull_number,
-            });
-            return pr.data.head.sha
-
-      - name: Checkout
-        uses: actions/checkout@v3
-        if: steps.check.outputs.triggered == 'true'
-        with:
-          ref: ${{ steps.sha.outputs.result }}
-
-      - name: Start web tunnel
-        id: expose-tunnel
-        if: steps.check.outputs.triggered == 'true'
-        uses: codetalkio/expose-tunnel@v1
-        with:
-          service: localhost.run
-          port: 3000
-
-      - name: Fix tunnel url
+  run-preview:
+    runs-on: ubuntu-latest
+    needs: [check]
+    if: ${{ needs.check.outputs.triggered == 'true' }}
+    concurrency:
+      group: ${{ github.event.issue.number || github.event.pull_request.number }}
+      cancel-in-progress: true
+    steps:
+      - uses: Rei-x/pull-request-preview-action/start-preview@main
         id: tunnel-url
-        run: |
-          url=${{ steps.expose-tunnel.outputs.tunnel-url }}
-          fixedUrl=${url::-6}
-          echo "tunnel-url=${fixedUrl}" >> $GITHUB_OUTPUT
+        with:
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+          ports: 3000
 
+      - name: Add info about build
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          append: true
+          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+          message: |
+            **🖼️ Preview Environment:** _Installing dependencies..._
       - name: Setup node
-        if: steps.check.outputs.triggered == 'true'
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'yarn'
 
       - name: Setup yarn
-        if: steps.check.outputs.triggered == 'true'
         run: yarn set version 3.6.1
 
-      - name: Install dependencies
-        if: steps.check.outputs.triggered == 'true'
-        run: yarn install --immutable
+      - name: Install deps
+        uses: ./.github/actions/yarn-install
 
-      - name: Cache build
-        uses: actions/cache@v3
+      - name: Setup GitHub Actions cache for Turbo
+        uses: dtinth/setup-github-actions-caching-for-turbo@v1
         with:
-          path: ${{ github.workspace }}/apps/web/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+          cache-prefix: parliamentary_
 
-      - name: Build web
-        if: steps.check.outputs.triggered == 'true'
+      - name: Add info about build
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          append: true
+          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+          message: |
+            **🖼️ Preview Environment:** _Building app..._
+
+      - name: Build app
         run: |
           cd apps/web
 
@@ -99,7 +75,7 @@ jobs:
           echo NEXT_PUBLIC_USOS_BASE_URL="${{ vars.NEXT_PUBLIC_USOS_BASE_URL }}" >> .env.local
           echo NEXT_PUBLIC_USOS_SCOPES="${{ vars.NEXT_PUBLIC_USOS_SCOPES }}" >> .env.local
           echo NEXT_PUBLIC_USOS_FIELDS="${{ vars.NEXT_PUBLIC_USOS_FIELDS }}" >> .env.local
-          echo NEXTAUTH_URL="${{ steps.tunnel-url.outputs.tunnel-url }}" >> .env.local
+          echo NEXTAUTH_URL="${{ steps.tunnel-url.outputs.url-1 }}" >> .env.local
 
           echo NEXTAUTH_SECRET="${{ secrets.NEXTAUTH_SECRET }}" >> .env.local
           echo USOS_CLIENT_ID="${{ secrets.USOS_CLIENT_ID }}" >> .env.local
@@ -111,34 +87,52 @@ jobs:
 
           yarn build --filter=web
 
-      - name: Start app
-        if: steps.check.outputs.triggered == 'true'
-        run: |
-          cd apps/web
-
-          yarn start --filter=web &
-
-      # Post a comment on the Pull Request with the URL to the tunnel.
-      - name: Post preview environment as comment on PR
-        uses: actions/github-script@v6
-        if: steps.tunnel-url.outputs.tunnel-url != ''
+      - name: Add info abourt starting app
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          github-token: ${{ steps.generate_token.outputs.token }}
-          script: |
-            github.rest.issues.createComment({
-                issue_number: "${{ github.event.issue.number || github.event.pull_request.number }}",
-                owner: "${{ github.repository_owner }}",
-                repo: "${{ github.event.repository.name }}",
-                body: `**🖼️ Preview Environment:** ${{ steps.tunnel-url.outputs.tunnel-url }}
+          append: true
+          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+          message: |
+            **🖼️ Preview Environment:** _Launching app..._
 
-              You can stop the preview by clicking "Cancel" on the [GitHub Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).`
-            })
+      - name: Start app
+        run: yarn start --filter=web &
 
-      # Keep the CI job alive for 30 minutes before we time out.
-      - name: Wait for 30 minutes before timing out (unless overwritten)
-        if: steps.tunnel-url.outputs.tunnel-url != ''
-        run: |
-          echo "Tunnel URL is ${{ steps.tunnel-url.outputs.tunnel-url }}"
-          timeout 30m sleep 7200
-          # Gracefully exit if the timeout hits.
-          exit 0
+      - uses: Rei-x/pull-request-preview-action/end-preview@main
+        with:
+          url: ${{ steps.tunnel-url.outputs.url-1 }}
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+
+      - name: Close comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: success()
+        with:
+          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+          message: |
+            🖼️ Preview Environment exceeded the maximum time of 60 minutes. 
+
+            To start it again, comment `/preview` on this PR.
+
+      - name: Close comment when cancelled
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: cancelled()
+        with:
+          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+          message: |
+            🖼️ Preview Environment was cancelled (because of newer preview or manual cancellation).
+
+            To start it again, comment `/preview` on this PR.
+
+      - name: Close comment when failed
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: failure()
+        with:
+          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
+          message: |
+            🖼️ Preview Environment failed to start. You can see more info here [GitHub Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}). 
+
+            To start it again, comment `/preview` on this PR.

@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+  api:
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
