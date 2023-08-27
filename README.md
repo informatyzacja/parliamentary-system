@@ -6,7 +6,7 @@
   </a>
 </p>
 <h1 align="center">
-  Parlimentary system 
+  Parliamentary system 
 </h1>
 <p align="center">
   Web application for storing and relaying documents.
