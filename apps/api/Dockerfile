@@ -22,7 +22,7 @@ RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn ins
 
 # Build the project
 COPY --from=builder /app/out/full/ .
-RUN STRAPI_URL=$NEXT_PUBLIC_API_URL yarn build --filter=api
+RUN PUBLIC_URL=$NEXT_PUBLIC_API_URL yarn build --filter=api
 
 FROM base AS runner
 
