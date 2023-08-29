@@ -21,6 +21,9 @@ COPY --from=builder /app/out/yarn.lock ./yarn.lock
 RUN --mount=type=cache,target=/root/.yarn YARN_CACHE_FOLDER=/root/.yarn yarn install
 
 # Build the project
+ARG NEXT_PUBLIC_API_URL
+ENV STRAPI_URL=$NEXT_PUBLIC_API_URL
+
 COPY --from=builder /app/out/full/ .
 RUN yarn build --filter=api
 
