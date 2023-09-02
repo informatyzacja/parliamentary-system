@@ -4901,6 +4901,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@omikorin/prettier-config@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@omikorin/prettier-config@npm:1.0.0"
+  checksum: f248d43ddfad8b15de84f9409e4437fdf0eaac361c56046603d80277d8de55ff33a65e9ecda03f387bf227c9eff1efe670d337a66f9551e2f1ddb7fbe974aa41
+  languageName: node
+  linkType: hard
+
 "@panva/hkdf@npm:^1.0.2":
   version: 1.1.1
   resolution: "@panva/hkdf@npm:1.1.1"
@@ -18408,6 +18415,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "parliamentary-system@workspace:."
   dependencies:
+    "@omikorin/prettier-config": ^1.0.0
     "@semantic-release/git": ^10.0.1
     "@testing-library/dom": ^9.3.1
     "@typescript-eslint/parser": ^6.5.0
