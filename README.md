@@ -6,7 +6,7 @@
   </a>
 </p>
 <h1 align="center">
-  Parliamentary system 
+  Parliamentary System 
 </h1>
 <p align="center">
   Web application for storing and relaying documents.
@@ -52,11 +52,11 @@ yarn install --immutable
 
 ### Requirements
 
-Development:
+#### Development
 
 - Volta
 
-Production:
+#### Production
 
 - Docker
 
