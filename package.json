@@ -55,7 +55,7 @@
   },
   "prettier": "@omikorin/prettier-config",
   "lint-staged": {
-    "apps/*": [
+    "*": [
       "prettier --ignore-unknown --write"
     ],
     "*.{js,jsx,ts,tsx,graphql,gql}": "eslint --ext .js,.jsx,.ts,.tsx,.graphql,.gql "
