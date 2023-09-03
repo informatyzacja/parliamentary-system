@@ -39,6 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
           message: |
             **🖼️ Preview Environment:** _Installing dependencies..._
+
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -87,7 +88,7 @@ jobs:
 
           yarn build --filter=web
 
-      - name: Add info abourt starting app
+      - name: Add info about starting app
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           append: true
