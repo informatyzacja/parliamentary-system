@@ -1,7 +1,7 @@
 {
   "name": "parliamentary-system",
   "private": true,
-  "version": "1.6.0",
+  "version": "1.6.2",
   "workspaces": [
     "apps/*"
   ],
@@ -41,19 +41,21 @@
   },
   "homepage": "https://github.com/informatyzacja/parliamentary-system#readme",
   "devDependencies": {
+    "@omikorin/prettier-config": "^1.0.0",
     "@semantic-release/git": "^10.0.1",
     "@testing-library/dom": "^9.3.1",
-    "@typescript-eslint/parser": "^6.2.1",
-    "conventional-changelog-conventionalcommits": "^6.1.0",
-    "eslint": "^8.46.0",
+    "@typescript-eslint/parser": "^6.5.0",
+    "conventional-changelog-conventionalcommits": "^7.0.1",
+    "eslint": "^8.48.0",
     "husky": "^8.0.3",
-    "prettier": "^3.0.0",
-    "semantic-release": "^21.0.7",
-    "turbo": "^1.10.12",
+    "prettier": "^3.0.3",
+    "semantic-release": "^21.1.1",
+    "turbo": "^1.10.13",
     "wait-on": "^7.0.1"
   },
+  "prettier": "@omikorin/prettier-config",
   "lint-staged": {
-    "*": [
+    "apps/*": [
       "prettier --ignore-unknown --write"
     ],
     "*.{js,jsx,ts,tsx,graphql,gql}": "eslint --ext .js,.jsx,.ts,.tsx,.graphql,.gql "
