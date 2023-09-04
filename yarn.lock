@@ -17161,9 +17161,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-i18next@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "next-i18next@npm:14.0.0"
+"next-i18next@npm:^14.0.2":
+  version: 14.0.2
+  resolution: "next-i18next@npm:14.0.2"
   dependencies:
     "@babel/runtime": ^7.20.13
     "@types/hoist-non-react-statics": ^3.3.1
@@ -17171,11 +17171,11 @@ __metadata:
     hoist-non-react-statics: ^3.3.2
     i18next-fs-backend: ^2.1.5
   peerDependencies:
-    i18next: ^23.0.1
+    i18next: ^23.4.6
     next: ">= 12.0.0"
     react: ">= 17.0.2"
-    react-i18next: ^13.0.0
-  checksum: a699f6fdee650a2456c463d59910bf38d9f891d224c00de639b15740e8cbf939a2469c8c733007b4f1c2fe0f85c18d43b6f1e814f2127ef30a0d3a28a354dc1d
+    react-i18next: ^13.2.1
+  checksum: fe860ed7e2d9cd28a3f91ae4e41d82448224e48f0aa1e5a6b3a982454e3ff53707b19dd87d1027a6bb3379796f7ecb1452a5bb971a4b613429438701182b650a
   languageName: node
   linkType: hard
 
@@ -23155,7 +23155,7 @@ __metadata:
     lodash: ^4.17.21
     next: ^13.4.19
     next-auth: ^4.23.1
-    next-i18next: ^14.0.0
+    next-i18next: ^14.0.2
     next-safe: ^3.4.1
     postcss: ^8.4.29
     react: ^18.2.0
