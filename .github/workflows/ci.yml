@@ -52,7 +52,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -81,6 +81,7 @@ jobs:
             NEXT_PUBLIC_USOS_BASE_URL=${{ vars.NEXT_PUBLIC_USOS_BASE_URL }}
             NEXT_PUBLIC_USOS_SCOPES=${{ vars.NEXT_PUBLIC_USOS_SCOPES }}
             NEXT_PUBLIC_USOS_FIELDS=${{ vars.NEXT_PUBLIC_USOS_FIELDS }}
+            NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildcache
