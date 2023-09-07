@@ -3,8 +3,6 @@ name: Preview
 on:
   issue_comment:
     types: [created]
-  pull_request:
-    branches: [main]
 
 jobs:
   check:
@@ -22,7 +20,7 @@ jobs:
     needs: [check]
     if: ${{ needs.check.outputs.triggered == 'true' }}
     concurrency:
-      group: ${{ github.event.issue.number || github.event.pull_request.number }}
+      group: ${{ github.event.issue.number  }}
       cancel-in-progress: true
     steps:
       - uses: Rei-x/pull-request-preview-action/start-preview@main
@@ -35,7 +33,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           append: true
-          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          number: ${{ github.event.issue.number }}
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
           message: |
             **🖼️ Preview Environment:** _Installing dependencies..._
@@ -60,7 +58,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           append: true
-          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          number: ${{ github.event.issue.number }}
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
           message: |
             **🖼️ Preview Environment:** _Building app..._
@@ -92,7 +90,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           append: true
-          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          number: ${{ github.event.issue.number  }}
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
           message: |
             **🖼️ Preview Environment:** _Launching app..._
@@ -109,7 +107,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         if: success()
         with:
-          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          number: ${{ github.event.issue.number  }}
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
           message: |
             🖼️ Preview Environment exceeded the maximum time of 60 minutes. 
@@ -120,7 +118,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         if: cancelled()
         with:
-          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          number: ${{ github.event.issue.number  }}
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
           message: |
             🖼️ Preview Environment was cancelled (because of newer preview or manual cancellation).
@@ -131,7 +129,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2
         if: failure()
         with:
-          number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          number: ${{ github.event.issue.number  }}
           GITHUB_TOKEN: ${{ secrets.CI_GITHUB_TOKEN }}
           message: |
             🖼️ Preview Environment failed to start. You can see more info here [GitHub Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}). 
