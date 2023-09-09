@@ -37,8 +37,10 @@ const ResolutionPage = () => {
       ) : (
         <VStack>
           <VStack>
-            <Heading size="lg">{resolution?.attributes.name}</Heading>
-            <Text fontSize="md" mb={8}>
+            <Heading size="lg" textAlign="center">
+              {resolution?.attributes.name}
+            </Heading>
+            <Text fontSize="md" mb={8} textAlign="center">
               {resolution?.attributes.meeting.data
                 ? resolution.attributes.meeting.data.attributes.name
                 : t('resolution.circulation-vote')}
