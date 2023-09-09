@@ -40,7 +40,7 @@ export const Footer = () => {
         align="center"
       >
         <Text textAlign="center">
-          test Made with ❤️ by Komisja ds. Informatyzacji
+          Made with ❤️ by Komisja ds. Informatyzacji
         </Text>
         <Link
           href="https://status.samorzad.pwr.edu.pl/"
