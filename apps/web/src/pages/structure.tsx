@@ -85,7 +85,7 @@ function OrganisationStructure() {
                 </Thead>
                 <Tbody>
                   {students.map((student, index) => (
-                    <Tr key={student.id}>
+                    <Tr key={index}>
                       <Td>
                         {index +
                           1 +
