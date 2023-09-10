@@ -59,6 +59,7 @@ function OrganisationStructure() {
   });
 
   const students = uniqBy(studentsQuery.data?.students.data, 'id');
+
   return (
     <Center>
       <VStack>
@@ -84,7 +85,7 @@ function OrganisationStructure() {
                 </Thead>
                 <Tbody>
                   {students.map((student, index) => (
-                    <Tr key={student.id}>
+                    <Tr key={index}>
                       <Td>
                         {index +
                           1 +
@@ -94,6 +95,10 @@ function OrganisationStructure() {
                       <Td>{student.attributes.surname}</Td>
                       <Td>
                         {student.attributes.functions
+                          .filter(
+                            (func) =>
+                              func.term_of_office.data.id === currentTermId,
+                          )
                           .at(0)
                           ?.functions.data.map(
                             ({ attributes }) => attributes.name,
