@@ -17,7 +17,7 @@ import uniqBy from 'lodash/uniqBy';
 import type { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useStudentsQuery } from '@/api/graphql';
 import { Loader } from '@/components/layout/Loader';
@@ -59,6 +59,10 @@ function OrganisationStructure() {
   });
 
   const students = uniqBy(studentsQuery.data?.students.data, 'id');
+
+  useEffect(() => {
+    pagination.setCurrentPage(1);
+  }, [currentTermId]);
 
   return (
     <Center>
