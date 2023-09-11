@@ -10015,12 +10015,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-changelog-conventionalcommits@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "conventional-changelog-conventionalcommits@npm:7.0.1"
+"conventional-changelog-conventionalcommits@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "conventional-changelog-conventionalcommits@npm:7.0.2"
   dependencies:
     compare-func: ^2.0.0
-  checksum: 9a3ec6dfbb608e805f72bdeda335db4348bcb35f507086dc77b347ea7e63839063ea1eb366ad4a050dce6920ae67299d93d33d2ffc26124563daab74d3fe2add
+  checksum: e17ac5970ae09d6e9b0c3a7edaed075b836c0c09c34c514589cbe06554f46ed525067fa8150a8467cc03b1cf9af2073e7ecf48790d4f5ea399921b1cbe313711
   languageName: node
   linkType: hard
 
@@ -18249,7 +18249,7 @@ __metadata:
     "@omikorin/prettier-config": ^1.0.0
     "@semantic-release/git": ^10.0.1
     "@typescript-eslint/parser": ^6.6.0
-    conventional-changelog-conventionalcommits: ^7.0.1
+    conventional-changelog-conventionalcommits: ^7.0.2
     dotenv: ^16.3.1
     eslint: ^8.48.0
     husky: ^8.0.3
