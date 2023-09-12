@@ -247,7 +247,6 @@ export type GenericMorph =
   | ComponentStudentCouncilFunctions
   | Function
   | Global
-  | I18NLocale
   | Meeting
   | Resolution
   | Student
@@ -279,42 +278,6 @@ export type GlobalEntityResponse = {
 export type GlobalInput = {
   current_term_of_office: InputMaybe<Scalars['ID']['input']>;
   private_config: InputMaybe<Scalars['JSON']['input']>;
-};
-
-export type I18NLocale = {
-  __typename?: 'I18NLocale';
-  code: Maybe<Scalars['String']['output']>;
-  createdAt: Maybe<Scalars['DateTime']['output']>;
-  name: Maybe<Scalars['String']['output']>;
-  updatedAt: Maybe<Scalars['DateTime']['output']>;
-};
-
-export type I18NLocaleEntity = {
-  __typename?: 'I18NLocaleEntity';
-  attributes: Maybe<I18NLocale>;
-  id: Maybe<Scalars['ID']['output']>;
-};
-
-export type I18NLocaleEntityResponse = {
-  __typename?: 'I18NLocaleEntityResponse';
-  data: Maybe<I18NLocaleEntity>;
-};
-
-export type I18NLocaleEntityResponseCollection = {
-  __typename?: 'I18NLocaleEntityResponseCollection';
-  data: Array<I18NLocaleEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type I18NLocaleFiltersInput = {
-  and: InputMaybe<Array<InputMaybe<I18NLocaleFiltersInput>>>;
-  code: InputMaybe<StringFilterInput>;
-  createdAt: InputMaybe<DateTimeFilterInput>;
-  id: InputMaybe<IdFilterInput>;
-  name: InputMaybe<StringFilterInput>;
-  not: InputMaybe<I18NLocaleFiltersInput>;
-  or: InputMaybe<Array<InputMaybe<I18NLocaleFiltersInput>>>;
-  updatedAt: InputMaybe<DateTimeFilterInput>;
 };
 
 export type IdFilterInput = {
@@ -746,8 +709,6 @@ export type Query = {
   function: Maybe<FunctionEntityResponse>;
   functions: Maybe<FunctionEntityResponseCollection>;
   global: Maybe<GlobalEntityResponse>;
-  i18NLocale: Maybe<I18NLocaleEntityResponse>;
-  i18NLocales: Maybe<I18NLocaleEntityResponseCollection>;
   me: Maybe<UsersPermissionsMe>;
   meeting: Maybe<MeetingEntityResponse>;
   meetings: Maybe<MeetingEntityResponseCollection>;
@@ -773,16 +734,6 @@ export type QueryFunctionArgs = {
 
 export type QueryFunctionsArgs = {
   filters: InputMaybe<FunctionFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type QueryI18NLocaleArgs = {
-  id: InputMaybe<Scalars['ID']['input']>;
-};
-
-export type QueryI18NLocalesArgs = {
-  filters: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
@@ -2305,7 +2256,7 @@ export type ResolutionsQueryResult = Apollo.QueryResult<
 export const StudentsDocument = gql`
   query Students($termId: ID!, $page: Int, $pageSize: Int) {
     students(
-      filters: {}
+      filters: { functions: { term_of_office: { id: { eq: $termId } } } }
       pagination: { page: $page, pageSize: $pageSize }
       sort: ["functions.functions.position", "surname", "name"]
     ) {

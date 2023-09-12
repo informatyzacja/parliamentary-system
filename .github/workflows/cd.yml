@@ -20,6 +20,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           running-workflow-name: wait-for-check-regexp
           check-regexp: build.?
+          
       - name: Deploy to remote host
         uses: appleboy/ssh-action@v0.1.10
         env:
