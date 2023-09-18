@@ -49,7 +49,7 @@
     "eslint": "^8.49.0",
     "husky": "^8.0.3",
     "prettier": "^3.0.3",
-    "semantic-release": "^21.1.1",
+    "semantic-release": "^22.0.0",
     "turbo": "^1.10.14",
     "wait-on": "^7.0.1"
   },
