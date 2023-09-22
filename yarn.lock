@@ -30,9 +30,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alergeek-ventures/eslint-config@npm:^7.0.64":
-  version: 7.0.64
-  resolution: "@alergeek-ventures/eslint-config@npm:7.0.64"
+"@alergeek-ventures/eslint-config@npm:^7.0.65":
+  version: 7.0.65
+  resolution: "@alergeek-ventures/eslint-config@npm:7.0.65"
   dependencies:
     "@babel/core": 7.22.20
     "@babel/eslint-parser": 7.22.15
@@ -54,7 +54,7 @@ __metadata:
     eslint-plugin-react-native-a11y: 3.3.0
     eslint-plugin-simple-import-sort: 10.0.0
     eslint-plugin-testing-library: 6.0.1
-  checksum: e30837d8e8745c9525c636b24385d131293a7af295170ae215384fd2086876a7da72ee5b1c402961c9406f6a22b2e5e2c39a02fdf0faca9af9afd24bd609a002
+  checksum: 523cd3830b4f9ae7f563667db9ac5f0b9adaec7e6afb3e027fa9ffffeffa42913c75cbf5533fec6a87f6b8cbd16b0716c28bd66bf899a445906a1bd7a379430c
   languageName: node
   linkType: hard
 
@@ -22838,7 +22838,7 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@ajna/pagination": ^1.4.19
-    "@alergeek-ventures/eslint-config": ^7.0.64
+    "@alergeek-ventures/eslint-config": ^7.0.65
     "@apollo/client": ^3.8.4
     "@chakra-ui/icons": ^2.1.1
     "@chakra-ui/next-js": ^2.1.5
