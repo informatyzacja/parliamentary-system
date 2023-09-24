@@ -104,9 +104,10 @@ function OrganisationStructure() {
                               func.term_of_office.data.id === currentTermId,
                           )
                           .at(0)
-                          ?.functions.data.map(
-                            ({ attributes }) => attributes.name,
+                          ?.functions.data.sort(
+                            (func) => func.attributes.position,
                           )
+                          .map(({ attributes }) => attributes.name)
                           .join(', ')}
                       </Td>
                       <Td>{student.attributes.student_number}</Td>
