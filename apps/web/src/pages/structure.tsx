@@ -37,7 +37,7 @@ function OrganisationStructure() {
     pagesCount: totalPages,
     initialState: {
       pageSize: 10,
-      currentPage: 1,
+      currentPage: 24,
     },
     limits: {
       inner: 1,
@@ -71,10 +71,12 @@ function OrganisationStructure() {
   });
 
   const sortedStudents = filteredStudents.sort((a, b) => {
-    const positionA = a.attributes.functions.at(0)?.functions.data.at(0)
-      ?.attributes.position;
-    const positionB = b.attributes.functions.at(0)?.functions.data.at(0)
-      ?.attributes.position;
+    const positionA =
+      a.attributes.functions.at(0)?.functions.data.at(0)?.attributes.position ??
+      0;
+    const positionB =
+      b.attributes.functions.at(0)?.functions.data.at(0)?.attributes.position ??
+      0;
 
     if (positionA < positionB) {
       return -1;
