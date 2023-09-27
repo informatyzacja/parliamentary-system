@@ -30,15 +30,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alergeek-ventures/eslint-config@npm:^7.0.73":
-  version: 7.0.73
-  resolution: "@alergeek-ventures/eslint-config@npm:7.0.73"
+"@alergeek-ventures/eslint-config@npm:^7.0.74":
+  version: 7.0.74
+  resolution: "@alergeek-ventures/eslint-config@npm:7.0.74"
   dependencies:
     "@babel/core": 7.23.0
     "@babel/eslint-parser": 7.22.15
     "@cspell/dict-pl_pl": 3.0.0
     "@cspell/eslint-plugin": 7.3.6
-    "@rushstack/eslint-patch": 1.4.0
+    "@rushstack/eslint-patch": 1.5.0
     "@typescript-eslint/eslint-plugin": 6.7.3
     "@typescript-eslint/parser": 6.7.3
     eslint: 8.50.0
@@ -54,7 +54,7 @@ __metadata:
     eslint-plugin-react-native-a11y: 3.3.0
     eslint-plugin-simple-import-sort: 10.0.0
     eslint-plugin-testing-library: 6.0.2
-  checksum: aa80083c8bc13f890ac2999f2c7fd748b049d6db4eb3996625a6573b40f665d7f4cd7b080ec970986ff22db48a4f752f05f1276e788a0d291e5df978e6044fe3
+  checksum: bcd93e1310cac5cb0e233d309311515d882fd912e1197f42d8804764d4366572f8f6e6fcd4bb819e99ccc26bd692695dbee8a6cc0b7c07e1c7c98c8cf34a3719
   languageName: node
   linkType: hard
 
@@ -5745,10 +5745,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/eslint-patch@npm:1.4.0":
-  version: 1.4.0
-  resolution: "@rushstack/eslint-patch@npm:1.4.0"
-  checksum: 29b216288deda3dee69dfb49adb1d809217d67331775a854de18771905268a65c11be5325313d47fb1c62ea0b477733e17310bc9708ccb7f3fb6f0a3816b82d9
+"@rushstack/eslint-patch@npm:1.5.0":
+  version: 1.5.0
+  resolution: "@rushstack/eslint-patch@npm:1.5.0"
+  checksum: f21595f92ade631b5c5b2426962db727f79a7224a2c60e462779310bf1f2b592a6f59d280fa936001f564a4c7d40997ba80b5a32081fee061309ef2c56b7f4b5
   languageName: node
   linkType: hard
 
@@ -22893,7 +22893,7 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@ajna/pagination": ^1.4.19
-    "@alergeek-ventures/eslint-config": ^7.0.73
+    "@alergeek-ventures/eslint-config": ^7.0.74
     "@apollo/client": ^3.8.4
     "@chakra-ui/icons": ^2.1.1
     "@chakra-ui/next-js": ^2.1.5
