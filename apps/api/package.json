@@ -43,7 +43,7 @@
     "@strapi/strapi": "4.12.5",
     "oauth": "^0.10.0",
     "pg": "^8.11.3",
-    "react-select": "^5.7.5"
+    "react-select": "^5.7.7"
   },
   "strapi": {
     "uuid": "a4710531-0f36-48ca-a0c3-b0ef4a254ec9",
