@@ -30,22 +30,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alergeek-ventures/eslint-config@npm:^7.0.75":
-  version: 7.0.75
-  resolution: "@alergeek-ventures/eslint-config@npm:7.0.75"
+"@alergeek-ventures/eslint-config@npm:^7.0.77":
+  version: 7.0.77
+  resolution: "@alergeek-ventures/eslint-config@npm:7.0.77"
   dependencies:
     "@babel/core": 7.23.0
     "@babel/eslint-parser": 7.22.15
     "@cspell/dict-pl_pl": 3.0.0
     "@cspell/eslint-plugin": 7.3.7
-    "@rushstack/eslint-patch": 1.5.0
+    "@rushstack/eslint-patch": 1.5.1
     "@typescript-eslint/eslint-plugin": 6.7.3
     "@typescript-eslint/parser": 6.7.3
     eslint: 8.50.0
     eslint-import-resolver-typescript: 3.6.1
     eslint-plugin-cypress: 2.15.1
     eslint-plugin-import: 2.28.1
-    eslint-plugin-jest: 27.4.0
+    eslint-plugin-jest: 27.4.2
     eslint-plugin-jest-dom: 5.1.0
     eslint-plugin-jsx-a11y: 6.7.1
     eslint-plugin-react: 7.33.2
@@ -54,7 +54,7 @@ __metadata:
     eslint-plugin-react-native-a11y: 3.3.0
     eslint-plugin-simple-import-sort: 10.0.0
     eslint-plugin-testing-library: 6.0.2
-  checksum: 8305be9bda3d389433f70cc66626250ea639879611a7644828267ccf124def60d750bf3002d41562c12a0e58b04cb1552aa673f2777573e3dece397146439c21
+  checksum: cf37b89fbe91582db04fda708395e2f403fcd948e180a516ba93edcc55b3100c2f30e00c26e796146d970ff9da8cc9e822c09463d0d36374051ecb61a0ea4e16
   languageName: node
   linkType: hard
 
@@ -5745,10 +5745,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rushstack/eslint-patch@npm:1.5.0":
-  version: 1.5.0
-  resolution: "@rushstack/eslint-patch@npm:1.5.0"
-  checksum: f21595f92ade631b5c5b2426962db727f79a7224a2c60e462779310bf1f2b592a6f59d280fa936001f564a4c7d40997ba80b5a32081fee061309ef2c56b7f4b5
+"@rushstack/eslint-patch@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@rushstack/eslint-patch@npm:1.5.1"
+  checksum: e4c25322312dbaa29e835a7ab4fbac53c8731dd0da65e46646e38945e296429e7fb91c2ef3da5af5d5938d44b0cde1d5290438ebb3dcb015e02b80b5e2530d24
   languageName: node
   linkType: hard
 
@@ -11671,9 +11671,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:27.4.0":
-  version: 27.4.0
-  resolution: "eslint-plugin-jest@npm:27.4.0"
+"eslint-plugin-jest@npm:27.4.2":
+  version: 27.4.2
+  resolution: "eslint-plugin-jest@npm:27.4.2"
   dependencies:
     "@typescript-eslint/utils": ^5.10.0
   peerDependencies:
@@ -11685,7 +11685,7 @@ __metadata:
       optional: true
     jest:
       optional: true
-  checksum: c33593dba87e750123555c2de32fb174d6f2c92342571492f8dbde01bf61a8ac229dff31bd08fea16c3ca2c4843fc2fec985459c351319c019016767ed1cd78e
+  checksum: 99a8301ae00c37da97866b8b13c89a077716d2c653b26bc417d242e7300a43237c0017fd488c43966fa38585f19050facdbbc71d03ca36a1ce6f2ba930a9143e
   languageName: node
   linkType: hard
 
@@ -22893,7 +22893,7 @@ __metadata:
   resolution: "web@workspace:apps/web"
   dependencies:
     "@ajna/pagination": ^1.4.19
-    "@alergeek-ventures/eslint-config": ^7.0.75
+    "@alergeek-ventures/eslint-config": ^7.0.77
     "@apollo/client": ^3.8.4
     "@chakra-ui/icons": ^2.1.1
     "@chakra-ui/next-js": ^2.1.5
