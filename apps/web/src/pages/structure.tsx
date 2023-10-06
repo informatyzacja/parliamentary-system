@@ -49,7 +49,7 @@ function OrganisationStructure() {
     variables: {
       termId: currentTermId ?? '',
       page: pagination.currentPage,
-      pageSize: pagination.pageSize,
+      pageSize: pagination.pageSize + 1,
     },
     onCompleted(data) {
       setTotalPages(data.students.meta.pagination.pageCount);
@@ -59,6 +59,33 @@ function OrganisationStructure() {
   });
 
   const students = uniqBy(studentsQuery.data?.students.data, 'id');
+
+  const filteredStudents = students.map((student) => {
+    const funcs = student.attributes.functions.filter(
+      (func) => func.term_of_office.data.id === currentTermId,
+    );
+
+    student.attributes.functions = funcs;
+
+    return student;
+  });
+
+  const sortedStudents = filteredStudents.sort((a, b) => {
+    const positionA =
+      a.attributes.functions.at(0)?.functions.data.at(0)?.attributes.position ??
+      0;
+    const positionB =
+      b.attributes.functions.at(0)?.functions.data.at(0)?.attributes.position ??
+      0;
+
+    if (positionA < positionB) {
+      return -1;
+    } else if (positionA > positionB) {
+      return 1;
+    }
+
+    return 0;
+  });
 
   useEffect(() => {
     pagination.setCurrentPage(1);
@@ -74,7 +101,7 @@ function OrganisationStructure() {
           <TermOfOfficeSelector />
         </Box>
         {studentsQuery.loading ? <Loader /> : null}
-        {students.length > 0 ? (
+        {sortedStudents.length > 0 ? (
           <ScaleFade in={true}>
             <TableContainer px={4} maxW={['95vw', null, null, '1000px']}>
               <Table variant="simple" size="lg">
@@ -88,7 +115,7 @@ function OrganisationStructure() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {students.map((student, index) => (
+                  {sortedStudents.map((student, index) => (
                     <Tr key={index}>
                       <Td>
                         {index +
@@ -99,10 +126,6 @@ function OrganisationStructure() {
                       <Td>{student.attributes.surname}</Td>
                       <Td>
                         {student.attributes.functions
-                          .filter(
-                            (func) =>
-                              func.term_of_office.data.id === currentTermId,
-                          )
                           .at(0)
                           ?.functions.data.map(
                             ({ attributes }) => attributes.name,
