@@ -37,7 +37,7 @@ function OrganisationStructure() {
     pagesCount: totalPages,
     initialState: {
       pageSize: 10,
-      currentPage: 24,
+      currentPage: 1,
     },
     limits: {
       inner: 1,
