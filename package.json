@@ -50,7 +50,7 @@
     "husky": "^8.0.3",
     "prettier": "^3.0.3",
     "semantic-release": "^22.0.5",
-    "turbo": "^1.10.14",
+    "turbo": "^1.10.15",
     "wait-on": "^7.0.1"
   },
   "prettier": "@omikorin/prettier-config",
