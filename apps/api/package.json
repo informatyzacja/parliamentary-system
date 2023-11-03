@@ -40,7 +40,7 @@
   "dependencies": {
     "@strapi/plugin-graphql": "4.12.5",
     "@strapi/plugin-users-permissions": "4.13.1",
-    "@strapi/strapi": "4.12.5",
+    "@strapi/strapi": "4.13.1",
     "oauth": "^0.10.0",
     "pg": "^8.11.3",
     "react-select": "^5.7.4"
