@@ -6222,6 +6222,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/helper-plugin@npm:4.13.1":
+  version: 4.13.1
+  resolution: "@strapi/helper-plugin@npm:4.13.1"
+  dependencies:
+    axios: 1.5.0
+    date-fns: 2.30.0
+    formik: 2.4.0
+    immer: 9.0.19
+    lodash: 4.17.21
+    prop-types: ^15.8.1
+    qs: 6.11.1
+    react-helmet: ^6.1.0
+    react-intl: 6.4.1
+    react-query: 3.39.3
+    react-select: 5.7.0
+  peerDependencies:
+    "@strapi/design-system": 1.9.0
+    "@strapi/icons": 1.9.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-router-dom: ^5.3.4
+    styled-components: ^5.3.3
+  checksum: c02fb1ca265e2d4ad27f296e30276de66f43af846b059a2351f42f0d1e3c4a9bcfab9736efb5ba284c2c891417019a3869318b92b8cde1189d79177eae2100d0
+  languageName: node
+  linkType: hard
+
 "@strapi/icons@npm:1.9.0":
   version: 1.9.0
   resolution: "@strapi/icons@npm:1.9.0"
@@ -6388,14 +6414,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/plugin-users-permissions@npm:4.12.5":
-  version: 4.12.5
-  resolution: "@strapi/plugin-users-permissions@npm:4.12.5"
+"@strapi/plugin-users-permissions@npm:4.13.1":
+  version: 4.13.1
+  resolution: "@strapi/plugin-users-permissions@npm:4.13.1"
   dependencies:
     "@strapi/design-system": 1.9.0
-    "@strapi/helper-plugin": 4.12.5
+    "@strapi/helper-plugin": 4.13.1
     "@strapi/icons": 1.9.0
-    "@strapi/utils": 4.12.5
+    "@strapi/utils": 4.13.1
     bcryptjs: 2.4.3
     formik: 2.4.0
     grant-koa: 5.4.8
@@ -6417,7 +6443,7 @@ __metadata:
     react-dom: ^17.0.0 || ^18.0.0
     react-router-dom: 5.3.4
     styled-components: 5.3.3
-  checksum: c8cba16c4925e6e55b7de97bf033fe3c538d21d834b6867c30bd1e0ed25efbb4f45e2feb280b53072430fc01c42d056c63fbe60cb40e92c2d54404ba2aeae2d5
+  checksum: cbbcc433ff97385902146e0dfb0d47b4fc81fba45e6d12f7a7db91302c8ccf1aee75559b28a0c8b808f1af9de6d06a32876430bf014d6961ec53bcb207408f96
   languageName: node
   linkType: hard
 
@@ -6571,6 +6597,20 @@ __metadata:
     p-map: 4.0.0
     yup: 0.32.9
   checksum: 76987fb0b8a366ab5de14fc66bdc32e427568a34bc8960959f3df50d43edcc8f3450851d639e1a4af100d59067b4bdd6ba497b90fb7cf43d5fe43669924eaf45
+  languageName: node
+  linkType: hard
+
+"@strapi/utils@npm:4.13.1":
+  version: 4.13.1
+  resolution: "@strapi/utils@npm:4.13.1"
+  dependencies:
+    "@sindresorhus/slugify": 1.1.0
+    date-fns: 2.30.0
+    http-errors: 1.8.1
+    lodash: 4.17.21
+    p-map: 4.0.0
+    yup: 0.32.9
+  checksum: 6bd6ec1ea06e0cfe05a8b71b792eef4db731b307689c19cca1f1928a416d0c65c898b5ff2616dafb59b1562f24daf8ad46ce373af14ac10eb38f5c46327b5b8b
   languageName: node
   linkType: hard
 
@@ -8085,7 +8125,7 @@ __metadata:
   resolution: "api@workspace:apps/api"
   dependencies:
     "@strapi/plugin-graphql": 4.12.5
-    "@strapi/plugin-users-permissions": 4.12.5
+    "@strapi/plugin-users-permissions": 4.13.1
     "@strapi/strapi": 4.12.5
     oauth: ^0.10.0
     pg: ^8.11.3
@@ -8577,6 +8617,17 @@ __metadata:
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
   checksum: 7fb6a4313bae7f45e89d62c70a800913c303df653f19eafec88e56cea2e3821066b8409bc68be1930ecca80e861c52aa787659df0ffec6ad4d451c7816b9386b
+  languageName: node
+  linkType: hard
+
+"axios@npm:1.5.0":
+  version: 1.5.0
+  resolution: "axios@npm:1.5.0"
+  dependencies:
+    follow-redirects: ^1.15.0
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: e7405a5dbbea97760d0e6cd58fecba311b0401ddb4a8efbc4108f5537da9b3f278bde566deb777935a960beec4fa18e7b8353881f2f465e4f2c0e949fead35be
   languageName: node
   linkType: hard
 
