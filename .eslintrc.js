@@ -6,10 +6,6 @@ module.exports = {
     project: ['./tsconfig.json'],
   },
   extends: [
-    '@alergeek-ventures/eslint-config/typescript',
-    '@alergeek-ventures/eslint-config/react',
-    '@alergeek-ventures/eslint-config/tests',
-    '@alergeek-ventures/eslint-config/cspell-eslint',
     'plugin:@next/next/recommended',
   ],
   ignorePatterns: ['graphql.ts', '*.graphql', '.next', 'node_modules', '*.js'],

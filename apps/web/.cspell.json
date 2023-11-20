@@ -1,7 +1,0 @@
-{
-  "import": ["@alergeek-ventures/eslint-config/.cspell.json"],
-  "dictionaries": ["projectDictionary"],
-  "dictionaryDefinitions": [
-    { "name": "projectDictionary", "path": "./.cspell/dictionary.txt" }
-  ]
-}
