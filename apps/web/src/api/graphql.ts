@@ -1930,7 +1930,7 @@ export const MeetingDocument = gql`
               }
             }
           }
-          reports {
+          reports(pagination: { limit: 50 }) {
             data {
               id
               attributes {
