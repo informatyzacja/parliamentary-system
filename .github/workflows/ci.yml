@@ -22,7 +22,7 @@ jobs:
           node-version: 20
 
       - name: Setup yarn
-        run: yarn set version 3.6.1
+        run: npm install --global yarn@3.6.1
 
       - name: Install deps
         uses: ./.github/actions/yarn-install
