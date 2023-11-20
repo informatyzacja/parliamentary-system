@@ -22,7 +22,7 @@ jobs:
           node-version: 20
 
       - name: Setup yarn
-        run: corepack prepare yarn@<version> --activate
+        run: corepack prepare yarn@3.6.1 --activate
 
       - name: Install deps
         uses: ./.github/actions/yarn-install
