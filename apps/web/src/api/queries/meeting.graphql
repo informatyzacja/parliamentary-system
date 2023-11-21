@@ -40,7 +40,7 @@ query Meeting($id: ID!) {
             }
           }
         }
-        reports {
+        reports(pagination: { limit: 50 }) {
           data {
             id
             attributes {
