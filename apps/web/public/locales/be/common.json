@@ -69,7 +69,17 @@
   "no-resolutions": "Няма пастаноў",
   "organisation-structure": "Арганізацыйная структура",
   "parliament-meetings": "Пасяджэнні парламента",
+  "parliamentary-system": "Parliamentary system",
   "preview": "Прагляд",
+  "resolution": {
+    "attachments": "Attachments",
+    "circulation-vote": "Circulation vote",
+    "date-of-publication": "Date of publication",
+    "information": "Information",
+    "main-document": "Main document",
+    "no-attachments": "No attachments",
+    "no-main-document": "No main document"
+  },
   "resolutions": "Пастановы",
   "student-number": "Нумар індэксу",
   "system-status": "Статус сістэмы",
