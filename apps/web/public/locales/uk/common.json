@@ -69,7 +69,17 @@
   "no-resolutions": "Без резолюцій",
   "organisation-structure": "Організаційна структура",
   "parliament-meetings": "Збори парламенту",
+  "parliamentary-system": "Parliamentary system",
   "preview": "Прев'ю",
+  "resolution": {
+    "attachments": "Attachments",
+    "circulation-vote": "Circulation vote",
+    "date-of-publication": "Date of publication",
+    "information": "Information",
+    "main-document": "Main document",
+    "no-attachments": "No attachments",
+    "no-main-document": "No main document"
+  },
   "resolutions": "Резолюції",
   "student-number": "Номер індексу",
   "system-status": "Статус системи",
