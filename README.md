@@ -1,4 +1,17 @@
-# System Parlamentarny
+<br />
+<br />
+<p align="center">
+  <a href="https://samorzad.pwr.edu.pl/">
+    <img src="public/assets/logo.svg" width="500" alt="Logo SSPWr" />
+  </a>
+</p>
+<h1 align="center">
+  Parliamentary System 
+</h1>
+<p align="center">
+  Web application for storing and relaying documents.
+</p>
+<p align="center"><a href="https://parlament.samorzad.pwr.edu.pl">Production link</a></p>
 
 <p align="center">
   <a href="https://github.com/informatyzacja/parliamentary-system/actions">
@@ -21,15 +34,39 @@
   </a>
 </p>
 
-Aplikacja webowa do przekazywania dokumentów Parlamentu Studenckiego.
+<br>
 
-## Tech Stack
+<p>
+  <img src="public/assets/system.png" alt="Landing page">
+</p>
 
-**api:** Strapi
+## Getting started
 
-**web:** Next, React, Chakra UI, Emotion, TypeScript
+### Installation
 
-**Ogólne:** Docker, GitHub Actions, GraphQL
+```shell
+git clone https://github.com/informatyzacja/parliamentary-system.git
+cd parliamentary-system
+yarn install --immutable
+```
+
+### Requirements
+
+#### Development
+
+- Volta
+
+#### Production
+
+- Docker
+
+### Deployment
+
+Aby dokonać deployu projektu uruchom podane poniżej polecenia
+
+```bash
+docker compose -f docker-compose.yml up --force-recreate -V
+```
 
 ## Environment Variables
 
@@ -73,27 +110,12 @@ tak samo jak wyżej w `.env`
 
 tak samo jak wyżej w `api/.env`
 
-## Instalacja
-
-Wykonaj poniższe polecenia
-
-```bash
-git clone https://github.com/informatyzacja/parliamentary-system.git
-cd parliamentary-system
-yarn install --immutable
-turbo dev
-```
-
-## Deployment
-
-Aby dokonać deployu projektu uruchom podane poniżej polecenia
-
-```bash
-docker compose -f docker-compose.yml up --force-recreate -V
-```
-
 ## Contributing
 
-Zgłaszanie błędów mile widziane!
+If you're having problems with running this project, feel free to create an issue!
 
-Projekt jest prowadzony przez wyznaczone osoby i nie przyjmuje na ten moment PR z zewnątrz.
+Currently this project is maintained by a group of people chosen by Commission for IT of WUST's Students' Union and is not accepting pull requests from the outside.
+
+## License
+
+See the [LICENSE](./LICENSE) file for licensing information.
